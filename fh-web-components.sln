@@ -21,14 +21,30 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "familyhubs-frontend", "fami
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "private", "private", "{E9F5F26C-D8DB-4268-88DD-A732D30ED304}"
+	ProjectSection(SolutionItems) = preProject
+		src\familyhubs-frontend\private\gulpfile.js = src\familyhubs-frontend\private\gulpfile.js
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{E479ECC1-F3F5-48DE-96E4-7CCF2C31EFFB}"
+	ProjectSection(SolutionItems) = preProject
+		src\familyhubs-frontend\scripts\familyhubs.ts = src\familyhubs-frontend\scripts\familyhubs.ts
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "styles", "styles", "{31D0D7FE-E34A-414B-9059-E8ED346E7FF3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wwwroot", "wwwroot", "{3F204222-C759-4625-8F31-1A15F79C410B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FamilyHubs.SharedKernel.Razor", "src\FamilyHubs.SharedKernel.Razor\FamilyHubs.SharedKernel.Razor.csproj", "{345B8D70-8464-49AA-8993-29A164FFDB26}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", "{3DCD5978-FEBE-423F-B967-CFCA67853771}"
+	ProjectSection(SolutionItems) = preProject
+		src\familyhubs-frontend\scripts\components\analytics.ts = src\familyhubs-frontend\scripts\components\analytics.ts
+		src\familyhubs-frontend\scripts\components\cookie-banner.ts = src\familyhubs-frontend\scripts\components\cookie-banner.ts
+		src\familyhubs-frontend\scripts\components\cookie-functions.ts = src\familyhubs-frontend\scripts\components\cookie-functions.ts
+		src\familyhubs-frontend\scripts\components\cookies-page.ts = src\familyhubs-frontend\scripts\components\cookies-page.ts
+		src\familyhubs-frontend\scripts\components\helpers.ts = src\familyhubs-frontend\scripts\components\helpers.ts
+		src\familyhubs-frontend\scripts\components\postcode.ts = src\familyhubs-frontend\scripts\components\postcode.ts
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,6 +72,7 @@ Global
 		{31D0D7FE-E34A-414B-9059-E8ED346E7FF3} = {6F173CC5-DBC4-4A9E-9D97-01AC96D27B5C}
 		{3F204222-C759-4625-8F31-1A15F79C410B} = {6F173CC5-DBC4-4A9E-9D97-01AC96D27B5C}
 		{345B8D70-8464-49AA-8993-29A164FFDB26} = {C39AFBD7-B023-435B-A517-F10A49483A29}
+		{3DCD5978-FEBE-423F-B967-CFCA67853771} = {E479ECC1-F3F5-48DE-96E4-7CCF2C31EFFB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3F1A191D-2EAA-4517-BE4D-0EF5BD088FD4}
