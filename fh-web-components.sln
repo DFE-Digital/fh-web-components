@@ -4,13 +4,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.6.33617.297
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C39AFBD7-B023-435B-A517-F10A49483A29}"
-	ProjectSection(SolutionItems) = preProject
-		src\FamilyHubs.SharedKernel.Razor\FamilyHubs.SharedKernel.Razor.csproj = src\FamilyHubs.SharedKernel.Razor\FamilyHubs.SharedKernel.Razor.csproj
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E487EA6C-E4AE-4FDD-A9F9-97034D3E84ED}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FamilyHubs.SharedKernel.Razor.UnitTests", "tests\FamilyHubs.SharedKernel.Razor.UnitTests\FamilyHubs.SharedKernel.Razor.UnitTests.csproj", "{C4A7A2DB-74A2-4B14-8FAB-4BFA18B6DF08}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "familyhubs-frontend", "familyhubs-frontend", "{6F173CC5-DBC4-4A9E-9D97-01AC96D27B5C}"
+	ProjectSection(SolutionItems) = preProject
+		src\familyhubs-frontend\.npmignore = src\familyhubs-frontend\.npmignore
+		src\familyhubs-frontend\all.min.js = src\familyhubs-frontend\all.min.js
+		src\familyhubs-frontend\all.min.js.map = src\familyhubs-frontend\all.min.js.map
+		src\familyhubs-frontend\gulpfile.js = src\familyhubs-frontend\gulpfile.js
+		src\familyhubs-frontend\index.js = src\familyhubs-frontend\index.js
+		src\familyhubs-frontend\package.json = src\familyhubs-frontend\package.json
+		src\familyhubs-frontend\README.md = src\familyhubs-frontend\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "private", "private", "{E9F5F26C-D8DB-4268-88DD-A732D30ED304}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{E479ECC1-F3F5-48DE-96E4-7CCF2C31EFFB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "styles", "styles", "{31D0D7FE-E34A-414B-9059-E8ED346E7FF3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wwwroot", "wwwroot", "{3F204222-C759-4625-8F31-1A15F79C410B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FamilyHubs.SharedKernel.Razor", "src\FamilyHubs.SharedKernel.Razor\FamilyHubs.SharedKernel.Razor.csproj", "{345B8D70-8464-49AA-8993-29A164FFDB26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,12 +40,22 @@ Global
 		{C4A7A2DB-74A2-4B14-8FAB-4BFA18B6DF08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4A7A2DB-74A2-4B14-8FAB-4BFA18B6DF08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4A7A2DB-74A2-4B14-8FAB-4BFA18B6DF08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{345B8D70-8464-49AA-8993-29A164FFDB26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{345B8D70-8464-49AA-8993-29A164FFDB26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{345B8D70-8464-49AA-8993-29A164FFDB26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{345B8D70-8464-49AA-8993-29A164FFDB26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C4A7A2DB-74A2-4B14-8FAB-4BFA18B6DF08} = {E487EA6C-E4AE-4FDD-A9F9-97034D3E84ED}
+		{6F173CC5-DBC4-4A9E-9D97-01AC96D27B5C} = {C39AFBD7-B023-435B-A517-F10A49483A29}
+		{E9F5F26C-D8DB-4268-88DD-A732D30ED304} = {6F173CC5-DBC4-4A9E-9D97-01AC96D27B5C}
+		{E479ECC1-F3F5-48DE-96E4-7CCF2C31EFFB} = {6F173CC5-DBC4-4A9E-9D97-01AC96D27B5C}
+		{31D0D7FE-E34A-414B-9059-E8ED346E7FF3} = {6F173CC5-DBC4-4A9E-9D97-01AC96D27B5C}
+		{3F204222-C759-4625-8F31-1A15F79C410B} = {6F173CC5-DBC4-4A9E-9D97-01AC96D27B5C}
+		{345B8D70-8464-49AA-8993-29A164FFDB26} = {C39AFBD7-B023-435B-A517-F10A49483A29}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3F1A191D-2EAA-4517-BE4D-0EF5BD088FD4}
