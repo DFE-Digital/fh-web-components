@@ -57,12 +57,49 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "layout", "layout", "{788DA9
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{2791B765-4E73-49C5-BB09-0CD6E251F1EB}"
+	ProjectSection(SolutionItems) = preProject
+		src\familyhubs-frontend\wwwroot\css\govuk-frontend-ie8-4.5.0.min.css = src\familyhubs-frontend\wwwroot\css\govuk-frontend-ie8-4.5.0.min.css
+		src\familyhubs-frontend\wwwroot\css\govuk-frontend-ie8-4.5.0.min.css.map = src\familyhubs-frontend\wwwroot\css\govuk-frontend-ie8-4.5.0.min.css.map
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{1654424A-3D61-4011-A1FD-607099F9F9B5}"
+	ProjectSection(SolutionItems) = preProject
+		src\familyhubs-frontend\wwwroot\images\crest.png = src\familyhubs-frontend\wwwroot\images\crest.png
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{FA1F7A55-52FC-4D15-B061-A89331EE8FAD}"
+	ProjectSection(SolutionItems) = preProject
+		src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.5.0.min.js = src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.5.0.min.js
+		src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.5.0.min.js.map = src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.5.0.min.js.map
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{423102EF-F293-4570-99B1-1B4C0D2F157A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "govuk", "govuk", "{B6832A02-35F5-4A3B-BA2F-F8BA4921565A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{A4BE1BA6-FD85-47F1-BA57-F1E65A67EC1E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "fonts", "fonts", "{34B840DD-1912-450A-AC66-61818C567B92}"
+	ProjectSection(SolutionItems) = preProject
+		src\familyhubs-frontend\wwwroot\lib\govuk\assets\fonts\bold-affa96571d-v2.woff = src\familyhubs-frontend\wwwroot\lib\govuk\assets\fonts\bold-affa96571d-v2.woff
+		src\familyhubs-frontend\wwwroot\lib\govuk\assets\fonts\bold-b542beb274-v2.woff2 = src\familyhubs-frontend\wwwroot\lib\govuk\assets\fonts\bold-b542beb274-v2.woff2
+		src\familyhubs-frontend\wwwroot\lib\govuk\assets\fonts\light-94a07e06a1-v2.woff2 = src\familyhubs-frontend\wwwroot\lib\govuk\assets\fonts\light-94a07e06a1-v2.woff2
+		src\familyhubs-frontend\wwwroot\lib\govuk\assets\fonts\light-f591b13f7d-v2.woff = src\familyhubs-frontend\wwwroot\lib\govuk\assets\fonts\light-f591b13f7d-v2.woff
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{1C19143C-52F0-4E16-9E07-61E670FCF712}"
+	ProjectSection(SolutionItems) = preProject
+		src\familyhubs-frontend\wwwroot\lib\govuk\assets\images\favicon.ico = src\familyhubs-frontend\wwwroot\lib\govuk\assets\images\favicon.ico
+		src\familyhubs-frontend\wwwroot\lib\govuk\assets\images\govuk-apple-touch-icon-152x152.png = src\familyhubs-frontend\wwwroot\lib\govuk\assets\images\govuk-apple-touch-icon-152x152.png
+		src\familyhubs-frontend\wwwroot\lib\govuk\assets\images\govuk-apple-touch-icon-167x167.png = src\familyhubs-frontend\wwwroot\lib\govuk\assets\images\govuk-apple-touch-icon-167x167.png
+		src\familyhubs-frontend\wwwroot\lib\govuk\assets\images\govuk-apple-touch-icon-180x180.png = src\familyhubs-frontend\wwwroot\lib\govuk\assets\images\govuk-apple-touch-icon-180x180.png
+		src\familyhubs-frontend\wwwroot\lib\govuk\assets\images\govuk-apple-touch-icon.png = src\familyhubs-frontend\wwwroot\lib\govuk\assets\images\govuk-apple-touch-icon.png
+		src\familyhubs-frontend\wwwroot\lib\govuk\assets\images\govuk-crest-2x.png = src\familyhubs-frontend\wwwroot\lib\govuk\assets\images\govuk-crest-2x.png
+		src\familyhubs-frontend\wwwroot\lib\govuk\assets\images\govuk-crest.png = src\familyhubs-frontend\wwwroot\lib\govuk\assets\images\govuk-crest.png
+		src\familyhubs-frontend\wwwroot\lib\govuk\assets\images\govuk-logotype-crown.png = src\familyhubs-frontend\wwwroot\lib\govuk\assets\images\govuk-logotype-crown.png
+		src\familyhubs-frontend\wwwroot\lib\govuk\assets\images\govuk-mask-icon.svg = src\familyhubs-frontend\wwwroot\lib\govuk\assets\images\govuk-mask-icon.svg
+		src\familyhubs-frontend\wwwroot\lib\govuk\assets\images\govuk-opengraph-image.png = src\familyhubs-frontend\wwwroot\lib\govuk\assets\images\govuk-opengraph-image.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -96,6 +133,10 @@ Global
 		{1654424A-3D61-4011-A1FD-607099F9F9B5} = {3F204222-C759-4625-8F31-1A15F79C410B}
 		{FA1F7A55-52FC-4D15-B061-A89331EE8FAD} = {3F204222-C759-4625-8F31-1A15F79C410B}
 		{423102EF-F293-4570-99B1-1B4C0D2F157A} = {3F204222-C759-4625-8F31-1A15F79C410B}
+		{B6832A02-35F5-4A3B-BA2F-F8BA4921565A} = {423102EF-F293-4570-99B1-1B4C0D2F157A}
+		{A4BE1BA6-FD85-47F1-BA57-F1E65A67EC1E} = {B6832A02-35F5-4A3B-BA2F-F8BA4921565A}
+		{34B840DD-1912-450A-AC66-61818C567B92} = {A4BE1BA6-FD85-47F1-BA57-F1E65A67EC1E}
+		{1C19143C-52F0-4E16-9E07-61E670FCF712} = {A4BE1BA6-FD85-47F1-BA57-F1E65A67EC1E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3F1A191D-2EAA-4517-BE4D-0EF5BD088FD4}
