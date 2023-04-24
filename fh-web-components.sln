@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33617.297
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C39AFBD7-B023-435B-A517-F10A49483A29}"
+	ProjectSection(SolutionItems) = preProject
+		src\FamilyHubs.SharedKernel.Razor\FamilyHubs.SharedKernel.Razor.csproj = src\FamilyHubs.SharedKernel.Razor\FamilyHubs.SharedKernel.Razor.csproj
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E487EA6C-E4AE-4FDD-A9F9-97034D3E84ED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FamilyHubs.SharedKernel.Razor.UnitTests", "tests\FamilyHubs.SharedKernel.Razor.UnitTests\FamilyHubs.SharedKernel.Razor.UnitTests.csproj", "{C4A7A2DB-74A2-4B14-8FAB-4BFA18B6DF08}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C4A7A2DB-74A2-4B14-8FAB-4BFA18B6DF08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4A7A2DB-74A2-4B14-8FAB-4BFA18B6DF08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4A7A2DB-74A2-4B14-8FAB-4BFA18B6DF08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4A7A2DB-74A2-4B14-8FAB-4BFA18B6DF08}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C4A7A2DB-74A2-4B14-8FAB-4BFA18B6DF08} = {E487EA6C-E4AE-4FDD-A9F9-97034D3E84ED}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3F1A191D-2EAA-4517-BE4D-0EF5BD088FD4}
+	EndGlobalSection
+EndGlobal
