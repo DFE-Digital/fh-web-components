@@ -31,6 +31,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{E479
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "styles", "styles", "{31D0D7FE-E34A-414B-9059-E8ED346E7FF3}"
+	ProjectSection(SolutionItems) = preProject
+		src\familyhubs-frontend\styles\all.scss = src\familyhubs-frontend\styles\all.scss
+		src\familyhubs-frontend\styles\_global.scss = src\familyhubs-frontend\styles\_global.scss
+		src\familyhubs-frontend\styles\_overrides.scss = src\familyhubs-frontend\styles\_overrides.scss
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wwwroot", "wwwroot", "{3F204222-C759-4625-8F31-1A15F79C410B}"
 EndProject
@@ -45,6 +50,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", 
 		src\familyhubs-frontend\scripts\components\helpers.ts = src\familyhubs-frontend\scripts\components\helpers.ts
 		src\familyhubs-frontend\scripts\components\postcode.ts = src\familyhubs-frontend\scripts\components\postcode.ts
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "layout", "layout", "{788DA990-BC17-4572-B087-042C91FF99A0}"
+	ProjectSection(SolutionItems) = preProject
+		src\familyhubs-frontend\styles\layout\_header.scss = src\familyhubs-frontend\styles\layout\_header.scss
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{2791B765-4E73-49C5-BB09-0CD6E251F1EB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{1654424A-3D61-4011-A1FD-607099F9F9B5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{FA1F7A55-52FC-4D15-B061-A89331EE8FAD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{423102EF-F293-4570-99B1-1B4C0D2F157A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +91,11 @@ Global
 		{3F204222-C759-4625-8F31-1A15F79C410B} = {6F173CC5-DBC4-4A9E-9D97-01AC96D27B5C}
 		{345B8D70-8464-49AA-8993-29A164FFDB26} = {C39AFBD7-B023-435B-A517-F10A49483A29}
 		{3DCD5978-FEBE-423F-B967-CFCA67853771} = {E479ECC1-F3F5-48DE-96E4-7CCF2C31EFFB}
+		{788DA990-BC17-4572-B087-042C91FF99A0} = {31D0D7FE-E34A-414B-9059-E8ED346E7FF3}
+		{2791B765-4E73-49C5-BB09-0CD6E251F1EB} = {3F204222-C759-4625-8F31-1A15F79C410B}
+		{1654424A-3D61-4011-A1FD-607099F9F9B5} = {3F204222-C759-4625-8F31-1A15F79C410B}
+		{FA1F7A55-52FC-4D15-B061-A89331EE8FAD} = {3F204222-C759-4625-8F31-1A15F79C410B}
+		{423102EF-F293-4570-99B1-1B4C0D2F157A} = {3F204222-C759-4625-8F31-1A15F79C410B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3F1A191D-2EAA-4517-BE4D-0EF5BD088FD4}
