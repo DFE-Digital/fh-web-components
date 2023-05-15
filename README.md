@@ -46,6 +46,14 @@ Here's an example configuration section that should be added to the appsettings.
       "MeasurementId": "",
       "ContainerId": ""
     },
+    "Header": {
+	  "Links": [
+		{ "Text": "RequestsSent", "Url": "https://dev.manage-connection-requests.education.gov.uk/" },
+		{ "Text": "Search for services", "Url": "/ProfessionalReferral/Search" },
+		{ "Text": "My account", "Url": "/account/my-account" },
+		{ "Text": "Sign out", "Url": "/account/signout" }
+	  ]
+	},
     "Footer": {
       "Links": [
         { "Text": "Accessibility" },
