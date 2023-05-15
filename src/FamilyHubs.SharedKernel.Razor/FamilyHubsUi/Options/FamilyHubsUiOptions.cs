@@ -18,5 +18,6 @@ public class FamilyHubsUiOptions
 
     public AnalyticsOptions? Analytics { get; set; }
 
+    public HeaderOptions Header { get; set; } = new();
     public FooterOptions Footer { get; set; } = new();
 }
