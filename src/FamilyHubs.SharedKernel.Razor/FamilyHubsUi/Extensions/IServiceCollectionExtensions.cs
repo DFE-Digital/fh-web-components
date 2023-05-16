@@ -20,6 +20,8 @@ public static class IServiceCollectionExtensions
             .ValidateDataAnnotations()
             .ValidateOnStart();
 
+        services.AddTransient<FamilyHubsLayoutModel>();
+
         return services;
     }
 }

@@ -1,4 +1,9 @@
-﻿@model FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options.FamilyHubsUiOptions
+﻿@using FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Delegators
+@model FamilyHubs.SharedKernel.Razor.FamilyHubsUi.FamilyHubsLayoutModel
+
+@{
+    var familyHubsUiOptions = Model.FamilyHubsUiOptions.Value;
+}
 
 <header class="govuk-header" role="banner" data-module="govuk-header">
     <div class="govuk-header__container">
@@ -21,26 +26,31 @@
                 <span class="govuk-header__logotype-text">|</span>
                 <a href="/" class="govuk-header__link govuk-header__link--homepage">
                     <span class="govuk-header__product-name">
-                        @Model.ServiceName
+                        @familyHubsUiOptions.ServiceName
                     </span>
                 </a>
             </div>
-@*            <div class="govuk-header__content__full_vcs">
-            *@                <nav class="govuk-header__navigation govuk-header__navigation--end app-header__navigation" aria-label="Menu">
-@*                    <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide menu" aria-expanded="false" hidden="">Menu</button>*@
-                    <ul id="navigation" class="govuk-header__navigation-list">
-                        @foreach (var headerLink in Model.Header.Links)
-                        {
-                            @*govuk-header__navigation-item--active on active li*@
-                            <li class="govuk-header__navigation-item">
+            @{
+                IFamilyHubsHeader? familyHubsHeader = Model.PageModel as IFamilyHubsHeader;
+
+                if (familyHubsHeader?.ShowNavigationMenu == true)
+                {
+                    <nav class="govuk-header__navigation govuk-header__navigation--end app-header__navigation" aria-label="Menu">
+                        @*<button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide menu" aria-expanded="false" hidden="">Menu</button>*@
+                        <ul id="navigation" class="govuk-header__navigation-list">
+
+                            @foreach (var headerLink in familyHubsUiOptions.Header.Links)
+                            {
+                            <li class="govuk-header__navigation-item @((familyHubsHeader?.IsActive(headerLink) ?? false) ? "govuk-header__navigation-item--active" : "")">
                                 <a class="govuk-header__link" href="@headerLink.Url" @(headerLink.OpenInNewTab ? Html.Raw("rel=\"noreferrer noopener\" target=\"_blank\"") : "")>
                                     @headerLink.Text
                                 </a>
                             </li>
-                        }
-                    </ul>
-                </nav>
-@*            </div>
-*@        </div>
+                            }
+                        </ul>
+                    </nav>
+                }
+            }
+        </div>
     </div>
 </header>
