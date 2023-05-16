@@ -33,9 +33,9 @@
                         {
                             @*govuk-header__navigation-item--active on active li*@
                             <li class="govuk-header__navigation-item">
-                                    <a class="govuk-header__link" href="@headerLink.Url" @(headerLink.OpenInNewTab ? Html.Raw("rel=\"noreferrer noopener\" target=\"_blank\"") : "")>
-                                        @headerLink.Text
-                                    </a>
+                                <a class="govuk-header__link" href="@headerLink.Url" @(headerLink.OpenInNewTab ? Html.Raw("rel=\"noreferrer noopener\" target=\"_blank\"") : "")>
+                                    @headerLink.Text
+                                </a>
                             </li>
                         }
                     </ul>
