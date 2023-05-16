@@ -25,9 +25,9 @@
                     </span>
                 </a>
             </div>
-            <div class="govuk-header__content__full_vcs">
-                <nav class="govuk-header__navigation govuk-header__navigation--end" aria-label="Menu">
-                    <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide menu" aria-expanded="false" hidden="">Menu</button>
+@*            <div class="govuk-header__content__full_vcs">
+            *@                <nav class="govuk-header__navigation govuk-header__navigation--end app-header__navigation" aria-label="Menu">
+@*                    <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide menu" aria-expanded="false" hidden="">Menu</button>*@
                     <ul id="navigation" class="govuk-header__navigation-list">
                         @foreach (var headerLink in Model.Header.Links)
                         {
@@ -36,13 +36,11 @@
                                     <a class="govuk-header__link" href="@headerLink.Url" @(headerLink.OpenInNewTab ? Html.Raw("rel=\"noreferrer noopener\" target=\"_blank\"") : "")>
                                         @headerLink.Text
                                     </a>
-
-                                <a class="govuk-header__link" href="/find-support/v9/dashboard.html">Requests sent</a>
                             </li>
                         }
                     </ul>
                 </nav>
-            </div>
-        </div>
+@*            </div>
+*@        </div>
     </div>
 </header>
