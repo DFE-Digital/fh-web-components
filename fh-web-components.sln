@@ -52,9 +52,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", 
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "layout", "layout", "{788DA990-BC17-4572-B087-042C91FF99A0}"
-	ProjectSection(SolutionItems) = preProject
-		src\familyhubs-frontend\styles\layout\_header.scss = src\familyhubs-frontend\styles\layout\_header.scss
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{2791B765-4E73-49C5-BB09-0CD6E251F1EB}"
 	ProjectSection(SolutionItems) = preProject
