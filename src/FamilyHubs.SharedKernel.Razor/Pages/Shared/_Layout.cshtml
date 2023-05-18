@@ -1,8 +1,9 @@
-﻿@using FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options
+﻿@using FamilyHubs.SharedKernel.Razor.FamilyHubsUi
 @* we could use IOptionsSnapshot for updates without downtime, but we probably don't want the overhead for something so central*@
-@inject IOptions<FamilyHubsUiOptions> FamilyHubsUiOptions
+@inject FamilyHubsLayoutModel FamilyHubsLayoutModel
 @{
-    var familyHubsUiOptions = FamilyHubsUiOptions.Value;
+    FamilyHubsLayoutModel.PageModel = Model as Microsoft.AspNetCore.Mvc.RazorPages.PageModel;
+    var familyHubsUiOptions = FamilyHubsLayoutModel.FamilyHubsUiOptions.Value;
 }
 
 <!DOCTYPE html>
@@ -24,7 +25,7 @@
 
     <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
 
-    <partial name="_Header.cshtml" model="familyHubsUiOptions" />
+    <partial name="_Header.cshtml" model="FamilyHubsLayoutModel" />
 
     <div class="govuk-width-container">
         <partial name="_PhaseBanner.cshtml" model="familyHubsUiOptions" />
@@ -45,7 +46,8 @@
     for now we go with the more efficient version, but we might change to the easier to maintain version later *@
 
     <script src="~/js/govuk-frontend-4.5.0.min.js"></script>
-    <script src="~/js/familyhubs-frontend-1.0.34-alpha.min.js"></script>
+    <script src="~/js/dfefrontend-0.1.7.js"></script>
+    <script src="~/js/familyhubs-frontend-1.0.44-alpha.min.js"></script>
     <script src="~/js/app.js" asp-append-version="true"></script>
 
     <script>

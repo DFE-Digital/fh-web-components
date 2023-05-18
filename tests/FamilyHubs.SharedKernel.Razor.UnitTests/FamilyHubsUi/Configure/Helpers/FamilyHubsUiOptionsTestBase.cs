@@ -19,6 +19,18 @@ public class FamilyHubsUiOptionsTestBase
                 MeasurementId = "MeasurementId",
                 ContainerId = "ContainerId"
             },
+            Header = new HeaderOptions
+            {
+                Links = new[]
+                {
+                    new LinkOptions
+                    {
+                        Text = "headerText",
+                        Url = "headertext",
+                        ConfigUrl = null
+                    }
+                }
+            },
             Footer = new FooterOptions
             {
                 Links = new[]

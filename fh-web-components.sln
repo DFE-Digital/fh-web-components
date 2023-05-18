@@ -52,9 +52,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", 
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "layout", "layout", "{788DA990-BC17-4572-B087-042C91FF99A0}"
-	ProjectSection(SolutionItems) = preProject
-		src\familyhubs-frontend\styles\layout\_header.scss = src\familyhubs-frontend\styles\layout\_header.scss
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{2791B765-4E73-49C5-BB09-0CD6E251F1EB}"
 	ProjectSection(SolutionItems) = preProject
@@ -111,6 +108,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "global", "global", "{507ADC
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dfe", "dfe", "{0F619866-E57D-4579-8C39-E7510E6E3CCC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{52DC1465-D14A-4A68-B745-070402F455A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{162DB933-53EA-43E8-99A6-3BD544B2ADAF}"
+	ProjectSection(SolutionItems) = preProject
+		src\familyhubs-frontend\wwwroot\lib\dfe\assets\images\dfe-logo-alt.png = src\familyhubs-frontend\wwwroot\lib\dfe\assets\images\dfe-logo-alt.png
+		src\familyhubs-frontend\wwwroot\lib\dfe\assets\images\dfe-logo.png = src\familyhubs-frontend\wwwroot\lib\dfe\assets\images\dfe-logo.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -147,6 +154,9 @@ Global
 		{A4BE1BA6-FD85-47F1-BA57-F1E65A67EC1E} = {B6832A02-35F5-4A3B-BA2F-F8BA4921565A}
 		{34B840DD-1912-450A-AC66-61818C567B92} = {A4BE1BA6-FD85-47F1-BA57-F1E65A67EC1E}
 		{1C19143C-52F0-4E16-9E07-61E670FCF712} = {A4BE1BA6-FD85-47F1-BA57-F1E65A67EC1E}
+		{0F619866-E57D-4579-8C39-E7510E6E3CCC} = {423102EF-F293-4570-99B1-1B4C0D2F157A}
+		{52DC1465-D14A-4A68-B745-070402F455A4} = {0F619866-E57D-4579-8C39-E7510E6E3CCC}
+		{162DB933-53EA-43E8-99A6-3BD544B2ADAF} = {52DC1465-D14A-4A68-B745-070402F455A4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3F1A191D-2EAA-4517-BE4D-0EF5BD088FD4}
