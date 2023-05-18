@@ -48,8 +48,8 @@ Here's an example configuration section that should be added to the appsettings.
     },
     "Header": {
 	  "Links": [
-		{ "Text": "RequestsSent", "Url": "https://dev.manage-connection-requests.education.gov.uk/" },
-		{ "Text": "Search for services", "Url": "/ProfessionalReferral/Search" },
+		{ "Text": "Requests Sent", "Url": "https://dev.manage-connection-requests.education.gov.uk/" },
+		{ "Text": "Search for service", "Url": "/ProfessionalReferral/Search" },
 		{ "Text": "My account", "Url": "/account/my-account" },
 		{ "Text": "Sign out", "Url": "/account/signout" }
 	  ]
