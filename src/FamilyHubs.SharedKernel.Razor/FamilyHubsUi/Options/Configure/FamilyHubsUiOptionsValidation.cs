@@ -7,18 +7,24 @@ public class FamilyHubsUiOptionsValidation : IValidateOptions<FamilyHubsUiOption
     public ValidateOptionsResult Validate(string? _, FamilyHubsUiOptions options)
     {
         var validationErrors = new List<string>();
-        foreach (var footerLink in options.Footer.Links)
-        {
-            if (!Uri.IsWellFormedUriString(footerLink.Url, UriKind.RelativeOrAbsolute))
-            {
-                validationErrors.Add($"Footer link for \"{footerLink.Text}\" has invalid Url \"{footerLink.Url}\"");
-            }
-        }
+        ValidateLinks(options.Header.Links, validationErrors, "Header");
+        ValidateLinks(options.Footer.Links, validationErrors, "Footer");
 
         if (validationErrors.Any())
         {
             return ValidateOptionsResult.Fail(validationErrors);
         }
         return ValidateOptionsResult.Success;
+    }
+
+    private static void ValidateLinks(LinkOptions[] linkOptions, List<string> validationErrors, string linkTypeDescription)
+    {
+        foreach (var link in linkOptions)
+        {
+            if (!Uri.IsWellFormedUriString(link.Url, UriKind.RelativeOrAbsolute))
+            {
+                validationErrors.Add($"{linkTypeDescription} link for \"{link.Text}\" has invalid Url \"{link.Url}\"");
+            }
+        }
     }
 }

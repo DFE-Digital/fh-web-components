@@ -14,15 +14,21 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
 
     public void Configure(FamilyHubsUiOptions options)
     {
-        foreach (var footerLink in options.Footer.Links)
+        ConfigureLinks(options.Header.Links);
+        ConfigureLinks(options.Footer.Links);
+    }
+
+    public void ConfigureLinks(LinkOptions[] linkOptions)
+    {
+        foreach (var link in linkOptions)
         {
-            if (footerLink.ConfigUrl != null)
+            if (link.ConfigUrl != null)
             {
-                footerLink.Url = _configuration[footerLink.ConfigUrl];
+                link.Url = _configuration[link.ConfigUrl];
             }
-            else if (string.IsNullOrEmpty(footerLink.Url))
+            else if (string.IsNullOrEmpty(link.Url))
             {
-                footerLink.Url = $"/{footerLink.Text.ToLowerInvariant().Replace(' ', '-')}";
+                link.Url = $"/{link.Text.ToLowerInvariant().Replace(' ', '-')}";
             }
         }
     }

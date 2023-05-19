@@ -35,7 +35,27 @@ public class FamilyHubsUiOptionsConfigureTests : FamilyHubsUiOptionsTestBase
     [InlineData("/upper", "UPPER")]
     [InlineData("/multi-word", "Multi word")]
     [InlineData("/-x--y-z", " X  y z")]
-    public void Configure_GeneratedUrlTests(string expectedUrl, string text)
+    public void Configure_GeneratedHeaderUrlTests(string expectedUrl, string text)
+    {
+        var link = FamilyHubsUiOptions.Header.Links.First();
+        link.Url = null;
+        link.Text = text;
+
+        // act
+        FamilyHubsUiOptionsConfigure.Configure(FamilyHubsUiOptions);
+
+        var actualLink = FamilyHubsUiOptions.Header.Links.FirstOrDefault();
+        Assert.NotNull(actualLink);
+        Assert.Equal(expectedUrl, actualLink.Url);
+    }
+
+    [Theory]
+    [InlineData("/lower", "lower")]
+    [InlineData("/mix", "MiX")]
+    [InlineData("/upper", "UPPER")]
+    [InlineData("/multi-word", "Multi word")]
+    [InlineData("/-x--y-z", " X  y z")]
+    public void Configure_GeneratedFooterUrlTests(string expectedUrl, string text)
     {
         var link = FamilyHubsUiOptions.Footer.Links.First();
         link.Url = null;
@@ -50,7 +70,26 @@ public class FamilyHubsUiOptionsConfigureTests : FamilyHubsUiOptionsTestBase
     }
 
     [Fact]
-    public void Configure_ConfigUrlTest()
+    public void Configure_HeaderConfigUrlTest()
+    {
+        const string configKey = "A:B";
+        const string configValue = "configValue";
+        Configuration.Setup(c => c[configKey]).Returns(configValue);
+
+        var link = FamilyHubsUiOptions.Header.Links.First();
+        link.Url = null;
+        link.ConfigUrl = configKey;
+
+        // act
+        FamilyHubsUiOptionsConfigure.Configure(FamilyHubsUiOptions);
+
+        var actualLink = FamilyHubsUiOptions.Header.Links.FirstOrDefault();
+        Assert.NotNull(actualLink);
+        Assert.Equal(configValue, actualLink.Url);
+    }
+
+    [Fact]
+    public void Configure_FooterConfigUrlTest()
     {
         const string configKey = "A:B";
         const string configValue = "configValue";
