@@ -66,6 +66,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{165442
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{FA1F7A55-52FC-4D15-B061-A89331EE8FAD}"
 	ProjectSection(SolutionItems) = preProject
+		src\familyhubs-frontend\wwwroot\js\dfefrontend-0.1.8.js = src\familyhubs-frontend\wwwroot\js\dfefrontend-0.1.8.js
 		src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.5.0.min.js = src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.5.0.min.js
 		src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.5.0.min.js.map = src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.5.0.min.js.map
 	EndProjectSection
