@@ -17,14 +17,37 @@
                 </span>
             </a>
         </div>
+        
+        @{
+            // cache these, in case the IFamilyHubsHeader implementor changes its mind between calls
+            bool showNavigationMenu = familyHubsHeader?.ShowNavigationMenu == true;
+            bool showActionLinks = familyHubsHeader?.ShowActionLinks == true;
 
-        @if (familyHubsHeader?.ShowNavigationMenu == true)
-        {
-            <div class="dfe-header__content" id="content-header">
-                <div class="dfe-header__menu">
-                    <button class="dfe-header__menu-toggle" id="toggle-menu" aria-controls="header-navigation" aria-expanded="false">Menu</button>
+            if (showNavigationMenu || showActionLinks)
+            {
+                <div class="dfe-header__content" id="content-header">
+                    @if (showActionLinks)
+                    {
+                        <div class="dfeuk-header__username">
+                        @foreach (var headerLink in familyHubsUiOptions.Header.ActionLinks)
+                        {
+                            var linkStatus = familyHubsHeader!.GetStatus(headerLink);
+                            if (linkStatus != LinkStatus.NotVisible)
+                            {
+                                //todo: text not links
+                                <a class="govuk-link--inverse">@headerLink.Text</a>
+                            }
+                        }
+                        </div>
+                    }
+                    @if (showNavigationMenu)
+                    {
+                        <div class="dfe-header__menu">
+                            <button class="dfe-header__menu-toggle" id="toggle-menu" aria-controls="header-navigation" aria-expanded="false">Menu</button>
+                        </div>
+                    }
                 </div>
-            </div>
+            }
         }
     </div>
 
@@ -42,7 +65,7 @@
                     </button>
                 </p>
                 <ul class="dfe-header__navigation-list">
-                    @foreach (var headerLink in familyHubsUiOptions.Header.Links)
+                    @foreach (var headerLink in familyHubsUiOptions.Header.NavigationLinks)
                     {
                         var linkStatus = familyHubsHeader.GetStatus(headerLink);
                         if (linkStatus != LinkStatus.NotVisible)

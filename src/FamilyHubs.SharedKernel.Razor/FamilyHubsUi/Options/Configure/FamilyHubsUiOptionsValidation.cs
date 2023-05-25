@@ -7,7 +7,8 @@ public class FamilyHubsUiOptionsValidation : IValidateOptions<FamilyHubsUiOption
     public ValidateOptionsResult Validate(string? _, FamilyHubsUiOptions options)
     {
         var validationErrors = new List<string>();
-        ValidateLinks(options.Header.Links, validationErrors, "Header");
+        ValidateLinks(options.Header.NavigationLinks, validationErrors, "Header navigation");
+        ValidateLinks(options.Header.ActionLinks, validationErrors, "Header action");
         ValidateLinks(options.Footer.Links, validationErrors, "Footer");
 
         if (validationErrors.Any())

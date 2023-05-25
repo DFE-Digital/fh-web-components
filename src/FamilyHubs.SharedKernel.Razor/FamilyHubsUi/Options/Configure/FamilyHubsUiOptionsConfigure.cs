@@ -14,7 +14,8 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
 
     public void Configure(FamilyHubsUiOptions options)
     {
-        ConfigureLinks(options.Header.Links);
+        ConfigureLinks(options.Header.NavigationLinks);
+        ConfigureLinks(options.Header.ActionLinks);
         ConfigureLinks(options.Footer.Links);
     }
 
