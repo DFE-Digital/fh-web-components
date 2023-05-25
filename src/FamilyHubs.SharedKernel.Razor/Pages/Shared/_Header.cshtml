@@ -35,7 +35,7 @@
                             if (linkStatus != LinkStatus.NotVisible)
                             {
                                 //todo: text not links
-                                <a class="govuk-link--inverse">@headerLink.Text</a>
+                                <a class="govuk-link--inverse" href="@headerLink.Url" @(headerLink.OpenInNewTab ? Html.Raw("rel=\"noreferrer noopener\" target=\"_blank\"") : "")>@headerLink.Text</a>
                             }
                         }
                         </div>
