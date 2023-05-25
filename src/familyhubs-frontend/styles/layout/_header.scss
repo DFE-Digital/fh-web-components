@@ -1,0 +1,3 @@
+.dfeuk-header__username > :not(:last-child) {
+    @include govuk-responsive-padding(3, "right");
+}

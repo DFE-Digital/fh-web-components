@@ -12,5 +12,6 @@ public enum LinkStatus
 public interface IFamilyHubsHeader
 {
     bool ShowNavigationMenu => true;
+    bool ShowActionLinks => true;
     LinkStatus GetStatus(LinkOptions link) => LinkStatus.Visible;
 }

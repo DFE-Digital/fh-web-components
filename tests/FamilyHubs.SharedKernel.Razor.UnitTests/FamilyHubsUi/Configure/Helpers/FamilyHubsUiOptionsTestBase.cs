@@ -21,12 +21,21 @@ public class FamilyHubsUiOptionsTestBase
             },
             Header = new HeaderOptions
             {
-                Links = new[]
+                NavigationLinks = new[]
                 {
                     new LinkOptions
                     {
-                        Text = "headerText",
-                        Url = "headertext",
+                        Text = "header navigation link",
+                        Url = "https://example.com/navigation",
+                        ConfigUrl = null
+                    }
+                },
+                ActionLinks = new[]
+                {
+                    new LinkOptions
+                    {
+                        Text = "header action link",
+                        Url = "https://example.com/action",
                         ConfigUrl = null
                     }
                 }

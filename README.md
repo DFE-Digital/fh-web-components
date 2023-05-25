@@ -47,9 +47,11 @@ Here's an example configuration section that should be added to the appsettings.
       "ContainerId": ""
     },
     "Header": {
-	  "Links": [
+	  "NavigationLinks": [
 		{ "Text": "Requests Sent", "Url": "https://dev.manage-connection-requests.education.gov.uk/" },
 		{ "Text": "Search for service", "Url": "/ProfessionalReferral/Search" },
+	  ],
+      "ActionLinks": [
 		{ "Text": "My account", "Url": "/account/my-account" },
 		{ "Text": "Sign out", "Url": "/account/signout" }
 	  ]
