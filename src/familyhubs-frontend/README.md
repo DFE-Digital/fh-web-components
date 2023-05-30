@@ -2,6 +2,10 @@
 
 # possible ToDos
 
+* pick up jquery from cdn with a fallback to our own copy
+
+* add uncompressed govuk js
+
 * minify moj js
 
 * move lib js into lib folder?
