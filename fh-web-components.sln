@@ -16,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "familyhubs-frontend", "fami
 		src\familyhubs-frontend\all.min.js.map = src\familyhubs-frontend\all.min.js.map
 		src\familyhubs-frontend\gulpfile.js = src\familyhubs-frontend\gulpfile.js
 		src\familyhubs-frontend\index.js = src\familyhubs-frontend\index.js
+		src\familyhubs-frontend\package-lock.json = src\familyhubs-frontend\package-lock.json
 		src\familyhubs-frontend\package.json = src\familyhubs-frontend\package.json
 		src\familyhubs-frontend\README.md = src\familyhubs-frontend\README.md
 	EndProjectSection
@@ -72,6 +73,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{FA1F7A55-52FC-
 		src\familyhubs-frontend\wwwroot\js\dfefrontend-0.1.8.js = src\familyhubs-frontend\wwwroot\js\dfefrontend-0.1.8.js
 		src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.5.0.min.js = src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.5.0.min.js
 		src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.5.0.min.js.map = src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.5.0.min.js.map
+		src\familyhubs-frontend\wwwroot\js\ministryofjustice-frontend-1.6.6.js = src\familyhubs-frontend\wwwroot\js\ministryofjustice-frontend-1.6.6.js
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{423102EF-F293-4570-99B1-1B4C0D2F157A}"
