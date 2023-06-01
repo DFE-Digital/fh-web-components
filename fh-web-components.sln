@@ -16,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "familyhubs-frontend", "fami
 		src\familyhubs-frontend\all.min.js.map = src\familyhubs-frontend\all.min.js.map
 		src\familyhubs-frontend\gulpfile.js = src\familyhubs-frontend\gulpfile.js
 		src\familyhubs-frontend\index.js = src\familyhubs-frontend\index.js
+		src\familyhubs-frontend\package-lock.json = src\familyhubs-frontend\package-lock.json
 		src\familyhubs-frontend\package.json = src\familyhubs-frontend\package.json
 		src\familyhubs-frontend\README.md = src\familyhubs-frontend\README.md
 	EndProjectSection
@@ -72,6 +73,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{FA1F7A55-52FC-
 		src\familyhubs-frontend\wwwroot\js\dfefrontend-0.1.8.js = src\familyhubs-frontend\wwwroot\js\dfefrontend-0.1.8.js
 		src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.5.0.min.js = src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.5.0.min.js
 		src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.5.0.min.js.map = src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.5.0.min.js.map
+		src\familyhubs-frontend\wwwroot\js\jquery-3.7.0.js = src\familyhubs-frontend\wwwroot\js\jquery-3.7.0.js
+		src\familyhubs-frontend\wwwroot\js\jquery-3.7.0.min.js = src\familyhubs-frontend\wwwroot\js\jquery-3.7.0.min.js
+		src\familyhubs-frontend\wwwroot\js\jquery-3.7.0.min.map = src\familyhubs-frontend\wwwroot\js\jquery-3.7.0.min.map
+		src\familyhubs-frontend\wwwroot\js\ministryofjustice-frontend-1.6.6.js = src\familyhubs-frontend\wwwroot\js\ministryofjustice-frontend-1.6.6.js
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{423102EF-F293-4570-99B1-1B4C0D2F157A}"
@@ -122,6 +127,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{162DB9
 		src\familyhubs-frontend\wwwroot\lib\dfe\assets\images\dfe-logo.png = src\familyhubs-frontend\wwwroot\lib\dfe\assets\images\dfe-logo.png
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", "{2003D362-7F0B-4F9C-AAA0-5AB0EB865A5F}"
+	ProjectSection(SolutionItems) = preProject
+		src\familyhubs-frontend\styles\components\_pagination.scss = src\familyhubs-frontend\styles\components\_pagination.scss
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -161,6 +171,7 @@ Global
 		{0F619866-E57D-4579-8C39-E7510E6E3CCC} = {423102EF-F293-4570-99B1-1B4C0D2F157A}
 		{52DC1465-D14A-4A68-B745-070402F455A4} = {0F619866-E57D-4579-8C39-E7510E6E3CCC}
 		{162DB933-53EA-43E8-99A6-3BD544B2ADAF} = {52DC1465-D14A-4A68-B745-070402F455A4}
+		{2003D362-7F0B-4F9C-AAA0-5AB0EB865A5F} = {31D0D7FE-E34A-414B-9059-E8ED346E7FF3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3F1A191D-2EAA-4517-BE4D-0EF5BD088FD4}
