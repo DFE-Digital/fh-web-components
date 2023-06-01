@@ -45,14 +45,16 @@
     but means we wouldn't have to update these version numbers when we update the familyhubs or govuk npm packages?
     for now we go with the more efficient version, but we might change to the easier to maintain version later *@
 
+    <script src="~/js/jquery-3.7.0.min.js"></script>
     <script src="~/js/govuk-frontend-4.5.0.min.js"></script>
+    <script src="~/js/ministryofjustice-frontend-1.6.6.js"></script>
     <script src="~/js/dfefrontend-0.1.8.js"></script>
-    <script src="~/js/familyhubs-frontend-1.0.51-alpha.min.js"></script>
+    <script src="~/js/familyhubs-frontend-1.0.55-alpha.min.js"></script>
     <script src="~/js/app.js" asp-append-version="true"></script>
 
     <script>
-        //todo: initialize just the components we use
         window.GOVUKFrontend.initAll();
+        window.MOJFrontend.initAll();
         window.FamilyHubsFrontend.initAll();
     </script>
 
