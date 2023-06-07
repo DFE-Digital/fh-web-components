@@ -3,7 +3,3 @@
 .dfeuk-header__username > :not(:last-child) {
     @include govuk-responsive-padding(3, "right");
 }
-
-.dfe-width-container {
-    max-width: 960px;
-}
