@@ -67,7 +67,7 @@ public static class IServiceCollectionExtension
         using var sqlConnection = new SqlConnection(connectionString);
         sqlConnection.Open();
 
-        var checkTableExistsCommandText = $"IF EXISTS(SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEME='{schemaName}' AND TABLE_NAME='{tableName}') SELECT 1 ELSE SELECT 0";
+        var checkTableExistsCommandText = $"IF EXISTS(SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='{schemaName}' AND TABLE_NAME='{tableName}') SELECT 1 ELSE SELECT 0";
         var checkCmd = new SqlCommand(checkTableExistsCommandText, sqlConnection);
         
         // IF EXISTS returns the SELECT 1 if the table exists or SELECT 0 if not
