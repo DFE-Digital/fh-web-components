@@ -1,4 +1,4 @@
 ﻿
 namespace FamilyHubs.SharedKernel.Razor.Dashboard;
 
-internal record DashboardCell(string? ContentAsHtml, string? PartialName = null) : IDashboardCell;
+public record DashboardCell(string? ContentAsHtml, string? PartialName = null) : IDashboardCell;
