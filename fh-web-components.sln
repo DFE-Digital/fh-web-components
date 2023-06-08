@@ -129,6 +129,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{162DB9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", "{2003D362-7F0B-4F9C-AAA0-5AB0EB865A5F}"
 	ProjectSection(SolutionItems) = preProject
+		src\familyhubs-frontend\styles\components\_dashboard.scss = src\familyhubs-frontend\styles\components\_dashboard.scss
 		src\familyhubs-frontend\styles\components\_pagination.scss = src\familyhubs-frontend\styles\components\_pagination.scss
 	EndProjectSection
 EndProject

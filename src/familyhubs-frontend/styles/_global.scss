@@ -24,3 +24,22 @@
         background-color: $govuk-focus-colour !important;
     }
 }
+
+/* change page width stop 1200px */
+
+.dfe-width-container, .govuk-width-container {
+    margin: 0 16px;
+    max-width: 1200px;
+}
+
+@media (min-width: 48.0625em) {
+    .dfe-width-container, .govuk-width-container {
+        margin: 0 32px;
+    }
+}
+
+@media (min-width: 1264px) {
+    .dfe-width-container, .govuk-width-container {
+        margin: 0 auto;
+    }
+}
