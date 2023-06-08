@@ -5,8 +5,8 @@ namespace FamilyHubs.SharedKernel.Razor.Dashboard
     public interface IDashboard<out T>
     {
         string? TableClass { get; }
-        IEnumerable<IDashboardColumnHeader> ColumnHeaders => Enumerable.Empty<IDashboardColumnHeader>();
-        IEnumerable<IDashboardRow<T>> Rows => Enumerable.Empty<IDashboardRow<T>>();
+        IEnumerable<IColumnHeader> ColumnHeaders => Enumerable.Empty<IColumnHeader>();
+        IEnumerable<IRow<T>> Rows => Enumerable.Empty<IRow<T>>();
         IPagination Pagination { get; set; }
     }
 }

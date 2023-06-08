@@ -1,13 +1,12 @@
 ﻿
-//todo: can probably remove the Dashboard suffix now in a namespace
 namespace FamilyHubs.SharedKernel.Razor.Dashboard;
 
-internal class DashboardColumnHeader : IDashboardColumnHeader
+internal class ColumnHeader : IColumnHeader
 {
     private readonly ColumnImmutable _columnImmutable;
     private readonly string _pagePath;
 
-    public DashboardColumnHeader(ColumnImmutable columnImmutable, SortOrder? sort, string pagePath)
+    public ColumnHeader(ColumnImmutable columnImmutable, SortOrder? sort, string pagePath)
     {
         Sort = sort;
         _columnImmutable = columnImmutable;

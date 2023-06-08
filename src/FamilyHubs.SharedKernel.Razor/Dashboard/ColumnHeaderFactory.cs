@@ -1,14 +1,14 @@
 ﻿
 namespace FamilyHubs.SharedKernel.Razor.Dashboard;
 
-public class DashboardColumnHeaderFactory
+public class ColumnHeaderFactory
 {
     private readonly IEnumerable<ColumnImmutable> _columnsImmutable;
     private readonly string _sortedColumnName;
     private readonly SortOrder _sort;
     private readonly string _pagePath;
 
-    public DashboardColumnHeaderFactory(
+    public ColumnHeaderFactory(
         IEnumerable<ColumnImmutable> columnsImmutable,
         string pagePath,
         string sortedColumnName,
@@ -20,7 +20,7 @@ public class DashboardColumnHeaderFactory
         _pagePath = pagePath;
     }
 
-    private IDashboardColumnHeader Create(ColumnImmutable columnImmutable)
+    private IColumnHeader Create(ColumnImmutable columnImmutable)
     {
         //todo: here, or in ctor?
 
@@ -30,10 +30,10 @@ public class DashboardColumnHeaderFactory
             sort = columnImmutable.SortName == _sortedColumnName ? _sort : SortOrder.none;
         }
 
-        return new DashboardColumnHeader(columnImmutable, sort, _pagePath);
+        return new ColumnHeader(columnImmutable, sort, _pagePath);
     }
 
-    public IDashboardColumnHeader[] CreateAll()
+    public IColumnHeader[] CreateAll()
     {
         return _columnsImmutable.Select(Create).ToArray();
     }

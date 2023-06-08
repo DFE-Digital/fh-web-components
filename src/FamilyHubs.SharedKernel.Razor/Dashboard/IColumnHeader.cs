@@ -1,7 +1,7 @@
 ﻿
 namespace FamilyHubs.SharedKernel.Razor.Dashboard;
 
-public interface IDashboardColumnHeader
+public interface IColumnHeader
 {
     SortOrder? Sort { get; }
     string ContentAsHtml { get; }
