@@ -1,6 +1,9 @@
 ﻿
 namespace FamilyHubs.SharedKernel.Razor.Pagination;
 
+/// <summary>
+/// Creates a GDS pagination control for when there are a large number of pages <see href="https://design-system.service.gov.uk/components/pagination#for-larger-numbers-of-pages"/>.
+/// </summary>
 public class LargeSetPagination : IPagination
 {
     public IEnumerable<PaginationItem> PaginationItems { get; }
