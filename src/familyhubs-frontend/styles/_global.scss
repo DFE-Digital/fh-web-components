@@ -16,12 +16,16 @@
     cursor: pointer;
     background: none !important;
 
+    &:hover {
+        text-decoration: none;
+    }
+
     &:focus {
         background-color: $govuk-focus-colour !important;
     }
 }
 
-/* change page width stop 1200px */
+/* change page width to 1200px */
 
 .dfe-width-container, .govuk-width-container {
     margin: 0 16px;
