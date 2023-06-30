@@ -158,7 +158,7 @@ To add user-friendly Family Hub branded error pages, call `UseErrorHandling()` o
     app.UseErrorHandling();
 ```
 
-By default, the error handling middleware will only be added in the development environment. If you want to always add it, irrespective of the environment (useful for local testing), pass `true` as the first parameter.
+By default, the error handling middleware will only be added if it's not the development environment. If you want to always add it, irrespective of the environment (useful for local testing), pass `true` as the first parameter.
 
 If `SupportEmail` is set in the configuration, the error page will include a link to the given support email address.
 
