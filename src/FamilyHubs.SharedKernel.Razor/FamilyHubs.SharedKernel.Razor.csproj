@@ -8,13 +8,14 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
 	<PackageId>FamilyHubs.SharedKernel.Razor</PackageId>
-	<VersionPrefix>1.0.66-alpha</VersionPrefix>
+	<VersionPrefix>1.0.0</VersionPrefix>
 	<PackageReadmeFile>readme.md</PackageReadmeFile>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	<RepositoryUrl>https://github.com/DFE-Digital/fh-shared-kernel</RepositoryUrl>
 	<PackageTags>govuk frontend design-system dfe family-hub</PackageTags>
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+	<WarningsNotAsErrors>NU5104</WarningsNotAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,11 +23,11 @@
   </ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Extensions.Caching.SqlServer" Version="7.0.5" />
-		<PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="8.0.0-preview.4.23260.4" />
+		<PackageReference Include="Microsoft.Extensions.Caching.SqlServer" Version="7.0.8" />
+		<PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="8.0.0-preview.5.23302.2" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
-		<PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders" Version="0.18.0" />
-		<PackageReference Include="StackExchange.Redis" Version="2.6.111" />
+		<PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders" Version="0.19.0" />
+		<PackageReference Include="StackExchange.Redis" Version="2.6.116" />
 	</ItemGroup>
 
 	<ItemGroup>
