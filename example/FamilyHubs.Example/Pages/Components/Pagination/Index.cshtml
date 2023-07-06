@@ -1,4 +1,12 @@
 ﻿@page
 @model FamilyHubs.Example.Pages.Components.Pagination.IndexModel
-@{
-}
+
+<h1>Large set pagination</h1>
+
+<partial name="_LargeSetPagination" model='Model.LinkPagination' />
+
+<h1>Large set pagination form</h1>
+
+<form>
+    <partial name="_LargeSetPaginationForm" model='Model.Pagination' />
+</form>
