@@ -10,4 +10,8 @@
     <PackageReference Include="FamilyHubs.SharedKernel.Razor" Version="1.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Shared\" />
+  </ItemGroup>
+
 </Project>

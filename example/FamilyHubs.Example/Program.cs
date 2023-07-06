@@ -1,7 +1,11 @@
+using Microsoft.Extensions.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddFamilyHubs(builder.Configuration);
 
 var app = builder.Build();
 
