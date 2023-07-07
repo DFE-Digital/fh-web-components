@@ -12,7 +12,13 @@
 .fh-button-link {
     @include govuk-link-common;
     @include govuk-link-style-default;
-    @include govuk-typography-responsive(19);
+    // ^^ govuk-link-style-default assumes it's been applied to a link
+    // we can set the colour to replicate the :link pseudo-selector..
+    color: $govuk-link-colour;
+    // :hover, @active and :focus should apply to a button and will be included with the govuk-link-style-default mixin
+    // but we're stuffed to replicate the :visited pseudo-selector
+
+    @include govuk-link-print-friendly;
     border: none;
     padding: 0;
     cursor: pointer;
