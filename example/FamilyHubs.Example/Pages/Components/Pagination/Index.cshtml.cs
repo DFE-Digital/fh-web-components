@@ -12,7 +12,7 @@ public class LargeSetLinkPagination : LargeSetPagination, ILinkPagination
 
     public string GetUrl(int page)
     {
-        return "/Components/Pagination?page={page}";
+        return $"/Components/Pagination?page={page}";
     }
 }
 
@@ -30,9 +30,15 @@ public class IndexModel : PageModel
     public IPagination Pagination { get; set; } = new DontShowPagination();
     public ILinkPagination LinkPagination { get; set; } = new DontShowLinkPagination();
 
-    public void OnGet(int page)
+    public void OnGet(int page = 1)
     {
-        Pagination = new LargeSetPagination(20, 10);
-        LinkPagination = new LargeSetLinkPagination(20, 10);
+        Pagination = new LargeSetPagination(20, 1);
+        LinkPagination = new LargeSetLinkPagination(20, page);
+    }
+
+    public void OnPost(int page)
+    {
+        Pagination = new LargeSetPagination(20, page);
+        LinkPagination = new LargeSetLinkPagination(20, 1);
     }
 }

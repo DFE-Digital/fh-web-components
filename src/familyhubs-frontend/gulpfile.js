@@ -4,9 +4,29 @@ const gulp = require("gulp"),
     rename = require('gulp-rename'),
     fs = require('fs');
 
+//gulp.task('copy-wwwroot', function () {
+//    return gulp.src('wwwroot/**/*')
+//        .pipe(gulp.dest('../../wwwroot'));
+//});
+
+// return true if being installed from NPM, false if being run from the local repo (using file:)
+function remotelyInstalled() {
+    return process.cwd().endsWith('node_modules/familyhubs-frontend');
+}
+
+function getWwwRootDir() {
+    let baseDir = remotelyInstalled() ? '../..' : '.';
+
+    // Check if this is a NPM link situation
+    //if (process.env.npm_lifecycle_event === 'link') {}
+
+    return baseDir + '/wwwroot';
+}
+
 gulp.task('copy-wwwroot', function () {
+    let baseDir = getWwwRootDir();
     return gulp.src('wwwroot/**/*')
-        .pipe(gulp.dest('../../wwwroot'));
+        .pipe(gulp.dest(baseDir));
 });
 
 function copyPackageJsToWwwroot(packageName, srcFilename) {
@@ -17,10 +37,12 @@ function copyPackageJsToWwwroot(packageName, srcFilename) {
     // Set the destination file name
     const destFileName = `${packageName}-${packageVersion}.min.js`;
 
+    let baseDir = getWwwRootDir();
+
     // Copy and rename the file
     return gulp.src(`../${packageName}/${srcFilename}`)
         .pipe(rename(destFileName))
-        .pipe(gulp.dest('../../wwwroot/js'));
+        .pipe(gulp.dest(baseDir + '/js'));
 }
 
 gulp.task('copy-govuk-frontend-js', function () {

@@ -9,9 +9,9 @@ li.govuk-pagination__item--current {
 
 .govuk-pagination__item, .govuk-pagination__next, .govuk-pagination__prev {
     .fh-button-link {
-        @include govuk-font($size: 16);
-
-        &:hover {
+/*        @include govuk-font($size: 16);
+*/
+/*        &:hover {
             @include govuk-link-decoration;
             @include govuk-link-hover-decoration;
         }
@@ -19,5 +19,5 @@ li.govuk-pagination__item--current {
         &:active:hover {
             text-decoration: none;
         }
-    }
+*/    }
 }

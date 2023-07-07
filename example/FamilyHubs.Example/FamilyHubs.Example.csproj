@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FamilyHubs.SharedKernel.Razor" Version="1.1.0" />
+    <Folder Include="Pages\Shared\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Shared\" />
+    <ProjectReference Include="..\..\src\FamilyHubs.SharedKernel.Razor\FamilyHubs.SharedKernel.Razor.csproj" />
   </ItemGroup>
 
 </Project>
