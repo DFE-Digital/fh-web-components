@@ -1,7 +1,10 @@
 ﻿@page
+@using FamilyHubs.SharedKernel.Razor.Urls;
+@addTagHelper *, FamilyHubs.SharedKernel.Razor
 @model FamilyHubs.Example.Pages.Components.Urls.IndexModel
 
 @{
+    // HtmlHelper
     var familyHubs = ViewData["FamilyHubsLayoutModel"] as FamilyHubsLayoutModel;
         <p>All family hub URLs:</p>
     <ul>
@@ -13,3 +16,9 @@
         }
     </ul>
 }
+@* <fh-url url="http://example.com"></fh-url>
+ *@
+@* 1>I:\git\DfE\fh-web-components\example\FamilyHubs.Example\Pages\Components\Urls\Index.cshtml(21,3,21,7): error CS1929: 'Pages_Components_Urls_Index' does not contain a definition for 'FamilyHubUrl' and the best extension method overload 'PageModelExtensions.FamilyHubUrl<UrlKey>
+    (PageModel, UrlKey, string?)' requires a receiver of type 'Microsoft.AspNetCore.Mvc.RazorPages.PageModel' *@
+
+@Html.FamilyHubUrl(UrlKey.ConnectWeb, "/")
