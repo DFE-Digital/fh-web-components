@@ -17,6 +17,8 @@ public class FamilyHubsUiOptions
     public string SupportEmail { get; set; } = "";
 
     //todo: validate urls
+    //todo: if urls section is missing in consumser settings, get null reference exception thrown from layout model
+    // need to handle this better, especially as consumers updating to the latest version won't have this section
     public Dictionary<string, string> Urls { get; set; } = new();
 
     public AnalyticsOptions? Analytics { get; set; }
