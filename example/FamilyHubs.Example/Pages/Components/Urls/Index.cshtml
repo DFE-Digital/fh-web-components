@@ -2,18 +2,16 @@
 @using FamilyHubs.Example.Models
 @model FamilyHubs.Example.Pages.Components.Urls.IndexModel
 
-@{
-    // HtmlHelper
-    var familyHubs = ViewData["FamilyHubsLayoutModel"] as FamilyHubsLayoutModel;
-        <p>All family hub URLs:</p>
-    <ul>
-        @foreach (var keyValue in familyHubs!.FamilyHubsUiOptions.Value.Urls)
+<p>@Html.FamilyHubUrl(UrlKey.ConnectWeb, "/")</p>
+<p>@Html.FamilyHubConfigUrl(UrlKey.DashboardWeb, "ExampleDashboardRelativeUrl")</p>
+<p>
+    @{
+        var withQueryParams = Html.FamilyHubConfigUrl(UrlKey.DashboardWeb, "ExampleDashboardRelativeUrl");
+        var builder = new UriBuilder(withQueryParams)
         {
-            <li>
-                <a href="@keyValue.Value">@keyValue.Key</a>
-            </li>
-        }
-    </ul>
-}
+            Query = "id=1"
+        };
+        @builder.Uri
+    }
+</p>
 
-@Html.FamilyHubUrl(UrlKey.ConnectWeb, "/")
