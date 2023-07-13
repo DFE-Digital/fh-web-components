@@ -13,7 +13,7 @@ public class LargeSetLinkPagination : LargeSetPagination, ILinkPagination
     public string GetUrl(int page)
     {
         // don't use page as the query param name as it's reserved by the framework
-        return $"/Components/Pagination/Index?pageNum={page}";
+        return $"/Components/Pagination?pageNum={page}";
     }
 }
 
