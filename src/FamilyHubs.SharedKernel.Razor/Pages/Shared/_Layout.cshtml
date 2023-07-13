@@ -1,9 +1,6 @@
-﻿@using FamilyHubs.SharedKernel.Razor.FamilyHubsUi
-@* we could use IOptionsSnapshot for updates without downtime, but we probably don't want the overhead for something so central*@
-@inject FamilyHubsLayoutModel FamilyHubsLayoutModel
-@{
-    FamilyHubsLayoutModel.PageModel = Model as Microsoft.AspNetCore.Mvc.RazorPages.PageModel;
-    var familyHubsUiOptions = FamilyHubsLayoutModel.FamilyHubsUiOptions.Value;
+﻿@{
+    var FamilyHubsLayoutModel = ViewData["FamilyHubsLayoutModel"] as FamilyHubsLayoutModel;
+    var familyHubsUiOptions = FamilyHubsLayoutModel!.FamilyHubsUiOptions.Value;
 }
 
 <!DOCTYPE html>

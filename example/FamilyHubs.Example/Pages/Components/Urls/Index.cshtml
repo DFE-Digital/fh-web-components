@@ -1,0 +1,15 @@
+﻿@page
+@model FamilyHubs.Example.Pages.Components.Urls.IndexModel
+
+@{
+    var familyHubs = ViewData["FamilyHubsLayoutModel"] as FamilyHubsLayoutModel;
+        <p>All family hub URLs:</p>
+    <ul>
+        @foreach (var keyValue in familyHubs!.FamilyHubsUiOptions.Value.Urls)
+        {
+            <li>
+                <a href="@keyValue.Value">@keyValue.Key</a>
+            </li>
+        }
+    </ul>
+}

@@ -135,7 +135,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "example", "example", "{0B8CACAA-44D6-4161-A974-89FBCD55E18E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FamilyHubs.Example", "example\FamilyHubs.Example\FamilyHubs.Example.csproj", "{C6BBB9FB-F62F-42D2-96D1-7E987EA67161}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FamilyHubs.Example", "example\FamilyHubs.Example\FamilyHubs.Example.csproj", "{C6BBB9FB-F62F-42D2-96D1-7E987EA67161}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

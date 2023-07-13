@@ -16,6 +16,9 @@ public class FamilyHubsUiOptions
     /// </summary>
     public string SupportEmail { get; set; } = "";
 
+    //todo: validate urls
+    public Dictionary<string, string> Urls { get; set; } = new();
+
     public AnalyticsOptions? Analytics { get; set; }
 
     public HeaderOptions Header { get; set; } = new();
