@@ -16,19 +16,10 @@ public class LargeSetLinkPagination : LargeSetPagination, ILinkPagination
     }
 }
 
-public class DontShowLinkPagination : DontShowPagination, ILinkPagination
-{
-    public string GetUrl(int page)
-    {
-        throw new NotImplementedException();
-    }
-}
-
 public class IndexModel : PageModel
 {
-    //todo: static instance in Pagination, so don't keep creating instances
-    public IPagination Pagination { get; set; } = new DontShowPagination();
-    public ILinkPagination LinkPagination { get; set; } = new DontShowLinkPagination();
+    public IPagination Pagination { get; set; } = IPagination.DontShow;
+    public ILinkPagination LinkPagination { get; set; } = ILinkPagination.DontShow;
 
     public void OnGet(int page = 1)
     {
