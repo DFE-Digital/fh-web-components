@@ -11,6 +11,13 @@ public class LinkOptions
     public string Text { get; set; } = "";
 
     /// <summary>
+    /// A key name from the FamilyHubsUi:Url section.
+    /// If supplied, the configured value of the given key name,
+    /// acts as the base URL for the relative Url supplied through Url or ConfigUrl.
+    /// </summary>
+    public string? BaseUrlKey { get; set; }
+
+    /// <summary>
     /// The URL for the link. If left blank, defaults to Text in lowercase with spaces converted to hyphens (-).
     /// </summary>
     /// <remarks>

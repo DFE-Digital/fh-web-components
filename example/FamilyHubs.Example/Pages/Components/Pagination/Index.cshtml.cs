@@ -12,33 +12,25 @@ public class LargeSetLinkPagination : LargeSetPagination, ILinkPagination
 
     public string GetUrl(int page)
     {
-        return $"/Components/Pagination?page={page}";
-    }
-}
-
-public class DontShowLinkPagination : DontShowPagination, ILinkPagination
-{
-    public string GetUrl(int page)
-    {
-        throw new NotImplementedException();
+        // don't use page as the query param name as it's reserved by the framework
+        return $"/Components/Pagination?pageNum={page}";
     }
 }
 
 public class IndexModel : PageModel
 {
-    //todo: static instance in Pagination, so don't keep creating instances
-    public IPagination Pagination { get; set; } = new DontShowPagination();
-    public ILinkPagination LinkPagination { get; set; } = new DontShowLinkPagination();
+    public IPagination Pagination { get; set; } = IPagination.DontShow;
+    public ILinkPagination LinkPagination { get; set; } = ILinkPagination.DontShow;
 
-    public void OnGet(int page = 1)
+    public void OnGet(int pageNum = 1)
     {
         Pagination = new LargeSetPagination(20, 1);
-        LinkPagination = new LargeSetLinkPagination(20, page);
+        LinkPagination = new LargeSetLinkPagination(20, pageNum);
     }
 
-    public void OnPost(int page)
+    public void OnPost(int pageNum)
     {
-        Pagination = new LargeSetPagination(20, page);
+        Pagination = new LargeSetPagination(20, pageNum);
         LinkPagination = new LargeSetLinkPagination(20, 1);
     }
 }

@@ -29,7 +29,7 @@ public class FamilyHubsUiOptionsValidationTests : FamilyHubsUiOptionsTestBase
     [InlineData("http://example.com:x")]
     public void Validate_ValidationErrorsTest(string? url)
     {
-        var link = FamilyHubsUiOptions.Footer.Links.First();
+        var link = FamilyHubsUiOptions.Footer.Links[0];
         link.Url = url;
 
         var expectedResult =
@@ -54,7 +54,7 @@ public class FamilyHubsUiOptionsValidationTests : FamilyHubsUiOptionsTestBase
     [InlineData("http://example.com:123/long/path?param=value#fragment")]
     public void Validate_ValidUrlsValidateOkTest(string? url)
     {
-        var link = FamilyHubsUiOptions.Footer.Links.First();
+        var link = FamilyHubsUiOptions.Footer.Links[0];
         link.Url = url;
 
         // act

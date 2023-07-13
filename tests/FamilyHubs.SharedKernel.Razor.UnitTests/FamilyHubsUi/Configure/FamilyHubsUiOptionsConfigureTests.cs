@@ -37,7 +37,7 @@ public class FamilyHubsUiOptionsConfigureTests : FamilyHubsUiOptionsTestBase
     [InlineData("/-x--y-z", " X  y z")]
     public void Configure_GeneratedHeaderNavigationUrlTests(string expectedUrl, string text)
     {
-        var link = FamilyHubsUiOptions.Header.NavigationLinks.First();
+        var link = FamilyHubsUiOptions.Header.NavigationLinks[0];
         link.Url = null;
         link.Text = text;
 
@@ -57,7 +57,7 @@ public class FamilyHubsUiOptionsConfigureTests : FamilyHubsUiOptionsTestBase
     [InlineData("/-x--y-z", " X  y z")]
     public void Configure_GeneratedHeaderActionUrlTests(string expectedUrl, string text)
     {
-        var link = FamilyHubsUiOptions.Header.ActionLinks.First();
+        var link = FamilyHubsUiOptions.Header.ActionLinks[0];
         link.Url = null;
         link.Text = text;
 
@@ -77,7 +77,7 @@ public class FamilyHubsUiOptionsConfigureTests : FamilyHubsUiOptionsTestBase
     [InlineData("/-x--y-z", " X  y z")]
     public void Configure_GeneratedFooterUrlTests(string expectedUrl, string text)
     {
-        var link = FamilyHubsUiOptions.Footer.Links.First();
+        var link = FamilyHubsUiOptions.Footer.Links[0];
         link.Url = null;
         link.Text = text;
 
@@ -96,7 +96,7 @@ public class FamilyHubsUiOptionsConfigureTests : FamilyHubsUiOptionsTestBase
         const string configValue = "configValue";
         Configuration.Setup(c => c[configKey]).Returns(configValue);
 
-        var link = FamilyHubsUiOptions.Header.NavigationLinks.First();
+        var link = FamilyHubsUiOptions.Header.NavigationLinks[0];
         link.Url = null;
         link.ConfigUrl = configKey;
 
@@ -115,7 +115,7 @@ public class FamilyHubsUiOptionsConfigureTests : FamilyHubsUiOptionsTestBase
         const string configValue = "configValue";
         Configuration.Setup(c => c[configKey]).Returns(configValue);
 
-        var link = FamilyHubsUiOptions.Header.ActionLinks.First();
+        var link = FamilyHubsUiOptions.Header.ActionLinks[0];
         link.Url = null;
         link.ConfigUrl = configKey;
 
@@ -134,7 +134,7 @@ public class FamilyHubsUiOptionsConfigureTests : FamilyHubsUiOptionsTestBase
         const string configValue = "configValue";
         Configuration.Setup(c => c[configKey]).Returns(configValue);
 
-        var link = FamilyHubsUiOptions.Footer.Links.First();
+        var link = FamilyHubsUiOptions.Footer.Links[0];
         link.Url = null;
         link.ConfigUrl = configKey;
 
