@@ -12,14 +12,7 @@ public static class HtmlHelperFamilyHubExtensions
     {
         var model = htmlHelper.ViewData["FamilyHubsLayoutModel"] as FamilyHubsLayoutModel;
 
-        //todo: possibly cache from config as Uri's?
-        var baseUrlString = baseUrl.ToString();
-        if (!model!.FamilyHubsUiOptions.Value.Urls.TryGetValue(baseUrlString, out var baseUrlValue))
-        {
-            throw new ArgumentException($"No url found in FamilyHubsUi:Urls for key \"{baseUrlString}\"", nameof(baseUrl));
-        }
-
-        return new Uri(new Uri(baseUrlValue), url);
+        return model!.FamilyHubsUiOptions.Value.Url(baseUrl, url);
     }
 
     public static Uri FamilyHubConfigUrl<TUrlKeyEnum>(this IHtmlHelper htmlHelper, TUrlKeyEnum baseUrl, string configKey)

@@ -2,6 +2,10 @@
 
 ## Release Notes
 
+### 1.6.0
+
+Add `Url()` helper to FamilyHubsUiOptions
+
 ### 1.5.0
 
 Adds:
