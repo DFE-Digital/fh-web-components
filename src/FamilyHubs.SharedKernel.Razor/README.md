@@ -2,6 +2,11 @@
 
 ## Release Notes
 
+### 1.5.0
+
+Adds:
+* BaseUrlKey support in header and footer links
+
 ### 1.4.0
 
 Adds:
@@ -13,5 +18,3 @@ See the example site for usage.
 Notes:
 * This version requires `_ViewStart.cshtml` to not be overridden in the consuming project.
 If you need to override `_ViewStart.cshtml`, ensure the contents of the version in this package is included in your overridden version. A later version might contain a helper for this.
-* The `FamilyHubsUi` config section now requires the `Urls` section to be included in the consuming project's appsettings.json file (otherwise a NullReferenceException is thrown from _Layout).
-The next version will remove this requirement.

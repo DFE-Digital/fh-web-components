@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
+using System;
 using System.Reflection;
 
 namespace FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options.Configure;
@@ -30,15 +31,21 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
             }
             else if (string.IsNullOrEmpty(link.Url))
             {
-                string? baseUrl = null;
-                if (!string.IsNullOrEmpty(link.BaseUrlKey))
+                string? baseUrl;
+                if (string.IsNullOrEmpty(link.BaseUrlKey))
+                {
+                    baseUrl = "";
+                }
+                else
                 {
                     if (!urls.TryGetValue(link.BaseUrlKey, out baseUrl))
                     {
                         throw new ArgumentException($"No url found in FamilyHubsUi:Urls for key \"{link.BaseUrlKey}\" when constructing link for \"{link.Text}\".");
                     }
                 }
-                link.Url = $"{baseUrl}/{link.Text.ToLowerInvariant().Replace(' ', '-')}";
+                var url = new Uri(new Uri(baseUrl), $"/{link.Text.ToLowerInvariant().Replace(' ', '-')}");
+
+                link.Url = url.ToString();
             }
         }
     }
