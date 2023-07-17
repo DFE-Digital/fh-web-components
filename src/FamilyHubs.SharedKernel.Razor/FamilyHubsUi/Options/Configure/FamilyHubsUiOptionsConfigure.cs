@@ -32,6 +32,7 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
                 // if Url is not set, use a simple slugified version of the link text
                 link.Url ??= $"/{link.Text.ToLowerInvariant().Replace(' ', '-')}";
 
+                // is a base url key is set, treat the Url as a relative url from the given base
                 if (!string.IsNullOrEmpty(link.BaseUrlKey))
                 {
                     if (!urls.TryGetValue(link.BaseUrlKey, out var baseUrl))
