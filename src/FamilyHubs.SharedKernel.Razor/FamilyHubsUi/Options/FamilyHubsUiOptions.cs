@@ -25,7 +25,7 @@ public class FamilyHubsUiOptions
     public HeaderOptions Header { get; set; } = new();
     public FooterOptions Footer { get; set; } = new();
 
-    public Uri Url<TUrlKeyEnum>(TUrlKeyEnum baseUrl, string? url)
+    public Uri Url<TUrlKeyEnum>(TUrlKeyEnum baseUrl, string? url = "")
         where TUrlKeyEnum : struct, Enum
     {
         //todo: possibly cache from config as Uri's?
