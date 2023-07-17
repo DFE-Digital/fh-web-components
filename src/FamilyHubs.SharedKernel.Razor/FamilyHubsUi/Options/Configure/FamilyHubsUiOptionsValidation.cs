@@ -20,12 +20,9 @@ public class FamilyHubsUiOptionsValidation : IValidateOptions<FamilyHubsUiOption
 
     private static void ValidateLinks(LinkOptions[] linkOptions, List<string> validationErrors, string linkTypeDescription)
     {
-        foreach (var link in linkOptions)
-        {
-            if (!Uri.IsWellFormedUriString(link.Url, UriKind.RelativeOrAbsolute))
-            {
-                validationErrors.Add($"{linkTypeDescription} link for \"{link.Text}\" has invalid Url \"{link.Url}\"");
-            }
-        }
+        validationErrors.AddRange(
+            linkOptions.Where(l =>
+                    !string.IsNullOrEmpty(l.Url) && !Uri.IsWellFormedUriString(l.Url, UriKind.RelativeOrAbsolute))
+            .Select(l => $"{linkTypeDescription} link for \"{l.Text}\" has invalid Url \"{l.Url}\""));
     }
 }
