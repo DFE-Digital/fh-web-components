@@ -1,7 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
-using System;
-using System.Reflection;
 
 namespace FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options.Configure;
 
@@ -21,7 +19,7 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
         ConfigureLinks(options.Footer.Links, options.Urls);
     }
 
-    public void ConfigureLinks(LinkOptions[] linkOptions, Dictionary<string, string> urls)
+    public void ConfigureLinks(FhLinkOptions[] linkOptions, Dictionary<string, string> urls)
     {
         foreach (var link in linkOptions)
         {
@@ -29,23 +27,23 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
             {
                 link.Url = _configuration[link.ConfigUrl];
             }
-            else if (string.IsNullOrEmpty(link.Url))
+            else
             {
-                string? baseUrl;
-                if (string.IsNullOrEmpty(link.BaseUrlKey))
-                {
-                    baseUrl = "";
-                }
-                else
-                {
-                    if (!urls.TryGetValue(link.BaseUrlKey, out baseUrl))
-                    {
-                        throw new ArgumentException($"No url found in FamilyHubsUi:Urls for key \"{link.BaseUrlKey}\" when constructing link for \"{link.Text}\".");
-                    }
-                }
-                var url = new Uri(new Uri(baseUrl), $"/{link.Text.ToLowerInvariant().Replace(' ', '-')}");
+                // if Url is not set, use a simple slugified version of the link text
+                link.Url ??= $"/{link.Text.ToLowerInvariant().Replace(' ', '-')}";
 
-                link.Url = url.ToString();
+                if (!string.IsNullOrEmpty(link.BaseUrlKey))
+                {
+                    if (!urls.TryGetValue(link.BaseUrlKey, out var baseUrl))
+                    {
+                        throw new ArgumentException(
+                            $"No url found in FamilyHubsUi:Urls for key \"{link.BaseUrlKey}\" when constructing link for \"{link.Text}\".");
+                    }
+
+                    var url = new Uri(new Uri(baseUrl), link.Url);
+
+                    link.Url = url.ToString();
+                }
             }
         }
     }

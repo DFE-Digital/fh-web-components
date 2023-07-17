@@ -2,7 +2,7 @@
 
 namespace FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options;
 
-public class LinkOptions
+public class FhLinkOptions
 {
     /// <summary>
     /// The (visible) text of the link.
