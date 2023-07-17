@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
+using System.Reflection;
 
 namespace FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options.Configure;
 
@@ -14,12 +15,12 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
 
     public void Configure(FamilyHubsUiOptions options)
     {
-        ConfigureLinks(options.Header.NavigationLinks);
-        ConfigureLinks(options.Header.ActionLinks);
-        ConfigureLinks(options.Footer.Links);
+        ConfigureLinks(options.Header.NavigationLinks, options.Urls);
+        ConfigureLinks(options.Header.ActionLinks, options.Urls);
+        ConfigureLinks(options.Footer.Links, options.Urls);
     }
 
-    public void ConfigureLinks(LinkOptions[] linkOptions)
+    public void ConfigureLinks(LinkOptions[] linkOptions, Dictionary<string, string> urls)
     {
         foreach (var link in linkOptions)
         {
@@ -29,7 +30,15 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
             }
             else if (string.IsNullOrEmpty(link.Url))
             {
-                link.Url = $"/{link.Text.ToLowerInvariant().Replace(' ', '-')}";
+                string? baseUrl = null;
+                if (!string.IsNullOrEmpty(link.BaseUrlKey))
+                {
+                    if (!urls.TryGetValue(link.BaseUrlKey, out baseUrl))
+                    {
+                        throw new ArgumentException($"No url found in FamilyHubsUi:Urls for key \"{link.BaseUrlKey}\" when constructing link for \"{link.Text}\".");
+                    }
+                }
+                link.Url = $"{baseUrl}/{link.Text.ToLowerInvariant().Replace(' ', '-')}";
             }
         }
     }
