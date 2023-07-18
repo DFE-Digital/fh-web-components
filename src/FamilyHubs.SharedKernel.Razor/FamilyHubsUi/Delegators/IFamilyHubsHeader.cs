@@ -13,5 +13,5 @@ public interface IFamilyHubsHeader
 {
     bool ShowNavigationMenu => true;
     bool ShowActionLinks => true;
-    LinkStatus GetStatus(LinkOptions link) => LinkStatus.Visible;
+    LinkStatus GetStatus(FhLinkOptions link) => LinkStatus.Visible;
 }

@@ -23,7 +23,7 @@ public class FamilyHubsUiOptionsTestBase
             {
                 NavigationLinks = new[]
                 {
-                    new LinkOptions
+                    new FhLinkOptions
                     {
                         Text = "header navigation link",
                         Url = "https://example.com/navigation",
@@ -32,7 +32,7 @@ public class FamilyHubsUiOptionsTestBase
                 },
                 ActionLinks = new[]
                 {
-                    new LinkOptions
+                    new FhLinkOptions
                     {
                         Text = "header action link",
                         Url = "https://example.com/action",
@@ -44,7 +44,7 @@ public class FamilyHubsUiOptionsTestBase
             {
                 Links = new[]
                 {
-                    new LinkOptions
+                    new FhLinkOptions
                     {
                         Text = "Text",
                         Url = "text",

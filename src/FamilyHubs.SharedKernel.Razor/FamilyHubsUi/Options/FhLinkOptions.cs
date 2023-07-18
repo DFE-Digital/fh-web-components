@@ -2,13 +2,20 @@
 
 namespace FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options;
 
-public class LinkOptions
+public class FhLinkOptions
 {
     /// <summary>
     /// The (visible) text of the link.
     /// </summary>
     [Required]
     public string Text { get; set; } = "";
+
+    /// <summary>
+    /// A key name from the FamilyHubsUi:Url section.
+    /// If supplied, the configured value of the given key name,
+    /// acts as the base URL for the relative Url supplied through Url or ConfigUrl.
+    /// </summary>
+    public string? BaseUrlKey { get; set; }
 
     /// <summary>
     /// The URL for the link. If left blank, defaults to Text in lowercase with spaces converted to hyphens (-).
