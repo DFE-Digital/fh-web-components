@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
+﻿
 namespace FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options;
 
 public class FhLinkOptions
@@ -7,7 +6,6 @@ public class FhLinkOptions
     /// <summary>
     /// The (visible) text of the link.
     /// </summary>
-    [Required]
     public string Text { get; set; } = "";
 
     /// <summary>
