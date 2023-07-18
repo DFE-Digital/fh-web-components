@@ -2,12 +2,15 @@
 
 namespace FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options;
 
-public class FamilyHubsUiOptions
+public class FamilyHubsUiOptions : IFamilyHubsUiOptions
 {
     public const string FamilyHubsUi = "FamilyHubsUi";
 
     [Required]
     public string ServiceName { get; set; } = "";
+
+    public FhLinkOptions ServiceNameLink { get; set; } = new() {Url = "/"};
+
     public Phase Phase { get; set; }
     public string FeedbackUrl { get; set; } = "";
 

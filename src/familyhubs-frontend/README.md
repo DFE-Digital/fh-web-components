@@ -2,6 +2,10 @@
 
 # possible ToDos
 
+* header configurable url (don't assume home)
+
+* use config exceptions
+
 * add sign out link on error pages if signed in
 
 * navigation menu button visible on mobile if no nav links
