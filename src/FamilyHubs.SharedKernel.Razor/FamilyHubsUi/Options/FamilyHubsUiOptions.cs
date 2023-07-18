@@ -9,8 +9,6 @@ public class FamilyHubsUiOptions : IFamilyHubsUiOptions
     [Required]
     public string ServiceName { get; set; } = "";
 
-    public FhLinkOptions ServiceNameLink { get; set; } = new() {Url = "/"};
-
     public Phase Phase { get; set; }
     public string FeedbackUrl { get; set; } = "";
 

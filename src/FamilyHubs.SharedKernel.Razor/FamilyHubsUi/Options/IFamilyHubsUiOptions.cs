@@ -4,7 +4,6 @@
 public interface IFamilyHubsUiOptions
 {
     string ServiceName { get; set; }
-    FhLinkOptions ServiceNameLink { get; set; }
     Phase Phase { get; set; }
     string FeedbackUrl { get; set; }
 

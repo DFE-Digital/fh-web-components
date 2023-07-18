@@ -14,6 +14,7 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
 
     public void Configure(FamilyHubsUiOptions options)
     {
+        ConfigureLink(options.Header.ServiceNameLink, options.Urls);
         ConfigureLinks(options.Header.NavigationLinks, options.Urls);
         ConfigureLinks(options.Header.ActionLinks, options.Urls);
         ConfigureLinks(options.Footer.Links, options.Urls);
@@ -23,28 +24,33 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
     {
         foreach (var link in linkOptions)
         {
-            if (link.ConfigUrl != null)
-            {
-                link.Url = _configuration[link.ConfigUrl];
-            }
-            else
-            {
-                // if Url is not set, use a simple slugified version of the link text
-                link.Url ??= $"/{link.Text.ToLowerInvariant().Replace(' ', '-')}";
+            ConfigureLink(link, urls);
+        }
+    }
 
-                // is a base url key is set, treat the Url as a relative url from the given base
-                if (!string.IsNullOrEmpty(link.BaseUrlKey))
+    private void ConfigureLink(FhLinkOptions link, Dictionary<string, string> urls)
+    {
+        if (link.ConfigUrl != null)
+        {
+            link.Url = _configuration[link.ConfigUrl];
+        }
+        else
+        {
+            // if Url is not set, use a simple slugified version of the link text
+            link.Url ??= $"/{link.Text.ToLowerInvariant().Replace(' ', '-')}";
+
+            // is a base url key is set, treat the Url as a relative url from the given base
+            if (!string.IsNullOrEmpty(link.BaseUrlKey))
+            {
+                if (!urls.TryGetValue(link.BaseUrlKey, out var baseUrl))
                 {
-                    if (!urls.TryGetValue(link.BaseUrlKey, out var baseUrl))
-                    {
-                        throw new ArgumentException(
-                            $"No url found in FamilyHubsUi:Urls for key \"{link.BaseUrlKey}\" when constructing link for \"{link.Text}\".");
-                    }
-
-                    var url = new Uri(new Uri(baseUrl), link.Url);
-
-                    link.Url = url.ToString();
+                    throw new ArgumentException(
+                        $"No url found in FamilyHubsUi:Urls for key \"{link.BaseUrlKey}\" when constructing link for \"{link.Text}\".");
                 }
+
+                var url = new Uri(new Uri(baseUrl), link.Url);
+
+                link.Url = url.ToString();
             }
         }
     }
