@@ -2,6 +2,10 @@
 
 ## Release Notes
 
+### 1.7.0
+
+Adds optional configurable link for the header (see `Header:ServiceNameLink`) 
+
 ### 1.6.0
 
 Add `Url()` helper to FamilyHubsUiOptions
