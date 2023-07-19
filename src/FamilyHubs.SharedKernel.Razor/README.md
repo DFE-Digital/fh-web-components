@@ -2,6 +2,10 @@
 
 ## Release Notes
 
+### 1.8.0
+
+Add support for alternative service layout by page (see Alternative example page)
+
 ### 1.7.0
 
 Adds optional configurable link for the header (see `Header:ServiceNameLink`) 
