@@ -18,6 +18,16 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
         ConfigureLinks(options.Header.NavigationLinks, options.Urls);
         ConfigureLinks(options.Header.ActionLinks, options.Urls);
         ConfigureLinks(options.Footer.Links, options.Urls);
+
+        var enabledAlts = options.AlternativeFamilyHubsUi
+            .Where(kvp => kvp.Value.Enabled)
+            .Select(kvp => kvp.Value);
+
+        // turtles all the way down
+        foreach (var alt in enabledAlts)
+        {
+            Configure(alt);
+        }
     }
 
     public void ConfigureLinks(FhLinkOptions[] linkOptions, Dictionary<string, string> urls)
