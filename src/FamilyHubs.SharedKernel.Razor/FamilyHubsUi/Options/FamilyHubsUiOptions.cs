@@ -26,6 +26,8 @@ public class FamilyHubsUiOptions : IFamilyHubsUiOptions
     public HeaderOptions Header { get; set; } = new();
     public FooterOptions Footer { get; set; } = new();
 
+    public Dictionary<string, FamilyHubsUiOptions> AlternativeFamilyHubsUi { get; set; } = new();
+
     public Uri Url<TUrlKeyEnum>(TUrlKeyEnum baseUrl, string? url = "")
         where TUrlKeyEnum : struct, Enum
     {
