@@ -10,8 +10,11 @@
     var alt = FamilyHubsLayoutModel.PageModel as IAlternativeService;
     if (alt?.ServiceName != null)
     {
-        var altOptions = Options.Create(FamilyHubsLayoutModel.FamilyHubsUiOptions.Value.AlternativeFamilyHubsUi[alt.ServiceName]);
-        FamilyHubsLayoutModel.FamilyHubsUiOptions = altOptions;
+        var altFamilyHubsUiOptions = FamilyHubsLayoutModel.FamilyHubsUiOptions.Value.AlternativeFamilyHubsUi[alt.ServiceName];
+        if (altFamilyHubsUiOptions.Enabled)
+        {
+            FamilyHubsLayoutModel.FamilyHubsUiOptions = Options.Create(altFamilyHubsUiOptions);
+        }
     }
     ViewData["FamilyHubsLayoutModel"] = FamilyHubsLayoutModel;
 }

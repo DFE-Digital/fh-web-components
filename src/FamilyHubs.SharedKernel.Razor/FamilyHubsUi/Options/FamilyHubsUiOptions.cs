@@ -28,6 +28,12 @@ public class FamilyHubsUiOptions : IFamilyHubsUiOptions
 
     public Dictionary<string, FamilyHubsUiOptions> AlternativeFamilyHubsUi { get; set; } = new();
 
+    /// <summary>
+    /// Only relevant for alternative FamilyHubsUi options. If false, the alternative FamilyHubsUi options will not be used
+    /// (even when specified through IAlternativeService).
+    /// </summary>
+    public bool Enabled { get; set; } = true;
+
     public Uri Url<TUrlKeyEnum>(TUrlKeyEnum baseUrl, string? url = "")
         where TUrlKeyEnum : struct, Enum
     {
