@@ -17,6 +17,8 @@ public interface IFamilyHubsUiOptions
     HeaderOptions Header { get; set; }
     FooterOptions Footer { get; set; }
 
+    FamilyHubsUiOptions GetAlternative(string serviceName);
+
     Uri Url<TUrlKeyEnum>(TUrlKeyEnum baseUrl, string? url = "")
         where TUrlKeyEnum : struct, Enum;
 }

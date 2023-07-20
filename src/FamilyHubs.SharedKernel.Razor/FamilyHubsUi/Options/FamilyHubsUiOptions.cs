@@ -34,6 +34,16 @@ public class FamilyHubsUiOptions : IFamilyHubsUiOptions
     /// </summary>
     public bool Enabled { get; set; } = true;
 
+    public FamilyHubsUiOptions GetAlternative(string serviceName)
+    {
+        if (!AlternativeFamilyHubsUi.TryGetValue(serviceName, out var alternativeFamilyHubsUi))
+        {
+            throw new ArgumentException($"No alternative FamilyHubsUi options found for service \"{serviceName}\"", nameof(serviceName));
+        }
+
+        return alternativeFamilyHubsUi;
+    }
+
     public Uri Url<TUrlKeyEnum>(TUrlKeyEnum baseUrl, string? url = "")
         where TUrlKeyEnum : struct, Enum
     {

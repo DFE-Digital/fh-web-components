@@ -1,6 +1,7 @@
-﻿@{
-    var FamilyHubsLayoutModel = ViewData["FamilyHubsLayoutModel"] as FamilyHubsLayoutModel;
-    var familyHubsUiOptions = FamilyHubsLayoutModel!.FamilyHubsUiOptions.Value;
+﻿@using FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Extensions
+@{
+    var familyHubsLayoutModel = ViewData.GetFamilyHubsLayoutModel();
+    var familyHubsUiOptions = familyHubsLayoutModel.FamilyHubsUiOptions.Value;
 }
 
 <!DOCTYPE html>
@@ -22,7 +23,7 @@
 
     <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
 
-    <partial name="_Header.cshtml" model="FamilyHubsLayoutModel" />
+    <partial name="_Header.cshtml" model="familyHubsLayoutModel" />
 
     <div class="govuk-width-container">
         <partial name="_PhaseBanner.cshtml" model="familyHubsUiOptions" />
@@ -46,7 +47,7 @@
     <script src="~/js/govuk-frontend-4.5.0.min.js"></script>
     <script src="~/js/ministryofjustice-frontend-1.6.6.js"></script>
     <script src="~/js/dfefrontend-0.1.8.js"></script>
-    <script src="~/js/familyhubs-frontend-1.9.0.min.js"></script>
+    <script src="~/js/familyhubs-frontend-1.11.0.min.js"></script>
     <script src="~/js/app.js" asp-append-version="true"></script>
 
     <script>

@@ -2,6 +2,14 @@
 
 ## Release Notes
 
+### 1.11.0
+
+Add `GetAlternative()` method to `FamilyHubsUiOptions` to get alternative service config.
+
+### 1.10.0
+
+Add `GetFamilyHubsUiOptions()` and other helper extension methods to ViewDataDictionary
+
 ### 1.9.0 & 1.8.0
 
 Add support for alternative service layout by page (see Alternative example page)
