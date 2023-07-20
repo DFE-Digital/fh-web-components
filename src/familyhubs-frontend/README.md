@@ -2,6 +2,12 @@
 
 # possible ToDos
 
+* if url not in alternative, could look in parents (to reduce dupes)
+
+* add partial to output an <a> from a FhLinkOptions? worth the bother??
+
+* use config exceptions
+
 * add sign out link on error pages if signed in
 
 * navigation menu button visible on mobile if no nav links

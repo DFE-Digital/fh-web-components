@@ -7,15 +7,31 @@ public class FamilyHubsUiOptionsValidation : IValidateOptions<FamilyHubsUiOption
     public ValidateOptionsResult Validate(string? _, FamilyHubsUiOptions options)
     {
         var validationErrors = new List<string>();
-        ValidateLinks(options.Header.NavigationLinks, validationErrors, "Header navigation");
-        ValidateLinks(options.Header.ActionLinks, validationErrors, "Header action");
-        ValidateLinks(options.Footer.Links, validationErrors, "Footer");
+
+        ValidateLinks(options, validationErrors);
 
         if (validationErrors.Any())
         {
             return ValidateOptionsResult.Fail(validationErrors);
         }
         return ValidateOptionsResult.Success;
+    }
+
+    private static void ValidateLinks(FamilyHubsUiOptions options, List<string> validationErrors)
+    {
+        ValidateLinks(options.Header.NavigationLinks, validationErrors, "Header navigation");
+        ValidateLinks(options.Header.ActionLinks, validationErrors, "Header action");
+        ValidateLinks(options.Footer.Links, validationErrors, "Footer");
+
+        var enabledAlts = options.AlternativeFamilyHubsUi
+            .Where(kvp => kvp.Value.Enabled)
+            .Select(kvp => kvp.Value);
+
+        // turtles all the way down
+        foreach (var alt in enabledAlts)
+        {
+            ValidateLinks(alt, validationErrors);
+        }
     }
 
     private static void ValidateLinks(FhLinkOptions[] linkOptions, List<string> validationErrors, string linkTypeDescription)

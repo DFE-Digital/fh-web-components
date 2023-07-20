@@ -1,4 +1,4 @@
-﻿using FamilyHubs.SharedKernel.Razor.FamilyHubsUi;
+﻿using FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,9 +10,7 @@ public static class HtmlHelperFamilyHubExtensions
     public static Uri FamilyHubUrl<TUrlKeyEnum>(this IHtmlHelper htmlHelper, TUrlKeyEnum baseUrl, string? url)
         where TUrlKeyEnum : struct, Enum
     {
-        var model = htmlHelper.ViewData["FamilyHubsLayoutModel"] as FamilyHubsLayoutModel;
-
-        return model!.FamilyHubsUiOptions.Value.Url(baseUrl, url);
+        return htmlHelper.ViewData.GetFamilyHubsUiOptions().Url(baseUrl, url);
     }
 
     public static Uri FamilyHubConfigUrl<TUrlKeyEnum>(this IHtmlHelper htmlHelper, TUrlKeyEnum baseUrl, string configKey)

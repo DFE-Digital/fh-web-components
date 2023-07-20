@@ -1,9 +1,21 @@
-﻿@using FamilyHubs.SharedKernel.Razor.FamilyHubsUi
+﻿@using FamilyHubs.SharedKernel.Razor.AlternativeServices
+@using FamilyHubs.SharedKernel.Razor.FamilyHubsUi
+@using FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Extensions
+@using Microsoft.Extensions.Options
 @* we could use IOptionsSnapshot for updates without downtime, but we probably don't want the overhead for something so central*@
 @inject FamilyHubsLayoutModel FamilyHubsLayoutModel
 @{
     Layout = "_Layout";
 
     FamilyHubsLayoutModel.PageModel = Model as Microsoft.AspNetCore.Mvc.RazorPages.PageModel;
-    ViewData["FamilyHubsLayoutModel"] = FamilyHubsLayoutModel;
+    var alt = FamilyHubsLayoutModel.PageModel as IAlternativeService;
+    if (alt?.ServiceName != null)
+    {
+        var altFamilyHubsUiOptions = FamilyHubsLayoutModel.FamilyHubsUiOptions.Value.AlternativeFamilyHubsUi[alt.ServiceName];
+        if (altFamilyHubsUiOptions.Enabled)
+        {
+            FamilyHubsLayoutModel.FamilyHubsUiOptions = Options.Create(altFamilyHubsUiOptions);
+        }
+    }
+    ViewData.SetFamilyHubsLayoutModel(FamilyHubsLayoutModel);
 }

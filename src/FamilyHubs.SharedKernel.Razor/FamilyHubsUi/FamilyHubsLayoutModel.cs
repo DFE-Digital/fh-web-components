@@ -6,7 +6,8 @@ namespace FamilyHubs.SharedKernel.Razor.FamilyHubsUi;
 
 public class FamilyHubsLayoutModel
 {
-    public IOptions<FamilyHubsUiOptions> FamilyHubsUiOptions { get; }
+    //todo: have IFamilyHubsUiOptions directly here?
+    public IOptions<FamilyHubsUiOptions> FamilyHubsUiOptions { get; internal set; }
 
     public FamilyHubsLayoutModel(IOptions<FamilyHubsUiOptions> familyHubsUiOptions)
     {
