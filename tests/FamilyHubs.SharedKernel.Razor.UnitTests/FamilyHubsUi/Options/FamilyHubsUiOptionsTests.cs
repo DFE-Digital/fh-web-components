@@ -5,7 +5,9 @@ namespace FamilyHubs.SharedKernel.Razor.UnitTests.FamilyHubsUi.Options;
 public enum TestUrlKey
 {
     UrlWithoutSlash,
-    UrlWithSlash
+    UrlWithSlash,
+    UrlWithPathNoTrailingSlash,
+    UrlWithPathTrailingSlash
 }
 
 public class FamilyHubsUiOptionsTests
@@ -19,7 +21,9 @@ public class FamilyHubsUiOptionsTests
             Urls = new Dictionary<string, string>
             {
                 {TestUrlKey.UrlWithoutSlash.ToString(), "http://example.com:5001"},
-                {TestUrlKey.UrlWithSlash.ToString(), "http://example.com:5001/"}
+                {TestUrlKey.UrlWithSlash.ToString(), "http://example.com:5001/"},
+                {TestUrlKey.UrlWithPathNoTrailingSlash.ToString(), "http://example.com:5001/basePath"},
+                {TestUrlKey.UrlWithPathTrailingSlash.ToString(), "http://example.com:5001/basePath/"}
             }
         };
     }
@@ -33,6 +37,14 @@ public class FamilyHubsUiOptionsTests
     [InlineData(TestUrlKey.UrlWithSlash, "/", "http://example.com:5001/")]
     [InlineData(TestUrlKey.UrlWithSlash, "path/to/resource", "http://example.com:5001/path/to/resource")]
     [InlineData(TestUrlKey.UrlWithSlash, "/path/to/resource", "http://example.com:5001/path/to/resource")]
+    [InlineData(TestUrlKey.UrlWithPathNoTrailingSlash, "", "http://example.com:5001/basePath/")]
+    [InlineData(TestUrlKey.UrlWithPathNoTrailingSlash, "/", "http://example.com:5001/basePath/")]
+    [InlineData(TestUrlKey.UrlWithPathNoTrailingSlash, "path/to/resource", "http://example.com:5001/basePath/path/to/resource")]
+    [InlineData(TestUrlKey.UrlWithPathNoTrailingSlash, "/path/to/resource", "http://example.com:5001/basePath/path/to/resource")]
+    [InlineData(TestUrlKey.UrlWithPathTrailingSlash, "", "http://example.com:5001/basePath/")]
+    [InlineData(TestUrlKey.UrlWithPathTrailingSlash, "/", "http://example.com:5001/basePath/")]
+    [InlineData(TestUrlKey.UrlWithPathTrailingSlash, "path/to/resource", "http://example.com:5001/basePath/path/to/resource")]
+    [InlineData(TestUrlKey.UrlWithPathTrailingSlash, "/path/to/resource", "http://example.com:5001/basePath/path/to/resource")]
     public void Url_Always_ReturnsCorrectUri(TestUrlKey urlKey, string? url, string expectedUrl)
     {
         var actualUrl = FamilyHubsUiOptions.Url(urlKey, url);
