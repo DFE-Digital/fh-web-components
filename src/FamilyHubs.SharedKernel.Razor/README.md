@@ -2,6 +2,10 @@
 
 ## Release Notes
 
+### 1.12.0
+
+Fix `FamilyHubsUiOptions.Url<>()` when the base URL has a path component.
+
 ### 1.11.0
 
 Add `GetAlternative()` method to `FamilyHubsUiOptions` to get alternative service config.
