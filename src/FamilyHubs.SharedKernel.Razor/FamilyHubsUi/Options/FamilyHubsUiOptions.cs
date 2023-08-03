@@ -54,6 +54,9 @@ public class FamilyHubsUiOptions : IFamilyHubsUiOptions
             throw new ArgumentException($"No url found in FamilyHubsUi:Urls for key \"{baseUrlString}\"", nameof(baseUrl));
         }
 
-        return new Uri(new Uri(baseUrlValue), url);
+        var uriBuilder = new UriBuilder(baseUrlValue);
+        uriBuilder.Path = $"{uriBuilder.Path.TrimEnd('/')}/{url?.TrimStart('/')}";
+
+        return uriBuilder.Uri;
     }
 }
