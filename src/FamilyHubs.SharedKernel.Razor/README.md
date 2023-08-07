@@ -2,6 +2,10 @@
 
 ## Release Notes
 
+### 1.13.0
+
+Add support for header and footer links that have a `BaseUrlKey` value that contains a path component.
+
 ### 1.12.0
 
 Fix `FamilyHubsUiOptions.Url<>()` when the base URL has a path component.
