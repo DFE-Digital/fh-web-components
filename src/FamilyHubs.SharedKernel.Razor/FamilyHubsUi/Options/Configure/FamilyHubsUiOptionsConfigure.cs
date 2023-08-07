@@ -58,9 +58,11 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
                         $"No url found in FamilyHubsUi:Urls for key \"{link.BaseUrlKey}\" when constructing link for \"{link.Text}\".");
                 }
 
-                var url = new Uri(new Uri(baseUrl), link.Url);
+                //todo: common code FamilyHubsUiOptions.Url<>()
+                var uriBuilder = new UriBuilder(baseUrl);
+                uriBuilder.Path = $"{uriBuilder.Path.TrimEnd('/')}/{link.Url?.TrimStart('/')}";
 
-                link.Url = url.ToString();
+                link.Url = uriBuilder.Uri.ToString();
             }
         }
     }
