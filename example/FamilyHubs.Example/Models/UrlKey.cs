@@ -5,5 +5,6 @@ public enum UrlKey
     ConnectWeb,
     DashboardWeb,
     ManageWeb,
-    ReferralApi
+    ReferralApi,
+    UrlWithPath
 }
