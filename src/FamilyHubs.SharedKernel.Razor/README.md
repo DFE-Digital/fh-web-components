@@ -2,6 +2,10 @@
 
 ## Release Notes
 
+### 1.14.0
+
+Support query params/fragment in the relativeUrl param to `FamilyHubsUiOptions.Url<>()`.
+
 ### 1.13.0
 
 Add support for header and footer links that have a `BaseUrlKey` value that contains a path component.

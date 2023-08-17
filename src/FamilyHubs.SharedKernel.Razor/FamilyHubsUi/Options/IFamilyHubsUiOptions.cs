@@ -19,6 +19,6 @@ public interface IFamilyHubsUiOptions
 
     FamilyHubsUiOptions GetAlternative(string serviceName);
 
-    Uri Url<TUrlKeyEnum>(TUrlKeyEnum baseUrl, string? url = "")
+    Uri Url<TUrlKeyEnum>(TUrlKeyEnum baseUrl, string? relativeUrl = null)
         where TUrlKeyEnum : struct, Enum;
 }
