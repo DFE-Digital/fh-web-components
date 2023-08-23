@@ -3,7 +3,7 @@ using FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Options;
 
-namespace FamilyHubs.Example.Pages.Components.Urls;
+namespace FamilyHubs.Example.Pages.Examples.Urls;
 
 public class IndexModel : PageModel
 {

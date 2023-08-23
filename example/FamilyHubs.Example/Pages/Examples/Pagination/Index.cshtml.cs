@@ -1,7 +1,7 @@
 using FamilyHubs.SharedKernel.Razor.Pagination;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace FamilyHubs.Example.Pages.Components.Pagination;
+namespace FamilyHubs.Example.Pages.Examples.Pagination;
 
 public class LargeSetLinkPagination : LargeSetPagination, ILinkPagination
 {
@@ -13,7 +13,7 @@ public class LargeSetLinkPagination : LargeSetPagination, ILinkPagination
     public string GetUrl(int page)
     {
         // don't use page as the query param name as it's reserved by the framework
-        return $"/Components/Pagination?pageNum={page}";
+        return $"/Examples/Pagination?pageNum={page}";
     }
 }
 
