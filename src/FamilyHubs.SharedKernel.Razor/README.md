@@ -2,6 +2,10 @@
 
 ## Release Notes
 
+### 1.15.0
+
+`_Layout.cshtml` now has a `Head` section for inserting page specific content at the end of the head section.
+
 ### 1.14.0
 
 Support query params/fragment in the relativeUrl param to `FamilyHubsUiOptions.Url<>()`.
