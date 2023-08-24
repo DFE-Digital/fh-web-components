@@ -2,7 +2,7 @@ using FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Delegators;
 using FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace FamilyHubs.Example.Pages.Examples.HeaderLinks;
+namespace FamilyHubs.Example.Pages.Examples.HeaderLinks.Status;
 
 public class IndexModel : PageModel, IFamilyHubsHeader
 {
