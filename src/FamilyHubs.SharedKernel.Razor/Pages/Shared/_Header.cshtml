@@ -29,9 +29,9 @@
                     @if (showActionLinks)
                     {
                         <div class="dfeuk-header__username">
-                        @foreach (var headerLink in familyHubsUiOptions.Header.ActionLinks)
+                        @foreach (var headerLink in familyHubsHeader!.ActionLinks(familyHubsUiOptions.Header.ActionLinks))
                         {
-                            var linkStatus = familyHubsHeader!.GetStatus(headerLink);
+                            var linkStatus = familyHubsHeader.GetStatus(headerLink);
                             if (linkStatus != LinkStatus.NotVisible)
                             {
                                 //todo: text not links
@@ -65,7 +65,7 @@
                     </button>
                 </p>
                 <ul class="dfe-header__navigation-list">
-                    @foreach (var headerLink in familyHubsUiOptions.Header.NavigationLinks)
+                    @foreach (var headerLink in familyHubsHeader.NavigationLinks(familyHubsUiOptions.Header.NavigationLinks))
                     {
                         var linkStatus = familyHubsHeader.GetStatus(headerLink);
                         if (linkStatus != LinkStatus.NotVisible)

@@ -2,6 +2,12 @@
 
 ## Release Notes
 
+### 1.16.0
+
+Add ability to change header links per page.
+
+See, `IFamilyHubsHeader.NavigationLinks()` and `IFamilyHubsHeader.ActionLinks()`.
+
 ### 1.15.1
 
 Fix reference to our js file in the layout.
