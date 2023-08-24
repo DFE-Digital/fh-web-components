@@ -2,6 +2,10 @@
 
 ## Release Notes
 
+### 1.15.1
+
+Fix reference to our js file in the layout.
+
 ### 1.15.0
 
 `_Layout.cshtml` now has a `Head` section for inserting page specific content at the end of the head section.
