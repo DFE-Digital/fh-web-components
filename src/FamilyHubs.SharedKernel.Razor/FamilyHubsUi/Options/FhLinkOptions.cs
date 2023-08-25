@@ -1,7 +1,14 @@
 ﻿
 namespace FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options;
 
-public class FhLinkOptions
+public interface IFhRenderLink
+{
+    string Text { get; set; }
+    string? Url { get; set; }
+    bool OpenInNewTab { get; set; }
+}
+
+public class FhLinkOptions : IFhRenderLink
 {
     /// <summary>
     /// The (visible) text of the link.
