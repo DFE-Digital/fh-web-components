@@ -6,12 +6,12 @@ namespace FamilyHubs.Example.Pages.Examples.HeaderLinks.LinkModification;
 
 public class AddingModel : PageModel, IFamilyHubsHeader
 {
-    IEnumerable<FhLinkOptions> IFamilyHubsHeader.NavigationLinks(FhLinkOptions[] navigationLinks)
+    IEnumerable<IFhRenderLink> IFamilyHubsHeader.NavigationLinks(FhLinkOptions[] navigationLinks)
     {
         return navigationLinks.Concat(navigationLinks);
     }
 
-    IEnumerable<FhLinkOptions> IFamilyHubsHeader.ActionLinks(FhLinkOptions[] actionLinks)
+    IEnumerable<IFhRenderLink> IFamilyHubsHeader.ActionLinks(FhLinkOptions[] actionLinks)
     {
         return actionLinks.Concat(actionLinks);
     }

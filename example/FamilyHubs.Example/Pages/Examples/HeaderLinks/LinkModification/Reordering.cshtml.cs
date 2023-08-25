@@ -6,12 +6,12 @@ namespace FamilyHubs.Example.Pages.Examples.HeaderLinks.LinkModification;
 
 public class ReorderingModel : PageModel, IFamilyHubsHeader
 {
-    IEnumerable<FhLinkOptions> IFamilyHubsHeader.NavigationLinks(FhLinkOptions[] navigationLinks)
+    IEnumerable<IFhRenderLink> IFamilyHubsHeader.NavigationLinks(FhLinkOptions[] navigationLinks)
     {
         return navigationLinks.Reverse();
     }
 
-    IEnumerable<FhLinkOptions> IFamilyHubsHeader.ActionLinks(FhLinkOptions[] actionLinks)
+    IEnumerable<IFhRenderLink> IFamilyHubsHeader.ActionLinks(FhLinkOptions[] actionLinks)
     {
         return actionLinks.Reverse();
     }

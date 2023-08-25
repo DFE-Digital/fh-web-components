@@ -9,7 +9,7 @@ public class IndexModel : PageModel, IFamilyHubsHeader
     public bool ShowNavigationMenu => true;
     public bool ShowActionLinks => true;
 
-    LinkStatus IFamilyHubsHeader.GetStatus(FhLinkOptions link)
+    LinkStatus IFamilyHubsHeader.GetStatus(IFhRenderLink link)
     {
         return link.Text switch
         {
