@@ -2,6 +2,14 @@
 
 ## Release Notes
 
+### 2.0.0
+
+New major version as contains breaking changes.
+
+Improvements to header links handling to provide more flexibility.
+
+Update [GOV.UK Frontend to v4.7.0](https://github.com/alphagov/govuk-frontend/releases).
+
 ### 1.16.0
 
 Add ability to change header links per page.
