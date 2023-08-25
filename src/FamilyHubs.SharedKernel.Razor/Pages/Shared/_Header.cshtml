@@ -30,15 +30,15 @@
                     @if (showActionLinks)
                     {
                         <div class="dfeuk-header__username">
-                        @foreach (var headerLink in familyHubsHeader!.ActionLinks(familyHubsUiOptions.Header.ActionLinks))
-                        {
-                            var linkStatus = familyHubsHeader.GetStatus(headerLink);
-                            if (linkStatus != LinkStatus.NotVisible)
+                            @foreach (var headerLink in familyHubsHeader!.ActionLinks(familyHubsUiOptions.Header.ActionLinks, familyHubsUiOptions))
                             {
-                                //todo: text not links
-                                <a class="govuk-link--inverse" href="@headerLink.Url" @(headerLink.OpenInNewTab ? Html.Raw("rel=\"noreferrer noopener\" target=\"_blank\"") : "")>@headerLink.Text</a>
+                                var linkStatus = familyHubsHeader.GetStatus(headerLink);
+                                if (linkStatus != LinkStatus.NotVisible)
+                                {
+                                    //todo: text not links
+                                    <a class="govuk-link--inverse" href="@headerLink.Url" @(headerLink.OpenInNewTab ? Html.Raw("rel=\"noreferrer noopener\" target=\"_blank\"") : "")>@headerLink.Text</a>
+                                }
                             }
-                        }
                         </div>
                     }
                     @if (showNavigationMenu)
@@ -66,7 +66,7 @@
                     </button>
                 </p>
                 <ul class="dfe-header__navigation-list">
-                    @foreach (var headerLink in familyHubsHeader.NavigationLinks(familyHubsUiOptions.Header.NavigationLinks))
+                    @foreach (var headerLink in familyHubsHeader.NavigationLinks(familyHubsUiOptions.Header.NavigationLinks, familyHubsUiOptions))
                     {
                         var linkStatus = familyHubsHeader.GetStatus(headerLink);
                         if (linkStatus != LinkStatus.NotVisible)

@@ -6,7 +6,6 @@ public class FamilyHubsUiOptions : IFamilyHubsUiOptions
 {
     public const string FamilyHubsUi = "FamilyHubsUi";
 
-    [Required]
     public string ServiceName { get; set; } = "";
 
     public Phase Phase { get; set; }

@@ -7,12 +7,16 @@ namespace FamilyHubs.Example.Pages.Examples.HeaderLinks.LinkModification;
 
 public class AddingModel : PageModel, IFamilyHubsHeader
 {
-    IEnumerable<IFhRenderLink> IFamilyHubsHeader.NavigationLinks(FhLinkOptions[] navigationLinks)
+    IEnumerable<IFhRenderLink> IFamilyHubsHeader.NavigationLinks(
+        FhLinkOptions[] navigationLinks,
+        IFamilyHubsUiOptions familyHubsUiOptions)
     {
         return navigationLinks.Concat(navigationLinks);
     }
 
-    IEnumerable<IFhRenderLink> IFamilyHubsHeader.ActionLinks(FhLinkOptions[] actionLinks)
+    IEnumerable<IFhRenderLink> IFamilyHubsHeader.ActionLinks(
+        FhLinkOptions[] actionLinks,
+        IFamilyHubsUiOptions familyHubsUiOptions)
     {
         return actionLinks.Concat(actionLinks);
     }

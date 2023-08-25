@@ -10,6 +10,11 @@ public class FhRenderLink : IFhRenderLink
     public string? Url { get; set; }
     public bool OpenInNewTab { get; set; }
 
+    public FhRenderLink(string text)
+    {
+        Text = text;
+    }
+
     public FhRenderLink(FhLinkOptions fhLinkOptions)
     {
         Text = fhLinkOptions.Text;

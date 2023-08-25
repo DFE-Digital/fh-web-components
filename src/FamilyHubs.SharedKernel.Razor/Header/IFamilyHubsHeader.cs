@@ -10,9 +10,9 @@ public interface IFamilyHubsHeader
 
     LinkStatus GetStatus(IFhRenderLink link) => LinkStatus.Visible;
 
-    IEnumerable<IFhRenderLink> NavigationLinks(FhLinkOptions[] navigationLinks) 
+    IEnumerable<IFhRenderLink> NavigationLinks(FhLinkOptions[] navigationLinks, IFamilyHubsUiOptions familyHubsUiOptions)
         => (IEnumerable<IFhRenderLink>) navigationLinks;
 
-    IEnumerable<IFhRenderLink> ActionLinks(FhLinkOptions[] actionLinks)
+    IEnumerable<IFhRenderLink> ActionLinks(FhLinkOptions[] actionLinks, IFamilyHubsUiOptions familyHubsUiOptions)
         => (IEnumerable<IFhRenderLink>) actionLinks;
 }

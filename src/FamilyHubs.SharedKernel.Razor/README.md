@@ -8,6 +8,8 @@ New major version as contains breaking changes.
 
 Improvements to header links handling to provide more flexibility.
 
+`ServiceName` in `FamilyHubsUiOptions` is now optional. This allows consumers to use components without having to use the layout or provide a dummy `ServiceName`.
+
 Update [GOV.UK Frontend to v4.7.0](https://github.com/alphagov/govuk-frontend/releases).
 
 ### 1.16.0
