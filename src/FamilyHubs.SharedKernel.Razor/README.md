@@ -2,6 +2,12 @@
 
 ## Release Notes
 
+### 2.2.0
+
+When calling `Url<>()` on an alternative `FamilyHubsUiOptions`, if the Url isn't present in the alternative's Url config section, it will traverse the alternative's ancestors looking for the nearest instance of the Url.
+
+This allows inheritance of Urls from ancestors, whilst still allowing the overriding of Urls.
+
 ### 2.1.0
 
 Add support to allow link status to be set in config and/or during [Navigation|Action]Links() calls.

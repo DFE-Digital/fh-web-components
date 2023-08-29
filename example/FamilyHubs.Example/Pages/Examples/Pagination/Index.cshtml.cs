@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FamilyHubs.Example.Pages.Examples.Pagination;
 
+//todo: split into 2 pages
 public class LargeSetLinkPagination : LargeSetPagination, ILinkPagination
 {
     public LargeSetLinkPagination(int totalPages, int currentPage)

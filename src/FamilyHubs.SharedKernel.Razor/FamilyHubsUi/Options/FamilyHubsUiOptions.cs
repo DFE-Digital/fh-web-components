@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
+﻿
 namespace FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options;
 
 public class FamilyHubsUiOptions : IFamilyHubsUiOptions
@@ -33,6 +32,13 @@ public class FamilyHubsUiOptions : IFamilyHubsUiOptions
     /// </summary>
     public bool Enabled { get; set; } = true;
 
+    public FamilyHubsUiOptions? Parent { get; private set; }
+
+    public void SetParent(FamilyHubsUiOptions? options)
+    {
+        Parent = options;
+    }
+
     public FamilyHubsUiOptions GetAlternative(string serviceName)
     {
         if (!AlternativeFamilyHubsUi.TryGetValue(serviceName, out var alternativeFamilyHubsUi))
@@ -59,10 +65,15 @@ public class FamilyHubsUiOptions : IFamilyHubsUiOptions
     public Uri Url<TUrlKeyEnum>(TUrlKeyEnum baseUrl, string? relativeUrl = null)
         where TUrlKeyEnum : struct, Enum
     {
+        //todo: if not given in alternative, use ancestors
         //todo: possibly cache from config as Uri's?
         var baseUrlString = baseUrl.ToString();
         if (!Urls.TryGetValue(baseUrlString, out var baseUrlValue))
         {
+            if (Parent != null)
+            {
+                return Parent.Url(baseUrl, relativeUrl);
+            }
             throw new ArgumentException($"No path found in FamilyHubsUi:Urls for key \"{baseUrlString}\"", nameof(baseUrl));
         }
 

@@ -14,6 +14,13 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
 
     public void Configure(FamilyHubsUiOptions options)
     {
+        Configure(options, null);
+    }
+
+    private void Configure(FamilyHubsUiOptions options, FamilyHubsUiOptions? parent)
+    {
+        options.SetParent(parent);
+
         ConfigureLink(options.Header.ServiceNameLink, options.Urls);
         ConfigureLinks(options.Header.NavigationLinks, options.Urls);
         ConfigureLinks(options.Header.ActionLinks, options.Urls);
@@ -26,7 +33,7 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
         // turtles all the way down
         foreach (var alt in enabledAlts)
         {
-            Configure(alt);
+            Configure(alt, options);
         }
     }
 
