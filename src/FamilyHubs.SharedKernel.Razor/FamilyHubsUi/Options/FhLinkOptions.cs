@@ -36,4 +36,6 @@ public class FhLinkOptions : IFhRenderLink
     /// If true, the link will open in a new tab.
     /// </summary>
     public bool OpenInNewTab { get; set; } = false;
+
+    public LinkStatus? Status { get; set; }
 }
