@@ -2,6 +2,10 @@
 
 ## Release Notes
 
+### 2.1.0
+
+Add support to allow link status to be set in config and/or during [Navigation|Action]Links() calls.
+
 ### 2.0.0
 
 New major version as contains breaking changes.
