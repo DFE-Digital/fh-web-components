@@ -21,10 +21,10 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
     {
         options.SetParent(parent);
 
-        ConfigureLink(options.Header.ServiceNameLink, options.Urls);
-        ConfigureLinks(options.Header.NavigationLinks, options.Urls);
-        ConfigureLinks(options.Header.ActionLinks, options.Urls);
-        ConfigureLinks(options.Footer.Links, options.Urls);
+        ConfigureLink(options.Header.ServiceNameLink, options);
+        ConfigureLinks(options.Header.NavigationLinks, options);
+        ConfigureLinks(options.Header.ActionLinks, options);
+        ConfigureLinks(options.Footer.Links, options);
 
         var enabledAlts = options.AlternativeFamilyHubsUi
             .Where(kvp => kvp.Value.Enabled)
@@ -37,15 +37,15 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
         }
     }
 
-    public void ConfigureLinks(FhLinkOptions[] linkOptions, Dictionary<string, string> urls)
+    public void ConfigureLinks(FhLinkOptions[] linkOptions, FamilyHubsUiOptions options)
     {
         foreach (var link in linkOptions)
         {
-            ConfigureLink(link, urls);
+            ConfigureLink(link, options);
         }
     }
 
-    private void ConfigureLink(FhLinkOptions link, Dictionary<string, string> urls)
+    private void ConfigureLink(FhLinkOptions link, FamilyHubsUiOptions options)
     {
         if (link.ConfigUrl != null)
         {
@@ -56,20 +56,23 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
             // if Url is not set, use a simple slugified version of the link text
             link.Url ??= $"/{link.Text.ToLowerInvariant().Replace(' ', '-')}";
 
-            // is a base url key is set, treat the Url as a relative url from the given base
+            // if a base url key is set, treat the Url as a relative url from the given base
             if (!string.IsNullOrEmpty(link.BaseUrlKey))
             {
-                if (!urls.TryGetValue(link.BaseUrlKey, out var baseUrl))
-                {
-                    throw new ArgumentException(
-                        $"No url found in FamilyHubsUi:Urls for key \"{link.BaseUrlKey}\" when constructing link for \"{link.Text}\".");
-                }
+                link.Url = options.Url(link.BaseUrlKey, link.Url).ToString();
+                //todo: catch and rethrow with more context?
 
-                //todo: common code FamilyHubsUiOptions.Url<>()
-                var uriBuilder = new UriBuilder(baseUrl);
-                uriBuilder.Path = $"{uriBuilder.Path.TrimEnd('/')}/{link.Url?.TrimStart('/')}";
+                //if (!urls.TryGetValue(link.BaseUrlKey, out var baseUrl))
+                //{
+                //    throw new ArgumentException(
+                //        $"No url found in FamilyHubsUi:Urls for key \"{link.BaseUrlKey}\" when constructing link for \"{link.Text}\".");
+                //}
 
-                link.Url = uriBuilder.Uri.ToString();
+                ////todo: common code FamilyHubsUiOptions.Url<>()
+                //var uriBuilder = new UriBuilder(baseUrl);
+                //uriBuilder.Path = $"{uriBuilder.Path.TrimEnd('/')}/{link.Url?.TrimStart('/')}";
+
+                //link.Url = uriBuilder.Uri.ToString();
             }
         }
     }
