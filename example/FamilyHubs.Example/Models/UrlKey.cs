@@ -2,6 +2,7 @@
 
 public enum UrlKey
 {
+    ExampleWeb,
     ConnectWeb,
     DashboardWeb,
     ManageWeb,

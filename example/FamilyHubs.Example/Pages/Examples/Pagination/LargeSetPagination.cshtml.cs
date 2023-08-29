@@ -13,24 +13,16 @@ public class LargeSetLinkPagination : LargeSetPagination, ILinkPagination
     public string GetUrl(int page)
     {
         // don't use page as the query param name as it's reserved by the framework
-        return $"/Examples/Pagination?pageNum={page}";
+        return $"/Examples/Pagination/LargeSetPagination?pageNum={page}";
     }
 }
 
-public class IndexModel : PageModel
+public class LargeSetPaginationModel : PageModel
 {
-    public IPagination Pagination { get; set; } = IPagination.DontShow;
     public ILinkPagination LinkPagination { get; set; } = ILinkPagination.DontShow;
 
     public void OnGet(int pageNum = 1)
     {
-        Pagination = new LargeSetPagination(20, 1);
         LinkPagination = new LargeSetLinkPagination(20, pageNum);
-    }
-
-    public void OnPost(int pageNum)
-    {
-        Pagination = new LargeSetPagination(20, pageNum);
-        LinkPagination = new LargeSetLinkPagination(20, 1);
     }
 }

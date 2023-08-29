@@ -9,6 +9,7 @@ public class FhRenderLink : IFhRenderLink
     public string Text { get; set; }
     public string? Url { get; set; }
     public bool OpenInNewTab { get; set; }
+    public LinkStatus? Status { get; set; }
 
     public FhRenderLink(string text)
     {
@@ -20,5 +21,6 @@ public class FhRenderLink : IFhRenderLink
         Text = fhLinkOptions.Text;
         Url = fhLinkOptions.Url;
         OpenInNewTab = fhLinkOptions.OpenInNewTab;
+        Status = fhLinkOptions.Status;
     }
 }

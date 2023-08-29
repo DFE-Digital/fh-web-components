@@ -8,11 +8,11 @@ public interface IFamilyHubsHeader
     bool ShowNavigationMenu => true;
     bool ShowActionLinks => true;
 
-    LinkStatus GetStatus(IFhRenderLink link) => LinkStatus.Visible;
+    LinkStatus GetStatus(IFhRenderLink link) => link.Status ?? LinkStatus.Visible;
 
     IEnumerable<IFhRenderLink> NavigationLinks(FhLinkOptions[] navigationLinks, IFamilyHubsUiOptions familyHubsUiOptions)
-        => (IEnumerable<IFhRenderLink>) navigationLinks;
+        => navigationLinks;
 
     IEnumerable<IFhRenderLink> ActionLinks(FhLinkOptions[] actionLinks, IFamilyHubsUiOptions familyHubsUiOptions)
-        => (IEnumerable<IFhRenderLink>) actionLinks;
+        => actionLinks;
 }
