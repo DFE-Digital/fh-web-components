@@ -11,13 +11,13 @@ public class AddingModel : PageModel, IFamilyHubsHeader
         FhLinkOptions[] navigationLinks,
         IFamilyHubsUiOptions familyHubsUiOptions)
     {
-        return navigationLinks.Concat(navigationLinks);
+        return navigationLinks.Concat(navigationLinks.Where(l => l.Status != LinkStatus.Active));
     }
 
     IEnumerable<IFhRenderLink> IFamilyHubsHeader.ActionLinks(
         FhLinkOptions[] actionLinks,
         IFamilyHubsUiOptions familyHubsUiOptions)
     {
-        return actionLinks.Concat(actionLinks);
+        return actionLinks.Concat(actionLinks.Where(l => l.Status != LinkStatus.Active));
     }
 }

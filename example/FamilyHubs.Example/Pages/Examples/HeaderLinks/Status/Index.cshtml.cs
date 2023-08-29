@@ -14,7 +14,7 @@ public class IndexModel : PageModel, IFamilyHubsHeader
     {
         return link.Text switch
         {
-            "Home" => LinkStatus.Active,
+            "Request support" => LinkStatus.Active,
             "Don't show" => LinkStatus.NotVisible,
             _ => LinkStatus.Visible
         };
