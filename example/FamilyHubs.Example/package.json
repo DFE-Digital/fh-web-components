@@ -10,7 +10,7 @@
     "@types/jquery": "^3.5.16",
     "del": "^5.1.0",
     "dfe-frontend-alpha": "^0.1.8",
-    "govuk-frontend": "4.5.0",
+    "govuk-frontend": "4.7.0",
     "gulp": "^4.0.2",
     "gulp-better-rollup": "^4.0.1",
     "gulp-concat": "^2.6.1",

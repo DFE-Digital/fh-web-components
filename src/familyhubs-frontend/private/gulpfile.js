@@ -1,6 +1,8 @@
 /// <binding ProjectOpened='js:watch, sass-to-min-css:watch' />
 "use strict";
 
+/*todo: typescript transpiling is borked. setting module and moduleResolution to nodenext fixes the transpile, but the output doesn't look right*/
+
 /*todo: new location*/
 
 var tsScriptsSrc = '../scripts/**';

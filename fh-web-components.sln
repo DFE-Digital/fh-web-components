@@ -59,8 +59,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "layout", "layout", "{788DA9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{2791B765-4E73-49C5-BB09-0CD6E251F1EB}"
 	ProjectSection(SolutionItems) = preProject
-		src\familyhubs-frontend\wwwroot\css\govuk-frontend-ie8-4.5.0.min.css = src\familyhubs-frontend\wwwroot\css\govuk-frontend-ie8-4.5.0.min.css
-		src\familyhubs-frontend\wwwroot\css\govuk-frontend-ie8-4.5.0.min.css.map = src\familyhubs-frontend\wwwroot\css\govuk-frontend-ie8-4.5.0.min.css.map
+		src\familyhubs-frontend\wwwroot\css\govuk-frontend-ie8-4.7.0.min.css = src\familyhubs-frontend\wwwroot\css\govuk-frontend-ie8-4.7.0.min.css
+		src\familyhubs-frontend\wwwroot\css\govuk-frontend-ie8-4.7.0.min.css.map = src\familyhubs-frontend\wwwroot\css\govuk-frontend-ie8-4.7.0.min.css.map
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{1654424A-3D61-4011-A1FD-607099F9F9B5}"
@@ -71,8 +71,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{FA1F7A55-52FC-4D15-B061-A89331EE8FAD}"
 	ProjectSection(SolutionItems) = preProject
 		src\familyhubs-frontend\wwwroot\js\dfefrontend-0.1.8.js = src\familyhubs-frontend\wwwroot\js\dfefrontend-0.1.8.js
-		src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.5.0.min.js = src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.5.0.min.js
-		src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.5.0.min.js.map = src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.5.0.min.js.map
+		src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.7.0.min.js = src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.7.0.min.js
+		src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.7.0.min.js.map = src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.7.0.min.js.map
 		src\familyhubs-frontend\wwwroot\js\jquery-3.7.0.js = src\familyhubs-frontend\wwwroot\js\jquery-3.7.0.js
 		src\familyhubs-frontend\wwwroot\js\jquery-3.7.0.min.js = src\familyhubs-frontend\wwwroot\js\jquery-3.7.0.min.js
 		src\familyhubs-frontend\wwwroot\js\jquery-3.7.0.min.map = src\familyhubs-frontend\wwwroot\js\jquery-3.7.0.min.map

@@ -1,17 +1,22 @@
-using FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Delegators;
 using FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options;
+using FamilyHubs.SharedKernel.Razor.Header;
+using FamilyHubs.SharedKernel.Razor.Links;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FamilyHubs.Example.Pages.Examples.HeaderLinks.LinkModification;
 
 public class ReorderingModel : PageModel, IFamilyHubsHeader
 {
-    IEnumerable<FhLinkOptions> IFamilyHubsHeader.NavigationLinks(FhLinkOptions[] navigationLinks)
+    IEnumerable<IFhRenderLink> IFamilyHubsHeader.NavigationLinks(
+        FhLinkOptions[] navigationLinks,
+        IFamilyHubsUiOptions familyHubsUiOptions)
     {
         return navigationLinks.Reverse();
     }
 
-    IEnumerable<FhLinkOptions> IFamilyHubsHeader.ActionLinks(FhLinkOptions[] actionLinks)
+    IEnumerable<IFhRenderLink> IFamilyHubsHeader.ActionLinks(
+        FhLinkOptions[] actionLinks,
+        IFamilyHubsUiOptions familyHubsUiOptions)
     {
         return actionLinks.Reverse();
     }

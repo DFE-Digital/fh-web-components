@@ -1,7 +1,8 @@
-﻿
+﻿using FamilyHubs.SharedKernel.Razor.Links;
+
 namespace FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options;
 
-public class FhLinkOptions
+public class FhLinkOptions : IFhRenderLink
 {
     /// <summary>
     /// The (visible) text of the link.
@@ -31,5 +32,8 @@ public class FhLinkOptions
     /// </example>
     public string? ConfigUrl { get; set; }
 
+    /// <summary>
+    /// If true, the link will open in a new tab.
+    /// </summary>
     public bool OpenInNewTab { get; set; } = false;
 }

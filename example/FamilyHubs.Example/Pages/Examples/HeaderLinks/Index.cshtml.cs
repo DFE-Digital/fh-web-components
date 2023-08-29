@@ -1,4 +1,4 @@
-using FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Delegators;
+using FamilyHubs.SharedKernel.Razor.Header;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FamilyHubs.Example.Pages.Examples.HeaderLinks;
