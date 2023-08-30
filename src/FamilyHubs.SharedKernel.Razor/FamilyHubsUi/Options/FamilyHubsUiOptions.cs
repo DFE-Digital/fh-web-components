@@ -32,10 +32,12 @@ public class FamilyHubsUiOptions : IFamilyHubsUiOptions
     /// </summary>
     public bool Enabled { get; set; } = true;
 
+    public string? AltName { get; private set; }
     public FamilyHubsUiOptions? Parent { get; private set; }
 
-    public void SetParent(FamilyHubsUiOptions? options)
+    public void SetAlternative(string? altName, FamilyHubsUiOptions? options)
     {
+        AltName = altName;
         Parent = options;
     }
 
@@ -65,16 +67,21 @@ public class FamilyHubsUiOptions : IFamilyHubsUiOptions
     public Uri Url<TUrlKeyEnum>(TUrlKeyEnum baseUrl, string? relativeUrl = null)
         where TUrlKeyEnum : struct, Enum
     {
-        //todo: if not given in alternative, use ancestors
+        var baseUrlKeyName = baseUrl.ToString();
+        return Url(baseUrl.ToString(), relativeUrl);
+    }
+
+    public Uri Url(string baseUrlKeyName, string? relativeUrl = null)
+    {
         //todo: possibly cache from config as Uri's?
-        var baseUrlString = baseUrl.ToString();
-        if (!Urls.TryGetValue(baseUrlString, out var baseUrlValue))
+        if (!Urls.TryGetValue(baseUrlKeyName, out var baseUrlValue))
         {
             if (Parent != null)
             {
-                return Parent.Url(baseUrl, relativeUrl);
+                return Parent.Url(baseUrlKeyName, relativeUrl);
             }
-            throw new ArgumentException($"No path found in FamilyHubsUi:Urls for key \"{baseUrlString}\"", nameof(baseUrl));
+            //todo: if in alternative, add to exception message - will need to add alternative name to options
+            throw new ArgumentException($"No path found in FamilyHubsUi Urls for key \"{baseUrlKeyName}\"", baseUrlKeyName);
         }
 
         return new Uri($"{baseUrlValue.TrimEnd('/')}/{relativeUrl?.TrimStart('/')}");
