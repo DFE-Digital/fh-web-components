@@ -32,10 +32,12 @@ public class FamilyHubsUiOptions : IFamilyHubsUiOptions
     /// </summary>
     public bool Enabled { get; set; } = true;
 
+    public string? AltName { get; private set; }
     public FamilyHubsUiOptions? Parent { get; private set; }
 
-    public void SetParent(FamilyHubsUiOptions? options)
+    public void SetAlternative(string? altName, FamilyHubsUiOptions? options)
     {
+        AltName = altName;
         Parent = options;
     }
 

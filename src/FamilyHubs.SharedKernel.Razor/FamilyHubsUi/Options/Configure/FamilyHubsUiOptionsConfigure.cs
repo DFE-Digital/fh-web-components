@@ -14,12 +14,12 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
 
     public void Configure(FamilyHubsUiOptions options)
     {
-        Configure(options, null);
+        Configure(options, null, null);
     }
 
-    private void Configure(FamilyHubsUiOptions options, FamilyHubsUiOptions? parent)
+    private void Configure(FamilyHubsUiOptions options, string? altName, FamilyHubsUiOptions? parent)
     {
-        options.SetParent(parent);
+        options.SetAlternative(altName, parent);
 
         ConfigureLink(options.Header.ServiceNameLink, options);
         ConfigureLinks(options.Header.NavigationLinks, options);
@@ -28,12 +28,12 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
 
         var enabledAlts = options.AlternativeFamilyHubsUi
             .Where(kvp => kvp.Value.Enabled)
-            .Select(kvp => kvp.Value);
+            .Select(kvp => kvp);
 
         // turtles all the way down
         foreach (var alt in enabledAlts)
         {
-            Configure(alt, options);
+            Configure(alt.Value, alt.Key, options);
         }
     }
 
