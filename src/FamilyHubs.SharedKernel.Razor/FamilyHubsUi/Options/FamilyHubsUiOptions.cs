@@ -78,8 +78,8 @@ public class FamilyHubsUiOptions : IFamilyHubsUiOptions
             {
                 return Parent.Url(baseUrlKeyName, relativeUrl);
             }
-            //todo: if in alternative, add to exception message
-            throw new ArgumentException($"No path found in FamilyHubsUi:Urls for key \"{baseUrlKeyName}\"", baseUrlKeyName);
+            //todo: if in alternative, add to exception message - will need to add alternative name to options
+            throw new ArgumentException($"No path found in FamilyHubsUi Urls for key \"{baseUrlKeyName}\"", baseUrlKeyName);
         }
 
         return new Uri($"{baseUrlValue.TrimEnd('/')}/{relativeUrl?.TrimStart('/')}");

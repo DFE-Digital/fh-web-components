@@ -2,6 +2,10 @@
 
 ## Release Notes
 
+### 2.2.1
+
+Support BaseUrl inheritance in configured links.
+
 ### 2.2.0
 
 When calling `Url<>()` on an alternative `FamilyHubsUiOptions`, if the Url isn't present in the alternative's Url config section, it will traverse the alternative's ancestors looking for the nearest instance of the Url.

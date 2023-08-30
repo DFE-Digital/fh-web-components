@@ -59,20 +59,8 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
             // if a base url key is set, treat the Url as a relative url from the given base
             if (!string.IsNullOrEmpty(link.BaseUrlKey))
             {
+                //todo: catch and rethrow with more context? i.e. link trying to create
                 link.Url = options.Url(link.BaseUrlKey, link.Url).ToString();
-                //todo: catch and rethrow with more context?
-
-                //if (!urls.TryGetValue(link.BaseUrlKey, out var baseUrl))
-                //{
-                //    throw new ArgumentException(
-                //        $"No url found in FamilyHubsUi:Urls for key \"{link.BaseUrlKey}\" when constructing link for \"{link.Text}\".");
-                //}
-
-                ////todo: common code FamilyHubsUiOptions.Url<>()
-                //var uriBuilder = new UriBuilder(baseUrl);
-                //uriBuilder.Path = $"{uriBuilder.Path.TrimEnd('/')}/{link.Url?.TrimStart('/')}";
-
-                //link.Url = uriBuilder.Uri.ToString();
             }
         }
     }
