@@ -1,7 +1,13 @@
 @use "sass:map";
 @import "overrides";
 @import "../../govuk-frontend/govuk/all";
+
+// moj uses the same variable names as govuk for the assets path, but we store them in different places
+$original-govuk-assets-path: global $govuk-assets-path; // save the original $govuk-assets-path
+$govuk-assets-path: '/lib/moj/assets/';
 @import "../../@ministryofjustice/frontend/moj/all";
+$govuk-assets-path: $govuk-assets-path; // restore the original $govuk-assets-path
+
 @import '../../dfe-frontend-alpha/packages/dfefrontend';
 @import "global";
 @import "layout/_header";

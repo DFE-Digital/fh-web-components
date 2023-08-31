@@ -76,7 +76,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{FA1F7A55-52FC-
 		src\familyhubs-frontend\wwwroot\js\jquery-3.7.1.js = src\familyhubs-frontend\wwwroot\js\jquery-3.7.1.js
 		src\familyhubs-frontend\wwwroot\js\jquery-3.7.1.min.js = src\familyhubs-frontend\wwwroot\js\jquery-3.7.1.min.js
 		src\familyhubs-frontend\wwwroot\js\jquery-3.7.1.min.map = src\familyhubs-frontend\wwwroot\js\jquery-3.7.1.min.map
-		src\familyhubs-frontend\wwwroot\js\ministryofjustice-frontend-1.6.6.js = src\familyhubs-frontend\wwwroot\js\ministryofjustice-frontend-1.6.6.js
+		src\familyhubs-frontend\wwwroot\js\ministryofjustice-frontend-1.8.0.js = src\familyhubs-frontend\wwwroot\js\ministryofjustice-frontend-1.8.0.js
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{423102EF-F293-4570-99B1-1B4C0D2F157A}"
