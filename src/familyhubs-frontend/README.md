@@ -190,4 +190,4 @@ To test the error page, navigate to `/error/test`, which is a fault-injection pa
 
 ## [Release Notes](../../docs/ReleaseNotes.md)
 
-## [Possible Improvements](https://github.com/DFE-Digital/fh-web-components/blob/main/docs/ToDo.md)
+## [Possible Improvements](../../docs/ToDo.md)
