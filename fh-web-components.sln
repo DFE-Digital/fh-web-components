@@ -110,6 +110,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{D1DDC75D-F0D6-4625-A6FB-09A6DC6EF8F1}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
+		docs\ReleaseNotes.md = docs\ReleaseNotes.md
+		docs\ToDo.md = docs\ToDo.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "global", "global", "{507ADCD1-8337-459E-97B0-AC429655DF20}"

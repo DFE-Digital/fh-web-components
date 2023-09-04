@@ -5,6 +5,10 @@
 @{
     var familyHubsUiOptions = Model.FamilyHubsUiOptions.Value;
     IFamilyHubsHeader? familyHubsHeader = Model.PageModel as IFamilyHubsHeader;
+
+    // cache these, in case the IFamilyHubsHeader implementor changes its mind between calls
+    bool showNavigationMenu = familyHubsHeader?.ShowNavigationMenu == true;
+    bool showActionLinks = familyHubsHeader?.ShowActionLinks == true;
 }
 
 <header class="dfe-header" role="banner">
@@ -19,40 +23,34 @@
             </a>
         </div>
         
-        @{
-            // cache these, in case the IFamilyHubsHeader implementor changes its mind between calls
-            bool showNavigationMenu = familyHubsHeader?.ShowNavigationMenu == true;
-            bool showActionLinks = familyHubsHeader?.ShowActionLinks == true;
-
-            if (showNavigationMenu || showActionLinks)
-            {
-                <div class="dfe-header__content" id="content-header">
-                    @if (showActionLinks)
-                    {
-                        <div class="dfeuk-header__username">
-                            @foreach (var headerLink in familyHubsHeader!.ActionLinks(familyHubsUiOptions.Header.ActionLinks, familyHubsUiOptions))
+        @if (showNavigationMenu || showActionLinks)
+        {
+            <div class="dfe-header__content" id="content-header">
+                @if (showActionLinks)
+                {
+                    <div class="dfeuk-header__username">
+                        @foreach (var headerLink in familyHubsHeader!.ActionLinks(familyHubsUiOptions.Header.ActionLinks, familyHubsUiOptions))
+                        {
+                            var linkStatus = familyHubsHeader.GetStatus(headerLink);
+                            if (linkStatus != LinkStatus.NotVisible)
                             {
-                                var linkStatus = familyHubsHeader.GetStatus(headerLink);
-                                if (linkStatus != LinkStatus.NotVisible)
-                                {
-                                    //todo: text not links
-                                    <a class="govuk-link--inverse" href="@headerLink.Url" @(headerLink.OpenInNewTab ? Html.Raw("rel=\"noreferrer noopener\" target=\"_blank\"") : "")>@headerLink.Text</a>
-                                }
+                                //todo: text not links
+                                <a class="govuk-link--inverse" href="@headerLink.Url" @(headerLink.OpenInNewTab ? Html.Raw("rel=\"noreferrer noopener\" target=\"_blank\"") : "")>@headerLink.Text</a>
                             }
-                        </div>
-                    }
-                    @if (showNavigationMenu)
-                    {
-                        <div class="dfe-header__menu">
-                            <button class="dfe-header__menu-toggle" id="toggle-menu" aria-controls="header-navigation" aria-expanded="false">Menu</button>
-                        </div>
-                    }
-                </div>
-            }
+                        }
+                    </div>
+                }
+                @if (showNavigationMenu)
+                {
+                    <div class="dfe-header__menu">
+                        <button class="dfe-header__menu-toggle" id="toggle-menu" aria-controls="header-navigation" aria-expanded="false">Menu</button>
+                    </div>
+                }
+            </div>
         }
     </div>
 
-    @if (familyHubsHeader?.ShowNavigationMenu == true)
+    @if (showNavigationMenu)
     {
         <nav class="dfe-header__navigation" id="header-navigation" role="navigation" aria-label="Primary navigation" aria-labelledby="label-navigation">
             <div class="dfe-width-container">
@@ -66,7 +64,7 @@
                     </button>
                 </p>
                 <ul class="dfe-header__navigation-list">
-                    @foreach (var headerLink in familyHubsHeader.NavigationLinks(familyHubsUiOptions.Header.NavigationLinks, familyHubsUiOptions))
+                    @foreach (var headerLink in familyHubsHeader!.NavigationLinks(familyHubsUiOptions.Header.NavigationLinks, familyHubsUiOptions))
                     {
                         var linkStatus = familyHubsHeader.GetStatus(headerLink);
                         if (linkStatus != LinkStatus.NotVisible)
