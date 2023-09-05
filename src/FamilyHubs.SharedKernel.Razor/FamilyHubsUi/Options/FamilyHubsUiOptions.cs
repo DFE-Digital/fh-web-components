@@ -6,7 +6,6 @@ public class FamilyHubsUiOptions : IFamilyHubsUiOptions
     public const string FamilyHubsUi = "FamilyHubsUi";
 
     public string ServiceName { get; set; } = "";
-
     public Phase Phase { get; set; }
     public string FeedbackUrl { get; set; } = "";
 
@@ -15,8 +14,13 @@ public class FamilyHubsUiOptions : IFamilyHubsUiOptions
     /// </summary>
     public string SupportEmail { get; set; } = "";
 
-    //todo: if urls section is missing in consumer settings, get null reference exception thrown from layout model <- still the case?
-    // need to handle this better, especially as consumers updating to the latest version won't have this section
+    /// <summary>
+    /// If set, the path prefix will be prepended to all files included through the layout,
+    /// e.g. css, js and asset files.
+    /// Useful for when the site is being used behind an App Gateway using path based routing.
+    /// </summary>
+    public string PathPrefix { get; set; } = ""; 
+
     public Dictionary<string, string> Urls { get; set; } = new();
 
     public AnalyticsOptions? Analytics { get; set; }

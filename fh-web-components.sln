@@ -142,6 +142,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "historic", "historic", "{328B6080-7FBD-4988-8B18-E63525A395B6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.3.1", "2.3.1", "{A2A5F29D-F3C6-4117-9E54-5AFFCDA5783C}"
+	ProjectSection(SolutionItems) = preProject
+		docs\historic\2.3.1\ToDo.md = docs\historic\2.3.1\ToDo.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

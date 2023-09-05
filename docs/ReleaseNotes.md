@@ -1,5 +1,13 @@
 ## Release Notes
 
+### 2.4.0
+
+Add `PathPrefix` to `FamilyHubsUiOptions`. If supplied,
+the prefix will be prepended to all files included through the layout,
+e.g. css, js and asset files.
+
+Useful for when the site is being used behind an App Gateway using path based routing.
+
 ### 2.3.1
 
 Update phase banner wording.

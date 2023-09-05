@@ -188,6 +188,6 @@ To test the not found page, navigate to a URL that doesn't exist, e.g. `/not-fou
 
 To test the error page, navigate to `/error/test`, which is a fault-injection page included in the library, explicitly for testing the error page handling.
 
-## [Release Notes](https://github.com/DFE-Digital/fh-web-components/blob/main/docs/historic/2.3.1/ReleaseNotes.md)
+## [Release Notes](https://github.com/DFE-Digital/fh-web-components/blob/main/docs/ReleaseNotes.md)
 
 ## [Possible Improvements](https://github.com/DFE-Digital/fh-web-components/blob/main/docs/historic/2.3.1/ToDo.md)
