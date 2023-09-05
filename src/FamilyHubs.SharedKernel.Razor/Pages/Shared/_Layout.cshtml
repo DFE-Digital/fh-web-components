@@ -28,6 +28,8 @@
     <partial name="_Header.cshtml" model="familyHubsLayoutModel" />
 
     <div class="govuk-width-container">
+        @*todo: if don't display phase banner or back, then we should add govuk-main-wrapper--auto-spacing to <main>*@
+        @* see https://design-system.service.gov.uk/styles/layout/ *@
         <partial name="_PhaseBanner.cshtml" model="familyHubsUiOptions" />
 
         @await RenderSectionAsync("Back", required: false)
