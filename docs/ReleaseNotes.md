@@ -1,5 +1,9 @@
 ## Release Notes
 
+### 2.5.0
+
+Rename `custom-main` class on the `<main>` element to `app-custom-main`.
+
 ### 2.4.0
 
 Add `PathPrefix` to `FamilyHubsUiOptions`. If supplied,
