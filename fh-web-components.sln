@@ -45,6 +45,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", "{3DCD5978-FEBE-423F-B967-CFCA67853771}"
 	ProjectSection(SolutionItems) = preProject
 		src\familyhubs-frontend\scripts\components\analytics.ts = src\familyhubs-frontend\scripts\components\analytics.ts
+		src\familyhubs-frontend\scripts\components\back-button.ts = src\familyhubs-frontend\scripts\components\back-button.ts
 		src\familyhubs-frontend\scripts\components\cookie-banner.ts = src\familyhubs-frontend\scripts\components\cookie-banner.ts
 		src\familyhubs-frontend\scripts\components\cookie-functions.ts = src\familyhubs-frontend\scripts\components\cookie-functions.ts
 		src\familyhubs-frontend\scripts\components\cookies-page.ts = src\familyhubs-frontend\scripts\components\cookies-page.ts

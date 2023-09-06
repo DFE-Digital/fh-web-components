@@ -1,5 +1,13 @@
 ## Release Notes
 
+### 3.0.0
+
+Breaking changes:
+
+The class `app-back-link` has been renamed to `fh-back-button`.
+
+The behaviour of back links with the class has also been changed, to not show the back link, if the page has been opened in a new tab.
+
 ### 2.5.0
 
 Rename `custom-main` class on the `<main>` element to `app-custom-main`.
