@@ -10,6 +10,8 @@ The behaviour of back links with the class has also been changed, to not show th
 
 The class `app-custom-main` has been renamed to `fh-custom-main`.
 
+Fixes typescript transiliation.
+
 ### 2.5.0
 
 Rename `custom-main` class on the `<main>` element to `app-custom-main`.
