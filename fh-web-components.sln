@@ -147,6 +147,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.3.1", "2.3.1", "{A2A5F29D
 		docs\historic\2.3.1\ToDo.md = docs\historic\2.3.1\ToDo.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.0.0", "3.0.0", "{E48E445F-A57E-4899-9F72-CD1E11D6A7F2}"
+	ProjectSection(SolutionItems) = preProject
+		docs\historic\3.0.0\ToDo.md = docs\historic\3.0.0\ToDo.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -194,6 +199,7 @@ Global
 		{C6BBB9FB-F62F-42D2-96D1-7E987EA67161} = {0B8CACAA-44D6-4161-A974-89FBCD55E18E}
 		{328B6080-7FBD-4988-8B18-E63525A395B6} = {D1DDC75D-F0D6-4625-A6FB-09A6DC6EF8F1}
 		{A2A5F29D-F3C6-4117-9E54-5AFFCDA5783C} = {328B6080-7FBD-4988-8B18-E63525A395B6}
+		{E48E445F-A57E-4899-9F72-CD1E11D6A7F2} = {328B6080-7FBD-4988-8B18-E63525A395B6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3F1A191D-2EAA-4517-BE4D-0EF5BD088FD4}
