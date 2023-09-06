@@ -5,7 +5,7 @@ export function initializeBackButtons(): void {
     // Check if the page wasn't opened in a new tab or a standalone window
     if (history.length > 1) {
 
-        const backLinks = document.querySelectorAll(".fh-back-button");
+        const backLinks = document.querySelectorAll(".fh-back-link");
         nodeListForEach(backLinks, (link: HTMLAnchorElement) => {
 
             link.style.display = "block";

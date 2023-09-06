@@ -16,7 +16,7 @@ declare global {
 import CookieBanner from './components/cookie-banner'
 import CookiesPage from './components/cookies-page'
 import initAnalytics from './components/analytics';
-import { initializeBackButtons } from './components/back-button';
+import { initializeBackButtons } from './components/back-links';
 
 //todo: consistency in module/proto/class style
 

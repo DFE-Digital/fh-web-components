@@ -4,7 +4,7 @@
 
 Breaking changes:
 
-The class `app-back-link` has been renamed to `fh-back-button`.
+The class `app-back-link` has been renamed to `fh-back-link`.
 
 The behaviour of back links with the class has also been changed, to not show the back link, if the page has been opened in a new tab.
 
