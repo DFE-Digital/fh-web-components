@@ -14,7 +14,7 @@ The behaviour of back links with the class has also been changed, to not show th
 
 The class `app-custom-main` has been renamed to `fh-custom-main`.
 
-Fixes typescript transiliation.
+Fixes typescript transpilation.
 
 ### 2.5.0
 
