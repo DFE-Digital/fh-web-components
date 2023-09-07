@@ -1,5 +1,7 @@
 # Potential improvements
 
+* default back button to home page if javascript disabled, rather than removing it? configurable?
+
 * update docs and have more examples
 
 * move rest of common readme sections into their own files and link to them from both package's readmes
