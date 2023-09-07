@@ -1,5 +1,9 @@
 ## Release Notes
 
+### 3.0.1
+
+Fixed layout issue on cookie page.
+
 ### 3.0.0
 
 Breaking changes:

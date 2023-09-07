@@ -31,7 +31,7 @@ window.FamilyHubsFrontend.initAll = () => {
 
     //todo: move this into scripts section on cookie page
     // Initialise cookie page
-    var $cookiesPage = document.querySelector('[data-module="app-cookies-page"]')
+    var $cookiesPage = document.querySelector('[data-module="fh-cookies-page"]')
     new CookiesPage($cookiesPage).init();
 
     initializeBackButtons();
