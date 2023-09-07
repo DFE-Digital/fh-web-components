@@ -3,9 +3,9 @@
 @using FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Extensions
 @using Microsoft.Extensions.Options
 @inject FamilyHubsLayoutModel FamilyHubsLayoutModel
-@model (Microsoft.AspNetCore.Mvc.RazorPages.PageModel pageModel, ViewDataDictionary<Microsoft.AspNetCore.Mvc.RazorPages.PageModel> viewData)
+@model FamilyHubs.SharedKernel.Razor.Layout.FhViewStartModel
 @{
-    FamilyHubsLayoutModel.PageModel = Model.pageModel;
+    FamilyHubsLayoutModel.PageModel = Model.PageModel;
     var alt = FamilyHubsLayoutModel.PageModel as IAlternativeService;
     if (alt?.ServiceName != null)
     {
@@ -15,5 +15,5 @@
             FamilyHubsLayoutModel.FamilyHubsUiOptions = Options.Create(altFamilyHubsUiOptions);
         }
     }
-    Model.viewData.SetFamilyHubsLayoutModel(FamilyHubsLayoutModel);
+    Model.ViewData.SetFamilyHubsLayoutModel(FamilyHubsLayoutModel);
 }
