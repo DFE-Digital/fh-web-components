@@ -1,6 +1,11 @@
-﻿@model Microsoft.AspNetCore.Mvc.RazorPages.PageModel
+﻿@using FamilyHubs.SharedKernel.Razor.FamilyHubsUi
+@using FamilyHubs.SharedKernel.Razor.Layout
+@inject FamilyHubsLayoutModel FamilyHubsLayoutModel
+@model Microsoft.AspNetCore.Mvc.RazorPages.PageModel
 @{
     Layout = "_Layout";
+    FhViewStartModel.ViewStartInit(FamilyHubsLayoutModel, Model, ViewData);
 }
 
-<partial name="~/Pages/Shared/_FhViewStart.cshtml" model="@(new FamilyHubs.SharedKernel.Razor.Layout.FhViewStartModel(Model, ViewData))" />
+@* <partial name="~/Pages/Shared/_FhViewStart.cshtml" model="@(new FamilyHubs.SharedKernel.Razor.Layout.FhViewStartModel(Model, ViewData))" />
+ *@
