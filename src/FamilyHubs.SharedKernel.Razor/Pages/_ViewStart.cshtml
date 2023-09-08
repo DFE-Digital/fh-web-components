@@ -1,20 +1,8 @@
-﻿@using FamilyHubs.SharedKernel.Razor.AlternativeServices
-@using FamilyHubs.SharedKernel.Razor.FamilyHubsUi
-@using FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Extensions
-@using Microsoft.Extensions.Options
+﻿@using FamilyHubs.SharedKernel.Razor.FamilyHubsUi
+@using FamilyHubs.SharedKernel.Razor.Layout
 @inject FamilyHubsLayoutModel FamilyHubsLayoutModel
+@model Microsoft.AspNetCore.Mvc.RazorPages.PageModel
 @{
     Layout = "_Layout";
-
-    FamilyHubsLayoutModel.PageModel = Model as Microsoft.AspNetCore.Mvc.RazorPages.PageModel;
-    var alt = FamilyHubsLayoutModel.PageModel as IAlternativeService;
-    if (alt?.ServiceName != null)
-    {
-        var altFamilyHubsUiOptions = FamilyHubsLayoutModel.FamilyHubsUiOptions.Value.AlternativeFamilyHubsUi[alt.ServiceName];
-        if (altFamilyHubsUiOptions.Enabled)
-        {
-            FamilyHubsLayoutModel.FamilyHubsUiOptions = Options.Create(altFamilyHubsUiOptions);
-        }
-    }
-    ViewData.SetFamilyHubsLayoutModel(FamilyHubsLayoutModel);
+    ViewStart.InitialiseFamilyHubs(FamilyHubsLayoutModel, Model, ViewData);
 }
