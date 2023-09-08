@@ -1,5 +1,9 @@
 ## Release Notes
 
+### 3.1.1
+
+Remove link to homepage from 404 & 500 pages.
+
 ### 3.1.0
 
 Add support for Areas by adding the `ViewStart.InitialiseFamilyHubs()` method that can be called from an Area's `_ViewStart.cshtml`, to initialise Family Hubs for the Area.
