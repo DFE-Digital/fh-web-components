@@ -7,15 +7,9 @@ using Microsoft.Extensions.Options;
 
 namespace FamilyHubs.SharedKernel.Razor.Layout;
 
-public class FhViewStartModel
+public static class ViewStart
 {
-    //public FhViewStartModel(PageModel pageModel, ViewDataDictionary<PageModel> viewData)
-    //{
-    //    PageModel = pageModel;
-    //    ViewData = viewData;
-    //}
-
-    public static void ViewStartInit(FamilyHubsLayoutModel familyHubsLayoutModel, PageModel pageModel, ViewDataDictionary<PageModel> viewData)
+    public static void InitialiseFamilyHubs(FamilyHubsLayoutModel familyHubsLayoutModel, PageModel pageModel, ViewDataDictionary<PageModel> viewData)
     {
         familyHubsLayoutModel.PageModel = pageModel;
         var alt = familyHubsLayoutModel.PageModel as IAlternativeService;
@@ -29,7 +23,4 @@ public class FhViewStartModel
         }
         viewData.SetFamilyHubsLayoutModel(familyHubsLayoutModel);
     }
-
-    //public PageModel PageModel;
-    //public ViewDataDictionary<PageModel> ViewData;
 }

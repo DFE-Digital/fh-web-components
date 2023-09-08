@@ -3,7 +3,7 @@
     Layout = "./_Layout.cshtml";
 }
 
-<partial name="~/Pages/Shared/_FhViewStart.cshtml" model="@(new FamilyHubs.SharedKernel.Razor.Layout.FhViewStartModel(Model, ViewData))" />
+<partial name="~/Pages/Shared/_FhViewStart.cshtml" model="@(new FamilyHubs.SharedKernel.Razor.Layout.ViewStart(Model, ViewData))" />
  *@
  
 @using FamilyHubs.SharedKernel.Razor.FamilyHubsUi
@@ -12,8 +12,8 @@
 @model Microsoft.AspNetCore.Mvc.RazorPages.PageModel
 @{
     Layout = "./_Layout.cshtml";
-    FhViewStartModel.ViewStartInit(FamilyHubsLayoutModel, Model, ViewData);
+    ViewStart.InitialiseFamilyHubs(FamilyHubsLayoutModel, Model, ViewData);
 }
 
-@* <partial name="~/Pages/Shared/_FhViewStart.cshtml" model="@(new FamilyHubs.SharedKernel.Razor.Layout.FhViewStartModel(Model, ViewData))" />
+@* <partial name="~/Pages/Shared/_FhViewStart.cshtml" model="@(new FamilyHubs.SharedKernel.Razor.Layout.ViewStart(Model, ViewData))" />
  *@
