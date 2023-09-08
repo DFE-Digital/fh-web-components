@@ -1,6 +1,6 @@
 {
   "name": "familyhubs-frontend",
-  "version": "2.4.0",
+  "version": "3.0.1",
   "description": "FamilyHubs Frontend contains the code you need to start building a Family Hubs website on top of the GOVUK Design System",
   "main": "index.js",
   "scripts": {
@@ -43,6 +43,6 @@
     "gulp-terser": "^2.1.0",
     "gulp-typescript": "^6.0.0-alpha.1",
     "sass": "~1.60",
-    "typescript": "~5"
+    "typescript": "^5.2.2"
   }
 }

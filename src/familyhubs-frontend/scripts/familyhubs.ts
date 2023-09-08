@@ -16,7 +16,7 @@ declare global {
 import CookieBanner from './components/cookie-banner'
 import CookiesPage from './components/cookies-page'
 import initAnalytics from './components/analytics';
-import { nodeListForEach } from './components/helpers';
+import { initializeBackButtons } from './components/back-links';
 
 //todo: consistency in module/proto/class style
 
@@ -31,14 +31,8 @@ window.FamilyHubsFrontend.initAll = () => {
 
     //todo: move this into scripts section on cookie page
     // Initialise cookie page
-    var $cookiesPage = document.querySelector('[data-module="app-cookies-page"]')
-    new CookiesPage($cookiesPage).init()
+    var $cookiesPage = document.querySelector('[data-module="fh-cookies-page"]')
+    new CookiesPage($cookiesPage).init();
 
-    //todo: move into module
-    const backLinks = document.querySelectorAll(".app-back-link");
-    nodeListForEach(backLinks, (link: HTMLAnchorElement) => {
-        link.addEventListener("click", () => {
-            window.history.back();
-        });
-    });
+    initializeBackButtons();
 };

@@ -1,5 +1,25 @@
 ## Release Notes
 
+### 3.0.1
+
+Fixed layout issue on cookie page.
+
+### 3.0.0
+
+Breaking changes:
+
+The class `app-back-link` has been renamed to `fh-back-link`.
+
+The behaviour of back links with the class has also been changed, to not show the back link, if the page has been opened in a new tab.
+
+The class `app-custom-main` has been renamed to `fh-custom-main`.
+
+Fixes typescript transpilation.
+
+### 2.5.0
+
+Rename `custom-main` class on the `<main>` element to `app-custom-main`.
+
 ### 2.4.0
 
 Add `PathPrefix` to `FamilyHubsUiOptions`. If supplied,

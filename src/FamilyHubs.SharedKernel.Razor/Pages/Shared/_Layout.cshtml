@@ -28,11 +28,13 @@
     <partial name="_Header.cshtml" model="familyHubsLayoutModel" />
 
     <div class="govuk-width-container">
+        @*todo: if don't display phase banner or back, then we should add govuk-main-wrapper--auto-spacing to <main>*@
+        @* see https://design-system.service.gov.uk/styles/layout/ *@
         <partial name="_PhaseBanner.cshtml" model="familyHubsUiOptions" />
 
         @await RenderSectionAsync("Back", required: false)
 
-        <main class="govuk-main-wrapper custom-main" id="main-content" role="main">
+        <main class="govuk-main-wrapper fh-custom-main" id="main-content" role="main">
             @RenderBody()
         </main>
     </div>
@@ -49,7 +51,7 @@
     <script src="@(familyHubsUiOptions.PathPrefix)/js/govuk-frontend-4.7.0.min.js"></script>
     <script src="@(familyHubsUiOptions.PathPrefix)/js/ministryofjustice-frontend-1.8.0.js"></script>
     <script src="@(familyHubsUiOptions.PathPrefix)/js/dfefrontend-0.1.8.js"></script>
-    <script src="@(familyHubsUiOptions.PathPrefix)/js/familyhubs-frontend-2.4.0.min.js"></script>
+    <script src="@(familyHubsUiOptions.PathPrefix)/js/familyhubs-frontend-3.0.1.min.js"></script>
     <script src="@(familyHubsUiOptions.PathPrefix)/js/app.js" asp-append-version="true"></script>
 
     <script>
