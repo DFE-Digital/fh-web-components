@@ -12,6 +12,8 @@
 
 * add sign out link on error pages if signed in
 
+* add 401/403 error pages
+
 * navigation menu button visible on mobile if no nav links
 
 * better way than solution folders/files for grouping files? show all files and no solution items perhaps?
