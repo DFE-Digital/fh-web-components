@@ -1,5 +1,12 @@
 ## Release Notes
 
+### 4.0.0
+
+Breaking changes:
+
+Security header's CSP has had `unsafe-inline` removed from the `style-src`.
+Also, Https has been removed from img-src (but GA specific domains have been added).
+
 ### 3.1.1
 
 Remove link to homepage from 404 & 500 pages.
