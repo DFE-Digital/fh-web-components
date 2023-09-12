@@ -44,7 +44,6 @@ public static class SecurityHeaders
                         .Self();
 
                     builder.AddImgSrc()
-                        .OverHttps()
                         .Self();
 
                     var scriptSrc = builder.AddScriptSrc()
