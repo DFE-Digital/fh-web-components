@@ -30,6 +30,7 @@ public static class SecurityHeaders
                         .From(new[]
                         {
                             "https://*.google-analytics.com",
+                            "https://*.analytics.google.com",
                             //todo: is this needed in prod?
                             /* application insights*/ "https://dc.services.visualstudio.com/v2/track", "rt.services.visualstudio.com/v2/track"
                         });
@@ -44,8 +45,12 @@ public static class SecurityHeaders
                         .Self();
 
                     builder.AddImgSrc()
-                        .OverHttps()
-                        .Self();
+                        .Self()
+                        .From(new []
+                        {
+                            "https://*.google-analytics.com",
+                            "https://*.analytics.google.com"
+                        });
 
                     var scriptSrc = builder.AddScriptSrc()
                         .Self()
@@ -60,8 +65,7 @@ public static class SecurityHeaders
 
                     builder.AddStyleSrc()
                         .Self()
-                        .StrictDynamic()
-                        .UnsafeInline();
+                        .StrictDynamic();
 
                     builder.AddMediaSrc()
                         .None();
