@@ -61,7 +61,8 @@ public static class SecurityHeaders
                             "https://*.google-analytics.com/",
                             "https://*.analytics.google.com",
                             "https://*.googletagmanager.com"
-                        });
+                        })
+                        .UnsafeInline();
                     // if we wanted the nonce back, we'd add `.WithNonce();` here
 
                     builder.AddStyleSrc()
