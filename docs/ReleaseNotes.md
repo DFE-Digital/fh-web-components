@@ -1,5 +1,9 @@
 ## Release Notes
 
+### 4.0.1
+
+Add more domain exceptions to the CSP to fix GA4 (as [recommended by Google](https://developers.google.com/tag-platform/security/guides/csp#google_analytics_4_google_analytics)).
+
 ### 4.0.0
 
 Breaking changes:
