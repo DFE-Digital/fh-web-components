@@ -31,6 +31,7 @@ public static class SecurityHeaders
                         {
                             "https://*.google-analytics.com",
                             "https://*.analytics.google.com",
+                            "https://*.googletagmanager.com",
                             //todo: is this needed in prod?
                             /* application insights*/ "https://dc.services.visualstudio.com/v2/track", "rt.services.visualstudio.com/v2/track"
                         });
@@ -49,7 +50,8 @@ public static class SecurityHeaders
                         .From(new []
                         {
                             "https://*.google-analytics.com",
-                            "https://*.analytics.google.com"
+                            "https://*.analytics.google.com",
+                            "https://*.googletagmanager.com"
                         });
 
                     var scriptSrc = builder.AddScriptSrc()
