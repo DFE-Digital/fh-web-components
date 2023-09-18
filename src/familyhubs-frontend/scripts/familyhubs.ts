@@ -9,6 +9,12 @@ declare global {
         GA_COOKIE_NAME: string;
         dataLayer: any[];
         FamilyHubsFrontend: any;
+        GOVUKFrontend: {
+            initAll: () => void;
+        }
+        MOJFrontend: {
+            initAll: () => void;
+        }
     }
 }
 
@@ -46,3 +52,7 @@ window.FamilyHubsFrontend.initAll = () => {
 
     initializeBackButtons();
 };
+
+window.GOVUKFrontend.initAll();
+window.MOJFrontend.initAll();
+window.FamilyHubsFrontend.initAll();

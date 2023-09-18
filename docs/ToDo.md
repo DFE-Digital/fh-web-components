@@ -1,5 +1,11 @@
 # Potential improvements
 
+* cookie banner is not disappearing
+
+* might be better to use a nonce for some of the inline scripts instead
+
+* add typescript compilation to the example site
+
 * our js map file is expected to be called all.min.js.map, but we rename it during package install.
  
      can we supply the eventual name to the gulp task, or do a find and replace in the file during minification or package install/file copy?

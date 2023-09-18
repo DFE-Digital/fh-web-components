@@ -32,6 +32,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "styles", "styles", "{31D0D7FE-E34A-414B-9059-E8ED346E7FF3}"
 	ProjectSection(SolutionItems) = preProject
 		src\familyhubs-frontend\styles\all.scss = src\familyhubs-frontend\styles\all.scss
+		src\familyhubs-frontend\scripts\familyhubs.ts = src\familyhubs-frontend\scripts\familyhubs.ts
 		src\familyhubs-frontend\styles\_global.scss = src\familyhubs-frontend\styles\_global.scss
 		src\familyhubs-frontend\styles\_overrides.scss = src\familyhubs-frontend\styles\_overrides.scss
 	EndProjectSection
@@ -66,6 +67,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{FA1F7A55-52FC-4D15-B061-A89331EE8FAD}"
 	ProjectSection(SolutionItems) = preProject
 		src\familyhubs-frontend\wwwroot\js\dfefrontend-0.1.8.js = src\familyhubs-frontend\wwwroot\js\dfefrontend-0.1.8.js
+		src\familyhubs-frontend\wwwroot\js\familyhubs-layout-1.0.0.js = src\familyhubs-frontend\wwwroot\js\familyhubs-layout-1.0.0.js
 		src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.7.0.min.js = src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.7.0.min.js
 		src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.7.0.min.js.map = src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.7.0.min.js.map
 		src\familyhubs-frontend\wwwroot\js\jquery-3.7.1.js = src\familyhubs-frontend\wwwroot\js\jquery-3.7.1.js

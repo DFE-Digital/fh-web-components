@@ -7,13 +7,12 @@
 <!DOCTYPE html>
 <html lang="en" class="govuk-template">
 <head>
+    <script defer src="@(familyHubsUiOptions.PathPrefix)/js/familyhubs-layout-1.0.0.js"></script>
     <partial name="_Head.cshtml" model="familyHubsUiOptions"/>
     @await RenderSectionAsync("Head", required: false)
 </head>
 
 <body class="govuk-template__body">
-    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
-
     <partial name="_CookieBanner.cshtml" model="familyHubsUiOptions" />
 
     <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
@@ -46,12 +45,6 @@
     <script src="@(familyHubsUiOptions.PathPrefix)/js/dfefrontend-0.1.8.js"></script>
     <script src="@(familyHubsUiOptions.PathPrefix)/js/familyhubs-frontend-5.0.0.min.js"></script>
     <script src="@(familyHubsUiOptions.PathPrefix)/js/app.js" asp-append-version="true"></script>
-
-    <script>
-        window.GOVUKFrontend.initAll();
-        window.MOJFrontend.initAll();
-        window.FamilyHubsFrontend.initAll();
-    </script>
 
     @await RenderSectionAsync("Scripts", required: false)
 
