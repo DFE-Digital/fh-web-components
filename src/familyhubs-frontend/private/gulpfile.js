@@ -5,17 +5,18 @@
 
 var tsScriptsSrc = '../scripts/**';
 
-var gulp = require("gulp"),
-    sass = require('gulp-sass')(require('sass')),
-    sourcemaps = require('gulp-sourcemaps'),
-    csso = require('gulp-csso'),
-    terser = require('gulp-terser'),
-    ts = require("gulp-typescript"),
+const gulp = require("gulp");
+const sass = require('gulp-sass')(require('sass'));
+const sourcemaps = require('gulp-sourcemaps');
+const csso = require('gulp-csso');
+const terser = require('gulp-terser');
+const ts = require("gulp-typescript");
     //typescript = require('typescript'),
-    rollup = require('gulp-better-rollup'),
+const rollup = require('gulp-better-rollup');
     //concat = require('gulp-concat'),
-    del = require('del'),
-    rename = require('gulp-rename');
+const del = require('del');
+const rename = require('gulp-rename');
+const fs = require('fs');
 
 gulp.task('sass-to-min-css', async function () {
     return gulp.src('../styles/all.scss')
@@ -76,22 +77,34 @@ gulp.task('transpile-ts', function () {
 //});
 
 gulp.task('bundle-and-minify-js', () => {
+
+    const packageJson = JSON.parse(fs.readFileSync(`../package.json`));
+
+    const baseFileName = `${packageJson.name}-${packageJson.version}`;
+
+    console.log(`Creating js: ${baseFileName}.min.js`);
+
 //    return gulp.src('./tmp/js/bundle.js')
     return gulp.src('./tmp/js/familyhubs.js')
         .pipe(sourcemaps.init())
         .pipe(rollup({}, 'es'))
         .pipe(terser())
-        .pipe(rename({ basename: 'all', suffix: '.min' }))
+        .pipe(rename({ basename: baseFileName, suffix: '.min' }))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('../'));
+        .pipe(gulp.dest('../wwwroot/js'));
 });
 
 gulp.task('clean', () => {
     return del('./tmp/**');
 });
 
+gulp.task('copy-js-files-to-example-site', function () {
+    return gulp.src('../wwwroot/js/*')
+        .pipe(gulp.dest('../../../example/FamilyHubs.Example/wwwroot/js'));
+});
+
 //gulp.task('js', gulp.series('clean', 'transpile-ts', 'naive-bundle-js', 'bundle-and-minify-js'));
-gulp.task('js', gulp.series('clean', 'transpile-ts', 'bundle-and-minify-js'));
+gulp.task('js', gulp.series('clean', 'transpile-ts', 'bundle-and-minify-js', 'copy-js-files-to-example-site'));
 
 gulp.task('js:watch', function () {
     gulp.watch(tsScriptsSrc, gulp.series('js'));

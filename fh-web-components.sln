@@ -12,8 +12,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "familyhubs-frontend", "familyhubs-frontend", "{6F173CC5-DBC4-4A9E-9D97-01AC96D27B5C}"
 	ProjectSection(SolutionItems) = preProject
 		src\familyhubs-frontend\.npmignore = src\familyhubs-frontend\.npmignore
-		src\familyhubs-frontend\all.min.js = src\familyhubs-frontend\all.min.js
-		src\familyhubs-frontend\all.min.js.map = src\familyhubs-frontend\all.min.js.map
 		src\familyhubs-frontend\gulpfile.js = src\familyhubs-frontend\gulpfile.js
 		src\familyhubs-frontend\index.js = src\familyhubs-frontend\index.js
 		src\familyhubs-frontend\package-lock.json = src\familyhubs-frontend\package-lock.json
