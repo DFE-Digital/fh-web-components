@@ -7,22 +7,24 @@
 <!DOCTYPE html>
 <html lang="en" class="govuk-template">
 <head>
-    <script defer src="@(familyHubsUiOptions.PathPrefix)/js/familyhubs-layout-1.0.0.js"></script>
+@*     <script defer src="@(familyHubsUiOptions.PathPrefix)/js/familyhubs-layout-1.0.0.js"></script> *@
     <partial name="_Head.cshtml" model="familyHubsUiOptions"/>
     @await RenderSectionAsync("Head", required: false)
 </head>
 
 <body class="govuk-template__body">
-    <partial name="_CookieBanner.cshtml" model="familyHubsUiOptions" />
+    <script asp-add-nonce>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+    <partial name="_CookieBanner.cshtml" model="familyHubsUiOptions"/>
 
     <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
 
-    <partial name="_Header.cshtml" model="familyHubsLayoutModel" />
+    <partial name="_Header.cshtml" model="familyHubsLayoutModel"/>
 
     <div class="govuk-width-container">
         @*todo: if don't display phase banner or back, then we should add govuk-main-wrapper--auto-spacing to <main>*@
         @* see https://design-system.service.gov.uk/styles/layout/ *@
-        <partial name="_PhaseBanner.cshtml" model="familyHubsUiOptions" />
+        <partial name="_PhaseBanner.cshtml" model="familyHubsUiOptions"/>
 
         @await RenderSectionAsync("Back", required: false)
 
@@ -31,13 +33,13 @@
         </main>
     </div>
 
-    <partial name="_Footer.cshtml" model="familyHubsUiOptions" />
+    <partial name="_Footer.cshtml" model="familyHubsUiOptions"/>
 
-@*  is it better to include the version number in the script,
-    which means after a new deployment, if the script hasn't changed, the user browsers can used their cached version,
-    or use asp-append-version, which means that after a deployment browsers could refetch the script unnecessarily,
-    but means we wouldn't have to update these version numbers when we update the familyhubs or govuk npm packages?
-    for now we go with the more efficient version, but we might change to the easier to maintain version later *@
+    @*  is it better to include the version number in the script,
+        which means after a new deployment, if the script hasn't changed, the user browsers can used their cached version,
+        or use asp-append-version, which means that after a deployment browsers could refetch the script unnecessarily,
+        but means we wouldn't have to update these version numbers when we update the familyhubs or govuk npm packages?
+        for now we go with the more efficient version, but we might change to the easier to maintain version later *@
 
     <script src="@(familyHubsUiOptions.PathPrefix)/js/jquery-3.7.1.min.js"></script>
     <script src="@(familyHubsUiOptions.PathPrefix)/js/govuk-frontend-4.7.0.min.js"></script>
@@ -45,7 +47,6 @@
     <script src="@(familyHubsUiOptions.PathPrefix)/js/dfefrontend-0.1.8.js"></script>
     <script src="@(familyHubsUiOptions.PathPrefix)/js/familyhubs-frontend-5.0.0.min.js"></script>
     <script src="@(familyHubsUiOptions.PathPrefix)/js/app.js" asp-append-version="true"></script>
-
     @await RenderSectionAsync("Scripts", required: false)
 
 </body>
