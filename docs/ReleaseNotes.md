@@ -1,5 +1,11 @@
 ## Release Notes
 
+### 5.0.0
+
+Remove IE support.
+
+[GDS no longer requires IE support](https://technology.blog.gov.uk/2022/06/16/service-manual-testing-requirement-changes-for-internet-explorer-11/) (and we don't test IE), so we've removed it.
+
 ### 4.0.1
 
 Add more domain exceptions to the CSP to fix GA4 (as [recommended by Google](https://developers.google.com/tag-platform/security/guides/csp#google_analytics_4_google_analytics)).

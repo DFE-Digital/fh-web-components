@@ -45,8 +45,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", "{3DCD5978-FEBE-423F-B967-CFCA67853771}"
 	ProjectSection(SolutionItems) = preProject
 		src\familyhubs-frontend\scripts\components\analytics.ts = src\familyhubs-frontend\scripts\components\analytics.ts
-		src\familyhubs-frontend\scripts\components\cookie-banner.ts = src\familyhubs-frontend\scripts\components\cookie-banner.ts
 		src\familyhubs-frontend\scripts\components\back-links.ts = src\familyhubs-frontend\scripts\components\back-links.ts
+		src\familyhubs-frontend\scripts\components\cookie-banner.ts = src\familyhubs-frontend\scripts\components\cookie-banner.ts
 		src\familyhubs-frontend\scripts\components\cookie-functions.ts = src\familyhubs-frontend\scripts\components\cookie-functions.ts
 		src\familyhubs-frontend\scripts\components\cookies-page.ts = src\familyhubs-frontend\scripts\components\cookies-page.ts
 		src\familyhubs-frontend\scripts\components\helpers.ts = src\familyhubs-frontend\scripts\components\helpers.ts
@@ -59,10 +59,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "layout", "layout", "{788DA9
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{2791B765-4E73-49C5-BB09-0CD6E251F1EB}"
-	ProjectSection(SolutionItems) = preProject
-		src\familyhubs-frontend\wwwroot\css\govuk-frontend-ie8-4.7.0.min.css = src\familyhubs-frontend\wwwroot\css\govuk-frontend-ie8-4.7.0.min.css
-		src\familyhubs-frontend\wwwroot\css\govuk-frontend-ie8-4.7.0.min.css.map = src\familyhubs-frontend\wwwroot\css\govuk-frontend-ie8-4.7.0.min.css.map
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{1654424A-3D61-4011-A1FD-607099F9F9B5}"
 	ProjectSection(SolutionItems) = preProject
