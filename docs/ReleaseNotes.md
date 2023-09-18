@@ -2,7 +2,9 @@
 
 ### 5.0.0
 
-Remove IE support.
+Fix family hubs js mappping for easier debugging.
+
+#### Remove IE support.
 
 [GDS no longer requires IE support](https://technology.blog.gov.uk/2022/06/16/service-manual-testing-requirement-changes-for-internet-explorer-11/) (and we don't test IE), so we've removed it.
 
