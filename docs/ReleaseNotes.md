@@ -1,5 +1,9 @@
 # Release Notes
 
+## 5.1.0
+
+Add `InputErrorMessageParaId` to `Error` and use it to set the id on the `<p>` element in the `_ErrorMessage` partial view.
+
 ## 5.0.0
 
 ### Content Security Policy (CSP) changes
