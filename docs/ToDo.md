@@ -1,12 +1,8 @@
 # Potential improvements
 
-* cookie banner is not disappearing
-
-* might be better to use a nonce for some of the inline scripts instead
-
 * add typescript compilation to the example site
 
-* default back button to home page if javascript disabled, rather than removing it? configurable?
+* default back button to home page if javascript disabled, rather than removing it? configurable? or get referrer in c# instead
 
 * update docs and have more examples
 
