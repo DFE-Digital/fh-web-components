@@ -8,9 +8,14 @@
 /// <param name="ErrorMessage">The error message that is displayed in the error summary and next to the input control.</param>
 public record Error(int Id, string HtmlElementId, string ErrorMessage)
 {
+    //todo: tag helpers to add extra classes/aria-describedby to input element
+
     /// <summary>
     /// The id of the error message element that is displayed next to the input control.
     /// Will be used as the aria-describedby attribute value, when the input is in an error state.
     /// </summary>
     public string InputErrorMessageParaId => $"{HtmlElementId}-error-message";
+
+    public string InputClass => "govuk-input--error";
+    public string TextAreaClass => "govuk-textarea--error";
 }

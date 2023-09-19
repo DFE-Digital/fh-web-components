@@ -14,7 +14,7 @@
                 <partial name="_ErrorMessage" model="@error1" />
 
                 <label class="govuk-label" for="field1">Field 1</label>
-                <input asp-for="Field1" id="field1" class="govuk-input"/>
+                <input asp-for="Field1" id="field1" class="govuk-input @error1?.InputClass" aria-describedby="@(error1?.InputErrorMessageParaId)" />
             </div>
 
             @{ Error? error2 = Model.Errors.GetErrorIfTriggered((int) IndexModel.ExampleErrors.Error2); }
@@ -22,7 +22,7 @@
                 <partial name="_ErrorMessage" model="@error2" />
 
                 <label class="govuk-label" for="field2">Field 2</label>
-                <input asp-for="Field2" id="field2" class="govuk-input" />
+                <input asp-for="Field2" id="field2" class="govuk-input @error2?.InputClass" aria-describedby="@(error2?.InputErrorMessageParaId)" />
             </div>
 
             @{ Error? error3 = Model.Errors.GetErrorIfTriggered((int) IndexModel.ExampleErrors.Error3); }
@@ -30,7 +30,7 @@
                 <partial name="_ErrorMessage" model="@error3" />
 
                 <label class="govuk-label" for="field2">Field 3</label>
-                <input asp-for="Field3" id="field3" class="govuk-input" />
+                <input asp-for="Field3" id="field3" class="govuk-input @error3?.InputClass" aria-describedby="@(error3?.InputErrorMessageParaId)" />
             </div>
         </form>
     </div>
