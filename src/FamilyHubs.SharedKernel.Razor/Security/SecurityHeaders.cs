@@ -62,7 +62,6 @@ public static class SecurityHeaders
                             "https://*.analytics.google.com",
                             "https://*.googletagmanager.com"
                         })
-                        //.UnsafeInline()
                         .WithNonce();
 
                     builder.AddStyleSrc()

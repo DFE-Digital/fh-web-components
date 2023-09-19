@@ -57,7 +57,6 @@
 
 @if (!string.IsNullOrEmpty(Model.Analytics?.CookieName))
 {
-@* todo: it would be better to have this in an external js file anyway *@
 <script asp-add-nonce>
     (function() {
         @*
@@ -70,8 +69,6 @@
         */
         *@
         function isValidConsentCookie(options) {
-            window.GDS_CONSENT_COOKIE_VERSION =
-                +document.head.querySelector('meta[name="gds-consent-cookie-version"]').getAttribute('content');
             return (options && options.version >= window.GDS_CONSENT_COOKIE_VERSION);
         }
 
