@@ -16,6 +16,8 @@ public record Error(int Id, string HtmlElementId, string ErrorMessage)
     /// </summary>
     public string InputErrorMessageParaId => $"{HtmlElementId}-error-message";
 
+    public string FormGroupClass => "govuk-form-group--error";
+
     public string InputClass => "govuk-input--error";
     public string TextAreaClass => "govuk-textarea--error";
 }

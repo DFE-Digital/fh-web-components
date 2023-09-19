@@ -8,9 +8,10 @@
     <div class="govuk-grid-column-two-thirds">
 
         <form method="post" novalidate>
-
+            
+            @* todo: helper with some sort of callback for input? or helper for different inputs with optional hint, extra classes etc. *@
             @{ Error? error1 = Model.Errors.GetErrorIfTriggered((int) IndexModel.ExampleErrors.Error1); }
-            <div class="govuk-form-group @(error1 != null ? "govuk-form-group--error" : "")">
+            <div class="govuk-form-group @(error1?.FormGroupClass)">
                 <partial name="_ErrorMessage" model="@error1" />
 
                 <label class="govuk-label" for="field1">Field 1</label>
@@ -18,7 +19,7 @@
             </div>
 
             @{ Error? error2 = Model.Errors.GetErrorIfTriggered((int) IndexModel.ExampleErrors.Error2); }
-            <div class="govuk-form-group @(error2 != null ? "govuk-form-group--error" : "")">
+            <div class="govuk-form-group @(error2?.FormGroupClass)">
                 <partial name="_ErrorMessage" model="@error2" />
 
                 <label class="govuk-label" for="field2">Field 2</label>
@@ -26,7 +27,7 @@
             </div>
 
             @{ Error? error3 = Model.Errors.GetErrorIfTriggered((int) IndexModel.ExampleErrors.Error3); }
-            <div class="govuk-form-group @(error3 != null ? "govuk-form-group--error" : "")">
+            <div class="govuk-form-group @(error3?.FormGroupClass)">
                 <partial name="_ErrorMessage" model="@error3" />
 
                 <label class="govuk-label" for="field2">Field 3</label>
