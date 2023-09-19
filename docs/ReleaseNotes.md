@@ -31,8 +31,9 @@ For more info, see [NetEscapades.AspNetCore.SecurityHeaders](https://github.com/
 
 ### Other changes
 
-* add _ErrorMessage partial view (and an example error handling page).
-* Fix family hubs js mappping for easier debugging.
+* add _ErrorMessage partial view (and an example error handling page)
+* fix family hubs js mappping for easier debugging
+* further examples added
 
 ## 4.0.1
 
