@@ -70,7 +70,9 @@
         */
         *@
         function isValidConsentCookie(options) {
-            return (options && options.version >= window.GDS_CONSENT_COOKIE_VERSION)
+            window.GDS_CONSENT_COOKIE_VERSION =
+                +document.querySelector('meta[name="gds-consent-cookie-version"]').getAttribute('content');
+            return (options && options.version >= window.GDS_CONSENT_COOKIE_VERSION);
         }
 
         @* Don't show the banner on the cookies page *@
