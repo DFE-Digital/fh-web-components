@@ -1,12 +1,8 @@
 # Potential improvements
 
-* our js map file is expected to be called all.min.js.map, but we rename it during package install.
- 
-     can we supply the eventual name to the gulp task, or do a find and replace in the file during minification or package install/file copy?
+* add typescript compilation to the example site
 
-   perhaps best would be to generate the js with the correct name in the first place and don't rename on package install
-
-* default back button to home page if javascript disabled, rather than removing it? configurable?
+* default back button to home page if javascript disabled, rather than removing it? configurable? or get referrer in c# instead
 
 * update docs and have more examples
 

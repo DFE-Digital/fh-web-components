@@ -10,6 +10,12 @@ declare global {
         GA_COOKIE_NAME: string;
         dataLayer: any[];
         FamilyHubsFrontend: any;
+        GOVUKFrontend: {
+            initAll: () => void;
+        }
+        MOJFrontend: {
+            initAll: () => void;
+        }
     }
 }
 
@@ -31,8 +37,12 @@ window.FamilyHubsFrontend.initAll = () => {
 
     //todo: move this into scripts section on cookie page
     // Initialise cookie page
-    var $cookiesPage = document.querySelector('[data-module="fh-cookies-page"]')
+    var $cookiesPage = document.querySelector('[data-module="fh-cookies-page"]');
     new CookiesPage($cookiesPage).init();
 
     initializeBackButtons();
 };
+
+window.GOVUKFrontend.initAll();
+window.MOJFrontend.initAll();
+window.FamilyHubsFrontend.initAll();

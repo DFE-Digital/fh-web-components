@@ -57,7 +57,7 @@
 
 @if (!string.IsNullOrEmpty(Model.Analytics?.CookieName))
 {
-<script>
+<script asp-add-nonce>
     (function() {
         @*
         /** Check the cookie preferences object.
@@ -69,7 +69,7 @@
         */
         *@
         function isValidConsentCookie(options) {
-            return (options && options.version >= window.GDS_CONSENT_COOKIE_VERSION)
+            return (options && options.version >= window.GDS_CONSENT_COOKIE_VERSION);
         }
 
         @* Don't show the banner on the cookies page *@

@@ -12,8 +12,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "familyhubs-frontend", "familyhubs-frontend", "{6F173CC5-DBC4-4A9E-9D97-01AC96D27B5C}"
 	ProjectSection(SolutionItems) = preProject
 		src\familyhubs-frontend\.npmignore = src\familyhubs-frontend\.npmignore
-		src\familyhubs-frontend\all.min.js = src\familyhubs-frontend\all.min.js
-		src\familyhubs-frontend\all.min.js.map = src\familyhubs-frontend\all.min.js.map
 		src\familyhubs-frontend\gulpfile.js = src\familyhubs-frontend\gulpfile.js
 		src\familyhubs-frontend\index.js = src\familyhubs-frontend\index.js
 		src\familyhubs-frontend\package-lock.json = src\familyhubs-frontend\package-lock.json
@@ -34,6 +32,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "styles", "styles", "{31D0D7FE-E34A-414B-9059-E8ED346E7FF3}"
 	ProjectSection(SolutionItems) = preProject
 		src\familyhubs-frontend\styles\all.scss = src\familyhubs-frontend\styles\all.scss
+		src\familyhubs-frontend\scripts\familyhubs.ts = src\familyhubs-frontend\scripts\familyhubs.ts
 		src\familyhubs-frontend\styles\_global.scss = src\familyhubs-frontend\styles\_global.scss
 		src\familyhubs-frontend\styles\_overrides.scss = src\familyhubs-frontend\styles\_overrides.scss
 	EndProjectSection
@@ -45,8 +44,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", "{3DCD5978-FEBE-423F-B967-CFCA67853771}"
 	ProjectSection(SolutionItems) = preProject
 		src\familyhubs-frontend\scripts\components\analytics.ts = src\familyhubs-frontend\scripts\components\analytics.ts
-		src\familyhubs-frontend\scripts\components\cookie-banner.ts = src\familyhubs-frontend\scripts\components\cookie-banner.ts
 		src\familyhubs-frontend\scripts\components\back-links.ts = src\familyhubs-frontend\scripts\components\back-links.ts
+		src\familyhubs-frontend\scripts\components\cookie-banner.ts = src\familyhubs-frontend\scripts\components\cookie-banner.ts
 		src\familyhubs-frontend\scripts\components\cookie-functions.ts = src\familyhubs-frontend\scripts\components\cookie-functions.ts
 		src\familyhubs-frontend\scripts\components\cookies-page.ts = src\familyhubs-frontend\scripts\components\cookies-page.ts
 		src\familyhubs-frontend\scripts\components\helpers.ts = src\familyhubs-frontend\scripts\components\helpers.ts
@@ -59,10 +58,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "layout", "layout", "{788DA9
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{2791B765-4E73-49C5-BB09-0CD6E251F1EB}"
-	ProjectSection(SolutionItems) = preProject
-		src\familyhubs-frontend\wwwroot\css\govuk-frontend-ie8-4.7.0.min.css = src\familyhubs-frontend\wwwroot\css\govuk-frontend-ie8-4.7.0.min.css
-		src\familyhubs-frontend\wwwroot\css\govuk-frontend-ie8-4.7.0.min.css.map = src\familyhubs-frontend\wwwroot\css\govuk-frontend-ie8-4.7.0.min.css.map
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{1654424A-3D61-4011-A1FD-607099F9F9B5}"
 	ProjectSection(SolutionItems) = preProject
@@ -72,6 +67,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{FA1F7A55-52FC-4D15-B061-A89331EE8FAD}"
 	ProjectSection(SolutionItems) = preProject
 		src\familyhubs-frontend\wwwroot\js\dfefrontend-0.1.8.js = src\familyhubs-frontend\wwwroot\js\dfefrontend-0.1.8.js
+		src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-5.0.0.min.js = src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-5.0.0.min.js
+		src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-5.0.0.min.js.map = src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-5.0.0.min.js.map
 		src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.7.0.min.js = src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.7.0.min.js
 		src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.7.0.min.js.map = src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.7.0.min.js.map
 		src\familyhubs-frontend\wwwroot\js\jquery-3.7.1.js = src\familyhubs-frontend\wwwroot\js\jquery-3.7.1.js

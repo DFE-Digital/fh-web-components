@@ -16,6 +16,7 @@ public class ErrorState : IErrorState
     public static IErrorState Empty { get; }
         = new ErrorState(ImmutableDictionary<int, Error>.Empty, Enumerable.Empty<int>());
 
+    //todo: params version?
     public static IErrorState Create<T>(ImmutableDictionary<int, Error> possibleErrors, IEnumerable<T>? triggeredErrors)
         where T : struct, Enum, IConvertible
     {

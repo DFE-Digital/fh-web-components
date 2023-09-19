@@ -8,29 +8,22 @@
 <html lang="en" class="govuk-template">
 <head>
     <partial name="_Head.cshtml" model="familyHubsUiOptions"/>
-
-    @*todo: probably include these in _head also*@
-    <link rel="stylesheet" href="@(familyHubsUiOptions.PathPrefix)/css/application.css" asp-append-version="true"/>
-    @*todo: GDS is removing IE8 support soon. we might as well do it now, as it doesn't get tested anyway *@
-    <!--[if IE 8]>
-        <link href="@(familyHubsUiOptions.PathPrefix)/css/govuk-frontend-ie8-4.7.0.min.css" rel="stylesheet">
-    <![endif]-->
     @await RenderSectionAsync("Head", required: false)
 </head>
 
 <body class="govuk-template__body">
-    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+    <script asp-add-nonce>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
 
-    <partial name="_CookieBanner.cshtml" model="familyHubsUiOptions" />
+    <partial name="_CookieBanner.cshtml" model="familyHubsUiOptions"/>
 
     <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
 
-    <partial name="_Header.cshtml" model="familyHubsLayoutModel" />
+    <partial name="_Header.cshtml" model="familyHubsLayoutModel"/>
 
     <div class="govuk-width-container">
         @*todo: if don't display phase banner or back, then we should add govuk-main-wrapper--auto-spacing to <main>*@
         @* see https://design-system.service.gov.uk/styles/layout/ *@
-        <partial name="_PhaseBanner.cshtml" model="familyHubsUiOptions" />
+        <partial name="_PhaseBanner.cshtml" model="familyHubsUiOptions"/>
 
         @await RenderSectionAsync("Back", required: false)
 
@@ -39,27 +32,20 @@
         </main>
     </div>
 
-    <partial name="_Footer.cshtml" model="familyHubsUiOptions" />
+    <partial name="_Footer.cshtml" model="familyHubsUiOptions"/>
 
-@*  is it better to include the version number in the script,
-    which means after a new deployment, if the script hasn't changed, the user browsers can used their cached version,
-    or use asp-append-version, which means that after a deployment browsers could refetch the script unnecessarily,
-    but means we wouldn't have to update these version numbers when we update the familyhubs or govuk npm packages?
-    for now we go with the more efficient version, but we might change to the easier to maintain version later *@
+    @*  is it better to include the version number in the script,
+        which means after a new deployment, if the script hasn't changed, the user browsers can used their cached version,
+        or use asp-append-version, which means that after a deployment browsers could refetch the script unnecessarily,
+        but means we wouldn't have to update these version numbers when we update the familyhubs or govuk npm packages?
+        for now we go with the more efficient version, but we might change to the easier to maintain version later *@
 
     <script src="@(familyHubsUiOptions.PathPrefix)/js/jquery-3.7.1.min.js"></script>
     <script src="@(familyHubsUiOptions.PathPrefix)/js/govuk-frontend-4.7.0.min.js"></script>
     <script src="@(familyHubsUiOptions.PathPrefix)/js/ministryofjustice-frontend-1.8.0.js"></script>
     <script src="@(familyHubsUiOptions.PathPrefix)/js/dfefrontend-0.1.8.js"></script>
-    <script src="@(familyHubsUiOptions.PathPrefix)/js/familyhubs-frontend-4.0.1.min.js"></script>
+    <script src="@(familyHubsUiOptions.PathPrefix)/js/familyhubs-frontend-5.0.0.min.js"></script>
     <script src="@(familyHubsUiOptions.PathPrefix)/js/app.js" asp-append-version="true"></script>
-
-    <script>
-        window.GOVUKFrontend.initAll();
-        window.MOJFrontend.initAll();
-        window.FamilyHubsFrontend.initAll();
-    </script>
-
     @await RenderSectionAsync("Scripts", required: false)
 
 </body>
