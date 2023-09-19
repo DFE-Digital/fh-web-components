@@ -71,7 +71,7 @@
         *@
         function isValidConsentCookie(options) {
             window.GDS_CONSENT_COOKIE_VERSION =
-                +document.querySelector('meta[name="gds-consent-cookie-version"]').getAttribute('content');
+                +document.head.querySelector('meta[name="gds-consent-cookie-version"]').getAttribute('content');
             return (options && options.version >= window.GDS_CONSENT_COOKIE_VERSION);
         }
 
