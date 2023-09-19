@@ -1,0 +1,16 @@
+﻿@page
+@model FamilyHubs.Example.Pages.Examples.Errors.IndexModel
+
+<partial name="_ErrorSummary" model="@Model.Errors" />
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <form method="post" novalidate>
+
+            <input asp-for="Field1" id="field1" class="govuk-input govuk-!-width-one-third" spellcheck="false" />
+            <input asp-for="Field2" id="field2" class="govuk-input govuk-!-width-one-third" spellcheck="false" />
+            <input asp-for="Field3" id="field3" class="govuk-input govuk-!-width-one-third" spellcheck="false" />
+        </form>
+    </div>
+</div>
