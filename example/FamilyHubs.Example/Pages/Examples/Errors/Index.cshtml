@@ -1,4 +1,5 @@
 ﻿@page
+@using FamilyHubs.SharedKernel.Razor.Errors
 @model FamilyHubs.Example.Pages.Examples.Errors.IndexModel
 
 <partial name="_ErrorSummary" model="@Model.Errors" />
@@ -8,9 +9,43 @@
 
         <form method="post" novalidate>
 
-            <input asp-for="Field1" id="field1" class="govuk-input govuk-!-width-one-third" spellcheck="false" />
-            <input asp-for="Field2" id="field2" class="govuk-input govuk-!-width-one-third" spellcheck="false" />
-            <input asp-for="Field3" id="field3" class="govuk-input govuk-!-width-one-third" spellcheck="false" />
+            @* todo: partial for this, that takes an Error? *@
+            @{ Error? error1 = Model.Errors.GetErrorIfTriggered((int) IndexModel.ExampleErrors.Error1); }
+            <div class="govuk-form-group @(error1 != null ? "govuk-form-group--error" : "")">
+                @if (error1 != null)
+                {
+                    <p class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> @error1.ErrorMessage
+                    </p>
+                }
+
+                <label class="govuk-label" for="field1">Field 1</label>
+                <input asp-for="Field1" id="field1" class="govuk-input" />
+            </div>
+
+            @{ Error? error2 = Model.Errors.GetErrorIfTriggered((int) IndexModel.ExampleErrors.Error2); }
+            <div class="govuk-form-group @(error2 != null ? "govuk-form-group--error" : "")">
+                @if (error2 != null)
+                {
+                    <p class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> @error2.ErrorMessage
+                    </p>
+                }
+                <label class="govuk-label" for="field2">Field 2</label>
+                <input asp-for="Field2" id="field2" class="govuk-input" />
+            </div>
+
+            @{ Error? error3 = Model.Errors.GetErrorIfTriggered((int) IndexModel.ExampleErrors.Error3); }
+            <div class="govuk-form-group @(error3 != null ? "govuk-form-group--error" : "")">
+                @if (error3 != null)
+                {
+                    <p class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> @error3.ErrorMessage
+                    </p>
+                }
+                <label class="govuk-label" for="field2">Field 3</label>
+                <input asp-for="Field3" id="field3" class="govuk-input" />
+            </div>
         </form>
     </div>
 </div>

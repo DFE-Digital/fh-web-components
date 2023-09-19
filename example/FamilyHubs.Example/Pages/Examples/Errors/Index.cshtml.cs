@@ -6,7 +6,7 @@ namespace FamilyHubs.Example.Pages.Examples.Errors;
 
 public class IndexModel : PageModel
 {
-    private enum ExampleErrors
+    public enum ExampleErrors
     {
         Error1,
         Error2,
