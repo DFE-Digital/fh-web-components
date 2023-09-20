@@ -2,7 +2,6 @@
 
 @if (Model != null)
 {
-    @* todo: need id for aria-describedby on input. create from error? *@
     <p class="govuk-error-message" id="@(Model.InputErrorMessageParaId)">
         <span class="govuk-visually-hidden">Error:</span> @Model.ErrorMessage
     </p>
