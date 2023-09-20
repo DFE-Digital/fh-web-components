@@ -2,7 +2,7 @@
 
 @if (Model != null)
 {
-    <p class="govuk-error-message">
+    <p class="govuk-error-message" id="@(Model.InputErrorMessageParaId)">
         <span class="govuk-visually-hidden">Error:</span> @Model.ErrorMessage
     </p>
 }
