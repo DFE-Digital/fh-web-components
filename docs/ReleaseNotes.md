@@ -1,5 +1,23 @@
 # Release Notes
 
+## 5.2.0
+
+* Make the feedback link in the phase banner open in the same tab.
+
+* Add a tag helper for anchors that open in a new tab. To use...
+
+Add this to your `_ViewImports.cshtml` file:
+
+```
+@addTagHelper *, FamilyHubs.SharedKernel.Razor
+```
+
+Then add the `fh-new-tab` attribute to the anchor element. That will add the relevant attributes to open the link in a new tab and add " (opens in new tab)" to the link text.
+
+```
+<a href="https://www.gov.uk" fh-new-tab>GOV.UK</a>
+```
+
 ## 5.1.0
 
 Add a 'Contact Us' partial view.
