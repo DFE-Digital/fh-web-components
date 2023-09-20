@@ -2,7 +2,11 @@
 
 ## 5.1.0
 
+Add a 'Contact Us' partial view.
+
 Add `InputErrorMessageParaId` to `Error` and use it to set the id on the `<p>` element in the `_ErrorMessage` partial view.
+
+Further error handling improvements.
 
 ## 5.0.0
 
