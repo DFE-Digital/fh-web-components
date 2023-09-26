@@ -1,5 +1,7 @@
 # Potential improvements
 
+* add summary list, filters and postcode search(?) from Find
+
 * add typescript compilation to the example site
 
 * default back button to home page if javascript disabled, rather than removing it? configurable? or get referrer in c# instead
