@@ -10,6 +10,7 @@ public record Error(int Id, string HtmlElementId, string ErrorMessage)
 {
     //todo: tag helpers to add extra classes/aria-describedby to input element
 
+    //todo: better name
     /// <summary>
     /// The id of the error message element that is displayed next to the input control.
     /// Will be used as the aria-describedby attribute value, when the input is in an error state.
