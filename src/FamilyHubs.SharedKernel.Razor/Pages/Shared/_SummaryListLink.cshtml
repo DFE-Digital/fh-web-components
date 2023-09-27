@@ -2,6 +2,7 @@
 @model (string Key, string? Value, LinkType LinkType, string? Description)
 
 @*todo: move to SummaryList folder, and remove sl from start of partials? *@
+@* todo: extract link partial into own partial *@
 
 @if (!string.IsNullOrWhiteSpace(Model.Value))
 {
