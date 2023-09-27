@@ -1,5 +1,37 @@
 # Release Notes
 
+## 5.3.0
+
+### Summary Lists
+
+Add summary list tag helpers, e.g.
+
+```
+<summary-list>
+    <summary-list-row key="Name">Sarah Philips</summary-list-row>
+</summary-list>
+```
+
+See the summary list example page for more info.
+
+### &lt;a&gt; tag helper
+
+New attributes are available for &lt;a&gt;'s...
+
+`web-page` - to indicate that the link is to a web page
+`email` - to indicate that the link is to an email address
+`phone` - to indicate that the link is to a phone number
+
+Also note that `fh-new-tab` is deprecated, please use `new-tab` instead. `fh-new-tab` will be removed once all known consumers have been updated.
+
+See the example page for more info.
+
+### Filtering
+
+Initial support for filtering, based on the [MOJ Filter](https://design-patterns.service.justice.gov.uk/components/filter/) component.
+
+Example and documentation to follow.
+
 ## 5.2.0
 
 * Make the feedback link in the phase banner open in the same tab.
