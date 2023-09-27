@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace FamilyHubs.SharedKernel.Razor.TagHelpers;
+namespace FamilyHubs.SharedKernel.Razor.Links;
 
 [HtmlTargetElement("a", Attributes = "fh-new-tab")]
 public class AnchorTagHelper : TagHelper
