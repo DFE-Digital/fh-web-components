@@ -9,7 +9,7 @@
 @* todo: forcing explicit cast not nice. better as tag helpers? *@
 @* todo: version that supports action column *@
 
-<dl class="govuk-summary-list">
+<summary-list>
     <summary-list-row key="Empty (row shouldn't render)"></summary-list-row>
     <summary-list-row key="Name">Sarah Philips</summary-list-row>
     @* todo: helper for converting IEnumerable<string> to use <br/>?*@
@@ -22,4 +22,4 @@
     <partial name="_SummaryListLink" model='("Email", "sarah.phillips@example.com", LinkType.Email, default(string?))'/>
     <partial name="_SummaryListLink" model='("Website", "https://www.example.com", LinkType.WebPage, "Example website")'/>
     <partial name="_SummaryListLink" model='("Website", "https://www.example.com", LinkType.WebPageInNewTab, "Example website")'/>
-</dl>
+</summary-list>
