@@ -12,7 +12,7 @@ Add summary list tag helpers, e.g.
 </summary-list>
 ```
 
-See the next summary list example page for more info.
+See the summary list example page for more info.
 
 ### &lt;a&gt; tag helper
 
