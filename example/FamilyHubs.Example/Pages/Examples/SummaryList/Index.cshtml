@@ -1,29 +1,25 @@
 ﻿@page
-@using FamilyHubs.SharedKernel.Razor.Links
 @model FamilyHubs.Example.Pages.Examples.SummaryList.IndexModel
 
 <h1 class="govuk-heading-l">Summary list</h1>
 
 <p>Use a <a href="https://design-system.service.gov.uk/components/summary-list/" new-tab>summary list</a> to summarise information, for example, a user’s responses at the end of a form.</p>
 
-@* todo: forcing explicit cast not nice. better as tag helpers? *@
 @* todo: version that supports action column *@
 
 <h2 class="govuk-heading-m">With Border</h2>
 
 <summary-list>
     <summary-list-row key="Empty (row shouldn't render)"></summary-list-row>
+
     <summary-list-row key="Name">Sarah Philips</summary-list-row>
     @* todo: helper for converting IEnumerable<string> to use <br/>?*@
     <summary-list-row key="Address">72 Guild Street <br/> London</summary-list-row>
+    <summary-list-row key="Phone"><a phone="07700 900457"></a></summary-list-row>
+    <summary-list-row key="Email"><a email="sarah.phillips@example.com"></a></summary-list-row>
+    <summary-list-row key="Website"><a web-page="https://www.example.com">Example website</a></summary-list-row>
+    <summary-list-row key="Website new tab"><a web-page="https://www.example.com" new-tab>Example website</a></summary-list-row>
 
-    <partial name="_SummaryListRow" model='("Name", "Sarah Philips")'/>
-    <partial name="_SummaryListRows" model='("Address", (IEnumerable<string>) new[] {"72 Guild Street", "London"})'/>
-    @*todo: default not nice*@
-    <partial name="_SummaryListLink" model='("Phone", "07700 900457", LinkType.Phone, default(string?))'/>
-    <partial name="_SummaryListLink" model='("Email", "sarah.phillips@example.com", LinkType.Email, default(string?))'/>
-    <partial name="_SummaryListLink" model='("Website", "https://www.example.com", LinkType.WebPage, "Example website")'/>
-    <partial name="_SummaryListLink" model='("Website", "https://www.example.com", LinkType.WebPageInNewTab, "Example website")'/>
 </summary-list>
 
 <h2 class="govuk-heading-m">No Border</h2>
