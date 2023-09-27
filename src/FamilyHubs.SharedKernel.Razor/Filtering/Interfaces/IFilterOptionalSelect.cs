@@ -1,7 +1,7 @@
 ﻿
 namespace FamilyHubs.SharedKernel.Razor.Filtering.Interfaces;
 
-public interface IFilterOptionalSelect<in TFilteringResults> : IFilter<TFilteringResults>
+public interface IFilterOptionalSelect : IFilter
 {
     const string OptionSelectedPostfix = "-option-selected";
 
@@ -9,4 +9,8 @@ public interface IFilterOptionalSelect<in TFilteringResults> : IFilter<TFilterin
     string OptionDescription { get; }
     string SelectDescription { get; }
     string OptionSelectedName { get; }
+}
+
+public interface IFilterOptionalSelect<in TFilteringResults> : IFilterOptionalSelect, IFilter<TFilteringResults>
+{
 }

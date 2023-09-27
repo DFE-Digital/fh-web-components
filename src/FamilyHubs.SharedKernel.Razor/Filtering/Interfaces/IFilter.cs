@@ -2,7 +2,7 @@
 
 namespace FamilyHubs.SharedKernel.Razor.Filtering.Interfaces;
 
-public interface IFilter<in TFilteringResults>
+public interface IFilter
 {
     public const string RemoveKey = "remove";
     public const string RemoveAllValue = "all";
@@ -14,6 +14,10 @@ public interface IFilter<in TFilteringResults>
     IEnumerable<IFilterAspect> Aspects { get; }
     IEnumerable<IFilterAspect> SelectedAspects { get; }
     bool IsSelected(IFilterAspect aspect);
+}
+
+public interface IFilter<in TFilteringResults> : IFilter
+{
     IFilter<TFilteringResults> Apply(IQueryCollection query);
 
     void AddFilterCriteria(TFilteringResults filteringResults);
