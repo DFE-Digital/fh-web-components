@@ -1,6 +1,6 @@
 # Potential improvements
 
-* add summary list, filters and postcode search(?) from Find
+* add postcode search from Find?
 
 * add typescript compilation to the example site
 
@@ -10,7 +10,7 @@
 
 * move rest of common readme sections into their own files and link to them from both package's readmes
 
-* add partial to output an <a> from a FhLinkOptions? worth the bother??
+* add tag helper/partial to output an <a> from a FhLinkOptions? worth the bother??
 
 * use config exceptions
 
