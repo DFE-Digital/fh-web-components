@@ -1,8 +1,6 @@
 using FamilyHubs.SharedKernel.Razor.Dashboard;
 using FamilyHubs.SharedKernel.Razor.Pagination;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Identity.Client;
-using System.Linq;
 
 namespace FamilyHubs.Example.Pages.Examples.Dashboard;
 
