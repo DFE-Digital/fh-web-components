@@ -50,6 +50,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", 
 		src\familyhubs-frontend\scripts\components\cookies-page.ts = src\familyhubs-frontend\scripts\components\cookies-page.ts
 		src\familyhubs-frontend\scripts\components\helpers.ts = src\familyhubs-frontend\scripts\components\helpers.ts
 		src\familyhubs-frontend\scripts\components\postcode.ts = src\familyhubs-frontend\scripts\components\postcode.ts
+		src\familyhubs-frontend\scripts\components\visibility-toggle.ts = src\familyhubs-frontend\scripts\components\visibility-toggle.ts
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "layout", "layout", "{788DA990-BC17-4572-B087-042C91FF99A0}"
@@ -67,8 +68,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{FA1F7A55-52FC-4D15-B061-A89331EE8FAD}"
 	ProjectSection(SolutionItems) = preProject
 		src\familyhubs-frontend\wwwroot\js\dfefrontend-0.1.8.js = src\familyhubs-frontend\wwwroot\js\dfefrontend-0.1.8.js
-		src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-5.3.0.min.js = src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-5.3.0.min.js
-		src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-5.3.0.min.js.map = src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-5.3.0.min.js.map
+		src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-5.4.0.min.js = src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-5.4.0.min.js
+		src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-5.4.0.min.js.map = src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-5.4.0.min.js.map
 		src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.7.0.min.js = src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.7.0.min.js
 		src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.7.0.min.js.map = src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.7.0.min.js.map
 		src\familyhubs-frontend\wwwroot\js\jquery-3.7.1.js = src\familyhubs-frontend\wwwroot\js\jquery-3.7.1.js

@@ -23,6 +23,7 @@ import CookieBanner from './components/cookie-banner'
 import CookiesPage from './components/cookies-page'
 import initAnalytics from './components/analytics';
 import { initializeBackButtons } from './components/back-links';
+import { initializeVisibilityToggles } from './components/visibility-toggle';
 
 //todo: consistency in module/proto/class style
 
@@ -41,6 +42,7 @@ window.FamilyHubsFrontend.initAll = () => {
     new CookiesPage($cookiesPage).init();
 
     initializeBackButtons();
+    initializeVisibilityToggles();
 };
 
 window.GOVUKFrontend.initAll();

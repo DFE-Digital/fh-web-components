@@ -1,5 +1,13 @@
 # Release Notes
 
+## 5.4.0
+
+### Visibility toggle
+
+Add the attribute `data-toggle-visibility-id="id-of-element-to-toggle"` to an element, to make it toggle the visibility of the specified element, when it's clicked.
+
+See the example page for more info.
+
 ## 5.3.0
 
 ### Summary Lists
