@@ -1,5 +1,11 @@
 # Release Notes
 
+## 5.5.0
+
+Customise default [MOJ filter](https://design-patterns.service.justice.gov.uk/components/filter/) styling and add 'fh-' styles for enhancing the filtering, for such things as scrollable sub groups of radios/checkboxes.
+
+The styles work in conjunction with the filtering classes introduced in v5.3.0.
+
 ## 5.4.0
 
 ### Visibility toggle
