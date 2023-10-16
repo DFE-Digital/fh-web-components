@@ -1,14 +1,14 @@
 ﻿
 namespace FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options
 {
-    public interface IUrlOptions
-    {
-        string? BaseUrlKey { get; set; }
-        string? Url { get; set; }
-        string? ConfigUrl { get; set; }
-    }
+    //public interface IUrlOptions
+    //{
+    //    string? BaseUrlKey { get; set; }
+    //    string? Url { get; set; }
+    //    string? ConfigUrl { get; set; }
+    //}
 
-    public class HealthCheckUrlOptions : IUrlOptions
+    public class HealthCheckUrlOptions //: IUrlOptions
     {
         /// <summary>
         /// A key name from the FamilyHubsUi:Url section.
@@ -31,7 +31,7 @@ namespace FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options
         public string? ConfigUrl { get; set; }
     }
 
-    public class HealthCheckOptions
+    public class FhHealthCheckOptions
     {
         public bool Enabled { get; set; }
 

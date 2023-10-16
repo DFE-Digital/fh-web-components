@@ -21,15 +21,15 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
     {
         options.SetAlternative(altName, parent);
 
-        ConfigureLink(options.Header.ServiceNameLink, options.Header.ServiceNameLink.Text, options);
+        ConfigureLink(options.Header.ServiceNameLink, options);
         ConfigureLinks(options.Header.NavigationLinks, options);
         ConfigureLinks(options.Header.ActionLinks, options);
         ConfigureLinks(options.Footer.Links, options);
 
-        ConfigureCheckUrls(options.HealthCheck.InternalApis, options);
-        ConfigureCheckUrls(options.HealthCheck.ExternalApis, options);
-        ConfigureCheckUrls(options.HealthCheck.ExternalSites, options);
-        ConfigureCheckUrls(options.HealthCheck.Databases, options);
+        ConfigureCheckUrls(options.FhHealthCheck.InternalApis, options);
+        ConfigureCheckUrls(options.FhHealthCheck.ExternalApis, options);
+        ConfigureCheckUrls(options.FhHealthCheck.ExternalSites, options);
+        ConfigureCheckUrls(options.FhHealthCheck.Databases, options);
 
         var enabledAlts = options.AlternativeFamilyHubsUi
             .Where(kvp => kvp.Value.Enabled)
@@ -46,7 +46,7 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
     {
         foreach (var link in linkOptions)
         {
-            ConfigureLink(link, link.Text, options);
+            ConfigureLink(link, options);
         }
     }
 
@@ -54,11 +54,11 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
     {
         foreach (var url in healthCheckUrls)
         {
-            ConfigureLink(url.Value, url.Key, options);
+            ConfigureUrl(url.Value, options);
         }
     }
 
-    private void ConfigureLink(IUrlOptions link, string linkText, FamilyHubsUiOptions options)
+    private void ConfigureLink(FhLinkOptions link, FamilyHubsUiOptions options)
     {
         if (link.ConfigUrl != null)
         {
@@ -67,13 +67,29 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
         else
         {
             // if Url is not set, use a simple slugified version of the link text
-            link.Url ??= $"/{linkText.ToLowerInvariant().Replace(' ', '-')}";
+            link.Url ??= $"/{link.Text.ToLowerInvariant().Replace(' ', '-')}";
 
             // if a base url key is set, treat the Url as a relative url from the given base
             if (!string.IsNullOrEmpty(link.BaseUrlKey))
             {
                 //todo: catch and rethrow with more context? i.e. link trying to create
                 link.Url = options.Url(link.BaseUrlKey, link.Url).ToString();
+            }
+        }
+    }
+
+    private void ConfigureUrl(HealthCheckUrlOptions link, FamilyHubsUiOptions options)
+    {
+        if (link.ConfigUrl != null)
+        {
+            link.Url = _configuration[link.ConfigUrl];
+        }
+        else
+        {
+            // if a base url key is set, treat the Url as a relative url from the given base
+            if (!string.IsNullOrEmpty(link.BaseUrlKey))
+            {
+                link.Url = options.Url(link.BaseUrlKey, link.Url ?? "").ToString();
             }
         }
     }
