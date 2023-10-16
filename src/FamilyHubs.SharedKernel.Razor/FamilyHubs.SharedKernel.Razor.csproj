@@ -29,6 +29,13 @@
 		<PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders" Version="0.20.0" />
 		<PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders.TagHelpers" Version="0.20.0" />
 		<PackageReference Include="StackExchange.Redis" Version="2.6.122" />
+		<PackageReference Include="AspNetCore.HealthChecks.AzureApplicationInsights" Version="7.0.0" />
+		<PackageReference Include="AspNetCore.HealthChecks.AzureKeyVault" Version="7.0.0" />
+		<PackageReference Include="AspNetCore.HealthChecks.OpenIdConnectServer" Version="7.0.0" />
+		<PackageReference Include="AspNetCore.HealthChecks.UI" Version="7.0.2" />
+		<PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="7.1.0" />
+		<PackageReference Include="AspNetCore.HealthChecks.Uris" Version="7.0.0" />
+		<PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="7.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
