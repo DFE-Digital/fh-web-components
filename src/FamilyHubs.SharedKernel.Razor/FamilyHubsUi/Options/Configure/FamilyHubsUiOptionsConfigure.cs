@@ -21,10 +21,15 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
     {
         options.SetAlternative(altName, parent);
 
-        ConfigureLink(options.Header.ServiceNameLink, options);
+        ConfigureLink(options.Header.ServiceNameLink, options.Header.ServiceNameLink.Text, options);
         ConfigureLinks(options.Header.NavigationLinks, options);
         ConfigureLinks(options.Header.ActionLinks, options);
         ConfigureLinks(options.Footer.Links, options);
+
+        ConfigureCheckUrls(options.HealthCheck.InternalApis, options);
+        ConfigureCheckUrls(options.HealthCheck.ExternalApis, options);
+        ConfigureCheckUrls(options.HealthCheck.ExternalSites, options);
+        ConfigureCheckUrls(options.HealthCheck.Databases, options);
 
         var enabledAlts = options.AlternativeFamilyHubsUi
             .Where(kvp => kvp.Value.Enabled)
@@ -37,15 +42,23 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
         }
     }
 
-    public void ConfigureLinks(FhLinkOptions[] linkOptions, FamilyHubsUiOptions options)
+    private void ConfigureLinks(FhLinkOptions[] linkOptions, FamilyHubsUiOptions options)
     {
         foreach (var link in linkOptions)
         {
-            ConfigureLink(link, options);
+            ConfigureLink(link, link.Text, options);
         }
     }
 
-    private void ConfigureLink(FhLinkOptions link, FamilyHubsUiOptions options)
+    private void ConfigureCheckUrls(Dictionary<string, HealthCheckUrlOptions> healthCheckUrls, FamilyHubsUiOptions options)
+    {
+        foreach (var url in healthCheckUrls)
+        {
+            ConfigureLink(url.Value, url.Key, options);
+        }
+    }
+
+    private void ConfigureLink(IUrlOptions link, string linkText, FamilyHubsUiOptions options)
     {
         if (link.ConfigUrl != null)
         {
@@ -54,7 +67,7 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
         else
         {
             // if Url is not set, use a simple slugified version of the link text
-            link.Url ??= $"/{link.Text.ToLowerInvariant().Replace(' ', '-')}";
+            link.Url ??= $"/{linkText.ToLowerInvariant().Replace(' ', '-')}";
 
             // if a base url key is set, treat the Url as a relative url from the given base
             if (!string.IsNullOrEmpty(link.BaseUrlKey))

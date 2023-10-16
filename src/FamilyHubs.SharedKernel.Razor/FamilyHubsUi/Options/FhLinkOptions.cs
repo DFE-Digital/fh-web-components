@@ -2,7 +2,7 @@
 
 namespace FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options;
 
-public class FhLinkOptions : IFhRenderLink
+public class FhLinkOptions : IFhRenderLink, IUrlOptions
 {
     /// <summary>
     /// The (visible) text of the link.
