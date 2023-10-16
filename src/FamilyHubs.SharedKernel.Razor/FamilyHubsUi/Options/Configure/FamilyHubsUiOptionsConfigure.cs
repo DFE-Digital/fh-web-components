@@ -26,10 +26,10 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
         ConfigureLinks(options.Header.ActionLinks, options);
         ConfigureLinks(options.Footer.Links, options);
 
-        ConfigureCheckUrls(options.FhHealthCheck.InternalApis, options);
-        ConfigureCheckUrls(options.FhHealthCheck.ExternalApis, options);
-        ConfigureCheckUrls(options.FhHealthCheck.ExternalSites, options);
-        ConfigureCheckUrls(options.FhHealthCheck.Databases, options);
+        ConfigureCheckUrls(options.HealthCheck.InternalApis, options);
+        ConfigureCheckUrls(options.HealthCheck.ExternalApis, options);
+        ConfigureCheckUrls(options.HealthCheck.ExternalSites, options);
+        ConfigureCheckUrls(options.HealthCheck.Databases, options);
 
         var enabledAlts = options.AlternativeFamilyHubsUi
             .Where(kvp => kvp.Value.Enabled)

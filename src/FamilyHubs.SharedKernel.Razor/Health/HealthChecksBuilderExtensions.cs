@@ -21,9 +21,9 @@ public static class HealthChecksBuilderExtensions
         this IHealthChecksBuilder builder,
         FamilyHubsUiOptions options)
     {
-        AddUrlTypes(builder, options.FhHealthCheck.InternalApis, UrlType.InternalApi);
-        AddUrlTypes(builder, options.FhHealthCheck.ExternalApis, UrlType.ExternalApi);
-        AddUrlTypes(builder, options.FhHealthCheck.ExternalSites, UrlType.ExternalSite);
+        AddUrlTypes(builder, options.HealthCheck.InternalApis, UrlType.InternalApi);
+        AddUrlTypes(builder, options.HealthCheck.ExternalApis, UrlType.ExternalApi);
+        AddUrlTypes(builder, options.HealthCheck.ExternalSites, UrlType.ExternalSite);
         return builder;
     }
 
