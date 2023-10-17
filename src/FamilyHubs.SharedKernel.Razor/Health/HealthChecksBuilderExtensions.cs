@@ -45,6 +45,13 @@ public class FhHealthChecksBuilder
             return;
         };
 
+        //todo: this is fh's specific
+        string? feedbackUrl = _configuration["FamilyHubsUi:FeedbackUrl"];
+        if (!string.IsNullOrEmpty(feedbackUrl))
+        {
+            _fhHealthCheckOptions!.ExternalSites.Add("Feedback Site", new HealthCheckUrlOptions { Url = feedbackUrl });
+        }
+
         ConfigureCheckUrls(_fhHealthCheckOptions!.InternalApis);
         ConfigureCheckUrls(_fhHealthCheckOptions.ExternalApis);
         ConfigureCheckUrls(_fhHealthCheckOptions.ExternalSites);
