@@ -1,6 +1,6 @@
 # Release Notes
 
-## 5.5.0
+## 5.6.0
 
 Add `AddFamilyHubs()` extension method to `IHealthChecksBuilder` to add:
 * standard Family Hubs health checks, e.g. for any configured Feedback site
