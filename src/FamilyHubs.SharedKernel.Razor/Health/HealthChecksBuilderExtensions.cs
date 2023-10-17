@@ -1,4 +1,5 @@
 ﻿using FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options;
+using FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options.HealthCheck;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
