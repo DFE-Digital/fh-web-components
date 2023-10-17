@@ -1,6 +1,5 @@
-﻿using FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options.HealthCheck;
-
-namespace FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options;
+﻿
+namespace FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options.HealthCheck;
 
 public class HealthCheckUrlOptions
 {
@@ -23,17 +22,4 @@ public class HealthCheckUrlOptions
     /// "FamilyHubsUi:FeedbackUrl"
     /// </example>
     public string? ConfigUrl { get; set; }
-}
-
-public class FhHealthCheckOptions
-{
-    public bool Enabled { get; set; }
-
-    public Dictionary<string, HealthCheckUrlOptions> InternalApis { get; set; } = new();
-
-    public Dictionary<string, HealthCheckUrlOptions> ExternalApis { get; set; } = new();
-
-    public Dictionary<string, HealthCheckUrlOptions> ExternalSites { get; set; } = new();
-
-    public Dictionary<string, HealthCheckDatabaseOptions> Databases { get; set; } = new();
 }
