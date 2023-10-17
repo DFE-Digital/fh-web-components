@@ -8,6 +8,29 @@ namespace FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options
     //    string? ConfigUrl { get; set; }
     //}
 
+    public class HealthCheckDatabaseOptions //: IUrlOptions
+    {
+        public enum DatabaseType
+        {
+            SqlServer
+        }
+
+        /// <summary>
+        /// The ConnectionString.
+        /// </summary>
+        public string? ConnectionString { get; set; }
+
+        /// <summary>
+        /// If supplied, the ConnectionString is populated from the config value found at the given config key.
+        /// </summary>
+        /// <example>
+        /// "ConnectionStrings:SharedKernelConnection"
+        /// </example>
+        public string? ConfigConnectionString { get; set; }
+
+        public DatabaseType Type { get; set; } = DatabaseType.SqlServer;
+    }
+
     public class HealthCheckUrlOptions //: IUrlOptions
     {
         /// <summary>
@@ -41,6 +64,6 @@ namespace FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options
 
         public Dictionary<string, HealthCheckUrlOptions> ExternalSites { get; set; } = new();
 
-        public Dictionary<string, HealthCheckUrlOptions> Databases { get; set; } = new();
+        public Dictionary<string, HealthCheckDatabaseOptions> Databases { get; set; } = new();
     }
 }

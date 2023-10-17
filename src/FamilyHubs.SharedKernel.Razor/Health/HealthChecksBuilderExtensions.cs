@@ -50,14 +50,21 @@ public class FhHealthChecksBuilder
         AddSqlDatabases(_fhHealthCheckOptions.Databases);
     }
 
-    private void AddSqlDatabases(Dictionary<string, HealthCheckUrlOptions> urls)
+    private void AddSqlDatabases(Dictionary<string, HealthCheckDatabaseOptions> dbs)
     {
-        foreach (var url in urls)
+        foreach (var db in dbs)
         {
-            ConfigureUrl(url.Value);
-            if (!string.IsNullOrEmpty(url.Value.Url))
+            if (db.Value.ConfigConnectionString != null)
             {
-                _builder.AddSqlServer(url.Value.Url!, failureStatus: HealthStatus.Degraded, tags: new[] {"Database"});
+                db.Value.ConnectionString = _configuration[db.Value.ConfigConnectionString];
+            }
+
+            if (!string.IsNullOrEmpty(db.Value.ConnectionString))
+            {
+                _builder.AddSqlServer(
+                    db.Value.ConnectionString,
+                    failureStatus: HealthStatus.Degraded,
+                    tags: new[] { "Database", db.Key });
             }
         }
     }
