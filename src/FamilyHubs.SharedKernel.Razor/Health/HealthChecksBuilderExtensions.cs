@@ -44,23 +44,25 @@ public class FhHealthChecksBuilder
             return;
         };
 
-        ConfigureCheckUrls(_fhHealthCheckOptions!.InternalApis);
-        ConfigureCheckUrls(_fhHealthCheckOptions.ExternalApis);
-        ConfigureCheckUrls(_fhHealthCheckOptions.ExternalSites);
-        ConfigureCheckUrls(_fhHealthCheckOptions.Databases);
+        //ConfigureCheckUrls(_fhHealthCheckOptions!.InternalApis);
+        //ConfigureCheckUrls(_fhHealthCheckOptions.ExternalApis);
+        //ConfigureCheckUrls(_fhHealthCheckOptions.ExternalSites);
+        //ConfigureCheckUrls(_fhHealthCheckOptions.Databases);
 
-        AddUrlTypes(_fhHealthCheckOptions.InternalApis, UrlType.InternalApi);
+        AddUrlTypes(_fhHealthCheckOptions!.InternalApis, UrlType.InternalApi);
         AddUrlTypes(_fhHealthCheckOptions.ExternalApis, UrlType.ExternalApi);
         AddUrlTypes(_fhHealthCheckOptions.ExternalSites, UrlType.ExternalSite);
+
+        //_builder.AddSqlServer(sqlServerCacheConnectionString!, failureStatus: HealthStatus.Degraded, tags: new[] { "Database" })
     }
 
-    private void ConfigureCheckUrls(Dictionary<string, HealthCheckUrlOptions> healthCheckUrls)
-    {
-        foreach (var url in healthCheckUrls)
-        {
-            ConfigureUrl(url.Value);
-        }
-    }
+    //private void ConfigureCheckUrls(Dictionary<string, HealthCheckUrlOptions> healthCheckUrls)
+    //{
+    //    foreach (var url in healthCheckUrls)
+    //    {
+    //        ConfigureUrl(url.Value);
+    //    }
+    //}
 
     private void ConfigureUrl(HealthCheckUrlOptions link)
     {
@@ -100,6 +102,7 @@ public class FhHealthChecksBuilder
     {
         foreach (var url in urls)
         {
+            ConfigureUrl(url.Value);
             AddApi(url.Key, url.Value.Url, urlType);
         }
     }
