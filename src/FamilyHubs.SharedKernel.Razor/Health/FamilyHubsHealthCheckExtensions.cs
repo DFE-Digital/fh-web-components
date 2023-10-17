@@ -1,20 +1,23 @@
 ﻿using FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options.HealthCheck;
+using FamilyHubs.SharedKernel.Razor.Health;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
-namespace FamilyHubs.SharedKernel.Razor.Health;
+namespace Microsoft.Extensions.DependencyInjection;
 
-public static class HealthChecksBuilderExtensions
+public static class FamilyHubsHealthCheckExtensions
 {
     public static IHealthChecksBuilder AddFamilyHubsHealthChecks(
-        this IHealthChecksBuilder builder,
+        this IServiceCollection services,
         IConfiguration configuration,
         string? appInsightsInstrumentationConfigKey = "APPINSIGHTS_INSTRUMENTATIONKEY")
     {
+        // AddHealthChecks() is idempotent, so we don't have to worry about consumers calling it multiple times, or in any particular order
+        var builder = services.AddHealthChecks();
+
         if (appInsightsInstrumentationConfigKey != null)
         {
             builder.AddAppInsights(configuration, appInsightsInstrumentationConfigKey);
@@ -50,7 +53,7 @@ public static class HealthChecksBuilderExtensions
         return builder;
     }
 
-    public static WebApplication MapSiteHealthChecks(this WebApplication app)
+    public static WebApplication MapFamilyHubsHealthChecks(this WebApplication app)
     {
         app.MapHealthChecks("/health", new HealthCheckOptions
         {

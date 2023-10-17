@@ -7,10 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-builder.Services.AddFamilyHubs(builder.Configuration);
-
 builder.Services
-    .AddHealthChecks()
+    .AddFamilyHubs(builder.Configuration)
     .AddFamilyHubsHealthChecks(builder.Configuration);
 
 var app = builder.Build();
@@ -33,6 +31,6 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
-app.MapSiteHealthChecks();
+app.MapFamilyHubsHealthChecks();
 
 app.Run();

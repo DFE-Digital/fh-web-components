@@ -6,7 +6,7 @@ Add `AddFamilyHubsHealthChecks()` extension method to `IHealthChecksBuilder` to 
 * standard Family Hubs health checks, e.g. for any configured Feedback site
 * health checks from configuration (see example site's `appsettings.json` for examples)
 
-Add `MapSiteHealthChecks()` extension method to `WebApplication` to map the health checks to the `/health` endpoint.
+Add `MapFamilyHubsHealthChecks()` extension method to `WebApplication` to map the health checks to the `/health` endpoint.
 
 ## 5.5.0
 
