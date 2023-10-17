@@ -17,6 +17,9 @@ public static class HealthChecksBuilderExtensions
         ExternalSite
     }
 
+    //todo: in own config outside of FamilyHubsUiOptions
+    //todo: move to sharedkernel
+
     public static IHealthChecksBuilder AddFamilyHubs(
         this IHealthChecksBuilder builder,
         FamilyHubsUiOptions options)
