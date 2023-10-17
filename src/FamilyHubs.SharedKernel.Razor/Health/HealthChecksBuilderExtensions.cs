@@ -28,14 +28,13 @@ public class FhHealthChecksBuilder
     public FhHealthChecksBuilder(
         IHealthChecksBuilder builder,
         IConfiguration configuration,
-        string healthCheckConfigKey = "FamilyHubsUi:HealthCheck",
-        string urlsConfigKey = "FamilyHubsUi:Urls")
+        FhHealthCheckOptions? fhHealthCheckOptions,
+        Dictionary<string, string>? urls)
     {
         _builder = builder;
         _configuration = configuration;
-
-        _fhHealthCheckOptions = configuration.GetSection(healthCheckConfigKey).Get<FhHealthCheckOptions>();
-        _urls = configuration.GetSection(urlsConfigKey).Get<Dictionary<string, string>>();
+        _fhHealthCheckOptions = fhHealthCheckOptions;
+        _urls = urls;
     }
 
     public void AddFamilyHubs()
@@ -44,13 +43,6 @@ public class FhHealthChecksBuilder
         {
             return;
         };
-
-        //todo: this is fh's specific
-        string? feedbackUrl = _configuration["FamilyHubsUi:FeedbackUrl"];
-        if (!string.IsNullOrEmpty(feedbackUrl))
-        {
-            _fhHealthCheckOptions!.ExternalSites.Add("Feedback Site", new HealthCheckUrlOptions { Url = feedbackUrl });
-        }
 
         ConfigureCheckUrls(_fhHealthCheckOptions!.InternalApis);
         ConfigureCheckUrls(_fhHealthCheckOptions.ExternalApis);
@@ -140,7 +132,16 @@ public static class HealthChecksBuilderExtensions
         this IHealthChecksBuilder builder,
         IConfiguration configuration)
     {
-        var fhBuilder = new FhHealthChecksBuilder(builder, configuration);
+        var fhHealthCheckOptions = configuration.GetSection("FamilyHubsUi:HealthCheck").Get<FhHealthCheckOptions>();
+        var urls = configuration.GetSection("FamilyHubsUi:Urls").Get<Dictionary<string, string>>();
+        
+        string? feedbackUrl = configuration["FamilyHubsUi:FeedbackUrl"];
+        if (!string.IsNullOrEmpty(feedbackUrl))
+        {
+            fhHealthCheckOptions!.ExternalSites.Add("Feedback Site", new HealthCheckUrlOptions { Url = feedbackUrl });
+        }
+
+        var fhBuilder = new FhHealthChecksBuilder(builder, configuration, fhHealthCheckOptions, urls);
 
         fhBuilder.AddFamilyHubs();
 
