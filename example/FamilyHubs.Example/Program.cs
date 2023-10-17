@@ -11,7 +11,7 @@ builder.Services.AddFamilyHubs(builder.Configuration);
 
 builder.Services
     .AddHealthChecks()
-    .AddFamilyHubs(builder.Configuration);
+    .AddFamilyHubsHealthChecks(builder.Configuration);
 
 var app = builder.Build();
 

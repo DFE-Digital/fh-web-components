@@ -10,7 +10,7 @@ namespace FamilyHubs.SharedKernel.Razor.Health;
 
 public static class HealthChecksBuilderExtensions
 {
-    public static IHealthChecksBuilder AddFamilyHubs(
+    public static IHealthChecksBuilder AddFamilyHubsHealthChecks(
         this IHealthChecksBuilder builder,
         IConfiguration configuration,
         string? appInsightsInstrumentationConfigKey = "APPINSIGHTS_INSTRUMENTATIONKEY")
