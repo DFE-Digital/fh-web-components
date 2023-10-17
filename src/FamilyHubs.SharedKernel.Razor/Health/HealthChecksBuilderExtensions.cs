@@ -16,7 +16,6 @@ public class FhHealthChecksBuilder
     {
         InternalApi,
         ExternalApi,
-        InternalSite,
         ExternalSite
     }
 
@@ -44,25 +43,24 @@ public class FhHealthChecksBuilder
             return;
         };
 
-        //ConfigureCheckUrls(_fhHealthCheckOptions!.InternalApis);
-        //ConfigureCheckUrls(_fhHealthCheckOptions.ExternalApis);
-        //ConfigureCheckUrls(_fhHealthCheckOptions.ExternalSites);
-        //ConfigureCheckUrls(_fhHealthCheckOptions.Databases);
-
         AddUrlTypes(_fhHealthCheckOptions!.InternalApis, UrlType.InternalApi);
         AddUrlTypes(_fhHealthCheckOptions.ExternalApis, UrlType.ExternalApi);
         AddUrlTypes(_fhHealthCheckOptions.ExternalSites, UrlType.ExternalSite);
 
-        //_builder.AddSqlServer(sqlServerCacheConnectionString!, failureStatus: HealthStatus.Degraded, tags: new[] { "Database" })
+        AddSqlDatabases(_fhHealthCheckOptions.Databases);
     }
 
-    //private void ConfigureCheckUrls(Dictionary<string, HealthCheckUrlOptions> healthCheckUrls)
-    //{
-    //    foreach (var url in healthCheckUrls)
-    //    {
-    //        ConfigureUrl(url.Value);
-    //    }
-    //}
+    private void AddSqlDatabases(Dictionary<string, HealthCheckUrlOptions> urls)
+    {
+        foreach (var url in urls)
+        {
+            ConfigureUrl(url.Value);
+            if (!string.IsNullOrEmpty(url.Value.Url))
+            {
+                _builder.AddSqlServer(url.Value.Url!, failureStatus: HealthStatus.Degraded, tags: new[] {"Database"});
+            }
+        }
+    }
 
     private void ConfigureUrl(HealthCheckUrlOptions link)
     {
@@ -133,8 +131,14 @@ public static class HealthChecksBuilderExtensions
 {
     public static IHealthChecksBuilder AddFamilyHubs(
         this IHealthChecksBuilder builder,
-        IConfiguration configuration)
+        IConfiguration configuration,
+        string? appInsightsInstrumentationConfigKey = "APPINSIGHTS_INSTRUMENTATIONKEY")
     {
+        if (appInsightsInstrumentationConfigKey != null)
+        {
+            builder.AddAppInsights(configuration, appInsightsInstrumentationConfigKey);
+        }
+
         var fhHealthCheckOptions = configuration.GetSection("FamilyHubsUi:HealthCheck").Get<FhHealthCheckOptions>();
         var urls = configuration.GetSection("FamilyHubsUi:Urls").Get<Dictionary<string, string>>();
         
@@ -148,6 +152,20 @@ public static class HealthChecksBuilderExtensions
 
         fhBuilder.AddFamilyHubs();
 
+        return builder;
+    }
+
+    public static IHealthChecksBuilder AddAppInsights(
+        this IHealthChecksBuilder builder,
+        IConfiguration config,
+        string appInsightsInstrumentationConfigKey)
+    {
+        string? aiInstrumentationKey = config.GetValue<string>(appInsightsInstrumentationConfigKey);
+        if (!string.IsNullOrEmpty(aiInstrumentationKey))
+        {
+            //todo: check in dev env
+            builder.AddAzureApplicationInsights(aiInstrumentationKey, "App Insights", HealthStatus.Degraded, new[] { "Infrastructure" });
+        }
         return builder;
     }
 

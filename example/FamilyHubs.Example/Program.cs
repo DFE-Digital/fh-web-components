@@ -22,7 +22,9 @@ builder.Services.AddFamilyHubs(builder.Configuration);
 //var uiOptions = serviceProvider.GetService<IOptions<FamilyHubsUiOptions>>();
 //var healthCheckBuilder = builder.Services.AddHealthChecks().AddFamilyHubs(uiOptions!.Value);
 
-builder.Services.AddHealthChecks().AddFamilyHubs(builder.Configuration);
+builder.Services
+    .AddHealthChecks()
+    .AddFamilyHubs(builder.Configuration);
 
 var app = builder.Build();
 
