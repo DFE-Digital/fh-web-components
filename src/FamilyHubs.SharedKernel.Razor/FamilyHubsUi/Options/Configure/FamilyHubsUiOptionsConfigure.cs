@@ -37,7 +37,7 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
         }
     }
 
-    public void ConfigureLinks(FhLinkOptions[] linkOptions, FamilyHubsUiOptions options)
+    private void ConfigureLinks(FhLinkOptions[] linkOptions, FamilyHubsUiOptions options)
     {
         foreach (var link in linkOptions)
         {
