@@ -8,6 +8,8 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace FamilyHubs.SharedKernel.Razor.Health;
 
+//todo: move to sharedkernel, so can be used in api's
+//todo: Urls don't support parent fam hub options 
 public class FhHealthChecksBuilder
 {
     public enum UrlType
@@ -36,11 +38,11 @@ public class FhHealthChecksBuilder
         _urls = configuration.GetSection(urlsConfigKey).Get<Dictionary<string, string>>();
     }
 
-    public FhHealthChecksBuilder AddFamilyHubs()
+    public void AddFamilyHubs()
     {
         if (_fhHealthCheckOptions?.Enabled == false)
         {
-            return this;
+            return;
         };
 
         ConfigureCheckUrls(_fhHealthCheckOptions!.InternalApis);
@@ -51,8 +53,6 @@ public class FhHealthChecksBuilder
         AddUrlTypes(_fhHealthCheckOptions.InternalApis, UrlType.InternalApi);
         AddUrlTypes(_fhHealthCheckOptions.ExternalApis, UrlType.ExternalApi);
         AddUrlTypes(_fhHealthCheckOptions.ExternalSites, UrlType.ExternalSite);
-
-        return this;
     }
 
     private void ConfigureCheckUrls(Dictionary<string, HealthCheckUrlOptions> healthCheckUrls)
@@ -129,9 +129,6 @@ public class FhHealthChecksBuilder
 
 public static class HealthChecksBuilderExtensions
 {
-    //todo: in own config outside of FamilyHubsUiOptions
-    //todo: move to sharedkernel
-
     public static IHealthChecksBuilder AddFamilyHubs(
         this IHealthChecksBuilder builder,
         IConfiguration configuration)
@@ -139,24 +136,6 @@ public static class HealthChecksBuilderExtensions
         var fhBuilder = new FhHealthChecksBuilder(builder, configuration);
 
         fhBuilder.AddFamilyHubs();
-        ////todo: make usable in api's - move core to sharedkernel and pass config keys for HealthCheck and Urls, so that they can live outside FamilyHubsUi
-        //var healthCheckOptions = configuration.GetSection("FamilyHubsUi:HealthCheck").Get<FhHealthCheckOptions>();
-
-        //if (healthCheckOptions == null)
-        //{
-        //    return builder;
-        //};
-
-        //var urls = configuration.GetSection("FamilyHubsUi:Urls").Get<Dictionary<string, string>>();
-
-        //ConfigureCheckUrls(healthCheckOptions.InternalApis, options);
-        //ConfigureCheckUrls(healthCheckOptions.ExternalApis, options);
-        //ConfigureCheckUrls(healthCheckOptions.ExternalSites, options);
-        //ConfigureCheckUrls(healthCheckOptions.Databases, options);
-
-        //AddUrlTypes(builder, healthCheckOptions.InternalApis, UrlType.InternalApi);
-        //AddUrlTypes(builder, healthCheckOptions.ExternalApis, UrlType.ExternalApi);
-        //AddUrlTypes(builder, healthCheckOptions.ExternalSites, UrlType.ExternalSite);
 
         return builder;
     }
