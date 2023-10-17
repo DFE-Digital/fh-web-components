@@ -26,11 +26,6 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
         ConfigureLinks(options.Header.ActionLinks, options);
         ConfigureLinks(options.Footer.Links, options);
 
-        ConfigureCheckUrls(options.HealthCheck.InternalApis, options);
-        ConfigureCheckUrls(options.HealthCheck.ExternalApis, options);
-        ConfigureCheckUrls(options.HealthCheck.ExternalSites, options);
-        ConfigureCheckUrls(options.HealthCheck.Databases, options);
-
         var enabledAlts = options.AlternativeFamilyHubsUi
             .Where(kvp => kvp.Value.Enabled)
             .Select(kvp => kvp);
@@ -50,14 +45,6 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
         }
     }
 
-    private void ConfigureCheckUrls(Dictionary<string, HealthCheckUrlOptions> healthCheckUrls, FamilyHubsUiOptions options)
-    {
-        foreach (var url in healthCheckUrls)
-        {
-            ConfigureUrl(url.Value, options);
-        }
-    }
-
     private void ConfigureLink(FhLinkOptions link, FamilyHubsUiOptions options)
     {
         if (link.ConfigUrl != null)
@@ -74,22 +61,6 @@ public class FamilyHubsUiOptionsConfigure : IConfigureOptions<FamilyHubsUiOption
             {
                 //todo: catch and rethrow with more context? i.e. link trying to create
                 link.Url = options.Url(link.BaseUrlKey, link.Url).ToString();
-            }
-        }
-    }
-
-    private void ConfigureUrl(HealthCheckUrlOptions link, FamilyHubsUiOptions options)
-    {
-        if (link.ConfigUrl != null)
-        {
-            link.Url = _configuration[link.ConfigUrl];
-        }
-        else
-        {
-            // if a base url key is set, treat the Url as a relative url from the given base
-            if (!string.IsNullOrEmpty(link.BaseUrlKey))
-            {
-                link.Url = options.Url(link.BaseUrlKey, link.Url ?? "").ToString();
             }
         }
     }

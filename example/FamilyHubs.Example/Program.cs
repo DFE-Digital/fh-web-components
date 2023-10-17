@@ -16,11 +16,13 @@ builder.Services.AddFamilyHubs(builder.Configuration);
 // Func<IServiceProvider, Uri> uriProvider,
 
 
-#pragma warning disable ASP0000
-var serviceProvider = builder.Services.BuildServiceProvider();
-#pragma warning restore ASP0000
-var uiOptions = serviceProvider.GetService<IOptions<FamilyHubsUiOptions>>();
-var healthCheckBuilder = builder.Services.AddHealthChecks().AddFamilyHubs(uiOptions!.Value);
+//#pragma warning disable ASP0000
+//var serviceProvider = builder.Services.BuildServiceProvider();
+//#pragma warning restore ASP0000
+//var uiOptions = serviceProvider.GetService<IOptions<FamilyHubsUiOptions>>();
+//var healthCheckBuilder = builder.Services.AddHealthChecks().AddFamilyHubs(uiOptions!.Value);
+
+builder.Services.AddHealthChecks().AddFamilyHubs(builder.Configuration);
 
 var app = builder.Build();
 

@@ -23,8 +23,6 @@ public class FamilyHubsUiOptions : IFamilyHubsUiOptions
 
     public Dictionary<string, string> Urls { get; set; } = new();
 
-    public FhHealthCheckOptions HealthCheck { get; set; } = new();
-
     public AnalyticsOptions? Analytics { get; set; }
 
     public HeaderOptions Header { get; set; } = new();
