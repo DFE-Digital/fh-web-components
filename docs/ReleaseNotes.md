@@ -2,6 +2,14 @@
 
 ## 5.5.0
 
+Add `AddFamilyHubs()` extension method to `IHealthChecksBuilder` to add:
+* standard Family Hubs health checks, e.g. for any configured Feedback site
+* health checks from configuration (see example site's `appsettings.json` for examples)
+
+Add `MapSiteHealthChecks()` extension method to `WebApplication` to map the health checks to the `/health` endpoint.
+
+## 5.5.0
+
 Customise default [MOJ filter](https://design-patterns.service.justice.gov.uk/components/filter/) styling and add 'fh-' styles for enhancing the filtering, for such things as scrollable sub groups of radios/checkboxes.
 
 The styles work in conjunction with the filtering classes introduced in v5.3.0.

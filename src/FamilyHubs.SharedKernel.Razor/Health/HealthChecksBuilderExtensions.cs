@@ -36,7 +36,7 @@ public static class HealthChecksBuilderExtensions
         return builder;
     }
 
-    public static IHealthChecksBuilder AddAppInsights(
+    private static IHealthChecksBuilder AddAppInsights(
         this IHealthChecksBuilder builder,
         IConfiguration config,
         string appInsightsInstrumentationConfigKey)
