@@ -31,7 +31,12 @@ public class SummaryListRowTagHelper : TagHelper
                 $@"<dt class='govuk-summary-list__key'>{Key}</dt>
                 <dd class='govuk-summary-list__value'>{finalValue}</dd>");
 
-            if (!string.IsNullOrWhiteSpace(Action1))
+            string divClass = "govuk-summary-list__row";
+            if (string.IsNullOrWhiteSpace(Action1))
+            {
+                divClass += " govuk-summary-list__row--no-actions";
+            }
+            else
             {
                 string action = ActionLink(Action1, Action1Href, Key);
                 if (!string.IsNullOrWhiteSpace(Action2))
@@ -40,6 +45,7 @@ public class SummaryListRowTagHelper : TagHelper
                 }
                 output.Content.AppendHtml($"<dd class=\"govuk-summary-list__actions\">{action}</dd>");
             }
+            output.Attributes.SetAttribute("class", divClass);
         }
         else
         {
