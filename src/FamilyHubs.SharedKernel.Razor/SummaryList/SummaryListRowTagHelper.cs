@@ -61,21 +61,3 @@ public class SummaryListRowTagHelper : TagHelper
         return $"<li class='govuk-summary-list__actions-list-item'>{actionLink}</li>";
     }
 }
-
-//public class SummaryListRow2TagHelper : TagHelper
-//{
-//    public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
-//    {
-//        string finalValue = (await output.GetChildContentAsync()).GetContent();
-//        if (!string.IsNullOrWhiteSpace(finalValue))
-//        {
-//            output.TagName = "div";
-//            output.Attributes.SetAttribute("class", "govuk-summary-list__row");
-//            output.Content.SetHtmlContent(finalValue);
-//        }
-//        else
-//        {
-//            output.SuppressOutput();
-//        }
-//    }
-//}
