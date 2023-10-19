@@ -6,8 +6,6 @@ namespace FamilyHubs.SharedKernel.Razor.SummaryList;
 
 public class SummaryListRowTagHelper : TagHelper
 {
-    //todo: Key is mandatory
-    [Required]
     public string? Key { get; set; }
     public string? Action1 { get; set; }
     public string? Action1Href { get; set; }
