@@ -1,5 +1,11 @@
 # Release Notes
 
+### 5.7.0
+
+Add support for actions column to summary list row tag helper.
+
+See Summary List example page for more info.
+
 ## 5.6.0
 
 Add `AddFamilyHubsHealthChecks()` extension method to `IHealthChecksBuilder` to add:
