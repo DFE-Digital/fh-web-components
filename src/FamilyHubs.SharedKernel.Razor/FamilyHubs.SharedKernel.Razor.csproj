@@ -15,7 +15,7 @@
 	<PackageTags>govuk frontend design-system dfe family-hub</PackageTags>
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-	<WarningsNotAsErrors>NU5104</WarningsNotAsErrors>
+    <NoWarn>S1135,S125</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,11 +23,15 @@
   </ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Extensions.Caching.SqlServer" Version="7.0.11" />
-		<PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="7.0.11" />
+		<PackageReference Include="Microsoft.Extensions.Caching.SqlServer" Version="7.0.12" />
+		<PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="7.0.12" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
-		<PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders" Version="0.20.0" />
-		<PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders.TagHelpers" Version="0.20.0" />
+		<PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders" Version="0.21.0" />
+		<PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders.TagHelpers" Version="0.21.0" />
+		<PackageReference Include="SonarAnalyzer.CSharp" Version="9.12.0.78982">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 		<PackageReference Include="StackExchange.Redis" Version="2.6.122" />
 		<PackageReference Include="AspNetCore.HealthChecks.AzureApplicationInsights" Version="7.0.0" />
 		<PackageReference Include="AspNetCore.HealthChecks.UI" Version="7.0.2" />

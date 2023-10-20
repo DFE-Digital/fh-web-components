@@ -4,7 +4,9 @@ namespace FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options.Configure;
 
 public class FamilyHubsUiOptionsValidation : IValidateOptions<FamilyHubsUiOptions>
 {
+#pragma warning disable S927 // parameter name _ doesn't match base, but indicates that we don't care about the value
     public ValidateOptionsResult Validate(string? _, FamilyHubsUiOptions options)
+#pragma warning restore S927
     {
         var validationErrors = new List<string>();
 

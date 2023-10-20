@@ -38,7 +38,7 @@ public class FhHealthChecksBuilder
         if (_fhHealthCheckOptions?.Enabled == false)
         {
             return;
-        };
+        }
 
         AddUrlTypes(_fhHealthCheckOptions!.InternalApis, UrlType.InternalApi);
         AddUrlTypes(_fhHealthCheckOptions.ExternalApis, UrlType.ExternalApi);

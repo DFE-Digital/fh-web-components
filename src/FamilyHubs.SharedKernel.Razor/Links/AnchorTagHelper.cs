@@ -3,15 +3,12 @@
 namespace FamilyHubs.SharedKernel.Razor.Links;
 
 [HtmlTargetElement("a", Attributes = "web-page")]
-[HtmlTargetElement("a", Attributes = "fh-new-tab")]
 [HtmlTargetElement("a", Attributes = "new-tab")]
 [HtmlTargetElement("a", Attributes = "email")]
 [HtmlTargetElement("a", Attributes = "phone")]
 public class AnchorTagHelper : TagHelper
 {
     public string? WebPage { get; set; }
-    [Obsolete("fh-new-tab is deprecated, please use new-tab instead.")]
-    public bool FhNewTab { get; set; }
     public bool NewTab { get; set; }
     public string? Email { get; set; }
     public string? Phone { get; set; }
@@ -38,9 +35,7 @@ public class AnchorTagHelper : TagHelper
             output.Content.SetContent(Phone);
         }
 
-#pragma warning disable CS0618
-        if (NewTab || FhNewTab)
-#pragma warning restore CS0618
+        if (NewTab)
         {
             output.Attributes.SetAttribute("target", "_blank");
             output.Attributes.SetAttribute("rel", "noopener noreferrer");
