@@ -1,7 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 	
-<!--todo: once consumers have been updated to use the shared RCL, just add appropriate bits to sharedkernel and don't have a sharedkernel.razor -->
-
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
@@ -45,7 +43,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Pages\Shared\FilterGroups\" />
 	  <Folder Include="wwwroot\" />
 	</ItemGroup>
 
