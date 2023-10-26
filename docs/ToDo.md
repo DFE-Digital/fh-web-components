@@ -1,5 +1,11 @@
 # Potential improvements
 
+* finish off error summary tag helper (and related changes)
+
+* copy code from .net for asp-page etc for summary list tag helper as alternatives for action hrefs
+
+* change how we handle changing the header, so instead (or in addition to) of the code behind file implementing the interface, allow the user to add a service to the service collection. that should allow us to move all the error pages into the shared components, but still let the consumer decide on what goes in the header
+
 * add postcode search from Find?
 
 * add typescript compilation to the example site
