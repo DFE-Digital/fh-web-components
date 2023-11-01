@@ -1,4 +1,5 @@
 ﻿
+@using Microsoft.EntityFrameworkCore.Storage.ValueConversion
 @model FamilyHubs.SharedKernel.Razor.Dashboard.IDashboard<object>
 
 <div class="govuk-grid-row">
@@ -9,7 +10,7 @@
                 <tr class="govuk-table__row">
                     @foreach (var columnHeader in Model.ColumnHeaders)
                     {
-                        <th scope="col" class="govuk-table__header" @(columnHeader.Sort.HasValue ? $"aria-sort={columnHeader.Sort.Value}" : "")>
+                        <th scope="col" class="govuk-table__header @columnHeader.Classes" @(columnHeader.Sort.HasValue ? $"aria-sort={columnHeader.Sort.Value}" : "")>
                             @Html.Raw(columnHeader.ContentAsHtml)
                         </th>
                     }
@@ -22,6 +23,7 @@
                     <tr class="govuk-table__row">
                         @foreach (var cell in row.Cells)
                         {
+                            @* todo: have align per cell: @cell.Classes, or reference header in cell and take from there? *@
                             <td class="govuk-table__cell">
                                 @if (cell.PartialName != null)
                                 {
