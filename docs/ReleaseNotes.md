@@ -1,5 +1,9 @@
 # Release Notes
 
+### 5.8.0
+
+Add Align parameter to ColumnImmutable constructor, to allow the alignment of dashboard columns to be specified.
+
 ### 5.7.0
 
 Add support for actions column to summary list row tag helper.
