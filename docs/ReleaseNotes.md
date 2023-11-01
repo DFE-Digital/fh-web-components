@@ -4,6 +4,8 @@
 
 Add Align parameter to ColumnImmutable constructor, to allow the alignment of dashboard columns to be specified.
 
+Remove deprecated `fh-new-tab` attribute from `a` tag helper.
+
 ### 5.7.0
 
 Add support for actions column to summary list row tag helper.
