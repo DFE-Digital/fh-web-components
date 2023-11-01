@@ -21,20 +21,23 @@
                 @foreach (var row in Model.Rows)
                 {
                     <tr class="govuk-table__row">
-                        @foreach (var cell in row.Cells)
+                    @{
+                        var cellAndHeaders = row.Cells.Zip(Model.ColumnHeaders, (cell, header) => new { Cell = cell, Header = header });
+
+                        foreach (var cellAndHeader in cellAndHeaders)
                         {
-                            @* todo: have align per cell: @cell.Classes, or reference header in cell and take from there? *@
-                            <td class="govuk-table__cell">
-                                @if (cell.PartialName != null)
+                            <td class="govuk-table__cell @cellAndHeader.Header.Classes">
+                                @if (cellAndHeader.Cell.PartialName != null)
                                 {
-                                    <partial name="@cell.PartialName" model="row.Item"/>
+                                    <partial name="@cellAndHeader.Cell.PartialName" model="row.Item"/>
                                 }
                                 else
                                 {
-                                    @Html.Raw(cell.ContentAsHtml)
+                                    @Html.Raw(cellAndHeader.Cell.ContentAsHtml)
                                 }
                             </td>
                         }
+                    }
                     </tr>
                 }
                 </tbody>
