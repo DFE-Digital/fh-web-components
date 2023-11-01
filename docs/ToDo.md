@@ -1,5 +1,7 @@
 # Potential improvements
 
+* don't use numeric class for column alignment
+
 * finish off error summary tag helper (and related changes)
 
 * copy code from .net for asp-page etc for summary list tag helper as alternatives for action hrefs
