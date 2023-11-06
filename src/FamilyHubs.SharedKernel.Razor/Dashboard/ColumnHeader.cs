@@ -11,6 +11,12 @@ internal class ColumnHeader : IColumnHeader
         Sort = sort;
         _columnImmutable = columnImmutable;
         _pagePath = pagePath;
+        Classes = _columnImmutable.Align switch
+        {
+            //todo: mix in numeric into new class
+            Align.Right => "govuk-table__header--numeric",
+            _ => null
+        };
     }
 
     public string ContentAsHtml
@@ -33,4 +39,6 @@ internal class ColumnHeader : IColumnHeader
     }
 
     public SortOrder? Sort { get; }
+
+    public string? Classes { get; }
 }

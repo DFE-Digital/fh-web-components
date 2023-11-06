@@ -13,4 +13,9 @@ public interface IColumnHeader
     /// This will be rendered as the column header's content. It can contain HTML.
     /// </summary>
     string ContentAsHtml { get; }
+
+    /// <summary>
+    /// The (space separated) classes to be applied to the header element.
+    /// </summary>
+    public string? Classes { get; }
 }

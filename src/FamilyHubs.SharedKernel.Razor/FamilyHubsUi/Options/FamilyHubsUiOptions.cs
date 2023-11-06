@@ -71,7 +71,6 @@ public class FamilyHubsUiOptions : IFamilyHubsUiOptions
     public Uri Url<TUrlKeyEnum>(TUrlKeyEnum baseUrl, string? relativeUrl = null)
         where TUrlKeyEnum : struct, Enum
     {
-        var baseUrlKeyName = baseUrl.ToString();
         return Url(baseUrl.ToString(), relativeUrl);
     }
 

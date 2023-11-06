@@ -14,9 +14,12 @@ public class SummaryListRowTagHelper : TagHelper
 
     public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
     {
+        ArgumentNullException.ThrowIfNull(context);
+        ArgumentNullException.ThrowIfNull(output);
+
         if (string.IsNullOrEmpty(Key))
         {
-            throw new ArgumentNullException(nameof(Key));
+            throw new InvalidOperationException("The 'key' attribute is required.");
         }
 
         string finalValue = (await output.GetChildContentAsync()).GetContent();

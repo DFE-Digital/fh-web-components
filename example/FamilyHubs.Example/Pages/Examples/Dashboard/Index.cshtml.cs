@@ -39,7 +39,7 @@ public class IndexModel : PageModel, IDashboard<RowData>
     {
         new("SortableColumn1", Column.SortableColumn1.ToString()),
         new("No sort"),
-        new("SortableColumn1", Column.SortableColumn2.ToString()),
+        new("SortableColumn1", Column.SortableColumn2.ToString(), Align.Right)
     };
 
     private IEnumerable<IColumnHeader> _columnHeaders = Enumerable.Empty<IColumnHeader>();
