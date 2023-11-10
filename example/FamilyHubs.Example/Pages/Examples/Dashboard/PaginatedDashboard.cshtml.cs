@@ -4,29 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FamilyHubs.Example.Pages.Examples.Dashboard;
 
-public record RowData(string Foo, string Bar);
-
-public class Row : IRow<RowData>
-{
-    public RowData Item { get; }
-
-    public Row(RowData data)
-    {
-        Item = data;
-    }
-
-    public IEnumerable<ICell> Cells
-    {
-        get
-        {
-            yield return new Cell(Item.Foo);
-            yield return new Cell(Item.Bar);
-            yield return new Cell($"{Item.Foo} + {Item.Bar}");
-        }
-    }
-}
-
-public class IndexModel : PageModel, IDashboard<RowData>
+public class PaginatedDashboardModel : PageModel, IDashboard<RowData>
 {
     private enum Column
     {
@@ -48,7 +26,9 @@ public class IndexModel : PageModel, IDashboard<RowData>
     IEnumerable<IColumnHeader> IDashboard<RowData>.ColumnHeaders => _columnHeaders;
     IEnumerable<IRow<RowData>> IDashboard<RowData>.Rows => _rows;
 
-    public void OnGet(string? columnName, SortOrder sort)
+    public IPagination Pagination { get; set; } = ILinkPagination.DontShow;
+
+    public void OnGet(string? columnName, SortOrder sort, int currentPage = 1)
     {
         if (columnName == null || !Enum.TryParse(columnName, true, out Column column))
         {
@@ -57,28 +37,27 @@ public class IndexModel : PageModel, IDashboard<RowData>
             sort = SortOrder.ascending;
         }
 
-        _columnHeaders = new ColumnHeaderFactory(_columnImmutables, "/Examples/Dashboard", column.ToString(), sort)
+        _columnHeaders = new ColumnHeaderFactory(_columnImmutables, "/Examples/Dashboard/PaginatedDashboard", column.ToString(), sort)
             .CreateAll();
 
-        _rows = GetSortedRows(column, sort);
+        const int pageSize = 10;
+        _rows = GetSortedRows(column, sort, currentPage, pageSize);
+
+        Pagination = new LargeSetLinkPagination<Column>(
+            "/Examples/Dashboard/PaginatedDashboard",
+            10, currentPage, column, sort);
     }
 
     string? IDashboard<RowData>.TableClass => "app-dashboard-class";
 
-    public IPagination Pagination
-    {
-        get => ILinkPagination.DontShow;
-        set => throw new NotImplementedException();
-    }
-
-    private IEnumerable<Row> GetSortedRows(Column column, SortOrder sort)
+    private IEnumerable<Row> GetSortedRows(Column column, SortOrder sort, int page, int pageSize)
     {
         if (sort == SortOrder.ascending)
         {
-            return GetExampleData().OrderBy(r => GetValue(column, r));
+            return GetExampleData(page, pageSize).OrderBy(r => GetValue(column, r));
         }
 
-        return GetExampleData().OrderByDescending(r => GetValue(column, r));
+        return GetExampleData(page, pageSize).OrderByDescending(r => GetValue(column, r));
     }
 
     private static string GetValue(Column column, Row r)
@@ -91,14 +70,9 @@ public class IndexModel : PageModel, IDashboard<RowData>
         };
     }
 
-    private Row[] GetExampleData()
+    private Row[] GetExampleData(int page, int pageSize)
     {
-        return new Row[]
-        {
-            new(new RowData("foo", "bar")),
-            new(new RowData("123", "456")),
-            new(new RowData("alice", "bob")),
-            new(new RowData("Bar", "Foo"))
-        };
+        return Enumerable.Range(1,100).Skip((page-1) * pageSize).Take(pageSize)
+            .Select(i => new Row(new RowData($"foo {i:D3}", $"bar {i:D3}"))).ToArray();
     }
 }
