@@ -12,16 +12,6 @@ internal class ColumnHeader : IColumnHeader
         ColumnImmutable columnImmutable,
         SortOrder? sort,
         string pagePath,
-        IReadOnlyDictionary<string, string> extraQueryParams)
-    : this(columnImmutable, sort, pagePath,
-        string.Join('&', extraQueryParams.Select(kvp => $"{kvp.Key}={kvp.Value}")))
-    {
-    }
-
-    public ColumnHeader(
-        ColumnImmutable columnImmutable,
-        SortOrder? sort,
-        string pagePath,
         string? extraQueryParams = null)
     {
         Sort = sort;

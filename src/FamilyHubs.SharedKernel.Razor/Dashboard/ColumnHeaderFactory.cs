@@ -1,4 +1,5 @@
-﻿
+﻿using System.Web;
+
 namespace FamilyHubs.SharedKernel.Razor.Dashboard;
 
 public class ColumnHeaderFactory
@@ -9,7 +10,17 @@ public class ColumnHeaderFactory
     private readonly string? _extraQueryParams;
     private readonly string _pagePath;
 
-    //todo: dictionary to factory, rather than header? (or both??)
+    public ColumnHeaderFactory(
+        IEnumerable<ColumnImmutable> columnsImmutable,
+        string pagePath,
+        string sortedColumnName,
+        SortOrder sort,
+        IReadOnlyDictionary<string, string> extraQueryParams)
+    : this(columnsImmutable, pagePath, sortedColumnName, sort,
+        string.Join('&', extraQueryParams.Select(kvp => $"{HttpUtility.UrlEncode(kvp.Key)}={HttpUtility.UrlEncode(kvp.Value)}")))
+    {
+    }
+
     public ColumnHeaderFactory(
         IEnumerable<ColumnImmutable> columnsImmutable,
         string pagePath,
