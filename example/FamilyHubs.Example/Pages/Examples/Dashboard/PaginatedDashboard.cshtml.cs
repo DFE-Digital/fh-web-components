@@ -9,8 +9,7 @@ public class PaginatedDashboardModel : PageModel, IDashboard<RowData>
     private enum Column
     {
         Foo,
-        Bar,
-        NoSort
+        Bar
     }
 
     private static ColumnImmutable[] _columnImmutables =
@@ -27,6 +26,8 @@ public class PaginatedDashboardModel : PageModel, IDashboard<RowData>
     IEnumerable<IRow<RowData>> IDashboard<RowData>.Rows => _rows;
 
     public IPagination Pagination { get; set; } = ILinkPagination.DontShow;
+
+    string? IDashboard<RowData>.TableClass => "app-dashboard-class";
 
     public void OnGet(string? columnName, SortOrder sort, int currentPage = 1)
     {
@@ -51,9 +52,7 @@ public class PaginatedDashboardModel : PageModel, IDashboard<RowData>
             10, currentPage, column, sort, extraSearchTerms);
     }
 
-    string? IDashboard<RowData>.TableClass => "app-dashboard-class";
-
-    private Row[] GetSortedRows(Column column, SortOrder sort, int page, int pageSize)
+    private static Row[] GetSortedRows(Column column, SortOrder sort, int page, int pageSize)
     {
         var data = Enumerable.Range(1, 100)
             .Select(i => new Row(new RowData($"foo {i:D3}", $"bar {101-i:D3}")));
