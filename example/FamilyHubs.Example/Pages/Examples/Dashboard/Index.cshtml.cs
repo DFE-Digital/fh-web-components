@@ -22,6 +22,7 @@ public class Row : IRow<RowData>
             yield return new Cell(Item.Foo);
             yield return new Cell(Item.Bar);
             yield return new Cell($"{Item.Foo} + {Item.Bar}");
+            yield return new Cell("100");
         }
     }
 }
@@ -31,7 +32,6 @@ public class IndexModel : PageModel, IDashboard<RowData>
     private enum Column
     {
         SortableColumn1,
-        NoSort,
         SortableColumn2
     }
 
@@ -39,7 +39,8 @@ public class IndexModel : PageModel, IDashboard<RowData>
     {
         new("Sortable column 1", Column.SortableColumn1.ToString()),
         new("No sort"),
-        new("Sortable column 2", Column.SortableColumn2.ToString(), Align.Right)
+        new("Sortable column 2", Column.SortableColumn2.ToString(), ColumnType.AlignedRight),
+        new("Numeric", ColumnType: ColumnType.Numeric)
     };
 
     private IEnumerable<IColumnHeader> _columnHeaders = Enumerable.Empty<IColumnHeader>();

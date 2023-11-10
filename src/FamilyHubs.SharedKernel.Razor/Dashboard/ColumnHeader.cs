@@ -1,6 +1,7 @@
 ﻿
 namespace FamilyHubs.SharedKernel.Razor.Dashboard;
 
+//todo: rename to ColumnInfo? or Column, or ColumnMetadata or something, as not just header related anymore
 internal class ColumnHeader : IColumnHeader
 {
     private readonly ColumnImmutable _columnImmutable;
@@ -26,13 +27,18 @@ internal class ColumnHeader : IColumnHeader
         Sort = sort;
         _columnImmutable = columnImmutable;
         _pagePath = pagePath;
-        Classes = _columnImmutable.Align switch
-        {
-            //todo: mix in numeric into new class
-            Align.Right => "govuk-table__header--numeric",
-            _ => null
-        };
         _extraQueryParams = extraQueryParams;
+
+        switch (_columnImmutable.ColumnType)
+        {
+            case ColumnType.AlignedRight:
+                HeaderClasses = CellClasses = "govuk-!-text-align-right";
+                break;
+            case ColumnType.Numeric:
+                HeaderClasses = "govuk-table__header--numeric";
+                CellClasses = "govuk-table__cell--numeric";
+                break;
+        }
     }
 
     public string ContentAsHtml
@@ -61,5 +67,6 @@ internal class ColumnHeader : IColumnHeader
 
     public SortOrder? Sort { get; }
 
-    public string? Classes { get; }
+    public string? HeaderClasses { get; }
+    public string? CellClasses { get; }
 }

@@ -16,7 +16,7 @@ public class PaginatedDashboardModel : PageModel, IDashboard<RowData>
     {
         new("Foo", Column.Foo.ToString()),
         new("Bar", Column.Bar.ToString()),
-        new("No sort (right align)", Align: Align.Right)
+        new("No sort (right align)", ColumnType: ColumnType.AlignedRight)
     };
 
     private IEnumerable<IColumnHeader> _columnHeaders = Enumerable.Empty<IColumnHeader>();

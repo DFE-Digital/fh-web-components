@@ -1,7 +1,5 @@
 # Potential improvements
 
-* analytic cookie buttons in banner not working (check real sites)
-
 * don't use numeric class for column alignment
 
 * finish off error summary tag helper (and related changes)
