@@ -15,17 +15,39 @@ public class LargeSetLinkPagination<TColumn> : LargeSetPagination, ILinkPaginati
     private readonly string _dashboardPath;
     private readonly TColumn _column;
     private readonly SortOrder _sort;
+    private readonly string? _extraQueryParams;
 
-    public LargeSetLinkPagination(string dashboardPath, int totalPages, int currentPage, TColumn column, SortOrder sort)
+    public LargeSetLinkPagination(
+        string dashboardPath, int totalPages, int currentPage,
+        TColumn column, SortOrder sort,
+        //todo: or IQueryCollection? or extra constructor
+        IReadOnlyDictionary<string, string> extraQueryParams)
+
+        : this(dashboardPath, totalPages, currentPage, column, sort,
+            //todo: encoding?
+            string.Join('&', extraQueryParams.Select(kvp => $"{kvp.Key}={kvp.Value}")))
+    {
+    }
+
+    public LargeSetLinkPagination(
+        string dashboardPath,
+        int totalPages,
+        int currentPage,
+        TColumn column,
+        SortOrder sort,
+        string? extraQueryParams = null)
+
         : base(totalPages, currentPage)
     {
         _dashboardPath = dashboardPath;
         _column = column;
         _sort = sort;
+        _extraQueryParams = extraQueryParams;
     }
 
     public string GetUrl(int page)
     {
-        return $"{_dashboardPath}?columnName={_column}&sort={_sort}&currentPage={page}";
+        var url = $"{_dashboardPath}?columnName={_column}&sort={_sort}&currentPage={page}";
+        return _extraQueryParams == null ? url : $"{url}&{_extraQueryParams}";
     }
 }

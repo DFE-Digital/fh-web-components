@@ -12,4 +12,8 @@
     <ProjectReference Include="..\..\src\FamilyHubs.SharedKernel.Razor\FamilyHubs.SharedKernel.Razor.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Examples\Filters\" />
+  </ItemGroup>
+
 </Project>
