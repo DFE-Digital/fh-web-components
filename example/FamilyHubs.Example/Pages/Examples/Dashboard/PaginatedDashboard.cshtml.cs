@@ -8,16 +8,16 @@ public class PaginatedDashboardModel : PageModel, IDashboard<RowData>
 {
     private enum Column
     {
-        SortableColumn1,
-        NoSort,
-        SortableColumn2
+        Foo,
+        Bar,
+        NoSort
     }
 
     private static ColumnImmutable[] _columnImmutables =
     {
-        new("Sortable column 1", Column.SortableColumn1.ToString()),
-        new("No sort"),
-        new("Sortable column 2", Column.SortableColumn2.ToString(), Align.Right)
+        new("Foo", Column.Foo.ToString()),
+        new("Bar", Column.Bar.ToString()),
+        new("No sort (right align)", Align: Align.Right)
     };
 
     private IEnumerable<IColumnHeader> _columnHeaders = Enumerable.Empty<IColumnHeader>();
@@ -33,7 +33,7 @@ public class PaginatedDashboardModel : PageModel, IDashboard<RowData>
         if (columnName == null || !Enum.TryParse(columnName, true, out Column column))
         {
             // default when first load the page, or user has manually changed the url
-            column = Column.SortableColumn1;
+            column = Column.Foo;
             sort = SortOrder.ascending;
         }
 
@@ -53,29 +53,30 @@ public class PaginatedDashboardModel : PageModel, IDashboard<RowData>
 
     string? IDashboard<RowData>.TableClass => "app-dashboard-class";
 
-    private IEnumerable<Row> GetSortedRows(Column column, SortOrder sort, int page, int pageSize)
+    private Row[] GetSortedRows(Column column, SortOrder sort, int page, int pageSize)
     {
+        var data = Enumerable.Range(1, 100)
+            .Select(i => new Row(new RowData($"foo {i:D3}", $"bar {101-i:D3}")));
+
         if (sort == SortOrder.ascending)
         {
-            return GetExampleData(page, pageSize).OrderBy(r => GetValue(column, r));
+            data = data.OrderBy(r => GetValue(column, r));
+        }
+        else
+        {
+            data = data.OrderByDescending(r => GetValue(column, r));
         }
 
-        return GetExampleData(page, pageSize).OrderByDescending(r => GetValue(column, r));
+        return data.Skip((page-1) * pageSize).Take(pageSize).ToArray();
     }
 
     private static string GetValue(Column column, Row r)
     {
         return column switch
         {
-            Column.SortableColumn1 => r.Item.Foo,
-            Column.SortableColumn2 => r.Item.Bar,
+            Column.Foo => r.Item.Foo,
+            Column.Bar => r.Item.Bar,
             _ => throw new InvalidOperationException($"Unknown column: {column}")
         };
-    }
-
-    private Row[] GetExampleData(int page, int pageSize)
-    {
-        return Enumerable.Range(1,100).Skip((page-1) * pageSize).Take(pageSize)
-            .Select(i => new Row(new RowData($"foo {i:D3}", $"bar {i:D3}"))).ToArray();
     }
 }
