@@ -5,8 +5,23 @@ internal class ColumnHeader : IColumnHeader
 {
     private readonly ColumnImmutable _columnImmutable;
     private readonly string _pagePath;
+    private readonly string? _extraQueryParams;
 
-    public ColumnHeader(ColumnImmutable columnImmutable, SortOrder? sort, string pagePath)
+    public ColumnHeader(
+        ColumnImmutable columnImmutable,
+        SortOrder? sort,
+        string pagePath,
+        IReadOnlyDictionary<string, string> extraQueryParams)
+    : this(columnImmutable, sort, pagePath,
+        string.Join('&', extraQueryParams.Select(kvp => $"{kvp.Key}={kvp.Value}")))
+    {
+    }
+
+    public ColumnHeader(
+        ColumnImmutable columnImmutable,
+        SortOrder? sort,
+        string pagePath,
+        string? extraQueryParams = null)
     {
         Sort = sort;
         _columnImmutable = columnImmutable;
@@ -17,6 +32,7 @@ internal class ColumnHeader : IColumnHeader
             Align.Right => "govuk-table__header--numeric",
             _ => null
         };
+        _extraQueryParams = extraQueryParams;
     }
 
     public string ContentAsHtml
@@ -34,7 +50,9 @@ internal class ColumnHeader : IColumnHeader
                 _ => SortOrder.ascending
             };
 
-            return $"<a href = \"{_pagePath}?columnName={_columnImmutable.SortName}&sort={clickSort}\">{_columnImmutable.DisplayName}</a>";
+            string url = $"<a href = \"{_pagePath}?columnName={_columnImmutable.SortName}&sort={clickSort}\">{_columnImmutable.DisplayName}</a>";
+
+            return _extraQueryParams != null ? $"{url}&{_extraQueryParams}" : url;
         }
     }
 
