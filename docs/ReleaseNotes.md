@@ -1,5 +1,21 @@
 # Release Notes
 
+### 6.0.0
+
+Dashboards now support additional consumer supplied query parameters that get added to all links (such as the column sort and pagination links).
+
+This is to support the use case of the dashboard displaying filterable content.
+
+Dashboard columns can now be right aligned or [numeric](https://design-system.service.gov.uk/components/table/#numbers-in-a-table).
+
+### Example website changes
+
+There is now an example paginated dashboard, and the existing dashboard example has right aligned and numeric columns.
+
+Breaking changes:
+
+`ColumnImmutable()` now accepts a `ColumnType` enum parameter, rather than the old `Align` enum.
+
 ### 5.8.0
 
 Add Align parameter to ColumnImmutable constructor, to allow the alignment of dashboard columns to be specified.

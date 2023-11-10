@@ -1,5 +1,4 @@
 ﻿
-@using Microsoft.EntityFrameworkCore.Storage.ValueConversion
 @model FamilyHubs.SharedKernel.Razor.Dashboard.IDashboard<object>
 
 <div class="govuk-grid-row">
@@ -10,7 +9,7 @@
                 <tr class="govuk-table__row">
                     @foreach (var columnHeader in Model.ColumnHeaders)
                     {
-                        <th scope="col" class="govuk-table__header @columnHeader.Classes" @(columnHeader.Sort.HasValue ? $"aria-sort={columnHeader.Sort.Value}" : "")>
+                        <th scope="col" class="govuk-table__header @columnHeader.HeaderClasses" @(columnHeader.Sort.HasValue ? $"aria-sort={columnHeader.Sort.Value}" : "")>
                             @Html.Raw(columnHeader.ContentAsHtml)
                         </th>
                     }
@@ -26,7 +25,7 @@
 
                         foreach (var cellAndHeader in cellAndHeaders)
                         {
-                            <td class="govuk-table__cell @cellAndHeader.Header.Classes">
+                            <td class="govuk-table__cell @cellAndHeader.Header.CellClasses">
                                 @if (cellAndHeader.Cell.PartialName != null)
                                 {
                                     <partial name="@cellAndHeader.Cell.PartialName" model="row.Item"/>

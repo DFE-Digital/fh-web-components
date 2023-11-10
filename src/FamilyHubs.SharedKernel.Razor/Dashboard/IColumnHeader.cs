@@ -17,5 +17,10 @@ public interface IColumnHeader
     /// <summary>
     /// The (space separated) classes to be applied to the header element.
     /// </summary>
-    public string? Classes { get; }
+    public string? HeaderClasses { get; }
+
+    /// <summary>
+    /// The (space separated) classes to be applied to the cell element.
+    /// </summary>
+    public string? CellClasses { get; }
 }

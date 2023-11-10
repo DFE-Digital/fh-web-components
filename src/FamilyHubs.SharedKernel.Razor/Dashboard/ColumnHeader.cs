@@ -1,22 +1,34 @@
 ﻿
 namespace FamilyHubs.SharedKernel.Razor.Dashboard;
 
+//todo: rename to ColumnInfo? or Column, or ColumnMetadata or something, as not just header related anymore
 internal class ColumnHeader : IColumnHeader
 {
     private readonly ColumnImmutable _columnImmutable;
     private readonly string _pagePath;
+    private readonly string? _extraQueryParams;
 
-    public ColumnHeader(ColumnImmutable columnImmutable, SortOrder? sort, string pagePath)
+    public ColumnHeader(
+        ColumnImmutable columnImmutable,
+        SortOrder? sort,
+        string pagePath,
+        string? extraQueryParams = null)
     {
         Sort = sort;
         _columnImmutable = columnImmutable;
         _pagePath = pagePath;
-        Classes = _columnImmutable.Align switch
+        _extraQueryParams = extraQueryParams;
+
+        switch (_columnImmutable.ColumnType)
         {
-            //todo: mix in numeric into new class
-            Align.Right => "govuk-table__header--numeric",
-            _ => null
-        };
+            case ColumnType.AlignedRight:
+                HeaderClasses = CellClasses = "govuk-!-text-align-right";
+                break;
+            case ColumnType.Numeric:
+                HeaderClasses = "govuk-table__header--numeric";
+                CellClasses = "govuk-table__cell--numeric";
+                break;
+        }
     }
 
     public string ContentAsHtml
@@ -34,11 +46,17 @@ internal class ColumnHeader : IColumnHeader
                 _ => SortOrder.ascending
             };
 
-            return $"<a href = \"{_pagePath}?columnName={_columnImmutable.SortName}&sort={clickSort}\">{_columnImmutable.DisplayName}</a>";
+            string url = $"{_pagePath}?columnName={_columnImmutable.SortName}&sort={clickSort}";
+            if (_extraQueryParams != null)
+            {
+                url += $"&{_extraQueryParams}";
+            }
+            return $"<a href = \"{url}\">{_columnImmutable.DisplayName}</a>";
         }
     }
 
     public SortOrder? Sort { get; }
 
-    public string? Classes { get; }
+    public string? HeaderClasses { get; }
+    public string? CellClasses { get; }
 }

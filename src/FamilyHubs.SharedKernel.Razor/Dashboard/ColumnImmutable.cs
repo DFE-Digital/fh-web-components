@@ -1,11 +1,11 @@
 ﻿
 namespace FamilyHubs.SharedKernel.Razor.Dashboard;
 
-public enum Align
+public enum ColumnType
 {
-    Left,
-    Right
+    Standard,
+    AlignedRight,
+    Numeric
 }
 
-// alternatively pass class for header and cell (or both combined) to allow for more customization
-public record ColumnImmutable(string DisplayName, string? SortName = null, Align Align = Align.Left);
+public record ColumnImmutable(string DisplayName, string? SortName = null, ColumnType ColumnType = ColumnType.Standard);
