@@ -50,9 +50,12 @@ internal class ColumnHeader : IColumnHeader
                 _ => SortOrder.ascending
             };
 
-            string url = $"<a href = \"{_pagePath}?columnName={_columnImmutable.SortName}&sort={clickSort}\">{_columnImmutable.DisplayName}</a>";
-
-            return _extraQueryParams != null ? $"{url}&{_extraQueryParams}" : url;
+            string url = $"{_pagePath}?columnName={_columnImmutable.SortName}&sort={clickSort}";
+            if (_extraQueryParams != null)
+            {
+                url += $"&{_extraQueryParams}";
+            }
+            return $"<a href = \"{url}\">{_columnImmutable.DisplayName}</a>";
         }
     }
 

@@ -37,7 +37,10 @@ public class PaginatedDashboardModel : PageModel, IDashboard<RowData>
             sort = SortOrder.ascending;
         }
 
-        _columnHeaders = new ColumnHeaderFactory(_columnImmutables, "/Examples/Dashboard/PaginatedDashboard", column.ToString(), sort)
+        // only needed if e.g. the dashboard is showing content as decided by filters
+        const string extraSearchTerms = "filter1=xyz&filter2=123";
+
+        _columnHeaders = new ColumnHeaderFactory(_columnImmutables, "/Examples/Dashboard/PaginatedDashboard", column.ToString(), sort, extraSearchTerms)
             .CreateAll();
 
         const int pageSize = 10;
@@ -45,7 +48,7 @@ public class PaginatedDashboardModel : PageModel, IDashboard<RowData>
 
         Pagination = new LargeSetLinkPagination<Column>(
             "/Examples/Dashboard/PaginatedDashboard",
-            10, currentPage, column, sort);
+            10, currentPage, column, sort, extraSearchTerms);
     }
 
     string? IDashboard<RowData>.TableClass => "app-dashboard-class";

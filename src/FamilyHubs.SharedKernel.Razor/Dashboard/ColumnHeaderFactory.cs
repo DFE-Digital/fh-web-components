@@ -6,17 +6,21 @@ public class ColumnHeaderFactory
     private readonly IEnumerable<ColumnImmutable> _columnsImmutable;
     private readonly string _sortedColumnName;
     private readonly SortOrder _sort;
+    private readonly string? _extraQueryParams;
     private readonly string _pagePath;
 
+    //todo: dictionary to factory, rather than header? (or both??)
     public ColumnHeaderFactory(
         IEnumerable<ColumnImmutable> columnsImmutable,
         string pagePath,
         string sortedColumnName,
-        SortOrder sort)
+        SortOrder sort,
+        string? extraQueryParams = null)
     {
         _columnsImmutable = columnsImmutable;
         _sortedColumnName = sortedColumnName;
         _sort = sort;
+        _extraQueryParams = extraQueryParams;
         _pagePath = pagePath;
     }
 
@@ -30,7 +34,7 @@ public class ColumnHeaderFactory
             sort = columnImmutable.SortName == _sortedColumnName ? _sort : SortOrder.none;
         }
 
-        return new ColumnHeader(columnImmutable, sort, _pagePath);
+        return new ColumnHeader(columnImmutable, sort, _pagePath, _extraQueryParams);
     }
 
     public IColumnHeader[] CreateAll()
