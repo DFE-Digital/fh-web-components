@@ -1,4 +1,5 @@
 ﻿using FamilyHubs.SharedKernel.Razor.Pagination;
+using System.Web;
 
 namespace FamilyHubs.SharedKernel.Razor.Dashboard;
 
@@ -24,8 +25,7 @@ public class LargeSetLinkPagination<TColumn> : LargeSetPagination, ILinkPaginati
         IReadOnlyDictionary<string, string> extraQueryParams)
 
         : this(dashboardPath, totalPages, currentPage, column, sort,
-            //todo: encoding?
-            string.Join('&', extraQueryParams.Select(kvp => $"{kvp.Key}={kvp.Value}")))
+            string.Join('&', extraQueryParams.Select(kvp => $"{HttpUtility.UrlEncode(kvp.Key)}={HttpUtility.UrlEncode(kvp.Value)}")))
     {
     }
 
