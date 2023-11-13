@@ -1,11 +1,9 @@
 ﻿@page
 @model FamilyHubs.Example.Pages.Examples.OpenClose.IndexModel
 
-@* todo: allow default to open or close? *@
 @* todo: let consumer decide visibility with standard device breakpoints?
          would make this quite a bit more complex, i.e. using a mutationobserver or listening to window resize event etc.
          think for now assume visible on mobile, as that's the case for all usages anyway*@
-@* todo: don't repeat text between content and attribute *@
 @* todo: how best to handle javascript.
          best would be to post back if no js, i.e. still work.
          fallback would be to ensure target is visible and don't show button if js disabled?

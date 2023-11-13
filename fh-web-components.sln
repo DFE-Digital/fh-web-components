@@ -134,6 +134,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", 
 		src\familyhubs-frontend\styles\components\_back-links.scss = src\familyhubs-frontend\styles\components\_back-links.scss
 		src\familyhubs-frontend\styles\components\_dashboard.scss = src\familyhubs-frontend\styles\components\_dashboard.scss
 		src\familyhubs-frontend\styles\components\_filters.scss = src\familyhubs-frontend\styles\components\_filters.scss
+		src\familyhubs-frontend\styles\components\_open-close.scss = src\familyhubs-frontend\styles\components\_open-close.scss
 		src\familyhubs-frontend\styles\components\_pagination.scss = src\familyhubs-frontend\styles\components\_pagination.scss
 	EndProjectSection
 EndProject
