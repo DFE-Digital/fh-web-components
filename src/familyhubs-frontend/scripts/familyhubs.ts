@@ -24,6 +24,7 @@ import CookiesPage from './components/cookies-page'
 import initAnalytics from './components/analytics';
 import { initializeBackButtons } from './components/back-links';
 import { initializeVisibilityToggles } from './components/visibility-toggle';
+import { OpenCloseButton } from './components/open-close-button';
 
 //todo: consistency in module/proto/class style
 
@@ -48,3 +49,8 @@ window.FamilyHubsFrontend.initAll = () => {
 window.GOVUKFrontend.initAll();
 window.MOJFrontend.initAll();
 window.FamilyHubsFrontend.initAll();
+
+let openCloseButtons: NodeListOf<HTMLButtonElement> = document.querySelectorAll('button[data-open-close-mobile]');
+openCloseButtons.forEach((openCloseButton) => {
+    new OpenCloseButton(openCloseButton);
+});
