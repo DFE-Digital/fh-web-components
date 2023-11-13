@@ -2,14 +2,20 @@
 @model FamilyHubs.Example.Pages.Examples.OpenClose.IndexModel
 
 @* todo: allow default to open or close? *@
-@* todo: let consumer decide visibility with standard device breakpoints? *@
+@* todo: let consumer decide visibility with standard device breakpoints?
+         would make this quite a bit more complex, i.e. using a mutationobserver or listening to window resize event etc.
+         think for now assume visible on mobile, as that's the case for all usages anyway*@
 @* todo: don't repeat text between content and attribute *@
+@* todo: how best to handle javascript.
+         best would be to post back if no js, i.e. still work.
+         fallback would be to ensure target is visible and don't show button if js disabled?
+         would need css to hide button if no js *@
 
 <h1>Open close button</h1>
 
 <h2>Unchanging button text</h2>
 
-<button class="govuk-button govuk-button--secondary app-open-close-filters"
+<button class="govuk-button govuk-button--secondary fh-open-close-button"
         data-open-close-mobile="openCloseTarget" data-module="govuk-button" type="button">
     Open / close filters
 </button>
@@ -18,16 +24,29 @@
     <p>The open close target.</p>
 </div>
 
-<h2>Changing button text</h2>
+<h2>Changing button text, target shown by default</h2>
 
-<button class="govuk-button govuk-button--secondary app-open-close-filters"
+<button class="govuk-button govuk-button--secondary fh-open-close-button"
         data-open-close-mobile="showHideTarget"
-        data-open-close-mobile-show="Show filters"
         data-open-close-mobile-hide="Hide filters"
         data-module="govuk-button" type="button">
     Show filters
 </button>
 
 <div id="showHideTarget">
+    <p>The show/hide target.</p>
+</div>
+
+<h2>Changing button text, target hidden by default</h2>
+
+<button class="govuk-button govuk-button--secondary fh-open-close-button"
+        data-open-close-mobile="showHideTarget2"
+        data-open-close-mobile-hide="Hide filters"
+        data-open-close-mobile-default="hide"
+        data-module="govuk-button" type="button">
+    Show filters
+</button>
+
+<div id="showHideTarget2">
     <p>The show/hide target.</p>
 </div>

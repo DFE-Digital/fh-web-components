@@ -44,13 +44,17 @@ window.FamilyHubsFrontend.initAll = () => {
 
     initializeBackButtons();
     initializeVisibilityToggles();
+
+    // initialise open close buttons
+    let openCloseButtons: NodeListOf<HTMLButtonElement> = document.querySelectorAll('button[data-open-close-mobile]');
+    openCloseButtons?.forEach((openCloseButton) => {
+        new OpenCloseButton(openCloseButton);
+    });
 };
+
+//todo: do we want to do this...
+//document.addEventListener("DOMContentLoaded", function () {
 
 window.GOVUKFrontend.initAll();
 window.MOJFrontend.initAll();
 window.FamilyHubsFrontend.initAll();
-
-let openCloseButtons: NodeListOf<HTMLButtonElement> = document.querySelectorAll('button[data-open-close-mobile]');
-openCloseButtons.forEach((openCloseButton) => {
-    new OpenCloseButton(openCloseButton);
-});

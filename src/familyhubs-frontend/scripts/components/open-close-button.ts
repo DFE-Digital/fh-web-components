@@ -4,7 +4,7 @@
 export class OpenCloseButton { // extends GOVUKFrontendComponent {
 
     openCloseButton: HTMLButtonElement;
-    targetId: string | null;
+    target: HTMLElement | null;
     showText: string | null;
     hideText: string | null;
 
@@ -15,29 +15,47 @@ export class OpenCloseButton { // extends GOVUKFrontendComponent {
         //}
 
         this.openCloseButton = openCloseButton;
-        this.targetId = this.openCloseButton.getAttribute('data-open-close-mobile');
-        this.showText = this.openCloseButton.getAttribute('data-open-close-mobile-show');
+        const targetId = this.openCloseButton.getAttribute('data-open-close-mobile');
+        this.target = document.getElementById(targetId!) as HTMLElement | null;
+
+        //todo: better to use content or have data-open-close-mobile-show?
+        this.showText = this.openCloseButton.textContent;
         this.hideText = this.openCloseButton.getAttribute('data-open-close-mobile-hide');
+
+        let defaultTargetVisibility = this.openCloseButton.getAttribute('data-open-close-mobile-default');
+        if (defaultTargetVisibility === "hide") {
+            this.hideTarget();
+        } else {
+            this.showTarget();
+        }
+
         this.openCloseButton.addEventListener('click', (event) => this.handleClick(event));
     }
 
     handleClick(event: Event) {
-        const target = document.getElementById(this.targetId!) as HTMLElement | null;
-        if (target && target.style.display === "none") {
-            if (this.hideText) {
-                this.openCloseButton.textContent = this.hideText;
-            }
-            target.style.display = "block";
+        if (this.target && this.target.style.display === "none") {
+            this.showTarget();
         } else {
-            if (this.showText) {
-                this.openCloseButton.textContent = this.showText;
-            }
-            if (target) {
-                target.style.display = "none";
-            }
+            this.hideTarget();
         }
     }
 
+    showTarget() {
+        if (this.target) {
+            this.target.style.display = "block";
+        }
+        if (this.hideText) {
+            this.openCloseButton.textContent = this.hideText;
+        }
+    }
+    hideTarget() {
+        if (this.target) {
+            this.target.style.display = "none";
+        }
+        if (this.showText) {
+            this.openCloseButton.textContent = this.showText;
+        }
+    }
     /**
      * Name for the component used when initialising using data-module attributes.
      */
