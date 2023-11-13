@@ -1,6 +1,8 @@
 //todo: make it a standard govuk module?
 //import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
+/*todo: rename fh-open-close-target-user-opened fh-open-close-target-open-non-desktop or somesuch */
+
 export class OpenCloseButton { // extends GOVUKFrontendComponent {
 
     openCloseButton: HTMLButtonElement;
