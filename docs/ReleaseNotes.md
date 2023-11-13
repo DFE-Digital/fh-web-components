@@ -1,5 +1,13 @@
 # Release Notes
 
+### 6.1.0
+
+Add `<open-close-button target="elementId">`.
+
+A button that's only visible on mobile that toggles the target element on and off.
+
+See the example page for more options.
+
 ### 6.0.0
 
 Dashboards now support additional consumer supplied query parameters that get added to all links (such as the column sort and pagination links).
