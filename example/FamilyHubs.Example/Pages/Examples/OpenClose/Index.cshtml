@@ -6,12 +6,13 @@
          think for now assume visible on mobile, as that's the case for all usages anyway*@
 @* todo: how best to handle javascript.
          best would be to post back if no js, i.e. still work.
-         fallback would be to ensure target is visible and don't show button if js disabled?
-         would need css to hide button if no js *@
+         (current behaviour is to have the target visible and the open-close button hidden)*@
 
 <h1>Open close button</h1>
 
-<h2>Unchanging button text</h2>
+<h2>Html</h2>
+
+<h3>Unchanging button text</h3>
 
 <button class="govuk-button govuk-button--secondary fh-open-close-button"
         data-open-close-mobile="openCloseTarget" data-module="govuk-button" type="button">
@@ -22,7 +23,7 @@
     <p>The open close target.</p>
 </div>
 
-<h2>Changing button text, target shown by default</h2>
+<h3>Changing button text, target shown by default</h3>
 
 <button class="govuk-button govuk-button--secondary fh-open-close-button"
         data-open-close-mobile="showHideTarget"
@@ -35,7 +36,7 @@
     <p>The show/hide target.</p>
 </div>
 
-<h2>Changing button text, target hidden by default</h2>
+<h3>Changing button text, target hidden by default</h3>
 
 <button class="govuk-button govuk-button--secondary fh-open-close-button"
         data-open-close-mobile="showHideTarget2"
@@ -47,5 +48,48 @@
 </button>
 
 <div id="showHideTarget2">
+    <p>The show/hide target.</p>
+</div>
+
+<h2>Tag Helper</h2>
+
+<h3>Unchanging button text</h3>
+
+<open-close-button target="th-openCloseTarget">
+    Open / close filters
+</open-close-button>
+
+<div id="th-openCloseTarget">
+    <p>The open close target.</p>
+</div>
+
+<h3>Unchanging button text, extra classes</h3>
+
+<open-close-button target="th-openCloseTarget-class" class="govuk-!-font-size-36">
+    Open / close filters
+</open-close-button>
+
+
+<div id="th-openCloseTarget-class">
+    <p>The open close target.</p>
+</div>
+
+<h3>Changing button text, target shown by default</h3>
+
+<open-close-button target="th-showHideTarget" hide-text="Hide filters">
+    Show filters
+</open-close-button>
+
+<div id="th-showHideTarget">
+    <p>The show/hide target.</p>
+</div>
+
+<h3>Changing button text, target hidden by default</h3>
+
+<open-close-button target="th-showHideTarget2" hide-text="Hide filters" start-hidden>
+    Show filters
+</open-close-button>
+
+<div id="th-showHideTarget2">
     <p>The show/hide target.</p>
 </div>
