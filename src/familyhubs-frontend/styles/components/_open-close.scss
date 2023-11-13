@@ -1,16 +1,12 @@
 
 .js-enabled .fh-open-close-button {
-    display: block;
-}
-
-.fh-open-close-button {
-    display: none;
-}
-
-.fh-open-close-button {
     display: none;
 
     @include govuk-media-query($until: tablet) {
         display: block;
     }
+}
+
+.fh-open-close-button {
+    display: none;
 }
