@@ -1,5 +1,9 @@
 # Release Notes
 
+### 6.1.1
+
+Fix responsive handling wrt `<open-close-button`.
+
 ### 6.1.0
 
 Add `<open-close-button target="elementId">`.

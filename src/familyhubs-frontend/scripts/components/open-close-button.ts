@@ -1,6 +1,8 @@
 //todo: make it a standard govuk module?
 //import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
+/*todo: rename fh-open-close-target-user-opened fh-open-close-target-open-non-desktop or somesuch */
+
 export class OpenCloseButton { // extends GOVUKFrontendComponent {
 
     openCloseButton: HTMLButtonElement;
@@ -18,9 +20,10 @@ export class OpenCloseButton { // extends GOVUKFrontendComponent {
         const targetId = this.openCloseButton.getAttribute('data-open-close-mobile');
         this.target = document.getElementById(targetId!) as HTMLElement | null;
 
-        //todo: better to use content or have data-open-close-mobile-show?
         this.showText = this.openCloseButton.textContent;
         this.hideText = this.openCloseButton.getAttribute('data-open-close-mobile-hide');
+
+        this.target.classList.add('fh-open-close-target');
 
         let defaultTargetVisibility = this.openCloseButton.getAttribute('data-open-close-mobile-default');
         if (defaultTargetVisibility === "hide") {
@@ -33,16 +36,18 @@ export class OpenCloseButton { // extends GOVUKFrontendComponent {
     }
 
     handleClick(event: Event) {
-        if (this.target && this.target.style.display === "none") {
-            this.showTarget();
-        } else {
+        if (this.target.classList.contains('fh-open-close-target-user-opened')) {
             this.hideTarget();
+        } else {
+            this.showTarget();
         }
     }
 
     showTarget() {
         if (this.target) {
-            this.target.style.display = "block";
+            if (!this.target.classList.contains('fh-open-close-target-user-opened')) {
+                this.target.classList.add('fh-open-close-target-user-opened');
+            }
         }
         if (this.hideText) {
             this.openCloseButton.textContent = this.hideText;
@@ -50,7 +55,7 @@ export class OpenCloseButton { // extends GOVUKFrontendComponent {
     }
     hideTarget() {
         if (this.target) {
-            this.target.style.display = "none";
+            this.target.classList.remove('fh-open-close-target-user-opened');
         }
         if (this.showText) {
             this.openCloseButton.textContent = this.showText;
