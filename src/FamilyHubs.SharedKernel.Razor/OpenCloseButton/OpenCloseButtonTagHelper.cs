@@ -2,6 +2,14 @@
 
 namespace FamilyHubs.SharedKernel.Razor.OpenCloseButton;
 
+//todo: remove start-hidden from rendered html
+
+/// <summary>
+/// Adds a button that opens and closes the specified target element.
+/// The button is only visible on mobile.
+/// The user can show and hide the target on mobile,
+/// but the target is always visible on tablet/desktop.
+/// </summary>
 [HtmlTargetElement("open-close-button")]
 public class OpenCloseButtonTagHelper : TagHelper
 {
