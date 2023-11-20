@@ -1,35 +1,23 @@
 ﻿@using FamilyHubs.SharedKernel.Razor.FullPages
+@using FamilyHubs.SharedKernel.Razor.Errors
 @model ISingleTextboxPageModel
 
 <!-- This control can only be used when there are no other inputs on the page -->
 
+@* todo: use ErrorState instead *@
+@* todo: set page title in here as well *@
+
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+        
+        <partial name="_ErrorSummary" model="Model.ErrorState"/>
 
-        @if (Model.HasErrors)
-        {
-            <div class="govuk-error-summary" data-module="govuk-error-summary">
-                <div role="alert">
-                    <h2 class="govuk-error-summary__title">
-                        There is a problem
-                    </h2>
-                    <div class="govuk-error-summary__body">
-                        <ul class="govuk-list govuk-error-summary__list">
-                            <li>
-                                <a href="#textbox" data-testid="summary-error">@Model.ErrorText</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        }
-
-        @*      not even the GDS error summary page is consistent in whether the heading goes in the form-group or not!
-        so we follow the prototype's lead (which I think looks better anyway)*@
+        @* not even the GDS error summary page is consistent in whether the heading goes in the form-group or not!
+           so we follow the prototype's lead (which I think looks better anyway)*@
         <h1 class="govuk-heading-l">@Model.HeadingText</h1>
 
         <form method="post" novalidate>
-            <div class="govuk-form-group @(Model.HasErrors ? "govuk-form-group--error" : "")">
+            <div class="govuk-form-group @(Model.ErrorState.HasErrors ? "govuk-form-group--error" : "")">
                 @*todo: check which should be hint*@
                 @if (!string.IsNullOrEmpty(Model.HintText))
                 {
@@ -37,12 +25,15 @@
                         @Model.HintText
                     </div>
                 }
-                @if (Model.HasErrors)
+                @* todo: need to store error and use Model.InputErrorMessageParaId*@
+                @{Error? error = Model.ErrorState.GetErrorIfTriggered(); }
+                <partial name="_ErrorSummary" model="error" />
+@*                 @if (Model.ErrorState.HasErrors)
                 {
                     <p id="error" class="govuk-error-message">
                         <span class="govuk-visually-hidden">Error:</span> @Model.ErrorText
                     </p>
-                }
+                } *@
                 <label class="govuk-label" for="textbox">
                     @Model.TextBoxLabel
                 </label>
@@ -62,10 +53,14 @@
 
                 @* we're' currently using this to gather emails, which GDS recommends to switch spellcheck off for, *@
                 @* and to gather names and telephone numbers, for which it doesn't make sense to have spellcheck enabled. *@
+                
+                @* todo: flags for spellcheck, autocomplete etc.?*@
 
-                <input class="govuk-input @(Model.HasErrors ? "govuk-input--error" : "")"
+                <input class="govuk-input @(Model.ErrorState.HasErrors ? "govuk-input--error" : "")"
                        name="TextBoxValue" type="@type" value="@Model.TextBoxValue" inputmode="@type"
-                       spellcheck="false" autocomplete="off" id="textbox" aria-describedby="@(string.IsNullOrEmpty(Model.HintText)?"":"hint ")@(Model.HasErrors ? "error" : "")">
+                       spellcheck="false" autocomplete="off" id="textbox"
+@*                        aria-describedby="@(string.IsNullOrEmpty(Model.HintText)?"":"hint ")@(Model.ErrorState.HasErrors ? "error" : "")"> *@
+                       aria-describedby="@(string.IsNullOrEmpty(Model.HintText) ? "" : "hint ")@error?.InputErrorMessageParaId">
             </div>
             <button type="submit" class="govuk-button" data-module="govuk-button">
                 Continue
@@ -73,4 +68,3 @@
         </form>
     </div>
 </div>
-
