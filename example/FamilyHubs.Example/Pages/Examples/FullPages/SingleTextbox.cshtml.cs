@@ -3,7 +3,6 @@ using FamilyHubs.SharedKernel.Razor.Errors;
 using FamilyHubs.SharedKernel.Razor.FullPages;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.ComponentModel.DataAnnotations;
 
 namespace FamilyHubs.Example.Pages.Examples.FullPages;
 
@@ -17,7 +16,6 @@ public class SingleTextboxModel : PageModel, ISingleTextboxPageModel
     public string TextBoxLabel { get; set; } = "What is the service name?";
     public IErrorState Errors { get; set; } = ErrorState.Empty;
 
-    [Required]
     [BindProperty]
     public string? TextBoxValue { get; set; }
 
@@ -39,10 +37,8 @@ public class SingleTextboxModel : PageModel, ISingleTextboxPageModel
         AnswerTooLong
     }
 
-    //todo: helper, so that consumers don't need to fish out the textbox id
-    //todo: combine with passing the field in the view, so view details don't leak into the model
     public static readonly ImmutableDictionary<int, Error> PossibleErrors =
         ImmutableDictionary.Create<int, Error>()
-            .Add(ErrorId.AnswerMissing, "textbox", "Guru meditation required")
-            .Add(ErrorId.AnswerTooLong, "textbox", "The answer is too long");
+            .Add(ErrorId.AnswerMissing, ISingleTextboxPageModel.TextBoxId, "Guru meditation required")
+            .Add(ErrorId.AnswerTooLong, ISingleTextboxPageModel.TextBoxId, "The answer is too long");
 }
