@@ -1,8 +1,12 @@
 # Release Notes
 
+### 6.2.0
+
+Add initial support for a full page, single textbox component. See the example pages for more info.
+
 ### 6.1.1
 
-Fix responsive handling wrt `<open-close-button`.
+Fix responsive handling wrt `<open-close-button>`.
 
 ### 6.1.0
 
