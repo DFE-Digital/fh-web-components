@@ -13,5 +13,5 @@ public interface ISingleTextboxPageModel
     string? TextBoxValue { get; set; }
     //bool HasErrors { get; }
 
-    ErrorState ErrorState { get; set; }
+    IErrorState Errors { get; set; }
 }

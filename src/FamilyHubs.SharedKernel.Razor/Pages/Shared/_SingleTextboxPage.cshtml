@@ -10,14 +10,14 @@
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         
-        <partial name="_ErrorSummary" model="Model.ErrorState"/>
+        <partial name="_ErrorSummary" model="Model.Errors"/>
 
         @* not even the GDS error summary page is consistent in whether the heading goes in the form-group or not!
            so we follow the prototype's lead (which I think looks better anyway)*@
         <h1 class="govuk-heading-l">@Model.HeadingText</h1>
 
         <form method="post" novalidate>
-            <div class="govuk-form-group @(Model.ErrorState.HasErrors ? "govuk-form-group--error" : "")">
+            <div class="govuk-form-group @(Model.Errors.HasErrors ? "govuk-form-group--error" : "")">
                 @*todo: check which should be hint*@
                 @if (!string.IsNullOrEmpty(Model.HintText))
                 {
@@ -26,7 +26,7 @@
                     </div>
                 }
                 @* todo: need to store error and use Model.InputErrorMessageParaId*@
-                @{Error? error = Model.ErrorState.GetErrorIfTriggered(); }
+                @{Error? error = Model.Errors.GetErrorIfTriggered(); }
                 <partial name="_ErrorSummary" model="error" />
 @*                 @if (Model.ErrorState.HasErrors)
                 {
@@ -56,7 +56,7 @@
                 
                 @* todo: flags for spellcheck, autocomplete etc.?*@
 
-                <input class="govuk-input @(Model.ErrorState.HasErrors ? "govuk-input--error" : "")"
+                <input class="govuk-input @(Model.Errors.HasErrors ? "govuk-input--error" : "")"
                        name="TextBoxValue" type="@type" value="@Model.TextBoxValue" inputmode="@type"
                        spellcheck="false" autocomplete="off" id="textbox"
 @*                        aria-describedby="@(string.IsNullOrEmpty(Model.HintText)?"":"hint ")@(Model.ErrorState.HasErrors ? "error" : "")"> *@
