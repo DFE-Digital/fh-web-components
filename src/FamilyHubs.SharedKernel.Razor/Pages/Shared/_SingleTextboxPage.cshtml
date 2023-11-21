@@ -26,23 +26,17 @@
                         @Model.HintText
                     </div>
                 }
-                @* todo: need to store error and use Model.InputErrorMessageParaId*@
+                <label class="govuk-label" for="textbox">
+                    @Model.TextBoxLabel
+                </label>
+
                 @{Error? error = Model.Errors.GetErrorIfTriggered(); }
                 <partial name="_ErrorMessage" model="error" />
-@*                 @if (Model.ErrorState.HasErrors)
-                {
-                    <p id="error" class="govuk-error-message">
-                        <span class="govuk-visually-hidden">Error:</span> @Model.ErrorText
-                    </p>
-                } *@
 @*                 <h1 class="govuk-label-wrapper">
                     <label class="govuk-label govuk-label--l" for="textbox">
                         @Model.HeadingText
                     </label>
                 </h1> *@
-                <label class="govuk-label" for="textbox">
-                    @Model.TextBoxLabel
-                </label>
                 @{
                     // we could get type, inputmode and autocomplete from the interface itself (if we swapped the text to base and introduced a text derived)
                     // which in some ways would be neat, but it would mean that view info would be out of the view and in the interfaces
