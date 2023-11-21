@@ -12,7 +12,7 @@ namespace FamilyHubs.Example.Pages.Examples.FullPages;
 /// </summary>
 public class SingleTextboxModel : PageModel, ISingleTextboxPageModel
 {
-    public string HeadingText { get; set; } = "What is the answer to life, the universe, and everything?";
+    public string? HeadingText { get; set; } = "What is the answer to life, the universe, and everything?";
     public string? HintText { get; set; } = "It's the ultimate question";
     public string TextBoxLabel { get; set; } = "Answer";
     public IErrorState Errors { get; set; } = ErrorState.Empty;

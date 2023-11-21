@@ -1,6 +1,7 @@
 ﻿@page
 @model FamilyHubs.Example.Pages.Examples.FullPages.SingleTextboxModel
 @{
+    ViewData["Title"] = Model.HeadingText;
 }
 
 <partial name="_SingleTextboxPage" model="Model" />
