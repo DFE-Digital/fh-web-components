@@ -10,11 +10,11 @@ namespace FamilyHubs.Example.Pages.Examples.FullPages;
 /// <summary>
 /// Simple example, not production ready, no P/R/G, loading existing value, retaining value etc.
 /// </summary>
-public class SingleTextboxModel : PageModel, ISingleTextboxPageModel
+public class SingleTextboxSeparateHeaderModel : PageModel, ISingleTextboxPageModel
 {
-    public string? HeadingText { get; set; }
-    public string? HintText { get; set; }
-    public string TextBoxLabel { get; set; } = "What is the service name?";
+    public string? HeadingText { get; set; } = "What is the answer to life, the universe, and everything?";
+    public string? HintText { get; set; } = "It's the ultimate question";
+    public string TextBoxLabel { get; set; } = "Answer";
     public IErrorState Errors { get; set; } = ErrorState.Empty;
 
     [Required]
