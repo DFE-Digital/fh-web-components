@@ -15,7 +15,7 @@
 
         <form method="post" novalidate>
 
-            @if (Model.HeadingText != null)
+            @if (!string.IsNullOrEmpty(Model.HeadingText))
             {
                 @* not even the GDS error summary page is consistent in whether the heading goes in the form-group or not!
                    so we follow the prototype's lead (which I think looks better anyway).*@
@@ -24,7 +24,7 @@
 
             <div class="govuk-form-group @(Model.Errors.HasErrors ? "govuk-form-group--error" : "")">
 
-                @if (Model.HeadingText != null)
+                @if (!string.IsNullOrEmpty(Model.HeadingText))
                 {
                     @* todo: partial for hint? *@
                     if (!string.IsNullOrEmpty(Model.HintText))
