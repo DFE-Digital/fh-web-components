@@ -6,6 +6,7 @@
 
 @* todo: use ErrorState instead *@
 @* todo: set page title in here as well *@
+@* todo: need to support heading and label, and just one combined. 1 interface/partial or >1 ?*@
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -34,6 +35,11 @@
                         <span class="govuk-visually-hidden">Error:</span> @Model.ErrorText
                     </p>
                 } *@
+@*                 <h1 class="govuk-label-wrapper">
+                    <label class="govuk-label govuk-label--l" for="textbox">
+                        @Model.HeadingText
+                    </label>
+                </h1> *@
                 <label class="govuk-label" for="textbox">
                     @Model.TextBoxLabel
                 </label>
@@ -55,6 +61,7 @@
                 @* and to gather names and telephone numbers, for which it doesn't make sense to have spellcheck enabled. *@
                 
                 @* todo: flags for spellcheck, autocomplete etc.?*@
+                @* todo: support govuk-input--width *@
 
                 <input class="govuk-input @(Model.Errors.HasErrors ? "govuk-input--error" : "")"
                        name="TextBoxValue" type="@type" value="@Model.TextBoxValue" inputmode="@type"
