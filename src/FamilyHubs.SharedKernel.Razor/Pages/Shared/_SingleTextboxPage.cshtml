@@ -1,6 +1,5 @@
 ﻿@using FamilyHubs.SharedKernel.Razor.FullPages
 @using FamilyHubs.SharedKernel.Razor.Errors
-@using Microsoft.EntityFrameworkCore.Storage.ValueConversion
 @model ISingleTextboxPageModel
 
 <!-- This control can only be used when there are no other inputs on the page -->
@@ -80,7 +79,6 @@
                 <input class="govuk-input @(Model.Errors.HasErrors ? "govuk-input--error" : "")"
                        name="TextBoxValue" type="@type" value="@Model.TextBoxValue" inputmode="@type"
                        spellcheck="false" autocomplete="off" id="textbox"
-                       @*                        aria-describedby="@(string.IsNullOrEmpty(Model.HintText)?"":"hint ")@(Model.ErrorState.HasErrors ? "error" : "")"> *@
                        aria-describedby="@(string.IsNullOrEmpty(Model.HintText) ? "" : "hint ")@error?.InputErrorMessageParaId">
             </div>
             <button type="submit" class="govuk-button" data-module="govuk-button">
