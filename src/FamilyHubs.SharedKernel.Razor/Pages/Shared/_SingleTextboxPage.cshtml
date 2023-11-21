@@ -27,7 +27,7 @@
                 }
                 @* todo: need to store error and use Model.InputErrorMessageParaId*@
                 @{Error? error = Model.Errors.GetErrorIfTriggered(); }
-                <partial name="_ErrorSummary" model="error" />
+                <partial name="_ErrorMessage" model="error" />
 @*                 @if (Model.ErrorState.HasErrors)
                 {
                     <p id="error" class="govuk-error-message">
