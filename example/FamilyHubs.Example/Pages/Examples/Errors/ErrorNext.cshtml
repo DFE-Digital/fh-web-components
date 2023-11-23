@@ -5,7 +5,7 @@
 @{
     Model.Errors.ErrorIdToHtmlElementId = id => id switch
     {
-        // todo: can we pass T instead?
+        // todo: can we pass T instead? not sure it can be done without making the interface generic (which we can't do as then it can't be used as a razor model)
         (int) IndexModel.ExampleErrors.Error1 => "field1",
         (int) IndexModel.ExampleErrors.Error2 => "field2",
         (int) IndexModel.ExampleErrors.Error3 => "field3",
