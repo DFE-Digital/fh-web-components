@@ -9,6 +9,8 @@ public interface IErrorState
     //todo: leave this out of interface? (GetErrorIfTriggered could be used instead (renamed), but consumers would have to deal with null) or just rename?
     Error GetError(int errorId);
 
+    Func<Error, string>? ErrorToHtmlElementId { get; set; }
+
     bool HasError(params int[] errorIds);
 
     int? GetErrorIdIfTriggered(params int[] mutuallyExclusiveErrorIds);

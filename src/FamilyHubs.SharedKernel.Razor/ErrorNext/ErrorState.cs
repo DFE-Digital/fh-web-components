@@ -30,7 +30,7 @@ public class ErrorState : IErrorState
         return Empty;
     }
 
-    public Func<string, Error>? ErrorToHtmlElementId { get; set; }
+    public Func<Error, string>? ErrorToHtmlElementId { get; set; }
 
     public bool HasErrors => ErrorIds.Any();
 
