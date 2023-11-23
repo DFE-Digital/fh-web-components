@@ -1,18 +1,19 @@
 ﻿namespace FamilyHubs.SharedKernel.Razor.ErrorNext;
 
+//todo: all errors referred to are triggered errors, remove 'Triggered' from names?
 public interface IErrorState
 {
-    //todo: better naming of all these. GetError is the odd one out as it's not referring to the current state
-    bool HasErrors { get; }
-    IEnumerable<int> ErrorIds { get; }
+    bool HasTriggeredErrors { get; }
 
-    //todo: leave this out of interface? (GetErrorIfTriggered could be used instead (renamed), but consumers would have to deal with null) or just rename?
-    Error GetError(int errorId);
+    //internal, rather than in interface?
+    IEnumerable<TriggeredError> TriggeredErrors { get; }
 
-    Func<Error, string>? ErrorToHtmlElementId { get; set; }
+    Func<int, string>? ErrorIdToHtmlElementId { get; set; }
 
-    bool HasError(params int[] errorIds);
+    bool HasTriggeredError(params int[] errorIds);
 
-    int? GetErrorIdIfTriggered(params int[] mutuallyExclusiveErrorIds);
-    Error? GetErrorIfTriggered(params int[] mutuallyExclusiveErrorIds);
+    //int? GetErrorIdIfTriggered(params int[] mutuallyExclusiveErrorIds);
+    //Error? GetErrorIfTriggered(params int[] mutuallyExclusiveErrorIds);
+
+    TriggeredError? GetErrorIfTriggered(params int[] mutuallyExclusiveErrorIds);
 }

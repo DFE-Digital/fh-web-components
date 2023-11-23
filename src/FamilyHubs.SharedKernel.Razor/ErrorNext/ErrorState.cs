@@ -1,6 +1,5 @@
 ﻿using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
-using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 
 namespace FamilyHubs.SharedKernel.Razor.ErrorNext;
 
@@ -8,56 +7,63 @@ public class ErrorState : IErrorState
 {
     private readonly ImmutableDictionary<int, Error> _possibleErrors;
 
-    public ErrorState(ImmutableDictionary<int, Error> possibleErrors, IEnumerable<int> triggeredErrors)
+    public ErrorState(ImmutableDictionary<int, Error> possibleErrors, IEnumerable<int> triggeredErrorIds)
     {
         _possibleErrors = possibleErrors;
-        ErrorIds = triggeredErrors;
+        TriggeredErrorIds = triggeredErrorIds;
+        TriggeredErrors = triggeredErrorIds.Select(e => new TriggeredError(_possibleErrors[e], this));
     }
 
     public static IErrorState Empty { get; }
         = new ErrorState(ImmutableDictionary<int, Error>.Empty, Enumerable.Empty<int>());
 
     //todo: params version?
-    public static IErrorState Create<T>(ImmutableDictionary<int, Error> possibleErrors, IEnumerable<T>? triggeredErrors)
+    public static IErrorState Create<T>(ImmutableDictionary<int, Error> possibleErrors, IEnumerable<T>? triggeredErrorIds)
         where T : struct, Enum, IConvertible
     {
-        if (triggeredErrors?.Any() == true)
+        if (triggeredErrorIds?.Any() == true)
         {
             return new ErrorState(possibleErrors,
-                triggeredErrors.Select(e => (int)(IConvertible)e));
+                triggeredErrorIds.Select(e => (int)(IConvertible)e));
         }
 
         return Empty;
     }
 
-    public Func<Error, string>? ErrorToHtmlElementId { get; set; }
+    public Func<int, string>? ErrorIdToHtmlElementId { get; set; }
 
-    public bool HasErrors => ErrorIds.Any();
+    public bool HasTriggeredErrors => TriggeredErrorIds.Any();
 
-    //todo: either/and IEnumerable<Error>?
-    public IEnumerable<int> ErrorIds { get; }
+    //todo: not used have IEnumerable<Error> instead: doesn't have to be public
+    private IEnumerable<int> TriggeredErrorIds { get; }
+    public IEnumerable<TriggeredError> TriggeredErrors { get; }
 
-    public Error GetError(int errorId)
-    {
-        return _possibleErrors[errorId];
-    }
+    //private Error GetError(int errorId)
+    //{
+    //    return _possibleErrors[errorId];
+    //}
 
-    public bool HasError(params int[] errorIds)
+    public bool HasTriggeredError(params int[] errorIds)
     {
         return GetErrorIdIfTriggered(errorIds) != null;
     }
 
+    //todo: hasn't been used, only GetErrorIfTriggered has been used - remove it
+    //todo: better name?
+
     [SuppressMessage("Minor Code Smell", "S3267:Loops should be simplified with \"LINQ\" expressions", Justification = "LINQ expression version is less simple")]
-    public int? GetErrorIdIfTriggered(params int[] mutuallyExclusiveErrorIds)
+    private int? GetErrorIdIfTriggered(params int[] mutuallyExclusiveErrorIds)
     {
         if (!mutuallyExclusiveErrorIds.Any())
         {
-            return ErrorIds.Any() ? ErrorIds.First() : null;
+            // if no error ids supplied, returns the first error (if there is one)
+            // this is only really useful where there is only one input on the page
+            return TriggeredErrorIds.Any() ? TriggeredErrorIds.First() : null;
         }
 
         foreach (int errorId in mutuallyExclusiveErrorIds)
         {
-            if (ErrorIds.Contains(errorId))
+            if (TriggeredErrorIds.Contains(errorId))
             {
                 return errorId;
             }
@@ -66,9 +72,9 @@ public class ErrorState : IErrorState
         return null;
     }
 
-    public Error? GetErrorIfTriggered(params int[] mutuallyExclusiveErrorIds)
+    public TriggeredError? GetErrorIfTriggered(params int[] mutuallyExclusiveErrorIds)
     {
         int? currentErrorId = GetErrorIdIfTriggered(mutuallyExclusiveErrorIds);
-        return currentErrorId != null ? GetError(currentErrorId.Value) : null;
+        return currentErrorId != null ? TriggeredErrors.First(e => e.Id == currentErrorId) : null;
     }
 }
