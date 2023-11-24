@@ -36,7 +36,7 @@ public class TriggeredError
         }
     }
 
-    //todo: tag helpers to add extra classes/aria-describedby to input element
+    //todo: tag helpers to add extra classes/aria-describedby to input element?
 
     /// <summary>
     /// The id of the error message element that is displayed next to the input control.
