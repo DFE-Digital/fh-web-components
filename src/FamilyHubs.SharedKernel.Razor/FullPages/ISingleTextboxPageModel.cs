@@ -15,6 +15,4 @@ public interface ISingleTextboxPageModel
     string? TextBoxValue { get; }
 
     IErrorState Errors { get; }
-
-    const string TextBoxId = "textbox";
 }

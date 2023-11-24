@@ -2,7 +2,10 @@
 @using FamilyHubs.SharedKernel.Razor.ErrorNext
 @model ISingleTextboxPageModel
 
-@{ Model.Errors.ErrorIdToHtmlElementId = _ => ISingleTextboxPageModel.TextBoxId; }
+@{
+    const string textBoxId = "textbox";
+    Model.Errors.ErrorIdToHtmlElementId = _ => textBoxId;
+}
 
 @* todo: set page title in here as well? (remember need to change caller's viewdata *@
 
@@ -37,14 +40,14 @@
                             @Model.HintText
                         </div>
                     }
-                    <label class="govuk-label" for="@ISingleTextboxPageModel.TextBoxId">
+                    <label class="govuk-label" for="@textBoxId">
                         @Model.TextBoxLabel
                     </label>
                 }
                 else
                 {
                     <h1 class="govuk-label-wrapper">
-                        <label class="govuk-label govuk-label--l" for="@ISingleTextboxPageModel.TextBoxId">
+                        <label class="govuk-label govuk-label--l" for="@textBoxId">
                             @Model.TextBoxLabel
                         </label>
                     </h1>
@@ -81,7 +84,7 @@
 
                 <input class="govuk-input @(error?.InputClass)"
                        name="TextBoxValue" type="@type" value="@Model.TextBoxValue" inputmode="@type"
-                       spellcheck="false" autocomplete="off" id="@ISingleTextboxPageModel.TextBoxId"
+                       spellcheck="false" autocomplete="off" id="@textBoxId"
                        aria-describedby="@(string.IsNullOrEmpty(Model.HintText) ? "" : "hint ")@error?.InputErrorMessageParaId">
             </div>
             <button type="submit" class="govuk-button" data-module="govuk-button">
