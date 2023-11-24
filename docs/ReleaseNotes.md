@@ -1,5 +1,11 @@
 # Release Notes
 
+### 6.3.0
+
+Added an improved error implementation. The original error handling is still available (until all known consumers have been switched to the new implementation).
+
+The single textbox page (and it's example page) has been updated to use the new error handling.
+
 ### 6.2.0
 
 Add initial support for a full page, single textbox component. See the example pages for more info.
