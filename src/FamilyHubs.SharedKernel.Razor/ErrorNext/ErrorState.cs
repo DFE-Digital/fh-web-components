@@ -7,7 +7,7 @@ public class ErrorState : IErrorState
 {
     public ErrorState(ImmutableDictionary<int, PossibleError> possibleErrors, IEnumerable<int> triggeredErrorIds)
     {
-        TriggeredErrorIds = triggeredErrorIds;
+        ErrorIds = triggeredErrorIds;
         Errors = triggeredErrorIds.Select(e => new Error(possibleErrors[e], this));
     }
 
@@ -29,10 +29,10 @@ public class ErrorState : IErrorState
 
     public Func<int, string>? ErrorIdToHtmlElementId { get; set; }
 
-    public bool HasErrors => TriggeredErrorIds.Any();
+    public bool HasErrors => ErrorIds.Any();
 
     //todo: remove this?
-    private IEnumerable<int> TriggeredErrorIds { get; }
+    private IEnumerable<int> ErrorIds { get; }
     public IEnumerable<Error> Errors { get; }
 
     public bool HasTriggeredError(params int[] errorIds)
@@ -48,12 +48,12 @@ public class ErrorState : IErrorState
         {
             // if no error ids supplied, returns the first error (if there is one)
             // this is only really useful where there is only one input on the page
-            return TriggeredErrorIds.Any() ? TriggeredErrorIds.First() : null;
+            return ErrorIds.Any() ? ErrorIds.First() : null;
         }
 
         foreach (int errorId in mutuallyExclusiveErrorIds)
         {
-            if (TriggeredErrorIds.Contains(errorId))
+            if (ErrorIds.Contains(errorId))
             {
                 return errorId;
             }
