@@ -15,6 +15,7 @@ public class Error
     //todo: does this need to be public?
     public int Id => _possibleError.Id;
     public string Message => _possibleError.ErrorMessage;
+
     public string HtmlElementId
     {
         get
