@@ -1,12 +1,11 @@
 ﻿namespace FamilyHubs.SharedKernel.Razor.ErrorNext;
 
-//todo: all errors referred to are triggered errors, remove 'Triggered' from names?
 public interface IErrorState
 {
     bool HasErrors { get; }
 
     //internal, rather than in interface?
-    IEnumerable<Error> TriggeredErrors { get; }
+    IEnumerable<Error> Errors { get; }
 
     Func<int, string>? ErrorIdToHtmlElementId { get; set; }
 

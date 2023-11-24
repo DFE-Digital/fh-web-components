@@ -8,7 +8,7 @@ public class ErrorState : IErrorState
     public ErrorState(ImmutableDictionary<int, PossibleError> possibleErrors, IEnumerable<int> triggeredErrorIds)
     {
         TriggeredErrorIds = triggeredErrorIds;
-        TriggeredErrors = triggeredErrorIds.Select(e => new Error(possibleErrors[e], this));
+        Errors = triggeredErrorIds.Select(e => new Error(possibleErrors[e], this));
     }
 
     public static IErrorState Empty { get; }
@@ -33,7 +33,7 @@ public class ErrorState : IErrorState
 
     //todo: remove this?
     private IEnumerable<int> TriggeredErrorIds { get; }
-    public IEnumerable<Error> TriggeredErrors { get; }
+    public IEnumerable<Error> Errors { get; }
 
     public bool HasTriggeredError(params int[] errorIds)
     {
@@ -65,6 +65,6 @@ public class ErrorState : IErrorState
     public Error? GetErrorIfTriggered(params int[] mutuallyExclusiveErrorIds)
     {
         int? currentErrorId = GetErrorIdIfTriggered(mutuallyExclusiveErrorIds);
-        return currentErrorId != null ? TriggeredErrors.First(e => e.Id == currentErrorId) : null;
+        return currentErrorId != null ? Errors.First(e => e.Id == currentErrorId) : null;
     }
 }
