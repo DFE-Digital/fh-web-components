@@ -1,5 +1,5 @@
 using System.Collections.Immutable;
-using FamilyHubs.SharedKernel.Razor.Errors;
+using FamilyHubs.SharedKernel.Razor.ErrorNext;
 using FamilyHubs.SharedKernel.Razor.FullPages;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -11,10 +11,10 @@ namespace FamilyHubs.Example.Pages.Examples.FullPages;
 /// </summary>
 public class SingleTextboxModel : PageModel, ISingleTextboxPageModel
 {
-    public string? HeadingText { get; set; }
-    public string? HintText { get; set; }
-    public string TextBoxLabel { get; set; } = "What is the service name?";
-    public IErrorState Errors { get; set; } = ErrorState.Empty;
+    public string? HeadingText => default;
+    public string? HintText => default;
+    public string TextBoxLabel => "What is the service name?";
+    public IErrorState Errors { get; private set; } = ErrorState.Empty;
 
     [BindProperty]
     public string? TextBoxValue { get; set; }
@@ -39,6 +39,6 @@ public class SingleTextboxModel : PageModel, ISingleTextboxPageModel
 
     public static readonly ImmutableDictionary<int, Error> PossibleErrors =
         ImmutableDictionary.Create<int, Error>()
-            .Add(ErrorId.AnswerMissing, ISingleTextboxPageModel.TextBoxId, "Guru meditation required")
-            .Add(ErrorId.AnswerTooLong, ISingleTextboxPageModel.TextBoxId, "The answer is too long");
+            .Add(ErrorId.AnswerMissing, "Guru meditation required")
+            .Add(ErrorId.AnswerTooLong, "The answer is too long");
 }

@@ -1,5 +1,5 @@
 ﻿@using FamilyHubs.SharedKernel.Razor.FullPages
-@using FamilyHubs.SharedKernel.Razor.Errors
+@using FamilyHubs.SharedKernel.Razor.ErrorNext
 @model ISingleTextboxPageModel
 
 <!-- This control can only be used when there are no other inputs on the page -->
@@ -9,7 +9,7 @@
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         
-        <partial name="_ErrorSummary" model="Model.Errors"/>
+        <partial name="_ErrorSummaryNext" model="Model.Errors"/>
 
         <form method="post" novalidate>
 
@@ -19,8 +19,15 @@
                    so we follow the prototype's lead (which I think looks better anyway).*@
                 <h1 class="govuk-heading-l">@Model.HeadingText</h1>
             }
+            
+            @* todo: if every input is inside its own govuk-form-group, makes sense to get from Error *@
+            @* if can have >1 input in a govuk-form-group, makes sense to get from ErrorState *@
+            @* todo: do we need a HasErrors on ErrorState? *@
+            @* todo: keep GetErrorIfTriggered name, but rename Error to PossibleError and TriggeredError to Error *@
 
-            <div class="govuk-form-group @(Model.Errors.HasErrors ? "govuk-form-group--error" : "")">
+            @{TriggeredError? error = Model.Errors.GetErrorIfTriggered(); }
+
+            <div class="govuk-form-group @(error?.FormGroupClass)">
 
                 @if (!string.IsNullOrEmpty(Model.HeadingText))
                 {
@@ -51,8 +58,7 @@
                     }
                 }
 
-                @{Error? error = Model.Errors.GetErrorIfTriggered(); }
-                <partial name="_ErrorMessage" model="error"/>
+                <partial name="_ErrorMessageNext" model="error"/>
 
                 @{
                     // we could get type, inputmode and autocomplete from the interface itself (if we swapped the text to base and introduced a text derived)
@@ -74,7 +80,7 @@
                 @* todo: flags for spellcheck, autocomplete etc.?*@
                 @* todo: support govuk-input--width *@
 
-                <input class="govuk-input @(Model.Errors.HasErrors ? "govuk-input--error" : "")"
+                <input class="govuk-input @(error?.InputClass)"
                        name="TextBoxValue" type="@type" value="@Model.TextBoxValue" inputmode="@type"
                        spellcheck="false" autocomplete="off" id="@ISingleTextboxPageModel.TextBoxId"
                        aria-describedby="@(string.IsNullOrEmpty(Model.HintText) ? "" : "hint ")@error?.InputErrorMessageParaId">

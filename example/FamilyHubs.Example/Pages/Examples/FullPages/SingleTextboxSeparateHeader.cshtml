@@ -1,7 +1,11 @@
 ﻿@page
+@using FamilyHubs.SharedKernel.Razor.FullPages
 @model SingleTextboxSeparateHeaderModel
 @{
     ViewData["Title"] = Model.HeadingText;
+
+    //todo: can this line go in _SingleTextboxPage?
+    Model.Errors.ErrorIdToHtmlElementId = _ => ISingleTextboxPageModel.TextBoxId;
 }
 
 <partial name="_SingleTextboxPage" model="Model" />
