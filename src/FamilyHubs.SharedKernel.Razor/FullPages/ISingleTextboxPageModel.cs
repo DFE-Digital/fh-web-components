@@ -1,4 +1,4 @@
-﻿using FamilyHubs.SharedKernel.Razor.Errors;
+﻿using FamilyHubs.SharedKernel.Razor.ErrorNext;
 
 namespace FamilyHubs.SharedKernel.Razor.FullPages;
 
@@ -9,12 +9,10 @@ public interface ISingleTextboxPageModel
     /// <summary>
     /// Optional separate heading. If not supplied, the heading will be the same as the <see cref="TextBoxLabel"/>.
     /// </summary>
-    string? HeadingText { get; set; }
-    string? HintText { get; set; }
-    string TextBoxLabel { get; set; }
-    string? TextBoxValue { get; set; }
+    string? HeadingText { get; }
+    string? HintText { get; }
+    string TextBoxLabel { get; }
+    string? TextBoxValue { get; }
 
-    IErrorState Errors { get; set; }
-
-    const string TextBoxId = "textbox";
+    IErrorState Errors { get; }
 }
