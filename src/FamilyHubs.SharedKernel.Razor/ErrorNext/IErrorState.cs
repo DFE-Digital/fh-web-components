@@ -3,7 +3,7 @@
 //todo: all errors referred to are triggered errors, remove 'Triggered' from names?
 public interface IErrorState
 {
-    bool HasTriggeredErrors { get; }
+    bool HasErrors { get; }
 
     //internal, rather than in interface?
     IEnumerable<Error> TriggeredErrors { get; }

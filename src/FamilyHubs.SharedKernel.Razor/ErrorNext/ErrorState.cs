@@ -5,13 +5,10 @@ namespace FamilyHubs.SharedKernel.Razor.ErrorNext;
 
 public class ErrorState : IErrorState
 {
-    private readonly ImmutableDictionary<int, PossibleError> _possibleErrors;
-
     public ErrorState(ImmutableDictionary<int, PossibleError> possibleErrors, IEnumerable<int> triggeredErrorIds)
     {
-        _possibleErrors = possibleErrors;
         TriggeredErrorIds = triggeredErrorIds;
-        TriggeredErrors = triggeredErrorIds.Select(e => new Error(_possibleErrors[e], this));
+        TriggeredErrors = triggeredErrorIds.Select(e => new Error(possibleErrors[e], this));
     }
 
     public static IErrorState Empty { get; }
@@ -32,7 +29,7 @@ public class ErrorState : IErrorState
 
     public Func<int, string>? ErrorIdToHtmlElementId { get; set; }
 
-    public bool HasTriggeredErrors => TriggeredErrorIds.Any();
+    public bool HasErrors => TriggeredErrorIds.Any();
 
     //todo: remove this?
     private IEnumerable<int> TriggeredErrorIds { get; }
