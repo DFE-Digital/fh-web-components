@@ -13,8 +13,8 @@ public class ErrorNextModel : PageModel
         Error3
     }
 
-    public static readonly ImmutableDictionary<int, Error> PossibleErrors =
-        ImmutableDictionary.Create<int, Error>()
+    public static readonly ImmutableDictionary<int, PossibleError> PossibleErrors =
+        ImmutableDictionary.Create<int, PossibleError>()
             .Add(ExampleErrors.Error1, "Error 1 message")
             .Add(ExampleErrors.Error2, "Error 2 message")
             .Add(ExampleErrors.Error3, "Error 3 message");

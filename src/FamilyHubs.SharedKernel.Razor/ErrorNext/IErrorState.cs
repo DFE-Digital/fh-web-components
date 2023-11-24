@@ -12,8 +12,5 @@ public interface IErrorState
 
     bool HasTriggeredError(params int[] errorIds);
 
-    //int? GetErrorIdIfTriggered(params int[] mutuallyExclusiveErrorIds);
-    //Error? GetErrorIfTriggered(params int[] mutuallyExclusiveErrorIds);
-
     TriggeredError? GetErrorIfTriggered(params int[] mutuallyExclusiveErrorIds);
 }

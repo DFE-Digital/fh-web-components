@@ -36,7 +36,7 @@ public class SingleTextboxSeparateHeaderModel : PageModel, ISingleTextboxPageMod
         AnswerMissing
     }
 
-    public static readonly ImmutableDictionary<int, Error> PossibleErrors =
-        ImmutableDictionary.Create<int, Error>()
+    public static readonly ImmutableDictionary<int, PossibleError> PossibleErrors =
+        ImmutableDictionary.Create<int, PossibleError>()
             .Add(ErrorId.AnswerMissing, "Guru meditation required");
 }

@@ -5,9 +5,9 @@ namespace FamilyHubs.SharedKernel.Razor.ErrorNext;
 
 public class ErrorState : IErrorState
 {
-    private readonly ImmutableDictionary<int, Error> _possibleErrors;
+    private readonly ImmutableDictionary<int, PossibleError> _possibleErrors;
 
-    public ErrorState(ImmutableDictionary<int, Error> possibleErrors, IEnumerable<int> triggeredErrorIds)
+    public ErrorState(ImmutableDictionary<int, PossibleError> possibleErrors, IEnumerable<int> triggeredErrorIds)
     {
         _possibleErrors = possibleErrors;
         TriggeredErrorIds = triggeredErrorIds;
@@ -15,10 +15,10 @@ public class ErrorState : IErrorState
     }
 
     public static IErrorState Empty { get; }
-        = new ErrorState(ImmutableDictionary<int, Error>.Empty, Enumerable.Empty<int>());
+        = new ErrorState(ImmutableDictionary<int, PossibleError>.Empty, Enumerable.Empty<int>());
 
     //todo: params version?
-    public static IErrorState Create<T>(ImmutableDictionary<int, Error> possibleErrors, IEnumerable<T>? triggeredErrorIds)
+    public static IErrorState Create<T>(ImmutableDictionary<int, PossibleError> possibleErrors, IEnumerable<T>? triggeredErrorIds)
         where T : struct, Enum, IConvertible
     {
         if (triggeredErrorIds?.Any() == true)
@@ -34,23 +34,16 @@ public class ErrorState : IErrorState
 
     public bool HasTriggeredErrors => TriggeredErrorIds.Any();
 
-    //todo: not used have IEnumerable<Error> instead: doesn't have to be public
+    //todo: remove this?
     private IEnumerable<int> TriggeredErrorIds { get; }
     public IEnumerable<TriggeredError> TriggeredErrors { get; }
-
-    //private Error GetError(int errorId)
-    //{
-    //    return _possibleErrors[errorId];
-    //}
 
     public bool HasTriggeredError(params int[] errorIds)
     {
         return GetErrorIdIfTriggered(errorIds) != null;
     }
 
-    //todo: hasn't been used, only GetErrorIfTriggered has been used - remove it
-    //todo: better name?
-
+    //todo: roll into next method?
     [SuppressMessage("Minor Code Smell", "S3267:Loops should be simplified with \"LINQ\" expressions", Justification = "LINQ expression version is less simple")]
     private int? GetErrorIdIfTriggered(params int[] mutuallyExclusiveErrorIds)
     {
