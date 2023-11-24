@@ -30,7 +30,7 @@ namespace FamilyHubs.SharedKernel.Razor.UnitTests.ErrorNext
         [Fact]
         public void ErrorState_With_Errors_Should_Have_Errors()
         {
-            var errorState = ErrorState.Create(PossibleErrors, new[] { ExampleErrors.Error2 });
+            var errorState = ErrorState.Create(PossibleErrors, ExampleErrors.Error2);
 
             Assert.True(errorState.HasErrors);
             Assert.Single(errorState.Errors);
@@ -39,7 +39,7 @@ namespace FamilyHubs.SharedKernel.Razor.UnitTests.ErrorNext
         [Fact]
         public void ErrorState_Should_Trigger_Error_If_Id_Present()
         {
-            var errorState = ErrorState.Create(PossibleErrors, new[] { ExampleErrors.Error2, ExampleErrors.Error3 });
+            var errorState = ErrorState.Create(PossibleErrors, ExampleErrors.Error2, ExampleErrors.Error3);
 
             Assert.True(errorState.HasTriggeredError((int)ExampleErrors.Error2));
             Assert.NotNull(errorState.GetErrorIfTriggered((int)ExampleErrors.Error2));
@@ -48,7 +48,7 @@ namespace FamilyHubs.SharedKernel.Razor.UnitTests.ErrorNext
         [Fact]
         public void ErrorState_Should_Not_Trigger_Error_If_Id_Not_Present()
         {
-            var errorState = ErrorState.Create(PossibleErrors, new[] { ExampleErrors.Error2, ExampleErrors.Error3 });
+            var errorState = ErrorState.Create(PossibleErrors, ExampleErrors.Error2, ExampleErrors.Error3);
 
             Assert.False(errorState.HasTriggeredError((int)ExampleErrors.Error1));
             Assert.Null(errorState.GetErrorIfTriggered((int)ExampleErrors.Error1));

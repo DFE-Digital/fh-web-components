@@ -14,14 +14,12 @@ public class ErrorState : IErrorState
     public static IErrorState Empty { get; }
         = new ErrorState(ImmutableDictionary<int, PossibleError>.Empty, Enumerable.Empty<int>());
 
-    //todo: params version?
-    public static IErrorState Create<T>(ImmutableDictionary<int, PossibleError> possibleErrors, IEnumerable<T>? triggeredErrorIds)
+    public static IErrorState Create<T>(ImmutableDictionary<int, PossibleError> possibleErrors, params T[] triggeredErrorIds)
         where T : struct, Enum, IConvertible
     {
-        if (triggeredErrorIds?.Any() == true)
+        if (triggeredErrorIds.Any())
         {
-            return new ErrorState(possibleErrors,
-                triggeredErrorIds.Select(e => (int)(IConvertible)e));
+            return new ErrorState(possibleErrors, triggeredErrorIds.Select(e => (int)(IConvertible)e));
         }
 
         return Empty;
