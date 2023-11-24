@@ -33,12 +33,10 @@ public class SingleTextboxModel : PageModel, ISingleTextboxPageModel
 
     public enum ErrorId
     {
-        AnswerMissing,
-        AnswerTooLong
+        AnswerMissing
     }
 
     public static readonly ImmutableDictionary<int, Error> PossibleErrors =
         ImmutableDictionary.Create<int, Error>()
-            .Add(ErrorId.AnswerMissing, "Guru meditation required")
-            .Add(ErrorId.AnswerTooLong, "The answer is too long");
+            .Add(ErrorId.AnswerMissing, "Guru meditation required");
 }

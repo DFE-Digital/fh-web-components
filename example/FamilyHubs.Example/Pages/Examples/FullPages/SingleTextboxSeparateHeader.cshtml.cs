@@ -11,7 +11,6 @@ namespace FamilyHubs.Example.Pages.Examples.FullPages;
 /// </summary>
 public class SingleTextboxSeparateHeaderModel : PageModel, ISingleTextboxPageModel
 {
-    //todo: check we can set
     public string? HeadingText => "What is the answer to life, the universe, and everything?";
     public string? HintText => "It's the ultimate question";
     public string TextBoxLabel => "Answer";
@@ -34,12 +33,10 @@ public class SingleTextboxSeparateHeaderModel : PageModel, ISingleTextboxPageMod
 
     public enum ErrorId
     {
-        AnswerMissing,
-        AnswerTooLong
+        AnswerMissing
     }
 
     public static readonly ImmutableDictionary<int, Error> PossibleErrors =
         ImmutableDictionary.Create<int, Error>()
-            .Add(ErrorId.AnswerMissing, "Guru meditation required")
-            .Add(ErrorId.AnswerTooLong, "The answer is too long");
+            .Add(ErrorId.AnswerMissing, "Guru meditation required");
 }
