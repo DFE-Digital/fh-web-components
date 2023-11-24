@@ -23,9 +23,8 @@
             @* todo: if every input is inside its own govuk-form-group, makes sense to get from Error *@
             @* if can have >1 input in a govuk-form-group, makes sense to get from ErrorState *@
             @* todo: do we need a HasErrors on ErrorState? *@
-            @* todo: keep GetErrorIfTriggered name, but rename Error to PossibleError and TriggeredError to Error *@
 
-            @{TriggeredError? error = Model.Errors.GetErrorIfTriggered(); }
+            @{Error? error = Model.Errors.GetErrorIfTriggered(); }
 
             <div class="govuk-form-group @(error?.FormGroupClass)">
 

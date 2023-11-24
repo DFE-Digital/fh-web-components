@@ -6,11 +6,11 @@ public interface IErrorState
     bool HasTriggeredErrors { get; }
 
     //internal, rather than in interface?
-    IEnumerable<TriggeredError> TriggeredErrors { get; }
+    IEnumerable<Error> TriggeredErrors { get; }
 
     Func<int, string>? ErrorIdToHtmlElementId { get; set; }
 
     bool HasTriggeredError(params int[] errorIds);
 
-    TriggeredError? GetErrorIfTriggered(params int[] mutuallyExclusiveErrorIds);
+    Error? GetErrorIfTriggered(params int[] mutuallyExclusiveErrorIds);
 }

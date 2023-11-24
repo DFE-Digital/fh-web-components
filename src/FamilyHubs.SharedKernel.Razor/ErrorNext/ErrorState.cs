@@ -11,7 +11,7 @@ public class ErrorState : IErrorState
     {
         _possibleErrors = possibleErrors;
         TriggeredErrorIds = triggeredErrorIds;
-        TriggeredErrors = triggeredErrorIds.Select(e => new TriggeredError(_possibleErrors[e], this));
+        TriggeredErrors = triggeredErrorIds.Select(e => new Error(_possibleErrors[e], this));
     }
 
     public static IErrorState Empty { get; }
@@ -36,7 +36,7 @@ public class ErrorState : IErrorState
 
     //todo: remove this?
     private IEnumerable<int> TriggeredErrorIds { get; }
-    public IEnumerable<TriggeredError> TriggeredErrors { get; }
+    public IEnumerable<Error> TriggeredErrors { get; }
 
     public bool HasTriggeredError(params int[] errorIds)
     {
@@ -65,7 +65,7 @@ public class ErrorState : IErrorState
         return null;
     }
 
-    public TriggeredError? GetErrorIfTriggered(params int[] mutuallyExclusiveErrorIds)
+    public Error? GetErrorIfTriggered(params int[] mutuallyExclusiveErrorIds)
     {
         int? currentErrorId = GetErrorIdIfTriggered(mutuallyExclusiveErrorIds);
         return currentErrorId != null ? TriggeredErrors.First(e => e.Id == currentErrorId) : null;
