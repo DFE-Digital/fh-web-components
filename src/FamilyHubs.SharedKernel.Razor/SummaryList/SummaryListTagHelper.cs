@@ -9,7 +9,7 @@ public class SummaryListTagHelper : TagHelper
     public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
     {
         output.TagName = "dl";
-        output.Attributes.SetAttribute("class", $"govuk-summary-list {(Border?"":"govuk-summary-list--no-border")}");
+        output.Attributes.SetAttribute("class", $"govuk-summary-list {(Border ? "" : "govuk-summary-list--no-border")}");
         output.Content.SetHtmlContent((await output.GetChildContentAsync()).GetContent());
     }
 }

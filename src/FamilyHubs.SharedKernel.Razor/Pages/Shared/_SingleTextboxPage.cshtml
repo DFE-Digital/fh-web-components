@@ -82,7 +82,7 @@
                 @* todo: flags for spellcheck, autocomplete etc.?*@
                 @* todo: support govuk-input--width *@
 
-                <input class="govuk-input @(error?.InputClass)"
+                <input class="govuk-input @(error?.InputClass)" maxlength="@(Model.MaxLength)"
                        name="TextBoxValue" type="@type" value="@Model.TextBoxValue" inputmode="@type"
                        spellcheck="false" autocomplete="off" id="@textBoxId"
                        aria-describedby="@(string.IsNullOrEmpty(Model.HintText) ? "" : "hint ")@error?.InputErrorMessageParaId">

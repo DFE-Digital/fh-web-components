@@ -14,6 +14,7 @@ public class SingleTextboxSeparateHeaderModel : PageModel, ISingleTextboxPageMod
     public string? HeadingText => "What is the answer to life, the universe, and everything?";
     public string? HintText => "It's the ultimate question";
     public string TextBoxLabel => "Answer";
+    public int? MaxLength => default;
     public IErrorState Errors { get; private set; } = ErrorState.Empty;
 
     [BindProperty]

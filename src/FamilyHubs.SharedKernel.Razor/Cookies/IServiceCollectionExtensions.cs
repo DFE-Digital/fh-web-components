@@ -2,7 +2,6 @@
 using FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 
 namespace FamilyHubs.SharedKernel.Razor.Cookies;
 

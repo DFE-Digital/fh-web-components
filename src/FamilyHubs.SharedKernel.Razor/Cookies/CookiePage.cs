@@ -1,6 +1,5 @@
 ﻿using FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Options;
 using System.Globalization;
 
 namespace FamilyHubs.SharedKernel.Razor.Cookies;

@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Options;
-
-namespace FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options.Configure;
+﻿namespace FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Options.Configure;
 
 public class FamilyHubsUiOptionsValidation : IValidateOptions<FamilyHubsUiOptions>
 {

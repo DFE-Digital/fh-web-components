@@ -14,5 +14,7 @@ public interface ISingleTextboxPageModel
     string TextBoxLabel { get; }
     string? TextBoxValue { get; }
 
+    int? MaxLength { get; }
+
     IErrorState Errors { get; }
 }

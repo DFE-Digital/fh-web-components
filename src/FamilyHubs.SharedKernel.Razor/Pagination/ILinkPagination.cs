@@ -3,7 +3,7 @@ namespace FamilyHubs.SharedKernel.Razor.Pagination;
 
 public interface ILinkPagination : IPagination
 {
-    new static ILinkPagination DontShow => new DontShowLinkPagination();
+    static new ILinkPagination DontShow => new DontShowLinkPagination();
 
     string GetUrl(int page);
 }
