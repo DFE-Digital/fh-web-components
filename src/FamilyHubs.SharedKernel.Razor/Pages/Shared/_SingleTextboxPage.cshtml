@@ -82,11 +82,10 @@
                 @* todo: flags for spellcheck, autocomplete etc.?*@
                 @* todo: support govuk-input--width *@
 
-@*                 <input class="govuk-input @(error?.InputClass)" @(Model.MaxLength != null? $"maxlength=\"{Model.MaxLength}\"" : "") *@
                 <input class="govuk-input @(error?.InputClass)" maxlength="@(Model.MaxLength)"
                        name="TextBoxValue" type="@type" value="@Model.TextBoxValue" inputmode="@type"
                        spellcheck="false" autocomplete="off" id="@textBoxId"
-                       aria-describedby="@(string.IsNullOrEmpty(Model.HintText) ? "" : "hint ") @error?.InputErrorMessageParaId">
+                       aria-describedby="@(string.IsNullOrEmpty(Model.HintText) ? "" : "hint ")@error?.InputErrorMessageParaId">
             </div>
             <button type="submit" class="govuk-button" data-module="govuk-button">
                 Continue
