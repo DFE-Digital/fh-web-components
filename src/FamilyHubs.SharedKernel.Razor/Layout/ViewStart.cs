@@ -3,7 +3,6 @@ using FamilyHubs.SharedKernel.Razor.FamilyHubsUi;
 using FamilyHubs.SharedKernel.Razor.FamilyHubsUi.Extensions;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.Extensions.Options;
 
 namespace FamilyHubs.SharedKernel.Razor.Layout;
 
