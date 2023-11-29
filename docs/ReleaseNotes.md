@@ -2,6 +2,10 @@
 
 ### 6.3.0
 
+Added `MaxLength` support to the single textbox component.
+
+### 6.3.0
+
 Added an improved error implementation. The original error handling is still available (until all known consumers have been switched to the new implementation). See the new example page for more info.
 
 The single textbox page (and it's example page) has been updated to use the new error handling.
