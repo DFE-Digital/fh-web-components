@@ -14,6 +14,7 @@ public class SingleTextboxModel : PageModel, ISingleTextboxPageModel
     public string? HeadingText => default;
     public string? HintText => default;
     public string TextBoxLabel => "What is the service name?";
+    public int? MaxLength => 10;
     public IErrorState Errors { get; private set; } = ErrorState.Empty;
 
     [BindProperty]
