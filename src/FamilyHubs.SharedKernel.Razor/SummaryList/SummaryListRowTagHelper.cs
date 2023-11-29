@@ -1,6 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Globalization;
-using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace FamilyHubs.SharedKernel.Razor.SummaryList;
 

@@ -47,7 +47,7 @@ public static class SecurityHeaders
 
                     builder.AddImgSrc()
                         .Self()
-                        .From(new []
+                        .From(new[]
                         {
                             "https://*.google-analytics.com",
                             "https://*.analytics.google.com",
