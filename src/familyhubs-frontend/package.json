@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/DFE-Digital/fh-service-directory-shared#readme",
   "dependencies": {
+    "accessible-autocomplete": "^2.0.4",
     "@ministryofjustice/frontend": "~1.8",
     "@types/gtag.js": "^0.0.12",
     "@types/jquery": "^3.5.17",

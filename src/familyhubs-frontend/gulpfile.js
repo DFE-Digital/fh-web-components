@@ -27,6 +27,7 @@ gulp.task('copy-wwwroot', function () {
         .pipe(gulp.dest(baseDir));
 });
 
+//todo: map files also need to be copied
 function copyPackageJsToWwwroot(packageName, srcFilename) {
     // Read the package.json file to get the package version
     const packageJson = JSON.parse(fs.readFileSync(`../${packageName}/package.json`));
@@ -44,6 +45,10 @@ function copyPackageJsToWwwroot(packageName, srcFilename) {
         .pipe(rename(destFileName))
         .pipe(gulp.dest(baseDir + '/js'));
 }
+
+gulp.task('copy-accessible-autocomplete-js', function () {
+    return copyPackageJsToWwwroot('accessible-autocomplete', 'dist/accessible-autocomplete.min.js');
+});
 
 gulp.task('copy-govuk-frontend-js', function () {
     return copyPackageJsToWwwroot('govuk-frontend', 'govuk/all.js');
