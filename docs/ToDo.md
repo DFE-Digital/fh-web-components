@@ -1,5 +1,7 @@
 # Potential improvements
 
+* fix accessible-autocomplete map file
+
 * add support for custom columns width to the dashboard. either/both https://design-system.service.gov.uk/components/table/ and custom css widths
 
 * finish off error summary tag helper (and related changes)
