@@ -5,6 +5,7 @@
   "//": "note: normal consumers of familyhubs-frontend, will just need a dependency on familyhubs-frontend, all the other dependencies here are just because this site is also being used as a test harness, rather than a straight example site",
   "dependencies": {
     "familyhubs-frontend": "file:../../src/familyhubs-frontend",
+    "accessible-autocomplete": "^2.0.4",
     "@ministryofjustice/frontend": "~1.8",
     "@types/gtag.js": "^0.0.12",
     "@types/jquery": "^3.5.17",

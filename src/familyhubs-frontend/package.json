@@ -1,6 +1,6 @@
 {
   "name": "familyhubs-frontend",
-  "version": "6.4.0",
+  "version": "6.5.0",
   "description": "FamilyHubs Frontend contains the code you need to start building a Family Hubs website on top of the GOVUK Design System",
   "main": "index.js",
   "scripts": {
@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/DFE-Digital/fh-service-directory-shared#readme",
   "dependencies": {
+    "accessible-autocomplete": "^2.0.4",
     "@ministryofjustice/frontend": "~1.8",
     "@types/gtag.js": "^0.0.12",
     "@types/jquery": "^3.5.17",

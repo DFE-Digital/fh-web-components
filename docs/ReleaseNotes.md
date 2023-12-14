@@ -1,6 +1,10 @@
 # Release Notes
 
-### 6.3.0
+### 6.5.0
+
+Add support for accessible-autocomplete. See [GitHub](https://github.com/alphagov/accessible-autocomplete) and the [node package](https://www.npmjs.com/package/accessible-autocomplete) for more info.
+
+### 6.4.0
 
 Added `MaxLength` support to the single textbox component.
 
