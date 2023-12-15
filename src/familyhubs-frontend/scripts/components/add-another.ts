@@ -52,7 +52,7 @@ window.FamilyHubsFrontend.AddAnother.prototype.setCallback = function (callback:
 
 window.FamilyHubsFrontend.AddAnother.prototype.onAddButtonClick = function (e) {
 	var item = this.getNewItem();
-	this.updateAttributes(this.getItems().length, item);
+	//this.updateAttributes(this.getItems().length, item);
 	this.resetItem(item);
 	var firstItem = this.getItems().first();
 	if (!this.hasRemoveButton(firstItem)) {
@@ -85,6 +85,12 @@ window.FamilyHubsFrontend.AddAnother.prototype.getNewItem = function () { //: JQ
 
 	//todo: need to handle name and id before enhancing the select elements
 
+	//this.updateAttributes(this.getItems().length, item);
+
+	var $item = $(item);
+
+	this.updateAttributes(items.length, $item);
+
 	// call the callback which needs to apply accessibility enhancements to the new item
 	if (typeof this.callback === 'function') {
 		this.callback(item);
@@ -99,8 +105,6 @@ window.FamilyHubsFrontend.AddAnother.prototype.getNewItem = function () { //: JQ
             selectElement: select
         });
     });
-
-    var $item = $(item);
 
     // Create a remove button if it doesn't exist
     if (!this.hasRemoveButton($item)) {
