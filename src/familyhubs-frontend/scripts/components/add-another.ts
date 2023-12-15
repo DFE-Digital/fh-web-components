@@ -73,13 +73,15 @@ window.FamilyHubsFrontend.AddAnother.prototype.createRemoveButton = function (it
 };
 
 window.FamilyHubsFrontend.AddAnother.prototype.resetItem = function (item) {
-	item.find('[data-name], [data-id]').each(function (index, el) {
-		if (el.type == 'checkbox' || el.type == 'radio') {
-			el.checked = false;
-		} else {
-			el.value = '';
-		}
-	});
+	// accessibile-autocomplete adds an input (without data-name or data-id)
+	// so we blank all input controls
+    item.find('input, textarea, select').each(function (index, el) {
+        if (el.type == 'checkbox' || el.type == 'radio') {
+            el.checked = false;
+        } else {
+            el.value = '';
+        }
+    });
 };
 
 window.FamilyHubsFrontend.AddAnother.prototype.onRemoveButtonClick = function (e) {
