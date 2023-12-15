@@ -43,6 +43,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FamilyHubs.SharedKernel.Raz
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", "{3DCD5978-FEBE-423F-B967-CFCA67853771}"
 	ProjectSection(SolutionItems) = preProject
+		src\familyhubs-frontend\scripts\components\add-another.ts = src\familyhubs-frontend\scripts\components\add-another.ts
 		src\familyhubs-frontend\scripts\components\analytics.ts = src\familyhubs-frontend\scripts\components\analytics.ts
 		src\familyhubs-frontend\scripts\components\back-links.ts = src\familyhubs-frontend\scripts\components\back-links.ts
 		src\familyhubs-frontend\scripts\components\cookie-banner.ts = src\familyhubs-frontend\scripts\components\cookie-banner.ts
@@ -71,8 +72,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{FA1F7A55-52FC-
 		src\familyhubs-frontend\wwwroot\js\accessible-autocomplete-2.0.4.min.js = src\familyhubs-frontend\wwwroot\js\accessible-autocomplete-2.0.4.min.js
 		src\familyhubs-frontend\wwwroot\js\accessible-autocomplete-2.0.4.min.js.map = src\familyhubs-frontend\wwwroot\js\accessible-autocomplete-2.0.4.min.js.map
 		src\familyhubs-frontend\wwwroot\js\dfefrontend-0.1.8.js = src\familyhubs-frontend\wwwroot\js\dfefrontend-0.1.8.js
-		src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-6.5.0.min.js = src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-6.5.0.min.js
-		src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-6.5.0.min.js.map = src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-6.5.0.min.js.map
+		src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-6.6.0.min.js = src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-6.6.0.min.js
+		src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-6.6.0.min.js.map = src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-6.6.0.min.js.map
 		src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.7.0.min.js = src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.7.0.min.js
 		src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.7.0.min.js.map = src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.7.0.min.js.map
 		src\familyhubs-frontend\wwwroot\js\jquery-3.7.1.js = src\familyhubs-frontend\wwwroot\js\jquery-3.7.1.js
@@ -133,6 +134,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{162DB9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", "{2003D362-7F0B-4F9C-AAA0-5AB0EB865A5F}"
 	ProjectSection(SolutionItems) = preProject
+		src\familyhubs-frontend\styles\components\_add-another.scss = src\familyhubs-frontend\styles\components\_add-another.scss
 		src\familyhubs-frontend\styles\components\_back-links.scss = src\familyhubs-frontend\styles\components\_back-links.scss
 		src\familyhubs-frontend\styles\components\_dashboard.scss = src\familyhubs-frontend\styles\components\_dashboard.scss
 		src\familyhubs-frontend\styles\components\_filters.scss = src\familyhubs-frontend\styles\components\_filters.scss
