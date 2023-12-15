@@ -71,13 +71,12 @@ window.FamilyHubsFrontend.AddAnother.prototype.getNewItem = function () { //: JQ
     // Find the autocomplete wrappers and remove their parent
     const autocompleteWrappers = item.querySelectorAll('.autocomplete__wrapper');
     autocompleteWrappers.forEach(wrapper => {
-    //    if (wrapper.parentNode) {
-    //        wrapper.parentNode.removeChild(wrapper);
-        //    }
         if (wrapper.parentNode.parentNode) {
 			wrapper.parentNode.parentNode.removeChild(wrapper.parentNode);
         }
     });
+
+	//todo: need to handle name and id before enhancing the select elements
 
     // Enhance the select elements
     const languageSelects = item.querySelectorAll("[id^='language-']") as NodeListOf<HTMLSelectElement>;
