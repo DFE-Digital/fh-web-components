@@ -17,6 +17,7 @@
 // https://github.com/alphagov/accessible-autocomplete/issues/535
 declare const accessibleAutocomplete: any;
 
+type Callback = (element: HTMLElement) => void;
 
 window.FamilyHubsFrontend = window.FamilyHubsFrontend || {};
 
@@ -32,6 +33,8 @@ export function initializeAddAnother(): void {
 window.FamilyHubsFrontend.AddAnother = function (container) {
 	this.container = $(container);
 
+	this.callback = null;
+
 	if (this.container.data('fh-add-another-initialised')) {
 		return
 	}
@@ -41,6 +44,10 @@ window.FamilyHubsFrontend.AddAnother = function (container) {
 	this.container.on('click', '.fh-add-another__remove-button', $.proxy(this, 'onRemoveButtonClick'));
 	this.container.on('click', '.fh-add-another__add-button', $.proxy(this, 'onAddButtonClick'));
 	this.container.find('.fh-add-another__add-button, fh-add-another__remove-button').prop('type', 'button');
+};
+
+window.FamilyHubsFrontend.AddAnother.prototype.setCallback = function (callback: Callback) {
+	this.callback = callback;
 };
 
 window.FamilyHubsFrontend.AddAnother.prototype.onAddButtonClick = function (e) {
@@ -77,6 +84,10 @@ window.FamilyHubsFrontend.AddAnother.prototype.getNewItem = function () { //: JQ
     });
 
 	//todo: need to handle name and id before enhancing the select elements
+
+	if (typeof this.callback === 'function') {
+		this.callback(item);
+	}
 
     // Enhance the select elements
     const languageSelects = item.querySelectorAll("[id^='language-']") as NodeListOf<HTMLSelectElement>;
