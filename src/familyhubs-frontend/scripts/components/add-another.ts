@@ -1,4 +1,4 @@
-// A version of the MOJ's add-another component what plays nice with the accessible autocomplete component.
+// A version of the MOJ's add-another component that plays nice with the accessible autocomplete component.
 // I did consider subclassing the MOJ's add-another component,
 // but it would have been so coupled that it would've probably broken on an update of the MOJ library.
 // So instead we forked it and made our own version.
@@ -52,7 +52,6 @@ window.FamilyHubsFrontend.AddAnother.prototype.setCallback = function (callback:
 
 window.FamilyHubsFrontend.AddAnother.prototype.onAddButtonClick = function (e) {
 	var item = this.getNewItem();
-	//this.updateAttributes(this.getItems().length, item);
 	this.resetItem(item);
 	var firstItem = this.getItems().first();
 	if (!this.hasRemoveButton(firstItem)) {
@@ -83,12 +82,9 @@ window.FamilyHubsFrontend.AddAnother.prototype.getNewItem = function () { //: JQ
         }
     });
 
-	//todo: need to handle name and id before enhancing the select elements
-
-	//this.updateAttributes(this.getItems().length, item);
-
 	var $item = $(item);
 
+	// update the id and name attributes
 	this.updateAttributes(items.length, $item);
 
 	// call the callback which needs to apply accessibility enhancements to the new item
