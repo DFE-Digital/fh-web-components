@@ -3,6 +3,9 @@
 // but it would have been so coupled that it would've probably broken on an update of the MOJ library.
 // So instead we forked it and made our own version.
 
+//todo: the created accessible  input when adding doesn't have the id/name data attrs, so we get dupe ids
+//todo: we need to initialise the accessible autocomplete on the new item
+
 window.FamilyHubsFrontend = window.FamilyHubsFrontend || {};
 
 export function initializeAddAnother(): void {
