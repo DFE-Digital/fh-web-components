@@ -63,7 +63,7 @@ window.FamilyHubsFrontend.AddAnother.prototype.getItems = function () {
 	return this.container.find('.fh-add-another__item');
 };
 
-window.FamilyHubsFrontend.AddAnother.prototype.getNewItem = function (): HTMLElement {
+window.FamilyHubsFrontend.AddAnother.prototype.getNewItem = function () { //: JQuery<HTMLElement> //HTMLElement {
     // Get the first item and clone it
     const items = this.getItems();
     const item = items[0].cloneNode(true) as HTMLElement;
@@ -71,8 +71,11 @@ window.FamilyHubsFrontend.AddAnother.prototype.getNewItem = function (): HTMLEle
     // Find the autocomplete wrappers and remove their parent
     const autocompleteWrappers = item.querySelectorAll('.autocomplete__wrapper');
     autocompleteWrappers.forEach(wrapper => {
-        if (wrapper.parentNode) {
-            wrapper.parentNode.removeChild(wrapper);
+    //    if (wrapper.parentNode) {
+    //        wrapper.parentNode.removeChild(wrapper);
+        //    }
+        if (wrapper.parentNode.parentNode) {
+			wrapper.parentNode.parentNode.removeChild(wrapper.parentNode);
         }
     });
 
@@ -86,12 +89,14 @@ window.FamilyHubsFrontend.AddAnother.prototype.getNewItem = function (): HTMLEle
         });
     });
 
+    var $item = $(item);
+
     // Create a remove button if it doesn't exist
-    if (!this.hasRemoveButton(item)) {
-        this.createRemoveButton(item);
+    if (!this.hasRemoveButton($item)) {
+        this.createRemoveButton($item);
     }
 
-    return item;
+    return $item;
 };
 
 /*
@@ -146,38 +151,6 @@ window.FamilyHubsFrontend.AddAnother.prototype.getNewItem = function (): HTMLEle
     return item;
 };
 */
-
-window.FamilyHubsFrontend.AddAnother.prototype.getNewItem = function (): HTMLElement {
-    // Get the first item and clone it
-    const items = this.getItems();
-    const item = items[0].cloneNode(true) as HTMLElement;
-
-    // Find the autocomplete wrappers and remove their parent
-    const autocompleteWrappers = item.querySelectorAll('.autocomplete__wrapper');
-    autocompleteWrappers.forEach(wrapper => {
-        if (wrapper.parentNode) {
-            wrapper.parentNode.removeChild(wrapper);
-        }
-    });
-
-    // Enhance the select elements
-    const languageSelects = item.querySelectorAll("[id^='language-']") as NodeListOf<HTMLSelectElement>;
-    languageSelects.forEach(select => {
-        accessibleAutocomplete.enhanceSelectElement({
-            name: 'languageName',
-            defaultValue: '',
-            selectElement: select
-        });
-    });
-
-    // Create a remove button if it doesn't exist
-    if (!this.hasRemoveButton(item)) {
-        this.createRemoveButton(item);
-    }
-
-    return item;
-};
-
 
 window.FamilyHubsFrontend.AddAnother.prototype.updateAttributes = function (index, item) {
 	item.find('[data-name]').each(function (i, el) {
