@@ -210,13 +210,13 @@ public class IndexModel : PageModel
         LanguageCodes = Enumerable.Empty<string>();
     }
 
-    protected void OnGet()
+    public void OnGet()
     {
         // default to 'All' languages
         LanguageCodes = StaticLanguageOptions.Take(1).Select(o => o.Value);
     }
 
-    protected void OnPost()
+    public void OnPost()
     {
         var languageCodes = Request.Form["language"];
     }
