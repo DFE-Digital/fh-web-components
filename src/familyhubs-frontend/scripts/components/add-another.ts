@@ -110,59 +110,6 @@ window.FamilyHubsFrontend.AddAnother.prototype.getNewItem = function () { //: JQ
     return $item;
 };
 
-/*
-//window.FamilyHubsFrontend.AddAnother.prototype.getNewItem = function () {
-//	//todo: before cloning, try finding the div with class autocomplete__wrapper, then removing it's parent
-//	// then clone, then call the select enhance on the new select
-//	// will need a way to pass a function in to do this//
-
-//	var item = this.getItems().first().clone();
-//	if (!this.hasRemoveButton(item)) {
-//		this.createRemoveButton(item);
-//	}
-	//	return item;
-
-	var item = this.getItems().first().clone();
-
-	//const autocompleteWrappers = item.find('.autocomplete__wrapper');
-	//var autocompleteWrappers = document.querySelectorAll('.autocomplete__wrapper');
-
- //       //if (autocompleteWrappers.length) {
- //           autocompleteWrappers.forEach(function(wrapper) {
- //               wrapper.parentNode.remove();
- //           });
- //       //}
- //       //}
-
-	const autocompleteWrappers = item.find('.autocomplete__wrapper');
-	if (autocompleteWrappers.length) {
-		autocompleteWrappers.each(function () {
-			$(this).parent().remove();
-		});
-	}
-
-	//todo: just poc!
-	const languageSelects = item[0].querySelectorAll("[id^='language-']") as NodeListOf<HTMLSelectElement>; // [id$='\\d+']");
-
- 	languageSelects.forEach(function (select) {
-		accessibleAutocomplete.enhanceSelectElement({
-			//defaultValue: select.value,
-			//todo: does it default to name in html?
-			//name: select.name,
-			name: 'languageName',
-			defaultValue: '',
-			selectElement: select
-		})
-	});
-
-
-    if (!this.hasRemoveButton(item)) {
-        this.createRemoveButton(item);
-    }
-    return item;
-};
-*/
-
 window.FamilyHubsFrontend.AddAnother.prototype.updateAttributes = function (index, item) {
 	item.find('[data-name]').each(function (i, el) {
 		var originalId = el.id
