@@ -71,11 +71,11 @@ window.FamilyHubsFrontend.AddAnother.prototype.getItems = function () {
 };
 
 window.FamilyHubsFrontend.AddAnother.prototype.getNewItem = function () { //: JQuery<HTMLElement> //HTMLElement {
-    // Get the first item and clone it
+    // get the first item and clone it
     const items = this.getItems();
     const item = items[0].cloneNode(true) as HTMLElement;
 
-    // Find the autocomplete wrappers and remove their parent
+    // find the autocomplete wrappers and remove the elements that are added by accessible-autocomplete
     const autocompleteWrappers = item.querySelectorAll('.autocomplete__wrapper');
     autocompleteWrappers.forEach(wrapper => {
         if (wrapper.parentNode.parentNode) {
@@ -85,11 +85,12 @@ window.FamilyHubsFrontend.AddAnother.prototype.getNewItem = function () { //: JQ
 
 	//todo: need to handle name and id before enhancing the select elements
 
+	// call the callback which needs to apply accessibility enhancements to the new item
 	if (typeof this.callback === 'function') {
 		this.callback(item);
 	}
 
-    // Enhance the select elements
+	//todo: this is just a poc, and will be replaced by the callback
     const languageSelects = item.querySelectorAll("[id^='language-']") as NodeListOf<HTMLSelectElement>;
     languageSelects.forEach(select => {
         accessibleAutocomplete.enhanceSelectElement({
