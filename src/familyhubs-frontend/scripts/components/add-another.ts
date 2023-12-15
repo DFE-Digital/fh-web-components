@@ -4,7 +4,19 @@
 // So instead we forked it and made our own version.
 
 //todo: the created accessible  input when adding doesn't have the id/name data attrs, so we get dupe ids
+//todo: there seems to be a bug in accessible-autocomplete where the input it creates has the same id as the select
 //todo: we need to initialise the accessible autocomplete on the new item
+//todo: when enhancing the select in accessible-autocomplete, it returns the name rather than the value
+// there's a workaround...
+// https://github.com/alphagov/accessible-autocomplete/issues/387
+// but we could we roll it into our add-another component?
+//todo: when accessible-autocomplete creates the input, it doesn't handle the aria-describedby correctly...
+// https://github.com/alphagov/accessible-autocomplete/issues/589
+
+//todo: use the index.d.ts from here...
+// https://github.com/alphagov/accessible-autocomplete/issues/535
+declare const accessibleAutocomplete: any;
+
 
 window.FamilyHubsFrontend = window.FamilyHubsFrontend || {};
 
@@ -51,13 +63,121 @@ window.FamilyHubsFrontend.AddAnother.prototype.getItems = function () {
 	return this.container.find('.fh-add-another__item');
 };
 
-window.FamilyHubsFrontend.AddAnother.prototype.getNewItem = function () {
-	var item = this.getItems().first().clone();
-	if (!this.hasRemoveButton(item)) {
-		this.createRemoveButton(item);
-	}
-	return item;
+window.FamilyHubsFrontend.AddAnother.prototype.getNewItem = function (): HTMLElement {
+    // Get the first item and clone it
+    const items = this.getItems();
+    const item = items[0].cloneNode(true) as HTMLElement;
+
+    // Find the autocomplete wrappers and remove their parent
+    const autocompleteWrappers = item.querySelectorAll('.autocomplete__wrapper');
+    autocompleteWrappers.forEach(wrapper => {
+        if (wrapper.parentNode) {
+            wrapper.parentNode.removeChild(wrapper);
+        }
+    });
+
+    // Enhance the select elements
+    const languageSelects = item.querySelectorAll("[id^='language-']") as NodeListOf<HTMLSelectElement>;
+    languageSelects.forEach(select => {
+        accessibleAutocomplete.enhanceSelectElement({
+            name: 'languageName',
+            defaultValue: '',
+            selectElement: select
+        });
+    });
+
+    // Create a remove button if it doesn't exist
+    if (!this.hasRemoveButton(item)) {
+        this.createRemoveButton(item);
+    }
+
+    return item;
 };
+
+/*
+//window.FamilyHubsFrontend.AddAnother.prototype.getNewItem = function () {
+//	//todo: before cloning, try finding the div with class autocomplete__wrapper, then removing it's parent
+//	// then clone, then call the select enhance on the new select
+//	// will need a way to pass a function in to do this//
+
+//	var item = this.getItems().first().clone();
+//	if (!this.hasRemoveButton(item)) {
+//		this.createRemoveButton(item);
+//	}
+	//	return item;
+
+	var item = this.getItems().first().clone();
+
+	//const autocompleteWrappers = item.find('.autocomplete__wrapper');
+	//var autocompleteWrappers = document.querySelectorAll('.autocomplete__wrapper');
+
+ //       //if (autocompleteWrappers.length) {
+ //           autocompleteWrappers.forEach(function(wrapper) {
+ //               wrapper.parentNode.remove();
+ //           });
+ //       //}
+ //       //}
+
+	const autocompleteWrappers = item.find('.autocomplete__wrapper');
+	if (autocompleteWrappers.length) {
+		autocompleteWrappers.each(function () {
+			$(this).parent().remove();
+		});
+	}
+
+	//todo: just poc!
+	const languageSelects = item[0].querySelectorAll("[id^='language-']") as NodeListOf<HTMLSelectElement>; // [id$='\\d+']");
+
+ 	languageSelects.forEach(function (select) {
+		accessibleAutocomplete.enhanceSelectElement({
+			//defaultValue: select.value,
+			//todo: does it default to name in html?
+			//name: select.name,
+			name: 'languageName',
+			defaultValue: '',
+			selectElement: select
+		})
+	});
+
+
+    if (!this.hasRemoveButton(item)) {
+        this.createRemoveButton(item);
+    }
+    return item;
+};
+*/
+
+window.FamilyHubsFrontend.AddAnother.prototype.getNewItem = function (): HTMLElement {
+    // Get the first item and clone it
+    const items = this.getItems();
+    const item = items[0].cloneNode(true) as HTMLElement;
+
+    // Find the autocomplete wrappers and remove their parent
+    const autocompleteWrappers = item.querySelectorAll('.autocomplete__wrapper');
+    autocompleteWrappers.forEach(wrapper => {
+        if (wrapper.parentNode) {
+            wrapper.parentNode.removeChild(wrapper);
+        }
+    });
+
+    // Enhance the select elements
+    const languageSelects = item.querySelectorAll("[id^='language-']") as NodeListOf<HTMLSelectElement>;
+    languageSelects.forEach(select => {
+        accessibleAutocomplete.enhanceSelectElement({
+            name: 'languageName',
+            defaultValue: '',
+            selectElement: select
+        });
+    });
+
+    // Create a remove button if it doesn't exist
+    if (!this.hasRemoveButton(item)) {
+        this.createRemoveButton(item);
+    }
+
+    return item;
+};
+
 
 window.FamilyHubsFrontend.AddAnother.prototype.updateAttributes = function (index, item) {
 	item.find('[data-name]').each(function (i, el) {
