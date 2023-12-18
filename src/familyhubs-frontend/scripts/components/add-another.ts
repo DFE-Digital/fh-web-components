@@ -93,14 +93,14 @@ window.FamilyHubsFrontend.AddAnother.prototype.getNewItem = function () { //: JQ
 	}
 
 	//todo: this is just a poc, and will be replaced by the callback
-    const languageSelects = item.querySelectorAll("[id^='language-']") as NodeListOf<HTMLSelectElement>;
-    languageSelects.forEach(select => {
-        accessibleAutocomplete.enhanceSelectElement({
-            name: 'languageName',
-            defaultValue: '',
-            selectElement: select
-        });
-    });
+    //const languageSelects = item.querySelectorAll("[id^='language-']") as NodeListOf<HTMLSelectElement>;
+    //languageSelects.forEach(select => {
+    //    accessibleAutocomplete.enhanceSelectElement({
+    //        name: 'languageName',
+    //        defaultValue: '',
+    //        selectElement: select
+    //    });
+    //});
 
     // Create a remove button if it doesn't exist
     if (!this.hasRemoveButton($item)) {
