@@ -1,5 +1,11 @@
 # Release Notes
 
+### 6.6.0
+
+Add fh-add-another, a forked version of MOJ's add-another component, that works with accessible-autocomplete.
+
+See the example page for more info.
+
 ### 6.5.0
 
 Add support for accessible-autocomplete. See [GitHub](https://github.com/alphagov/accessible-autocomplete) and the [node package](https://www.npmjs.com/package/accessible-autocomplete) for more info.
