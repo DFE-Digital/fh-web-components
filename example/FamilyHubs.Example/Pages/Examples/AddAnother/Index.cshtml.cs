@@ -222,24 +222,6 @@ public class IndexModel : PageModel
 
         var errors = new AddAnotherAutocompleteErrorChecker(
             Request.Form, "language", "languageName", StaticLanguageOptions);
-
-
-        //todo: helper object that accepts the form, and the 2 form names
-        //var languageCodes = Request.Form["language"];
-        //var languageNames = Request.Form["languageName"];
-
-        //if (languageNames.Count > languageCodes.Count)
-        //{
-        //    var nameAndIndex = languageNames
-        //        .Select((item, index) => new { Item = item, Index = index });
-
-        //    int? firstEmptyIndex = nameAndIndex.FirstOrDefault(element => element.Item == "")?.Index;
-
-        //    // have as static?
-        //    var validNames = StaticLanguageOptions.Select(o => o.Text);
-
-        //    var firstInvalidName = nameAndIndex.FirstOrDefault(x => x.Item != "" && !validNames.Contains(x.Item))?.Index;
-        //}
     }
 }
 
@@ -265,7 +247,6 @@ public class AddAnotherAutocompleteErrorChecker
         {
             FirstEmptyIndex = nameAndIndex.FirstOrDefault(element => element.Item == "")?.Index;
 
-            // have as static?
             var validNames = validItems.Select(o => o.Text);
 
             //todo: validNames contains "", so do we need to special case that?
@@ -276,13 +257,11 @@ public class AddAnotherAutocompleteErrorChecker
         if (languageCodes.Count > languageCodes.Distinct().Count())
         {
             //todo: check codes, rather than names??
-            //todo: exclude empty strings - don't want first duplicate empty string
             FirstDuplicateLanguageIndex =
                 nameAndIndex
                     .GroupBy(x => x.Item)
-                    .FirstOrDefault(g => g.Count() > 1)
+                    .FirstOrDefault(g => g.Key != "" && g.Count() > 1)
                     ?.Skip(1).First().Index;
-
         }
     }
 }
