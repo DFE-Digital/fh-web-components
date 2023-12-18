@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FamilyHubs.Example.Pages.Examples.AddAnother;
 
+//todo: non-js
+
 public class IndexModel : PageModel
 {
     public const string AllLanguagesValue = "";
