@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
 
 namespace FamilyHubs.Example.Pages.Examples.AddAnother;
 
@@ -214,6 +215,10 @@ public class IndexModel : PageModel
 
     public void OnPost()
     {
+        //todo: asp.net core's model binding is converting empty strings to null
+        // if using asp-for, you can add [DisplayFormat(ConvertEmptyStringToNull = false)]
+        // to stop this behaviour, or you can do it globally in Startup.cs
+        // but we're creating the selects manually, and we don't want to change it globally
         var languageCodes = Request.Form["language"];
     }
 }
