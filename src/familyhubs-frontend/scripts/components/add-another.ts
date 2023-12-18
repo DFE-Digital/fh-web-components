@@ -3,13 +3,7 @@
 // but it would have been so coupled that it would've probably broken on an update of the MOJ library.
 // So instead we forked it and made our own version.
 
-//todo: the created accessible  input when adding doesn't have the id/name data attrs, so we get dupe ids
-//todo: there seems to be a bug in accessible-autocomplete where the input it creates has the same id as the select
-//todo: we need to initialise the accessible autocomplete on the new item
-//todo: when enhancing the select in accessible-autocomplete, it returns the name rather than the value
-// there's a workaround...
-// https://github.com/alphagov/accessible-autocomplete/issues/387
-// but we could we roll it into our add-another component?
+//todo: when add a couple of times, then remove the middle, the id of the input and labels get out of whack
 //todo: when accessible-autocomplete creates the input, it doesn't handle the aria-describedby correctly...
 // https://github.com/alphagov/accessible-autocomplete/issues/589
 
@@ -44,20 +38,6 @@ window.FamilyHubsFrontend.AddAnother = function (container) {
 		}
 	}.bind(this));
 
-
-	//if (typeof window[functionName] === 'function') {
-	//	(function () {
-	//		this.callback = window[functionName];
-	//		this.callback();
-	//	}());
-
-	//	document.addEventListener('DOMContentLoaded', function () {
-	//		setupAutocompleteWhenAddAnother(null);
-	//	});
-	//} else {
-	//	this.callback = null;
-	//}
-
 	if (this.container.data('fh-add-another-initialised')) {
 		return
 	}
@@ -68,18 +48,6 @@ window.FamilyHubsFrontend.AddAnother = function (container) {
 	this.container.on('click', '.fh-add-another__add-button', $.proxy(this, 'onAddButtonClick'));
 	this.container.find('.fh-add-another__add-button, fh-add-another__remove-button').prop('type', 'button');
 };
-
-//window.FamilyHubsFrontend.AddAnother.prototype.setCallback = function (callback: Callback) {
-//	this.callback = callback;
-
-//	var $addAnothers = document.querySelectorAll('[data-module="fh-add-another"]');
-
-//	$addAnothers.forEach(function ($addAnother) {
-//		if (typeof this.callback === 'function') {
-//			this.callback($addAnother);
-//		}
-//	});
-//};
 
 window.FamilyHubsFrontend.AddAnother.prototype.onAddButtonClick = function (e) {
 	var item = this.getNewItem();
