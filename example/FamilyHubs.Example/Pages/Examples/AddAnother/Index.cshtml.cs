@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.ComponentModel.DataAnnotations;
 
 namespace FamilyHubs.Example.Pages.Examples.AddAnother;
 
@@ -219,6 +218,71 @@ public class IndexModel : PageModel
         // if using asp-for, you can add [DisplayFormat(ConvertEmptyStringToNull = false)]
         // to stop this behaviour, or you can do it globally in Startup.cs
         // but we're creating the selects manually, and we don't want to change it globally
-        var languageCodes = Request.Form["language"];
+        // read the form
+
+        var errors = new AddAnotherAutocompleteErrorChecker(
+            Request.Form, "language", "languageName", StaticLanguageOptions);
+
+
+        //todo: helper object that accepts the form, and the 2 form names
+        //var languageCodes = Request.Form["language"];
+        //var languageNames = Request.Form["languageName"];
+
+        //if (languageNames.Count > languageCodes.Count)
+        //{
+        //    var nameAndIndex = languageNames
+        //        .Select((item, index) => new { Item = item, Index = index });
+
+        //    int? firstEmptyIndex = nameAndIndex.FirstOrDefault(element => element.Item == "")?.Index;
+
+        //    // have as static?
+        //    var validNames = StaticLanguageOptions.Select(o => o.Text);
+
+        //    var firstInvalidName = nameAndIndex.FirstOrDefault(x => x.Item != "" && !validNames.Contains(x.Item))?.Index;
+        //}
+    }
+}
+
+public class AddAnotherAutocompleteErrorChecker
+{
+    public int? FirstEmptyIndex { get; }
+    public int? FirstInvalidNameIndex { get; }
+    public int? FirstDuplicateLanguageIndex { get; }
+
+    public AddAnotherAutocompleteErrorChecker(
+        IFormCollection form,
+        string valuesFieldName,
+        string textFieldName,
+        IEnumerable<SelectListItem> validItems)
+    {
+        var languageCodes = form[valuesFieldName];
+        var languageNames = form[textFieldName];
+
+        var nameAndIndex = languageNames
+            .Select((item, index) => new { Item = item, Index = index });
+
+        if (languageNames.Count > languageCodes.Count)
+        {
+            FirstEmptyIndex = nameAndIndex.FirstOrDefault(element => element.Item == "")?.Index;
+
+            // have as static?
+            var validNames = validItems.Select(o => o.Text);
+
+            //todo: validNames contains "", so do we need to special case that?
+
+            FirstInvalidNameIndex = nameAndIndex.FirstOrDefault(x => x.Item != "" && !validNames.Contains(x.Item))?.Index;
+        }
+
+        if (languageCodes.Count > languageCodes.Distinct().Count())
+        {
+            //todo: check codes, rather than names??
+            //todo: exclude empty strings - don't want first duplicate empty string
+            FirstDuplicateLanguageIndex =
+                nameAndIndex
+                    .GroupBy(x => x.Item)
+                    .FirstOrDefault(g => g.Count() > 1)
+                    ?.Skip(1).First().Index;
+
+        }
     }
 }
