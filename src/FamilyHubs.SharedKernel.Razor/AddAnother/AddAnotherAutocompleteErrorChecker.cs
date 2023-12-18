@@ -28,15 +28,12 @@ public class AddAnotherAutocompleteErrorChecker
 
             var validNames = validItems.Select(o => o.Text);
 
-            //todo: validNames contains "", so do we need to special case that?
-
             FirstInvalidNameIndex =
                 nameAndIndex.FirstOrDefault(x => x.Item != "" && !validNames.Contains(x.Item))?.Index;
         }
 
         if (values.Count > values.Distinct().Count())
         {
-            //todo: check codes, rather than names??
             FirstDuplicateLanguageIndex =
                 nameAndIndex
                     .GroupBy(x => x.Item)

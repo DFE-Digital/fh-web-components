@@ -214,6 +214,6 @@ public class IndexModel : PageModel
     public void OnPost()
     {
         var errors = new AddAnotherAutocompleteErrorChecker(
-            Request.Form, "language", "languageName", StaticLanguageOptions);
+            Request.Form, "language", "languageName", StaticLanguageOptions.Skip(1));
     }
 }
