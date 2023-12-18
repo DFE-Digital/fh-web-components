@@ -1,11 +1,7 @@
-using Azure.Core;
-using FamilyHubs.Example.Pages.Examples.FullPages;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FamilyHubs.Example.Pages.Examples.AddAnother;
-
 
 public class IndexModel : PageModel
 {
