@@ -1,5 +1,7 @@
 ﻿declare const accessibleAutocomplete: any;
 
+//todo: could do most of this from supplying an attribute to id the appropriate selects
+// then we could remove all the hacks
 function setupAutocompleteWhenAddAnother(element: HTMLElement) {
 
     if (!(element instanceof HTMLElement)) {
