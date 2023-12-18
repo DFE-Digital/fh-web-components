@@ -1,3 +1,4 @@
+using FamilyHubs.SharedKernel.Razor.AddAnother;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -199,8 +200,6 @@ public class IndexModel : PageModel
 
     public IEnumerable<string> LanguageCodes { get; set; }
 
-    public Dictionary<int, int>? ErrorToSelectIndex { get; set; }
-
     public IndexModel()
     {
         LanguageCodes = Enumerable.Empty<string>();
@@ -214,54 +213,7 @@ public class IndexModel : PageModel
 
     public void OnPost()
     {
-        //todo: asp.net core's model binding is converting empty strings to null
-        // if using asp-for, you can add [DisplayFormat(ConvertEmptyStringToNull = false)]
-        // to stop this behaviour, or you can do it globally in Startup.cs
-        // but we're creating the selects manually, and we don't want to change it globally
-        // read the form
-
         var errors = new AddAnotherAutocompleteErrorChecker(
             Request.Form, "language", "languageName", StaticLanguageOptions);
-    }
-}
-
-public class AddAnotherAutocompleteErrorChecker
-{
-    public int? FirstEmptyIndex { get; }
-    public int? FirstInvalidNameIndex { get; }
-    public int? FirstDuplicateLanguageIndex { get; }
-
-    public AddAnotherAutocompleteErrorChecker(
-        IFormCollection form,
-        string valuesFieldName,
-        string textFieldName,
-        IEnumerable<SelectListItem> validItems)
-    {
-        var languageCodes = form[valuesFieldName];
-        var languageNames = form[textFieldName];
-
-        var nameAndIndex = languageNames
-            .Select((item, index) => new { Item = item, Index = index });
-
-        if (languageNames.Count > languageCodes.Count)
-        {
-            FirstEmptyIndex = nameAndIndex.FirstOrDefault(element => element.Item == "")?.Index;
-
-            var validNames = validItems.Select(o => o.Text);
-
-            //todo: validNames contains "", so do we need to special case that?
-
-            FirstInvalidNameIndex = nameAndIndex.FirstOrDefault(x => x.Item != "" && !validNames.Contains(x.Item))?.Index;
-        }
-
-        if (languageCodes.Count > languageCodes.Distinct().Count())
-        {
-            //todo: check codes, rather than names??
-            FirstDuplicateLanguageIndex =
-                nameAndIndex
-                    .GroupBy(x => x.Item)
-                    .FirstOrDefault(g => g.Key != "" && g.Count() > 1)
-                    ?.Skip(1).First().Index;
-        }
     }
 }
