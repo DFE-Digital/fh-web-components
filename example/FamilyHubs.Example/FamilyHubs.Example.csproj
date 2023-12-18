@@ -9,15 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="scripts\app.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\src\FamilyHubs.SharedKernel.Razor\FamilyHubs.SharedKernel.Razor.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <TypeScriptCompile Include="scripts\app.ts" />
   </ItemGroup>
 
 </Project>
