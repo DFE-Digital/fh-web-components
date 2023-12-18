@@ -1,9 +1,5 @@
 ﻿declare const accessibleAutocomplete: any;
 
-//todo: first time
-//could use call(), but would have to squirrel the objects away
-//(window as any).FamilyHubsFrontend.AddAnother.setCallback(function (element: HTMLElement) {
-
 function setupAutocompleteWhenAddAnother(element: HTMLElement) {
 
     if (!(element instanceof HTMLElement)) {
@@ -14,9 +10,6 @@ function setupAutocompleteWhenAddAnother(element: HTMLElement) {
 
     languageSelects.forEach(function (select) {
         accessibleAutocomplete.enhanceSelectElement({
-            //defaultValue: select.value,
-            //todo: does it default to name in html?
-            //name: select.name,
             name: 'languageName',
             defaultValue: '',
             selectElement: select
