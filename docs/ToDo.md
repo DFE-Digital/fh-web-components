@@ -1,5 +1,7 @@
 # Potential improvements
 
+* accessible-autocomplete uses inline styles. might have to move them into css as our CSP bans inline styles
+
 * fix accessible-autocomplete map file
 
 * add support for custom columns width to the dashboard. either/both https://design-system.service.gov.uk/components/table/ and custom css widths
