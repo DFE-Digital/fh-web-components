@@ -6,6 +6,7 @@ It builds on top of theses packages:
 * [GOV.UK Design System](https://www.npmjs.com/package/govuk-frontend)
 * [Ministry of Justice Frontend](https://www.npmjs.com/package/@ministryofjustice/frontend)
 * [DfE Frontend](https://www.npmjs.com/package/dfe-frontend-alpha)
+* [Accessible autocomplete](https://github.com/alphagov/accessible-autocomplete)
 
 The package contains:
 * configurable standard GOV.UK layout (although only the DfE header is included)
