@@ -26,6 +26,7 @@ export function initializeAddAnother(): void {
 
 window.FamilyHubsFrontend.AddAnother = function (container) {
 	this.container = $(container);
+	this.index = 0;
 
 	if (this.container.data('fh-add-another-initialised')) {
 		return
@@ -84,7 +85,7 @@ window.FamilyHubsFrontend.AddAnother.prototype.getNewItem = function () { //: JQ
 	var $item = $(item);
 
 	// update the id and name attributes
-	this.updateAttributes(items.length, $item);
+	this.updateAttributes(++this.index, $item);
 
 	// call the callback which needs to apply accessibility-autocomplete enhancements to the new item
 	if (typeof this.callback === 'function') {
@@ -134,9 +135,10 @@ window.FamilyHubsFrontend.AddAnother.prototype.onRemoveButtonClick = function (e
 		items.find('.fh-add-another__remove-button').remove();
 	}
 	//todo: use bind instead of proxy
-	items.each($.proxy(function (index, el) {
-		this.updateAttributes(index, $(el));
-	}, this));
+	//items.each($.proxy(function (index, el) {
+	//	this.updateAttributes(index, $(el));
+	//}, this));
+	//todo: is this what we want?
 	this.focusHeading();
 };
 
