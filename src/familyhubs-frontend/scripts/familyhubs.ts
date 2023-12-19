@@ -22,6 +22,7 @@ declare global {
 import CookieBanner from './components/cookie-banner'
 import CookiesPage from './components/cookies-page'
 import initAnalytics from './components/analytics';
+import { initializeAddAnother } from './components/add-another';
 import { initializeBackButtons } from './components/back-links';
 import { initializeVisibilityToggles } from './components/visibility-toggle';
 import { OpenCloseButton } from './components/open-close-button';
@@ -44,6 +45,7 @@ window.FamilyHubsFrontend.initAll = () => {
 
     initializeBackButtons();
     initializeVisibilityToggles();
+    initializeAddAnother();
 
     // initialise open close buttons
     let openCloseButtons: NodeListOf<HTMLButtonElement> = document.querySelectorAll('button[data-open-close-mobile]');

@@ -1,4 +1,6 @@
-﻿/*todo: remove this and use the version in govuk instead (as it's already included) */
+﻿/*todo: remove this and use NodeList.prototype.forEach instead, as govuk has for v5 */
+/* https://github.com/alphagov/govuk-frontend/issues/3466 */
+/* https://github.com/alphagov/govuk-frontend/pull/3570/files */
 
 export function nodeListForEach(
     nodes: NodeListOf<Element>,

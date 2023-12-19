@@ -94,6 +94,21 @@ gulp.task('bundle-and-minify-js', () => {
         .pipe(gulp.dest('../wwwroot/js'));
 });
 
+gulp.task('bundle-debug-js', () => {
+
+    const packageJson = JSON.parse(fs.readFileSync(`../package.json`));
+
+    const baseFileName = `${packageJson.name}-${packageJson.version}`;
+
+    console.log(`Creating js: ${baseFileName}.min.js`);
+
+//    return gulp.src('./tmp/js/bundle.js')
+    return gulp.src('./tmp/js/familyhubs.js')
+        .pipe(rollup({}, 'es'))
+        .pipe(rename({ basename: baseFileName, suffix: '.min' }))
+        .pipe(gulp.dest('../wwwroot/js'));
+});
+
 gulp.task('clean', () => {
     return del('./tmp/**');
 });
@@ -105,6 +120,8 @@ gulp.task('copy-js-files-to-example-site', function () {
 
 //gulp.task('js', gulp.series('clean', 'transpile-ts', 'naive-bundle-js', 'bundle-and-minify-js'));
 gulp.task('js', gulp.series('clean', 'transpile-ts', 'bundle-and-minify-js', 'copy-js-files-to-example-site'));
+
+gulp.task('js-debug', gulp.series('clean', 'transpile-ts', 'bundle-debug-js', 'copy-js-files-to-example-site'));
 
 gulp.task('js:watch', function () {
     gulp.watch(tsScriptsSrc, gulp.series('js'));
