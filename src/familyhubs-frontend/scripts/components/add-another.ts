@@ -27,6 +27,10 @@ export function initializeAddAnother(): void {
 window.FamilyHubsFrontend.AddAnother = function (container) {
 	this.container = $(container);
 
+	if (this.container.data('fh-add-another-initialised')) {
+		return
+	}
+
 	//todo: this is a bit hacky - find a better way to do this
 	var functionName = container.getAttribute('data-fh-add-another-callback');
 
@@ -37,10 +41,6 @@ window.FamilyHubsFrontend.AddAnother = function (container) {
 			this.callback(container);
 		}
 	}.bind(this));
-
-	if (this.container.data('fh-add-another-initialised')) {
-		return
-	}
 
 	this.container.data('fh-add-another-initialised', true);
 
@@ -86,7 +86,7 @@ window.FamilyHubsFrontend.AddAnother.prototype.getNewItem = function () { //: JQ
 	// update the id and name attributes
 	this.updateAttributes(items.length, $item);
 
-	// call the callback which needs to apply accessibility enhancements to the new item
+	// call the callback which needs to apply accessibility-autocomplete enhancements to the new item
 	if (typeof this.callback === 'function') {
 		this.callback(item);
 	}
@@ -133,6 +133,7 @@ window.FamilyHubsFrontend.AddAnother.prototype.onRemoveButtonClick = function (e
 	if (items.length === 1) {
 		items.find('.fh-add-another__remove-button').remove();
 	}
+	//todo: use bind instead of proxy
 	items.each($.proxy(function (index, el) {
 		this.updateAttributes(index, $(el));
 	}, this));
