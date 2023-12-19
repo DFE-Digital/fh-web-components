@@ -1,5 +1,9 @@
 # Release Notes
 
+### 6.6.1
+
+Make AddAnotherAutocompleteErrorChecker serializable.
+
 ### 6.6.0
 
 Add fh-add-another, a forked version of MOJ's add-another component, that works with accessible-autocomplete.
