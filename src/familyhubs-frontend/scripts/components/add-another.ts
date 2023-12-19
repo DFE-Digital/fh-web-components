@@ -3,7 +3,6 @@
 // but it would have been so coupled that it would've probably broken on an update of the MOJ library.
 // So instead we forked it and made our own version.
 
-//todo: when add a couple of times, then remove the middle, the id of the input and labels get out of whack
 //todo: when accessible-autocomplete creates the input, it doesn't handle the aria-describedby correctly...
 // https://github.com/alphagov/accessible-autocomplete/issues/589
 
@@ -134,11 +133,6 @@ window.FamilyHubsFrontend.AddAnother.prototype.onRemoveButtonClick = function (e
 	if (items.length === 1) {
 		items.find('.fh-add-another__remove-button').remove();
 	}
-	//todo: use bind instead of proxy
-	//items.each($.proxy(function (index, el) {
-	//	this.updateAttributes(index, $(el));
-	//}, this));
-	//todo: is this what we want?
 	this.focusHeading();
 };
 
