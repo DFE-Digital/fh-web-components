@@ -1,5 +1,9 @@
 # Release Notes
 
+### 6.6.2
+
+Fix Add Another when the selects are generated in the view with a pre-selected value.
+
 ### 6.6.1
 
 Make AddAnotherAutocompleteErrorChecker serializable.
