@@ -8,11 +8,11 @@ namespace FamilyHubs.Example.Pages.Examples.AddAnother;
 
 public class IndexModel : PageModel
 {
-    public const string AllLanguagesValue = "";
+    public const string NoLanguageValue = "";
 
     public static SelectListItem[] StaticLanguageOptions { get; set; } =
     {
-        new() { Value = AllLanguagesValue, Text = "All languages", Selected = true, Disabled = true },
+        new() { Value = NoLanguageValue, Text = "", Selected = true, Disabled = true },
         new() { Value = "ab", Text = "Abkhazian" },
         new() { Value = "aa", Text = "Afar" },
         new() { Value = "af", Text = "Afrikaans" },
@@ -209,9 +209,11 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
-        // default to 'All' languages
+        // default to 'No' languages
         //LanguageCodes = StaticLanguageOptions.Take(1).Select(o => o.Value);
-        LanguageCodes = new List<string>() { "cy" };
+
+        // default to given language(s)
+        LanguageCodes = new List<string> { "cy" };
     }
 
     public void OnPost()

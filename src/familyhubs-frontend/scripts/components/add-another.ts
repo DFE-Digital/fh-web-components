@@ -40,7 +40,7 @@ window.FamilyHubsFrontend.AddAnother = function (container) {
 
 	this.container.on('click', '.fh-add-another__remove-button', $.proxy(this, 'onRemoveButtonClick'));
 	this.container.on('click', '.fh-add-another__add-button', $.proxy(this, 'onAddButtonClick'));
-	this.container.find('.fh-add-another__add-button, fh-add-another__remove-button').prop('type', 'button');
+	this.container.find('.fh-add-another__add-button, fh-add-another__remove-button').prop('type', 'submit');
 };
 
 window.FamilyHubsFrontend.AddAnother.prototype.onAddButtonClick = function (e) {
@@ -52,6 +52,7 @@ window.FamilyHubsFrontend.AddAnother.prototype.onAddButtonClick = function (e) {
 	}
 	this.getItems().last().after(item);
 	item.find('input, textarea, select').first().focus();
+	e.preventDefault();
 };
 
 window.FamilyHubsFrontend.AddAnother.prototype.hasRemoveButton = function (item) {
@@ -108,7 +109,7 @@ window.FamilyHubsFrontend.AddAnother.prototype.updateAttributes = function (inde
 };
 
 window.FamilyHubsFrontend.AddAnother.prototype.createRemoveButton = function (item) {
-	item.append('<button type="button" class="govuk-button govuk-button--secondary fh-add-another__remove-button">Remove</button>');
+	item.append('<button type="submit" class="govuk-button govuk-button--secondary fh-add-another__remove-button">Remove</button>');
 };
 
 window.FamilyHubsFrontend.AddAnother.prototype.resetItem = function (item) {
@@ -131,6 +132,7 @@ window.FamilyHubsFrontend.AddAnother.prototype.onRemoveButtonClick = function (e
 		items.find('.fh-add-another__remove-button').remove();
 	}
 	this.focusHeading();
+	e.preventDefault();
 };
 
 window.FamilyHubsFrontend.AddAnother.prototype.focusHeading = function () {
