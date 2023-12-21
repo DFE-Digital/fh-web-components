@@ -51,7 +51,7 @@ window.FamilyHubsFrontend.AddAnother = function (container) {
 
 window.FamilyHubsFrontend.AddAnother.prototype.onAddButtonClick = function (e) {
 	var item = this.getNewItem();
-	//this.resetItem(item);
+
 	var firstItem = this.getItems().first();
 	if (!this.hasRemoveButton(firstItem)) {
 		this.createRemoveButton(firstItem);
@@ -119,11 +119,22 @@ window.FamilyHubsFrontend.AddAnother.prototype.createRemoveButton = function (it
 
 // select the option with the passed value, even if it's disabled
 window.FamilyHubsFrontend.AddAnother.prototype.selectOption = function (el, value) {
-	let option = el.querySelector(`option[value="${value}"]`);
+	//let option = el.querySelector(`option[value="${value}"]`);
+	//if (option) {
+	//	let wasDisabled = option.disabled;
+	//	option.disabled = false;
+	//	el.value = value;
+	//	option.disabled = wasDisabled;
+	//}
+
+	let oldOption = el.querySelector(`option[value="${value}"]`);
+	oldOption.removeAttribute("selected");
+
+	let option = el.querySelector('option[value=""]');
 	if (option) {
 		let wasDisabled = option.disabled;
 		option.disabled = false;
-		el.value = value;
+		el.value = '';
 		option.disabled = wasDisabled;
 	}
 }
@@ -139,20 +150,7 @@ window.FamilyHubsFrontend.AddAnother.prototype.resetItem = function (item) {
 		}
         else if (el.tagName.toLowerCase() === 'select') {
             //todo: this should set the value to defaultValue as passed to enhanceSelectElement
-            //This.selectOption(el, '');
-
-            //$('select#genres option[selected]').removeAttr("selected");
-
-            let oldOption = el.querySelector('option[selected]');
-            oldOption.removeAttribute("selected");
-
-            let option = el.querySelector('option[value=""]');
-            if (option) {
-                let wasDisabled = option.disabled;
-                option.disabled = false;
-                el.value = '';
-                option.disabled = wasDisabled;
-            }
+            This.selectOption(el, '');
         } else {
             el.value = '';
         }
