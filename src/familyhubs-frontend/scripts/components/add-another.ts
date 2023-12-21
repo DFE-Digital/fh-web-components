@@ -6,12 +6,6 @@
 //todo: when accessible-autocomplete creates the input, it doesn't handle the aria-describedby correctly...
 // https://github.com/alphagov/accessible-autocomplete/issues/589
 
-//todo: use the index.d.ts from here...
-// https://github.com/alphagov/accessible-autocomplete/issues/535
-declare const accessibleAutocomplete: any;
-
-type Callback = (element: HTMLElement) => void;
-
 window.FamilyHubsFrontend = window.FamilyHubsFrontend || {};
 
 export function initializeAddAnother(): void {
@@ -117,41 +111,14 @@ window.FamilyHubsFrontend.AddAnother.prototype.createRemoveButton = function (it
 	item.append('<button type="button" class="govuk-button govuk-button--secondary fh-add-another__remove-button">Remove</button>');
 };
 
-// select the option with the passed value, even if it's disabled
-window.FamilyHubsFrontend.AddAnother.prototype.selectOption = function (el, value) {
-	//let option = el.querySelector(`option[value="${value}"]`);
-	//if (option) {
-	//	let wasDisabled = option.disabled;
-	//	option.disabled = false;
-	//	el.value = value;
-	//	option.disabled = wasDisabled;
-	//}
-
-	let oldOption = el.querySelector(`option[value="${value}"]`);
-	oldOption.removeAttribute("selected");
-
-	let option = el.querySelector('option[value=""]');
-	if (option) {
-		let wasDisabled = option.disabled;
-		option.disabled = false;
-		el.value = '';
-		option.disabled = wasDisabled;
-	}
-}
-
 window.FamilyHubsFrontend.AddAnother.prototype.resetItem = function (item) {
 	// accessibile-autocomplete adds an input (without data-name or data-id)
 	// so we blank all input controls
-
-	var This = this;
     item.find('input, textarea, select').each(function (index, el) {
 		if (el.type == 'checkbox' || el.type == 'radio') {
 			el.checked = false;
 		}
-        else if (el.tagName.toLowerCase() === 'select') {
-            //todo: this should set the value to defaultValue as passed to enhanceSelectElement
-            This.selectOption(el, '');
-        } else {
+		else {
             el.value = '';
         }
     });
