@@ -2,7 +2,7 @@
 
 This package is designed to work in conjunction with the [familyhubs-frontend](https://www.npmjs.com/package/familyhubs-frontend) node package, to rapidly create new GOV.UK websites and add standard components.
 
-It builds on top of theses packages:
+It builds on top of these packages:
 * [GOV.UK Design System](https://www.npmjs.com/package/govuk-frontend)
 * [Ministry of Justice Frontend](https://www.npmjs.com/package/@ministryofjustice/frontend)
 * [DfE Frontend](https://www.npmjs.com/package/dfe-frontend-alpha)
