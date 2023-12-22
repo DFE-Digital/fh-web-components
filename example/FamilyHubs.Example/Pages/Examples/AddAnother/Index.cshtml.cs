@@ -9,6 +9,7 @@ namespace FamilyHubs.Example.Pages.Examples.AddAnother;
 // we can (and do) show an error when there's a single unselected select, but we can't show an error when we have >1 selects with the last one empty
 // we could fix it by having a separate name for each select, with a hidden field to pick up no value selected
 //todo: improve this example, so that it has P/R/G, error handling and js disabled handling
+//todo: need a partial or tag helper to generate the selects
 
 public class IndexModel : PageModel
 {
