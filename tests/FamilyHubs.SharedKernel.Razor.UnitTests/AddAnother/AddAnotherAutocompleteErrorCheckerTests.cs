@@ -43,8 +43,8 @@ public class AddAnotherAutocompleteErrorCheckerTests
     }
 
     [Theory]
-    [InlineData("1", "", "3")]
-    public void JavascriptDisabled_ShouldFindFirstEmptyIndex(params string[] values)
+    [InlineData(1, null, null, "1", "", "3")]
+    public void JavascriptDisabled_ShouldFindFirstEmptyIndex(int? expectedFirstEmptyIndex, int? expectedFirstInvalidNameIndex, int? expectedFirstDuplicateLanguageIndex, params string[] values)
     {
         // Arrange
         var form = new FormCollection(new Dictionary<string, StringValues>
@@ -57,9 +57,9 @@ public class AddAnotherAutocompleteErrorCheckerTests
                        new List<SelectListItem> { new("a", "1"), new("c", "3") });
 
         // Assert
-        Assert.Equal(1, result.FirstEmptyIndex);
-        Assert.Null(result.FirstInvalidNameIndex);
-        Assert.Null(result.FirstDuplicateLanguageIndex);
+        Assert.Equal(expectedFirstEmptyIndex, result.FirstEmptyIndex);
+        Assert.Equal(expectedFirstInvalidNameIndex, result.FirstInvalidNameIndex);
+        Assert.Equal(expectedFirstDuplicateLanguageIndex, result.FirstDuplicateLanguageIndex);
     }
 
     [Fact]
