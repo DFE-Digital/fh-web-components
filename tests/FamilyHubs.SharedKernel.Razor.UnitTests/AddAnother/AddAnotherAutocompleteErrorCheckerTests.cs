@@ -59,12 +59,6 @@ public class AddAnotherAutocompleteErrorCheckerTests
         Assert.Equal(expectedFirstDuplicateLanguageIndex, result.FirstDuplicateLanguageIndex);
     }
 
-    //todo: when javascript is disabled we don't get a value for an unselected language, so we can't show an error for that - we just ignore it
-    //todo: document this as a limitation of not having js enabled
-    //todo: experiment with adding a hidden language field to get around this - it could work, but we'd need a different name for every select
-    //todo: document that some existing services don't have languages, which means that they wouldn't pass validation through add/edit,
-    // means that they won't be returned through connect filtering, whereas all new/edited services will probably have english as a language, so would be returned if filtering on english
-
     [Theory]
     [InlineData(0, null, null, "")]
     [InlineData(0, null, null, "", "b", "c")]
