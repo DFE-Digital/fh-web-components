@@ -42,7 +42,6 @@ public record AddAnotherAutocompleteErrorChecker(int? FirstEmptyIndex, int? Firs
         else
         {
             // javascript is disabled, we need to work with the values
-
             if (!form.ContainsKey(valuesFieldName))
             {
                 // we don't have any values, which means we have a single select with no value selected
