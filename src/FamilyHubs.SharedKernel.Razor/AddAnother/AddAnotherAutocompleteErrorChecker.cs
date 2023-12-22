@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using YamlDotNet.Core.Tokens;
 
 namespace FamilyHubs.SharedKernel.Razor.AddAnother;
 
@@ -13,34 +14,63 @@ public record AddAnotherAutocompleteErrorChecker(int? FirstEmptyIndex, int? Firs
         IFormCollection form,
         string valuesFieldName,
         string textFieldName,
+        //todo: just pass the valid texts
+        //todo: pass the empty value too
         IEnumerable<SelectListItem> validItems)
     {
-        var values = form[valuesFieldName];
-        var texts = form[textFieldName];
-
-        var nameAndIndex = texts
-            .Select((item, index) => new { Item = item, Index = index });
-
-        int? firstEmptyIndex = null, firstInvalidNameIndex = null, firstDuplicateLanguageIndex = null;
-        if (texts.Count > values.Count)
+        // when js is disables, we won't get the texts, just the values
+        if (form.ContainsKey(textFieldName))
         {
-            firstEmptyIndex = nameAndIndex.FirstOrDefault(element => element.Item == "")?.Index;
+            // javascript is enabled, we need to work with the texts
+            var texts = form[textFieldName];
+
+            var nameAndIndex = texts
+                .Select((item, index) => new { Item = item, Index = index });
+
+            int? firstEmptyIndex = nameAndIndex.FirstOrDefault(element => element.Item == "")?.Index;
 
             var validNames = validItems.Select(o => o.Text);
 
-            firstInvalidNameIndex =
+            int? firstInvalidNameIndex =
                 nameAndIndex.FirstOrDefault(x => x.Item != "" && !validNames.Contains(x.Item))?.Index;
-        }
 
-        if (values.Count > values.Distinct().Count())
+            //todo: if js is enabled, we can get values that don't match the texts (when the selects are pre-populated)
+
+            //var validTexts = texts.Where(t => t != "" && validNames.Contains(t));
+
+            int? firstDuplicateLanguageIndex = 
+            //if (validTexts.Count > validTexts.Distinct().Count())
+            //{
+                firstDuplicateLanguageIndex =
+                    nameAndIndex
+                        .GroupBy(x => x.Item)
+                        .FirstOrDefault(g => g.Key != "" && validNames.Contains(g.Key) && g.Count() > 1)
+                        ?.Skip(1).First().Index;
+            //}
+
+            return new AddAnotherAutocompleteErrorChecker(firstEmptyIndex, firstInvalidNameIndex, firstDuplicateLanguageIndex);
+        }
+        else
         {
-            firstDuplicateLanguageIndex =
-                nameAndIndex
-                    .GroupBy(x => x.Item)
-                    .FirstOrDefault(g => g.Key != "" && g.Count() > 1)
-                    ?.Skip(1).First().Index;
-        }
+            // javascript is disabled, we need to work with the values
+            var values = form[valuesFieldName];
 
-        return new AddAnotherAutocompleteErrorChecker(firstEmptyIndex, firstInvalidNameIndex, firstDuplicateLanguageIndex);
+            var valuesAndIndex = values
+                .Select((item, index) => new { Item = item, Index = index });
+
+            int? firstEmptyIndex = valuesAndIndex.FirstOrDefault(element => element.Item == "")?.Index;
+
+            int? firstDuplicateLanguageIndex = null;
+            if (values.Count > values.Distinct().Count())
+            {
+                firstDuplicateLanguageIndex =
+                    valuesAndIndex
+                        .GroupBy(x => x.Item)
+                        .FirstOrDefault(g => g.Key != "" && g.Count() > 1)
+                        ?.Skip(1).First().Index;
+            }
+
+            return new AddAnotherAutocompleteErrorChecker(firstEmptyIndex, null, firstDuplicateLanguageIndex);
+        }
     }
 }
