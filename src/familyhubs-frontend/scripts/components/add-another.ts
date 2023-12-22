@@ -6,12 +6,6 @@
 //todo: when accessible-autocomplete creates the input, it doesn't handle the aria-describedby correctly...
 // https://github.com/alphagov/accessible-autocomplete/issues/589
 
-//todo: use the index.d.ts from here...
-// https://github.com/alphagov/accessible-autocomplete/issues/535
-declare const accessibleAutocomplete: any;
-
-type Callback = (element: HTMLElement) => void;
-
 window.FamilyHubsFrontend = window.FamilyHubsFrontend || {};
 
 export function initializeAddAnother(): void {
@@ -46,18 +40,19 @@ window.FamilyHubsFrontend.AddAnother = function (container) {
 
 	this.container.on('click', '.fh-add-another__remove-button', $.proxy(this, 'onRemoveButtonClick'));
 	this.container.on('click', '.fh-add-another__add-button', $.proxy(this, 'onAddButtonClick'));
-	this.container.find('.fh-add-another__add-button, fh-add-another__remove-button').prop('type', 'button');
+	this.container.find('.fh-add-another__add-button, fh-add-another__remove-button').prop('type', 'submit');
 };
 
 window.FamilyHubsFrontend.AddAnother.prototype.onAddButtonClick = function (e) {
 	var item = this.getNewItem();
-	this.resetItem(item);
+
 	var firstItem = this.getItems().first();
 	if (!this.hasRemoveButton(firstItem)) {
 		this.createRemoveButton(firstItem);
 	}
 	this.getItems().last().after(item);
 	item.find('input, textarea, select').first().focus();
+	e.preventDefault();
 };
 
 window.FamilyHubsFrontend.AddAnother.prototype.hasRemoveButton = function (item) {
@@ -86,6 +81,8 @@ window.FamilyHubsFrontend.AddAnother.prototype.getNewItem = function () { //: JQ
 	// update the id and name attributes
 	this.updateAttributes(++this.index, $item);
 
+	this.resetItem($item);
+
 	// call the callback which needs to apply accessibility-autocomplete enhancements to the new item
 	if (typeof this.callback === 'function') {
 		this.callback(item);
@@ -112,16 +109,17 @@ window.FamilyHubsFrontend.AddAnother.prototype.updateAttributes = function (inde
 };
 
 window.FamilyHubsFrontend.AddAnother.prototype.createRemoveButton = function (item) {
-	item.append('<button type="button" class="govuk-button govuk-button--secondary fh-add-another__remove-button">Remove</button>');
+	item.append('<button type="submit" class="govuk-button govuk-button--secondary fh-add-another__remove-button">Remove</button>');
 };
 
 window.FamilyHubsFrontend.AddAnother.prototype.resetItem = function (item) {
 	// accessibile-autocomplete adds an input (without data-name or data-id)
 	// so we blank all input controls
     item.find('input, textarea, select').each(function (index, el) {
-        if (el.type == 'checkbox' || el.type == 'radio') {
-            el.checked = false;
-        } else {
+		if (el.type == 'checkbox' || el.type == 'radio') {
+			el.checked = false;
+		}
+		else {
             el.value = '';
         }
     });
@@ -134,6 +132,7 @@ window.FamilyHubsFrontend.AddAnother.prototype.onRemoveButtonClick = function (e
 		items.find('.fh-add-another__remove-button').remove();
 	}
 	this.focusHeading();
+	e.preventDefault();
 };
 
 window.FamilyHubsFrontend.AddAnother.prototype.focusHeading = function () {

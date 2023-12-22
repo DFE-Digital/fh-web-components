@@ -21,7 +21,7 @@
                                 {
                                     <!option value="@option.Value"
                                     @(option.Value == languageCode ? "selected" : "")
-                                    @(option.Value == IndexModel.AllLanguagesValue ? "disabled" : "")>@option.Text</!option>
+                                    @(option.Value == IndexModel.NoLanguageValue ? "disabled" : "")>@option.Text</!option>
                                 }
 
                             </select>

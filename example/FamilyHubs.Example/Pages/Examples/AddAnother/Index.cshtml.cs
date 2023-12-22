@@ -4,15 +4,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FamilyHubs.Example.Pages.Examples.AddAnother;
 
-//todo: non-js
+//todo: when javascript is disabled we don't get a value for an unselected language
+// we can (and do) show an error when there's a single unselected select, but we can't show an error when we have >1 selects with the last one empty
+// we could fix it by having a separate name for each select, with a hidden field to pick up no value selected
+//todo: improve this example, so that it has P/R/G, error handling and js disabled handling
+//todo: need a partial or tag helper to generate the selects
 
 public class IndexModel : PageModel
 {
-    public const string AllLanguagesValue = "";
+    public const string NoLanguageValue = "";
 
     public static SelectListItem[] StaticLanguageOptions { get; set; } =
     {
-        new() { Value = AllLanguagesValue, Text = "All languages", Selected = true, Disabled = true },
+        new() { Value = NoLanguageValue, Text = "", Selected = true, Disabled = true },
         new() { Value = "ab", Text = "Abkhazian" },
         new() { Value = "aa", Text = "Afar" },
         new() { Value = "af", Text = "Afrikaans" },
@@ -209,8 +213,12 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
-        // default to 'All' languages
-        LanguageCodes = StaticLanguageOptions.Take(1).Select(o => o.Value);
+        // default to 'No' languages
+        //LanguageCodes = StaticLanguageOptions.Take(1).Select(o => o.Value);
+
+        // default to given language(s)
+        //LanguageCodes = new List<string> { "cy" };
+        LanguageCodes = new List<string> { "cy", "en" };
     }
 
     public void OnPost()
