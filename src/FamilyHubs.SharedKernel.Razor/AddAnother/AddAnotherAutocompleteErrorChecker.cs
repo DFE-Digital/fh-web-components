@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using YamlDotNet.Core.Tokens;
 
 namespace FamilyHubs.SharedKernel.Razor.AddAnother;
 
@@ -38,14 +37,28 @@ public record AddAnotherAutocompleteErrorChecker(int? FirstEmptyIndex, int? Firs
 
             //var validTexts = texts.Where(t => t != "" && validNames.Contains(t));
 
-            int? firstDuplicateLanguageIndex = 
-            //if (validTexts.Count > validTexts.Distinct().Count())
-            //{
-                firstDuplicateLanguageIndex =
-                    nameAndIndex
-                        .GroupBy(x => x.Item)
-                        .FirstOrDefault(g => g.Key != "" && validNames.Contains(g.Key) && g.Count() > 1)
-                        ?.Skip(1).First().Index;
+            //int? firstDuplicateLanguageIndex =
+                //if (validTexts.Count > validTexts.Distinct().Count())
+                //{
+                //int? firstDuplicateLanguageIndex =
+                //    nameAndIndex
+                //        .GroupBy(x => x.Item)
+                //        .FirstOrDefault(g => g.Key != "" && validNames.Contains(g.Key) && g.Count() > 1)
+                //        ?.Skip(1).First().Index;
+
+                 var xxx = nameAndIndex
+                    .GroupBy(x => x.Item);
+                 var yyy = xxx.FirstOrDefault(g => g.Key != "" && validNames.Contains(g.Key) && g.Count() > 1);
+
+                 //todo: do we need to order by index?
+                 int? firstDuplicateLanguageIndex = yyy?.First().Index;
+            //firstDuplicateLanguageIndex =
+            //                        nameAndIndex
+            //                            .GroupBy(x => x.Item)
+            //                            .FirstOrDefault(g => g.Key != "" && validNames.Contains(g.Key) && g.Count() > 1)
+            //                            ?.Skip(1).First().Index;
+
+
             //}
 
             return new AddAnotherAutocompleteErrorChecker(firstEmptyIndex, firstInvalidNameIndex, firstDuplicateLanguageIndex);
@@ -53,6 +66,13 @@ public record AddAnotherAutocompleteErrorChecker(int? FirstEmptyIndex, int? Firs
         else
         {
             // javascript is disabled, we need to work with the values
+
+            if (!form.ContainsKey(valuesFieldName))
+            {
+                // we don't have any values, which means we have a single select with no value selected
+                return new AddAnotherAutocompleteErrorChecker(0, null, null);
+            }
+
             var values = form[valuesFieldName];
 
             var valuesAndIndex = values

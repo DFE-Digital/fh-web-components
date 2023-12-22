@@ -213,7 +213,8 @@ public class IndexModel : PageModel
         //LanguageCodes = StaticLanguageOptions.Take(1).Select(o => o.Value);
 
         // default to given language(s)
-        LanguageCodes = new List<string> { "cy" };
+        //LanguageCodes = new List<string> { "cy" };
+        LanguageCodes = new List<string> { "cy", "en" };
     }
 
     public void OnPost()
