@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FamilyHubs.Example.Pages.Examples.AddAnother;
 
-//todo: document this as a limitation of not having js enabled
 //todo: when javascript is disabled we don't get a value for an unselected language
 // we can (and do) show an error when there's a single unselected select, but we can't show an error when we have >1 selects with the last one empty
 // we could fix it by having a separate name for each select, with a hidden field to pick up no value selected
