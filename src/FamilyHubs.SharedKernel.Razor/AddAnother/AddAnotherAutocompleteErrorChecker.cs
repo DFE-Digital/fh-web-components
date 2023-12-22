@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FamilyHubs.SharedKernel.Razor.AddAnother;
 
-// need some good unit tests for this
 public record AddAnotherAutocompleteErrorChecker(int? FirstEmptyIndex, int? FirstInvalidNameIndex, int? FirstDuplicateLanguageIndex)
 {
     // this would be better as a constructor, but we can't do that until support is added to c#
@@ -33,33 +32,10 @@ public record AddAnotherAutocompleteErrorChecker(int? FirstEmptyIndex, int? Firs
             int? firstInvalidNameIndex =
                 nameAndIndex.FirstOrDefault(x => x.Item != "" && !validNames.Contains(x.Item))?.Index;
 
-            //todo: if js is enabled, we can get values that don't match the texts (when the selects are pre-populated)
-
-            //var validTexts = texts.Where(t => t != "" && validNames.Contains(t));
-
-            //int? firstDuplicateLanguageIndex =
-                //if (validTexts.Count > validTexts.Distinct().Count())
-                //{
-                //int? firstDuplicateLanguageIndex =
-                //    nameAndIndex
-                //        .GroupBy(x => x.Item)
-                //        .FirstOrDefault(g => g.Key != "" && validNames.Contains(g.Key) && g.Count() > 1)
-                //        ?.Skip(1).First().Index;
-
-                 var xxx = nameAndIndex
-                    .GroupBy(x => x.Item);
-                 var yyy = xxx.FirstOrDefault(g => g.Key != "" && validNames.Contains(g.Key) && g.Count() > 1);
-
-                 //todo: do we need to order by index?
-                 int? firstDuplicateLanguageIndex = yyy?.First().Index;
-            //firstDuplicateLanguageIndex =
-            //                        nameAndIndex
-            //                            .GroupBy(x => x.Item)
-            //                            .FirstOrDefault(g => g.Key != "" && validNames.Contains(g.Key) && g.Count() > 1)
-            //                            ?.Skip(1).First().Index;
-
-
-            //}
+            int? firstDuplicateLanguageIndex = nameAndIndex
+                .GroupBy(x => x.Item)
+                .FirstOrDefault(g => g.Key != "" && validNames.Contains(g.Key) && g.Count() > 1)
+                ?.First().Index;
 
             return new AddAnotherAutocompleteErrorChecker(firstEmptyIndex, firstInvalidNameIndex, firstDuplicateLanguageIndex);
         }

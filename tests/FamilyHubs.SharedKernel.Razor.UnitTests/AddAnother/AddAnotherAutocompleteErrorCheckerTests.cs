@@ -59,27 +59,6 @@ public class AddAnotherAutocompleteErrorCheckerTests
         Assert.Equal(expectedFirstDuplicateLanguageIndex, result.FirstDuplicateLanguageIndex);
     }
 
-    //todo: don't think this test reflects reality - i think the unselected language will just be ignored
-    //[Theory]
-    //[InlineData(1, null, null, "1", "", "3")]
-    //public void JavascriptDisabled_ShouldFindFirstEmptyIndex(int? expectedFirstEmptyIndex, int? expectedFirstInvalidNameIndex, int? expectedFirstDuplicateLanguageIndex, params string[] values)
-    //{
-    //    // Arrange
-    //    var form = new FormCollection(new Dictionary<string, StringValues>
-    //    {
-    //        { "values", values }
-    //    });
-
-    //    // Act
-    //    var result = AddAnotherAutocompleteErrorChecker.Create(form, "values", "texts",
-    //                   new List<SelectListItem> { new("a", "1"), new("c", "3") });
-
-    //    // Assert
-    //    Assert.Equal(expectedFirstEmptyIndex, result.FirstEmptyIndex);
-    //    Assert.Equal(expectedFirstInvalidNameIndex, result.FirstInvalidNameIndex);
-    //    Assert.Equal(expectedFirstDuplicateLanguageIndex, result.FirstDuplicateLanguageIndex);
-    //}
-
     //todo: when javascript is disabled we don't get a value for an unselected language, so we can't show an error for that - we just ignore it
     //todo: document this as a limitation of not having js enabled
     //todo: experiment with adding a hidden language field to get around this - it could work, but we'd need a different name for every select
@@ -112,7 +91,6 @@ public class AddAnotherAutocompleteErrorCheckerTests
         {
             // when javascript is enabled, you get the values, but they don't necessarily match the texts
             // when languages are pre-populated when editing, you get the original values, rather than those matching the texts
-            //todo: separate test for ^ scenario?
             { "values", new[] { "100", "101", "102" } },
             { "texts", texts }
         });
