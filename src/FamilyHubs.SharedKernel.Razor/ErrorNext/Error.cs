@@ -41,4 +41,5 @@ public class Error
 
     public string InputClass => "govuk-input--error";
     public string TextAreaClass => "govuk-textarea--error";
+    public string SelectClass => "govuk-select--error";
 }
