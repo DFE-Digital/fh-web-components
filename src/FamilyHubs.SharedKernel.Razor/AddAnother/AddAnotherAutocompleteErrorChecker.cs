@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FamilyHubs.SharedKernel.Razor.AddAnother;
 
+//todo: better names, i.e. don't assume language (or name) use value instead?
 public record AddAnotherAutocompleteErrorChecker(int? FirstEmptyIndex, int? FirstInvalidNameIndex, int? FirstDuplicateLanguageIndex)
 {
     // this would be better as a constructor, but we can't do that until support is added to c#
