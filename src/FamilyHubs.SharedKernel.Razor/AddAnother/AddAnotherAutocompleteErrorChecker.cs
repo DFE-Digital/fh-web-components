@@ -3,16 +3,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FamilyHubs.SharedKernel.Razor.AddAnother;
 
-//todo: better names, i.e. don't assume language (or name) use value instead?
-//todo: need to store all empty, invalid and all(?) first(?) duplicate indexes
-//todo: need a collection of duplicates, as there may be multiple sets of duplicates
 public class AddAnotherAutocompleteErrorChecker
 {
     public IEnumerable<int> EmptyIndexes { get; }
     public IEnumerable<int> InvalidIndexes { get; }
     public IEnumerable<IEnumerable<int>> DuplicateIndexes { get; }
 
-    public AddAnotherAutocompleteErrorChecker(
+    private AddAnotherAutocompleteErrorChecker(
         IEnumerable<int> emptyIndexes,
         IEnumerable<int> invalidIndexes,
         IEnumerable<IEnumerable<int>> duplicateIndexes)
