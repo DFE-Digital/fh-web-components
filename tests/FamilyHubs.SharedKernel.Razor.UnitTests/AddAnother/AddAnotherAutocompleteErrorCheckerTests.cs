@@ -46,7 +46,7 @@ public class AddAnotherAutocompleteErrorCheckerTests
     }
 
     [Theory]
-    [InlineData(new[] {0}, new int[] {}, null!, "")]
+    //[InlineData(new[] {0}, new int[] {}, new IEnumerable<int>[] {new int[] { }}, "")]
     //[InlineData(0, null, null, "", "b", "c")]
     //[InlineData(1, null, null, "a", "", "c")]
     //[InlineData(1, null, null, "a", "", "c", "")]
@@ -64,11 +64,12 @@ public class AddAnotherAutocompleteErrorCheckerTests
     //[InlineData(2, 3, 1, "a", "b", "", "womble", "b")]
     //[InlineData(2, 3, 0, "a", "b", "", "womble", "b", "a")]
     //[InlineData(0, 6, 1, "", "a", "b", "c", "a", "c", "womble", "b", "a")]
+    [MemberData(nameof(TestData))]
     public void JavascriptEnabled_ShouldReturnCorrectIndexes(
         IEnumerable<int> expectedEmptyIndexes,
         IEnumerable<int> expectedInvalidIndexes,
         IEnumerable<IEnumerable<int>> expectedDuplicateIndexes,
-        params string[] texts)
+        string[] texts)
     {
         // Arrange
         var form = new FormCollection(new Dictionary<string, StringValues>
@@ -89,9 +90,14 @@ public class AddAnotherAutocompleteErrorCheckerTests
             });
 
         // Assert
-        Assert.Equal(expectedEmptyIndexes, result.EmptyIndexes);
-        Assert.Equal(expectedInvalidIndexes, result.InvalidIndexes);
+        Assert.Equal(expectedEmptyIndexes.ToArray(), result.EmptyIndexes.ToArray());
+        Assert.Equal(expectedInvalidIndexes.ToArray(), result.InvalidIndexes.ToArray());
         //todo: compare the inner lists
-        //Assert.Equal(expectedDuplicateIndexes, result.DuplicateIndexes);
+        //Assert.Equal(expectedDuplicateIndexes.ToArray(), result.DuplicateIndexes.ToArray());
+    }
+
+    public static IEnumerable<object[]> TestData()
+    {
+        yield return new object[] { new[] { 0 }, Array.Empty<int>(), new List<int[]> { Array.Empty<int>() }, new[] {""} };
     }
 }
