@@ -45,8 +45,8 @@ public class AddAnotherAutocompleteErrorCheckerTests
         Assert.Empty(result.InvalidIndexes);
     }
 
-    //[Theory]
-    //[InlineData(0, null, null, "")]
+    [Theory]
+    [InlineData(new[] {0}, new int[] {}, null!, "")]
     //[InlineData(0, null, null, "", "b", "c")]
     //[InlineData(1, null, null, "a", "", "c")]
     //[InlineData(1, null, null, "a", "", "c", "")]
@@ -64,29 +64,34 @@ public class AddAnotherAutocompleteErrorCheckerTests
     //[InlineData(2, 3, 1, "a", "b", "", "womble", "b")]
     //[InlineData(2, 3, 0, "a", "b", "", "womble", "b", "a")]
     //[InlineData(0, 6, 1, "", "a", "b", "c", "a", "c", "womble", "b", "a")]
-    //public void JavascriptEnabled_ShouldReturnCorrectIndexes(int? expectedFirstEmptyIndex, int? expectedFirstInvalidNameIndex, int? expectedFirstDuplicateLanguageIndex, params string[] texts)
-    //{
-    //    // Arrange
-    //    var form = new FormCollection(new Dictionary<string, StringValues>
-    //    {
-    //        // when javascript is enabled, you get the values, but they don't necessarily match the texts
-    //        // when languages are pre-populated when editing, you get the original values, rather than those matching the texts
-    //        { "values", new[] { "100", "101", "102" } },
-    //        { "texts", texts }
-    //    });
+    public void JavascriptEnabled_ShouldReturnCorrectIndexes(
+        IEnumerable<int> expectedEmptyIndexes,
+        IEnumerable<int> expectedInvalidIndexes,
+        IEnumerable<IEnumerable<int>> expectedDuplicateIndexes,
+        params string[] texts)
+    {
+        // Arrange
+        var form = new FormCollection(new Dictionary<string, StringValues>
+        {
+            // when javascript is enabled, you get the values, but they don't necessarily match the texts
+            // when languages are pre-populated when editing, you get the original values, rather than those matching the texts
+            { "values", new[] { "100", "101", "102" } },
+            { "texts", texts }
+        });
 
-    //    // Act
-    //    var result = AddAnotherAutocompleteErrorChecker.Create(form, "values", "texts",
-    //        new List<SelectListItem>
-    //        {
-    //            new("a", "1"),
-    //            new("b", "2"),
-    //            new("c", "3")
-    //        });
+        // Act
+        var result = AddAnotherAutocompleteErrorChecker.Create(form, "values", "texts",
+            new List<SelectListItem>
+            {
+                new("a", "1"),
+                new("b", "2"),
+                new("c", "3")
+            });
 
-    //    // Assert
-    //    Assert.Equal(expectedFirstEmptyIndex, result.FirstEmptyIndex);
-    //    Assert.Equal(expectedFirstInvalidNameIndex, result.FirstInvalidNameIndex);
-    //    Assert.Equal(expectedFirstDuplicateLanguageIndex, result.FirstDuplicateLanguageIndex);
-    //}
+        // Assert
+        Assert.Equal(expectedEmptyIndexes, result.EmptyIndexes);
+        Assert.Equal(expectedInvalidIndexes, result.InvalidIndexes);
+        //todo: compare the inner lists
+        //Assert.Equal(expectedDuplicateIndexes, result.DuplicateIndexes);
+    }
 }
