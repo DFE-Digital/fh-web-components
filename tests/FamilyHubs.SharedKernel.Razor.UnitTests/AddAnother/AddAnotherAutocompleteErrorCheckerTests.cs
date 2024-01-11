@@ -29,23 +29,6 @@ public class AddAnotherAutocompleteErrorCheckerTests
         Assert.Equal(original.DuplicateIndexes, deserialized.DuplicateIndexes);
     }
 
-    //[Fact]
-    //public void ShouldBeRoundTripSerializableTestWithNulls()
-    //{
-    //    // Arrange
-    //    var original = new AddAnotherAutocompleteErrorChecker(null, null, null);
-
-    //    // Act
-    //    string serialized = JsonSerializer.Serialize(original);
-    //    var deserialized = JsonSerializer.Deserialize<AddAnotherAutocompleteErrorChecker>(serialized);
-
-    //    // Assert
-    //    Assert.NotNull(deserialized);
-    //    Assert.Equal(original.FirstDuplicateLanguageIndex, deserialized.FirstDuplicateLanguageIndex);
-    //    Assert.Equal(original.FirstEmptyIndex, deserialized.FirstEmptyIndex);
-    //    Assert.Equal(original.FirstInvalidNameIndex, deserialized.FirstInvalidNameIndex);
-    //}
-
     //[Theory]
     //[InlineData(0, null, null)]
     //public void JavascriptDisabled_NoLanguageSelected_ShouldFindFirstEmptyIndex(int? expectedFirstEmptyIndex, int? expectedFirstInvalidNameIndex, int? expectedFirstDuplicateLanguageIndex, params string[] values)
