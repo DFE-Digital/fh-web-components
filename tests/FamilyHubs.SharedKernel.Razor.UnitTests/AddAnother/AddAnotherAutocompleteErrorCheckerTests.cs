@@ -106,11 +106,11 @@ public class AddAnotherAutocompleteErrorCheckerTests
         yield return new object[] { new[] { 1 }, new[] { 3 }, Array.Empty<int[]>(), new[] { "b", "", "a", "smurf" } };
         yield return new object[] { new[] { 1, 4 }, new[] { 2, 5 }, Array.Empty<int[]>(), new[] { "b", "", "klingon", "a", "", "smurf" } };
         yield return new object[] { new[] { 3 }, Array.Empty<int>(), new[] { new[] { 1, 2 }}, new[] { "b", "a", "a", "" } };
+        yield return new object[] { new[] { 1 }, Array.Empty<int>(), new[] { new[] { 0, 2 } }, new[] { "a", "", "a" } };
+        yield return new object[] { Array.Empty<int>(), new[] { 2 }, new[] { new[] { 0, 3 } }, new[] { "a", "b", "womble", "a" } };
+        yield return new object[] { Array.Empty<int>(), new[] { 2 }, new[] { new[] { 1, 3 } }, new[] { "a", "b", "womble", "b" } };
+        yield return new object[] { new[] { 2 }, new[] { 3 }, new[] { new[] { 1, 4 } }, new[] { "a", "b", "", "womble", "b" } };
 
-        //[InlineData(1, null, 0, "a", "", "a")]
-        //[InlineData(null, 2, 0, "a", "b", "womble", "a")]
-        //[InlineData(null, 2, 1, "a", "b", "womble", "b")]
-        //[InlineData(2, 3, 1, "a", "b", "", "womble", "b")]
         //[InlineData(2, 3, 0, "a", "b", "", "womble", "b", "a")]
         //[InlineData(0, 6, 1, "", "a", "b", "c", "a", "c", "womble", "b", "a")]
     }
