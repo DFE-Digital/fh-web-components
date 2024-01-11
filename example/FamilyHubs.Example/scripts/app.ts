@@ -8,7 +8,7 @@ function setupAutocompleteWhenAddAnother(element: HTMLElement) {
         return;
     }
 
-    const languageSelects = element.querySelectorAll("[id^='language-']") as NodeListOf<HTMLSelectElement>; // [id$='\\d+']");
+    const languageSelects = element.querySelectorAll("select[id^='language-']") as NodeListOf<HTMLSelectElement>; // [id$='\\d+']");
 
     languageSelects.forEach(function (select) {
         accessibleAutocomplete.enhanceSelectElement({
