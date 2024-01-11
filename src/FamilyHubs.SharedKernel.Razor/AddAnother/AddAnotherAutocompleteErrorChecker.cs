@@ -37,7 +37,10 @@ public class AddAnotherAutocompleteErrorChecker
         if (!form.ContainsKey(valuesFieldName))
         {
             // we don't have any values, which means we have a single select with no value selected
-            return new AddAnotherAutocompleteErrorChecker(Enumerable.Empty<int>(), Enumerable.Empty<int>(), Enumerable.Empty<IEnumerable<int>>());
+            return new AddAnotherAutocompleteErrorChecker(
+                new[] {0},
+                Enumerable.Empty<int>(),
+                Enumerable.Empty<IEnumerable<int>>());
         }
 
         return CreateFromJavascriptDisabledPostbackForm(form, valuesFieldName);

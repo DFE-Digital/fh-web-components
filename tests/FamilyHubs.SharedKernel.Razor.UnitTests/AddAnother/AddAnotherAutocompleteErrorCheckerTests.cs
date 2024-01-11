@@ -29,22 +29,21 @@ public class AddAnotherAutocompleteErrorCheckerTests
         Assert.Equal(original.DuplicateIndexes, deserialized.DuplicateIndexes);
     }
 
-    //[Theory]
-    //[InlineData(0, null, null)]
-    //public void JavascriptDisabled_NoLanguageSelected_ShouldFindFirstEmptyIndex(int? expectedFirstEmptyIndex, int? expectedFirstInvalidNameIndex, int? expectedFirstDuplicateLanguageIndex, params string[] values)
-    //{
-    //    // Arrange
-    //    var form = new FormCollection(new Dictionary<string, StringValues>());
+    [Fact]
+    public void JavascriptDisabled_NoLanguageSelected_ShouldFindFirstEmptyIndex()
+    {
+        // Arrange
+        var form = new FormCollection(new Dictionary<string, StringValues>());
 
-    //    // Act
-    //    var result = AddAnotherAutocompleteErrorChecker.Create(form, "values", "texts",
-    //        new List<SelectListItem> { new("a", "1"), new("c", "3") });
+        // Act
+        var result = AddAnotherAutocompleteErrorChecker.Create(form, "values", "texts",
+            new List<SelectListItem> { new("a", "1"), new("c", "3") });
 
-    //    // Assert
-    //    Assert.Equal(expectedFirstEmptyIndex, result.FirstEmptyIndex);
-    //    Assert.Equal(expectedFirstInvalidNameIndex, result.FirstInvalidNameIndex);
-    //    Assert.Equal(expectedFirstDuplicateLanguageIndex, result.FirstDuplicateLanguageIndex);
-    //}
+        // Assert
+        Assert.Equal(new[] {0}, result.EmptyIndexes);
+        Assert.Empty(result.InvalidIndexes);
+        Assert.Empty(result.InvalidIndexes);
+    }
 
     //[Theory]
     //[InlineData(0, null, null, "")]
