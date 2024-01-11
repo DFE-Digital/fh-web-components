@@ -46,25 +46,7 @@ public class AddAnotherAutocompleteErrorCheckerTests
     }
 
     [Theory]
-    //[InlineData(new[] {0}, new int[] {}, new IEnumerable<int>[] {new int[] { }}, "")]
-    //[InlineData(0, null, null, "", "b", "c")]
-    //[InlineData(1, null, null, "a", "", "c")]
-    //[InlineData(1, null, null, "a", "", "c", "")]
-    //[InlineData(null, 0, null, "smurf")]
-    //[InlineData(null, 1, null, "a", "smurf", "c")]
-    //[InlineData(null, null, 0, "a", "a")]
-    //[InlineData(null, null, 1, "b", "a", "a", "c")]
-    //[InlineData(null, null, 0, "a", "b", "c", "a")]
-    //[InlineData(1, 3, null, "b", "", "a", "smurf")]
-    //[InlineData(1, 2, null, "b", "", "klingon", "a", "", "smurf")]
-    //[InlineData(3, null, 1, "b", "a", "a", "")]
-    //[InlineData(1, null, 0, "a", "", "a")]
-    //[InlineData(null, 2, 0, "a", "b", "womble", "a")]
-    //[InlineData(null, 2, 1, "a", "b", "womble", "b")]
-    //[InlineData(2, 3, 1, "a", "b", "", "womble", "b")]
-    //[InlineData(2, 3, 0, "a", "b", "", "womble", "b", "a")]
-    //[InlineData(0, 6, 1, "", "a", "b", "c", "a", "c", "womble", "b", "a")]
-    [MemberData(nameof(TestData))]
+    [MemberData(nameof(JavascriptEnabled_ShouldReturnCorrectIndexes_TestData))]
     public void JavascriptEnabled_ShouldReturnCorrectIndexes(
         IEnumerable<int> expectedEmptyIndexes,
         IEnumerable<int> expectedInvalidIndexes,
@@ -96,8 +78,25 @@ public class AddAnotherAutocompleteErrorCheckerTests
         //Assert.Equal(expectedDuplicateIndexes.ToArray(), result.DuplicateIndexes.ToArray());
     }
 
-    public static IEnumerable<object[]> TestData()
+    public static IEnumerable<object[]> JavascriptEnabled_ShouldReturnCorrectIndexes_TestData()
     {
         yield return new object[] { new[] { 0 }, Array.Empty<int>(), new List<int[]> { Array.Empty<int>() }, new[] {""} };
+        //[InlineData(0, null, null, "", "b", "c")]
+        //[InlineData(1, null, null, "a", "", "c")]
+        //[InlineData(1, null, null, "a", "", "c", "")]
+        //[InlineData(null, 0, null, "smurf")]
+        //[InlineData(null, 1, null, "a", "smurf", "c")]
+        //[InlineData(null, null, 0, "a", "a")]
+        //[InlineData(null, null, 1, "b", "a", "a", "c")]
+        //[InlineData(null, null, 0, "a", "b", "c", "a")]
+        //[InlineData(1, 3, null, "b", "", "a", "smurf")]
+        //[InlineData(1, 2, null, "b", "", "klingon", "a", "", "smurf")]
+        //[InlineData(3, null, 1, "b", "a", "a", "")]
+        //[InlineData(1, null, 0, "a", "", "a")]
+        //[InlineData(null, 2, 0, "a", "b", "womble", "a")]
+        //[InlineData(null, 2, 1, "a", "b", "womble", "b")]
+        //[InlineData(2, 3, 1, "a", "b", "", "womble", "b")]
+        //[InlineData(2, 3, 0, "a", "b", "", "womble", "b", "a")]
+        //[InlineData(0, 6, 1, "", "a", "b", "c", "a", "c", "womble", "b", "a")]
     }
 }
