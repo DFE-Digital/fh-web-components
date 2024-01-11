@@ -85,8 +85,8 @@ public class AddAnotherAutocompleteErrorCheckerTests
         yield return new object[] { new[] { 1 }, Array.Empty<int>(), new List<int[]> { Array.Empty<int>() }, new[] { "a", "", "c" } };
         yield return new object[] { new[] { 1, 3 }, Array.Empty<int>(), new List<int[]> { Array.Empty<int>() }, new[] { "a", "", "c", "" } };
         yield return new object[] { Array.Empty<int>(), new[] { 0 }, new List<int[]> { Array.Empty<int>() }, new[] { "smurf" } };
-        //[InlineData(null, 1, null, "a", "smurf", "c")]
-        //[InlineData(null, null, 0, "a", "a")]
+        yield return new object[] { Array.Empty<int>(), new[] { 1 }, new List<int[]> { Array.Empty<int>() }, new[] { "a", "smurf", "c" } };
+        yield return new object[] { Array.Empty<int>(), Array.Empty<int>(), new List<int[]> { new[] { 0, 1 } }, new[] { "a", "a" } };
         //[InlineData(null, null, 1, "b", "a", "a", "c")]
         //[InlineData(null, null, 0, "a", "b", "c", "a")]
         //[InlineData(1, 3, null, "b", "", "a", "smurf")]
