@@ -1,4 +1,5 @@
 ﻿@page
+@using FamilyHubs.SharedKernel.Razor.ErrorNext
 @model FamilyHubs.Example.Pages.Examples.AddAnother.IndexModel
 @{
 }
@@ -10,18 +11,28 @@
             @* todo: tabindex *@
             <h1 class="govuk-heading-l fh-add-another__heading" tabindex="-1">Add another</h1>
             <form method="post">
+                @{
+                    var errorState = new ErrorState(ExampleErrors.All, new[] { (int)ExampleErrorId.ExampleError })
+                   {
+                       ErrorIdToHtmlElementId = errorId => "language-0"
+                   };
+                }
                 @foreach (var (languageCode, index) in Model.LanguageCodes.Select((code, index) => (code, index)))
                 {
+                    var error = new Error(ExampleErrors.All[(int)ExampleErrorId.ExampleError], errorState);
+
                     <fieldset class="govuk-fieldset fh-add-another__item">
-                        <div class="govuk-form-group">
+                        <div class="govuk-form-group @error.FormGroupClass">
                             <label for="language-@index" class="govuk-label">Enter a language</label>
 
-                            <select name="language" class="govuk-select" id="language-@index" data-name="language" data-id="language-%index%">
+                            <partial name="_ErrorMessageNext" model="@error"/>
+
+                            <select name="language" class="govuk-select @error.SelectClass" id="language-@index" data-name="language" data-id="language-%index%">
                                 @foreach (var option in Model.LanguageOptions)
                                 {
                                     <!option value="@option.Value"
-                                    @(option.Value == languageCode ? "selected" : "")
-                                    @(option.Value == IndexModel.NoLanguageValue ? "disabled" : "")>@option.Text</!option>
+                                             @(option.Value == languageCode ? "selected" : "")
+                                             @(option.Value == IndexModel.NoLanguageValue ? "disabled" : "")>@option.Text</!option>
                                 }
 
                             </select>
