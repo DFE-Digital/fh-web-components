@@ -81,8 +81,8 @@ public class AddAnotherAutocompleteErrorCheckerTests
     public static IEnumerable<object[]> JavascriptEnabled_ShouldReturnCorrectIndexes_TestData()
     {
         yield return new object[] { new[] { 0 }, Array.Empty<int>(), new List<int[]> { Array.Empty<int>() }, new[] {""} };
-        //[InlineData(0, null, null, "", "b", "c")]
-        //[InlineData(1, null, null, "a", "", "c")]
+        yield return new object[] { new[] { 0 }, Array.Empty<int>(), new List<int[]> { Array.Empty<int>() }, new[] { "", "b", "c" } };
+        yield return new object[] { new[] { 1 }, Array.Empty<int>(), new List<int[]> { Array.Empty<int>() }, new[] { "a", "", "c" } };
         //[InlineData(1, null, null, "a", "", "c", "")]
         //[InlineData(null, 0, null, "smurf")]
         //[InlineData(null, 1, null, "a", "smurf", "c")]
