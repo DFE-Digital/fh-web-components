@@ -23,10 +23,9 @@ public class AddAnotherAutocompleteErrorCheckerTests
 
         // Assert
         Assert.NotNull(deserialized);
-        Assert.Equal(original.EmptyIndexes, deserialized.EmptyIndexes);
-        Assert.Equal(original.EmptyIndexes, deserialized.EmptyIndexes);
-        //todo: compare the inner lists
-        Assert.Equal(original.DuplicateIndexes, deserialized.DuplicateIndexes);
+        Assert.Equal(original.EmptyIndexes.ToArray(), deserialized.EmptyIndexes.ToArray());
+        Assert.Equal(original.EmptyIndexes.ToArray(), deserialized.EmptyIndexes.ToArray());
+        AssertNestedCollectionsAreEqual(original.DuplicateIndexes, deserialized.DuplicateIndexes);
     }
 
     [Fact]
