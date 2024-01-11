@@ -9,7 +9,7 @@ public class AddAnotherAutocompleteErrorChecker
     public IEnumerable<int> InvalidIndexes { get; }
     public IEnumerable<IEnumerable<int>> DuplicateIndexes { get; }
 
-    private AddAnotherAutocompleteErrorChecker(
+    public AddAnotherAutocompleteErrorChecker(
         IEnumerable<int> emptyIndexes,
         IEnumerable<int> invalidIndexes,
         IEnumerable<IEnumerable<int>> duplicateIndexes)
