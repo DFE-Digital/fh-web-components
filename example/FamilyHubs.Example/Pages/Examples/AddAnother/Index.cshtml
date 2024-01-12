@@ -24,8 +24,9 @@
                     <fieldset class="govuk-fieldset fh-add-another__item">
                         <div class="govuk-form-group @error.FormGroupClass">
                             <label for="language-@index" class="govuk-label">Enter a language</label>
-
-                            <partial name="_ErrorMessageNext" model="@error"/>
+                            
+                            @* uncomment to test in an error state *@
+                            @* <partial name="_ErrorMessageNext" model="@error"/> *@
 
                             <select name="language" class="govuk-select @error.SelectClass" id="language-@index" data-name="language" data-id="language-%index%">
                                 @foreach (var option in Model.LanguageOptions)
