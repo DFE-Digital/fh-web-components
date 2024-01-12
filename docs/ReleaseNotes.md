@@ -1,5 +1,9 @@
 # Release Notes
 
+### 7.1.0
+
+Add support for accessible-autocomplete to work with errored fields.
+
 ### 7.0.0
 
 Breaking changes:
