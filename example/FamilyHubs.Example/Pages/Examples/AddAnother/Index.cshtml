@@ -25,10 +25,11 @@
                         <div class="govuk-form-group @error.FormGroupClass">
                             <label for="language-@index" class="govuk-label">Enter a language</label>
                             
-                            @* uncomment to test in an error state *@
-                            <partial name="_ErrorMessageNext" model="@error"/>
+                            @* uncomment these 2 lines and comment out the select below, to test in an error state *@
+                            @* <partial name="_ErrorMessageNext" model="@error"/>
+                               <select name="language" class="govuk-select @error.SelectClass" id="language-@index" data-name="language" data-id="language-%index%">*@
 
-                            <select name="language" class="govuk-select @error.SelectClass" id="language-@index" data-name="language" data-id="language-%index%">
+                            <select name="language" class="govuk-select" id="language-@index" data-name="language" data-id="language-%index%">
                                 @foreach (var option in Model.LanguageOptions)
                                 {
                                     <!option value="@option.Value"
