@@ -1,12 +1,14 @@
 # Potential improvements
 
+* once all consumers are using error next, rename it to error
+
 * accessible-autocomplete uses inline styles. might have to move them into css as our CSP bans inline styles
 
 * fix accessible-autocomplete map file
 
 * add support for custom columns width to the dashboard. either/both https://design-system.service.gov.uk/components/table/ and custom css widths
 
-* finish off error summary tag helper (and related changes)
+* error summary tag helper?
 
 * copy code from .net for asp-page etc for summary list tag helper as alternatives for action hrefs
 

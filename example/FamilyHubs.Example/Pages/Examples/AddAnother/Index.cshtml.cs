@@ -1,6 +1,8 @@
 using FamilyHubs.SharedKernel.Razor.AddAnother;
+using FamilyHubs.SharedKernel.Razor.ErrorNext;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Immutable;
 
 namespace FamilyHubs.Example.Pages.Examples.AddAnother;
 
@@ -9,6 +11,19 @@ namespace FamilyHubs.Example.Pages.Examples.AddAnother;
 // we could fix it by having a separate name for each select, with a hidden field to pick up no value selected
 //todo: improve this example, so that it has P/R/G, error handling and js disabled handling
 //todo: need a partial or tag helper to generate the selects
+//todo: either separate example with error, or actually use AddAnotherAutocompleteErrorChecker in the example
+
+public enum ExampleErrorId
+{
+    ExampleError
+}
+
+public static class ExampleErrors
+{
+    public static readonly ImmutableDictionary<int, PossibleError> All =
+        ImmutableDictionary.Create<int, PossibleError>()
+            .Add(ExampleErrorId.ExampleError, "Example error");
+}
 
 public class IndexModel : PageModel
 {

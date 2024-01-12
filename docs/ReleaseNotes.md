@@ -1,5 +1,17 @@
 # Release Notes
 
+### 7.1.0
+
+Add support for accessible-autocomplete to work with errored fields.
+
+### 7.0.0
+
+Breaking changes:
+* update AddAnotherAutocompleteErrorChecker to report all instances of errors, rather than just the first. Also report _all_ sets of duplicate values
+* remove the old error handling implementation
+
+Update the add-another component example to work with error messages.
+
 ### 6.6.3
 
 Fixes to `AddAnotherAutocompleteErrorChecker`.

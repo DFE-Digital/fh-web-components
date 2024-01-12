@@ -6,9 +6,9 @@
     Model.Errors.ErrorIdToHtmlElementId = id => id switch
     {
         // todo: can we pass T instead? not sure it can be done without making the interface generic (which we can't do as then it can't be used as a razor model)
-        (int) IndexModel.ExampleErrors.Error1 => "field1",
-        (int) IndexModel.ExampleErrors.Error2 => "field2",
-        (int) IndexModel.ExampleErrors.Error3 => "field3",
+        (int)ErrorNextModel.ExampleErrors.Error1 => "field1",
+        (int)ErrorNextModel.ExampleErrors.Error2 => "field2",
+        (int)ErrorNextModel.ExampleErrors.Error3 => "field3",
         _ => throw new InvalidOperationException()
     };
 }
@@ -20,7 +20,9 @@
 
         <form method="post" novalidate>
 
-            @{ Error? error1 = Model.Errors.GetErrorIfTriggered((int) IndexModel.ExampleErrors.Error1); }
+            @{
+                Error? error1 = Model.Errors.GetErrorIfTriggered((int)ErrorNextModel.ExampleErrors.Error1);
+            }
             <div class="govuk-form-group @(error1?.FormGroupClass)">
                 <partial name="_ErrorMessageNext" model="@error1" />
 
@@ -28,7 +30,9 @@
                 <input asp-for="Field1" id="field1" class="govuk-input @error1?.InputClass" aria-describedby="@(error1?.InputErrorMessageParaId)" />
             </div>
 
-            @{ Error? error2 = Model.Errors.GetErrorIfTriggered((int) IndexModel.ExampleErrors.Error2); }
+            @{
+                Error? error2 = Model.Errors.GetErrorIfTriggered((int)ErrorNextModel.ExampleErrors.Error2);
+            }
             <div class="govuk-form-group @(error2?.FormGroupClass)">
                 <partial name="_ErrorMessageNext" model="@error2" />
 
@@ -36,7 +40,9 @@
                 <input asp-for="Field2" id="field2" class="govuk-input @error2?.InputClass" aria-describedby="@(error2?.InputErrorMessageParaId)" />
             </div>
 
-            @{ Error? error3 = Model.Errors.GetErrorIfTriggered((int) IndexModel.ExampleErrors.Error3); }
+            @{
+                Error? error3 = Model.Errors.GetErrorIfTriggered((int)ErrorNextModel.ExampleErrors.Error3);
+            }
             <div class="govuk-form-group @(error3?.FormGroupClass)">
                 <partial name="_ErrorMessageNext" model="@error3" />
 
