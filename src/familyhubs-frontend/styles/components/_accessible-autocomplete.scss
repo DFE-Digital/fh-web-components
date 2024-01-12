@@ -2,6 +2,9 @@
 /* so we enhance it so that it does */
 
 .autocomplete__input.govuk-input--error {
-    // todo: mixin govuk-input--error, or at least use a variable for the border colour
-    border-color: #d4351c;
+    border-color: $govuk-error-colour;
+
+    &:focus {
+        border-color: $govuk-input-border-colour;
+    }
 }
