@@ -1,4 +1,5 @@
-// A version of the MOJ's add-another component that plays nice with the accessible autocomplete component.
+// A version of the MOJ's add-another component that plays nice with the accessible autocomplete component
+// and works with errored fields.
 // I did consider subclassing the MOJ's add-another component,
 // but it would have been so coupled that it would've probably broken on an update of the MOJ library.
 // So instead we forked it and made our own version.
@@ -63,10 +64,41 @@ window.FamilyHubsFrontend.AddAnother.prototype.getItems = function () {
 	return this.container.find('.fh-add-another__item');
 };
 
+// todo: ? a better approach would be to have a template item that we clone,
+// rather than having to strip the error from the first item
+window.FamilyHubsFrontend.AddAnother.prototype.stripErrorFromNewItem = function (item: HTMLElement) {
+	// find all divs and remove the govuk-form-group--error class if it exists
+	//item.querySelectorAll('div').forEach(function (el, index) {
+ //       if (el.classList.contains('govuk-form-group--error')) {
+ //           el.classList.remove('govuk-form-group--error');
+ //       }
+ //   });
+	//item.find('.govuk-form-group--error').removeClass('govuk-form-group--error');
+	item.querySelectorAll('div.govuk-form-group--error').forEach(function (el, index) {
+		el.classList.remove('govuk-form-group--error');
+	});
+
+	// using vanilla js, find all paragraphs with the class govuk-error-message and remove them
+	item.querySelectorAll('p.govuk-error-message').forEach(function (el, index) {
+        el.parentNode.removeChild(el);
+	});
+
+	// using vanilla js, find all selects with the class govuk-select--error and remove it
+	item.querySelectorAll('select.govuk-select--error').forEach(function (el, index) {
+        el.classList.remove('govuk-select--error');
+	});
+
+	item.querySelectorAll('input.govuk-input--error').forEach(function (el, index) {
+		el.classList.remove('govuk-input--error');
+	});
+}
+
 window.FamilyHubsFrontend.AddAnother.prototype.getNewItem = function () { //: JQuery<HTMLElement> //HTMLElement {
     // get the first item and clone it
     const items = this.getItems();
     const item = items[0].cloneNode(true) as HTMLElement;
+
+	this.stripErrorFromNewItem(item);
 
     // find the autocomplete wrappers and remove the elements that are added by accessible-autocomplete
     const autocompleteWrappers = item.querySelectorAll('.autocomplete__wrapper');
