@@ -1,5 +1,7 @@
 # Potential improvements
 
+* add-another: have hidden template in DOM to copy when add another (if stick with stripping errors, when strip error when cloning first instance, also really need to handle aria-described-by pointing to errors)
+
 * once all consumers are using error next, rename it to error
 
 * accessible-autocomplete uses inline styles. might have to move them into css as our CSP bans inline styles
