@@ -67,27 +67,23 @@ window.FamilyHubsFrontend.AddAnother.prototype.getItems = function () {
 // todo: ? a better approach would be to have a template item that we clone,
 // rather than having to strip the error from the first item
 window.FamilyHubsFrontend.AddAnother.prototype.stripErrorFromNewItem = function (item: HTMLElement) {
-	// find all divs and remove the govuk-form-group--error class if it exists
-	//item.querySelectorAll('div').forEach(function (el, index) {
- //       if (el.classList.contains('govuk-form-group--error')) {
- //           el.classList.remove('govuk-form-group--error');
- //       }
- //   });
-	//item.find('.govuk-form-group--error').removeClass('govuk-form-group--error');
+
+	// remove the govuk-form-group--error class from any divs that have it set
 	item.querySelectorAll('div.govuk-form-group--error').forEach(function (el, index) {
 		el.classList.remove('govuk-form-group--error');
 	});
 
-	// using vanilla js, find all paragraphs with the class govuk-error-message and remove them
+	// find all paragraphs with the class govuk-error-message and remove them
 	item.querySelectorAll('p.govuk-error-message').forEach(function (el, index) {
         el.parentNode.removeChild(el);
 	});
 
-	// using vanilla js, find all selects with the class govuk-select--error and remove it
+	// remove the govuk-select--error class from any selects that have it set
 	item.querySelectorAll('select.govuk-select--error').forEach(function (el, index) {
         el.classList.remove('govuk-select--error');
 	});
 
+	// remove the govuk-input--error class from any inputs that have it set
 	item.querySelectorAll('input.govuk-input--error').forEach(function (el, index) {
 		el.classList.remove('govuk-input--error');
 	});
