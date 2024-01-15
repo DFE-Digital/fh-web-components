@@ -1,5 +1,13 @@
 # Release Notes
 
+### 7.2.0
+
+Fixed an issue with the add-another component when the first instance in the DOM is errored.
+
+It used to duplicate the error message from the first instance in the new instance, but now it strips out any error related DOM or classes.
+
+At some point, we might switch to duplicating a hidden template of mark-up in the DOM instead.
+
 ### 7.1.0
 
 Add support for accessible-autocomplete to work with errored fields.
