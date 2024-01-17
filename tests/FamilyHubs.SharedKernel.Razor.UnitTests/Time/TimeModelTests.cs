@@ -1,4 +1,6 @@
 ﻿using FamilyHubs.SharedKernel.Razor.Time;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Primitives;
 
 namespace FamilyHubs.SharedKernel.Razor.UnitTests.Time;
 
@@ -115,5 +117,35 @@ public class TimeModelTests
     {
         var timeModel = new TimeModel(hour, minute, amPm);
         Assert.Null(timeModel.ToDateTime());
+    }
+    
+    [Fact]
+    public void TimeModel_IFormCollection_ReturnsCorrectTime()
+    {
+        var formCollection = new FormCollection(
+            new Dictionary<string, StringValues>
+            {
+                {"TestHour", "12"},
+                {"TestMinute", "30"},
+                {"TestAmPm", "pm"}
+            });
+        
+        var timeModel = new TimeModel("Test", formCollection);
+        
+        Assert.Equal(12, timeModel.Hour);
+        Assert.Equal(30, timeModel.Minute);
+        Assert.Equal(AmPm.Pm, timeModel.AmPm);
+    }
+    
+    [Fact]
+    public void TimeModel_IFormCollection_ReturnsNull()
+    {
+        var formCollection = new FormCollection(new Dictionary<string, StringValues>());
+        
+        var timeModel = new TimeModel("Test", formCollection);
+
+        Assert.False(timeModel.Hour.HasValue);
+        Assert.False(timeModel.Minute.HasValue);
+        Assert.False(timeModel.AmPm.HasValue);
     }
 }
