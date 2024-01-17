@@ -2,6 +2,8 @@
 
 namespace FamilyHubs.SharedKernel.Razor.Time;
 
+//todo: example for time control
+//todo: record instead? at least get only if not
 public class TimeComponent
 {
     public string? Description { get; set; }
