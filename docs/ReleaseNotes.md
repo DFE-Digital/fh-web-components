@@ -1,5 +1,9 @@
 # Release Notes
 
+### 7.3.0
+
+Add time entry component.
+
 ### 7.2.0
 
 Fixed an issue with the add-another component when the first instance in the DOM is errored.
