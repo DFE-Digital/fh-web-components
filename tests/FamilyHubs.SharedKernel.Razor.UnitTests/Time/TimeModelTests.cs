@@ -118,23 +118,36 @@ public class TimeModelTests
         var timeModel = new TimeModel(hour, minute, amPm);
         Assert.Null(timeModel.ToDateTime());
     }
-    
-    [Fact]
-    public void TimeModel_IFormCollection_ReturnsCorrectTime()
+
+    //todo: need to figure best way to handle user entering times like 0:00am, 12:00pm, 12:00am, 0:00pm etc.
+    [Theory]
+    [InlineData("0", "0", "am", 0, 0, AmPm.Am)]
+    [InlineData("12", "0", "am", 0, 0, AmPm.Am)]
+    [InlineData("0", "30", "am", 0, 30, AmPm.Am)]
+    [InlineData("12", "30", "am", 0, 30, AmPm.Am)]
+    [InlineData("1", "1", "am", 1, 1, AmPm.Am)]
+    [InlineData("11", "59", "am", 11, 59, AmPm.Am)]
+    [InlineData("12", "0", "pm", 12, 0, AmPm.Pm)]
+    [InlineData("0", "0", "pm", 0, 0, AmPm.Pm)]
+    [InlineData("12", "1", "pm", 0, 1, AmPm.Pm)]
+    [InlineData("0", "1", "pm", 0, 1, AmPm.Pm)]
+    [InlineData("5", "30", "pm", 5, 30, AmPm.Pm)]
+    [InlineData("11", "59", "pm", 11, 59, AmPm.Pm)]
+    public void TimeModel_IFormCollection_ReturnsCorrectTime(string hour, string minute, string amPm, int expectedHour, int expectedMinute, AmPm expectedAmPm)
     {
         var formCollection = new FormCollection(
             new Dictionary<string, StringValues>
             {
-                {"TestHour", "12"},
-                {"TestMinute", "30"},
-                {"TestAmPm", "pm"}
+                {"TestHour", hour},
+                {"TestMinute", minute},
+                {"TestAmPm", amPm}
             });
         
         var timeModel = new TimeModel("Test", formCollection);
         
-        Assert.Equal(12, timeModel.Hour);
-        Assert.Equal(30, timeModel.Minute);
-        Assert.Equal(AmPm.Pm, timeModel.AmPm);
+        Assert.Equal(expectedHour, timeModel.Hour);
+        Assert.Equal(expectedMinute, timeModel.Minute);
+        Assert.Equal(expectedAmPm, timeModel.AmPm);
     }
     
     [Fact]
