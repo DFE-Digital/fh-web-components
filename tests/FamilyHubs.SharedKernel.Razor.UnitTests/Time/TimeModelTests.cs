@@ -53,11 +53,15 @@ public class TimeModelTests
         Assert.False(timeModel.IsValid);
     }
 
-    //[Fact]
-    //public void TimeModel_ToDateTime_ReturnsCorrectDateTime()
-    //{
-    //    var timeModel = new TimeModel(12, 30, AmPm.Pm);
-    //    var expectedDateTime = new DateTime(1, 1, 1, 12, 30, 0, DateTimeKind.Utc);
-    //    Assert.Equal(expectedDateTime, timeModel.ToDateTime());
-    //}
+    [Theory]
+    [InlineData(1, 1, AmPm.Am, 1, 1)]
+    [InlineData(1, 1, AmPm.Pm, 13, 1)]
+    [InlineData(12, 30, AmPm.Am, 0, 30)]
+    [InlineData(12, 30, AmPm.Pm, 12, 30)]
+    public void TimeModel_ToDateTime_ReturnsCorrectDateTime(int hour, int minute, AmPm amPm, int expectedHour, int expectedMinute)
+    {
+        var timeModel = new TimeModel(hour, minute, amPm);
+        var expectedDateTime = new DateTime(1, 1, 1, expectedHour, expectedMinute, 0, DateTimeKind.Utc);
+        Assert.Equal(expectedDateTime, timeModel.ToDateTime());
+    }
 }

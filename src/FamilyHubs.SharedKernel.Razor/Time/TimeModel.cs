@@ -14,8 +14,6 @@ public class TimeModel
 
     public static TimeModel Empty => new(null, null, null);
 
-    private static readonly TimeZoneInfo UkTimeZone = TimeZoneInfo.FindSystemTimeZoneById("GMT Standard Time");
-
     [JsonConstructor]
     public TimeModel(int? hour, int? minute, AmPm? amPm)
     {
@@ -75,10 +73,16 @@ public class TimeModel
             return null;
         }
 
-        var hour = AmPm == Time.AmPm.Pm ? Hour + 12 : Hour;
+        int hour = Hour.Value;
+        if (AmPm == Time.AmPm.Pm && Hour != 12)
+        {
+            hour += 12;
+        }
+        else if (AmPm == Time.AmPm.Am && Hour == 12)
+        {
+            hour = 0;
+        }
 
-        //todo: unit test : utc to uk timezone correct?
-        //        return TimeZoneInfo.ConvertTime(new DateTime(1, 1, 1, hour.Value, Minute.Value, 0, DateTimeKind.Utc), UkTimeZone);
-        return TimeZoneInfo.ConvertTime(default(DateTime).AddHours(hour.Value).AddMinutes(Minute.Value), UkTimeZone);
+        return new DateTime(1, 1, 1, hour, Minute.Value, 0, DateTimeKind.Utc);
     }
 }
