@@ -29,7 +29,7 @@ public class TimeModel
             return;
         }
 
-        if (time.Value.Hour > 12)
+        if (time.Value.Hour >= 12)
         {
             Hour = time.Value.Hour - 12;
             AmPm = Time.AmPm.Pm;

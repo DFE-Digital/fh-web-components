@@ -54,6 +54,34 @@ public class TimeModelTests
     }
 
     [Theory]
+    [InlineData(0, 30, 0, 30, AmPm.Am)]
+    [InlineData(1, 1, 1, 1, AmPm.Am)]
+    [InlineData(12, 30, 0, 30, AmPm.Pm)]
+    [InlineData(13, 1, 1, 1, AmPm.Pm)]
+    public void TimeModel_ConstructorDateTime_ReturnsCorrectTime(int hour, int minute, int expectedHour, int expectedMinute, AmPm expectedAmPm)
+    {
+        var dateTime = new DateTime(1, 1, 1, hour, minute, 0, DateTimeKind.Utc);
+
+        var timeModel = new TimeModel(dateTime);
+        
+        Assert.Equal(expectedHour, timeModel.Hour);
+        Assert.Equal(expectedMinute, timeModel.Minute);
+        Assert.Equal(expectedAmPm, timeModel.AmPm);
+    }
+    
+    [Fact]
+    public void TimeModel_ConstructorDateTime_ReturnsNull()
+    {
+        var timeModel = new TimeModel(null);
+        
+        Assert.Null(timeModel.Hour);
+        Assert.Null(timeModel.Minute);
+        Assert.Null(timeModel.AmPm);
+    }
+    
+    // xunit theory test for TimeModel() constructor accepting string, IFormCollection
+
+    [Theory]
     [InlineData(1, 1, AmPm.Am, 1, 1)]
     [InlineData(1, 1, AmPm.Pm, 13, 1)]
     [InlineData(12, 30, AmPm.Am, 0, 30)]
