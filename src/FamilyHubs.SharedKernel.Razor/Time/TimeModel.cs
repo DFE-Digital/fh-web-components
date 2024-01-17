@@ -24,7 +24,6 @@ public class TimeModel
         AmPm = amPm;
     }
 
-    //todo: support null, or just have a null TimeModel?
     public TimeModel(DateTime? time)
     {
         if (time == null)
