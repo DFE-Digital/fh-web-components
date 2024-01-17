@@ -64,4 +64,14 @@ public class TimeModelTests
         var expectedDateTime = new DateTime(1, 1, 1, expectedHour, expectedMinute, 0, DateTimeKind.Utc);
         Assert.Equal(expectedDateTime, timeModel.ToDateTime());
     }
+
+    [Theory]
+    [InlineData(null, 30, AmPm.Pm)]
+    [InlineData(12, null, AmPm.Pm)]
+    [InlineData(12, 30, null)]
+    public void TimeModel_NullHour_ToDateTime_ReturnsNull(int? hour, int? minute, AmPm? amPm)
+    {
+        var timeModel = new TimeModel(hour, minute, amPm);
+        Assert.Null(timeModel.ToDateTime());
+    }
 }
