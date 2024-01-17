@@ -32,7 +32,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "styles", "styles", "{31D0D7FE-E34A-414B-9059-E8ED346E7FF3}"
 	ProjectSection(SolutionItems) = preProject
 		src\familyhubs-frontend\styles\all.scss = src\familyhubs-frontend\styles\all.scss
-		src\familyhubs-frontend\scripts\familyhubs.ts = src\familyhubs-frontend\scripts\familyhubs.ts
 		src\familyhubs-frontend\styles\_global.scss = src\familyhubs-frontend\styles\_global.scss
 		src\familyhubs-frontend\styles\_overrides.scss = src\familyhubs-frontend\styles\_overrides.scss
 	EndProjectSection
