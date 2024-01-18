@@ -27,6 +27,6 @@ public class ErrorNextModel : PageModel
 
     public void OnGet()
     {
-        Errors = ErrorState.Create(PossibleErrors, new[] { ExampleErrors.Error2, ExampleErrors.Error3 });
+        Errors = ErrorState.Create(PossibleErrors, ExampleErrors.Error2, ExampleErrors.Error3 );
     }
 }

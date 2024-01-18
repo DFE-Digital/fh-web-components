@@ -32,7 +32,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "styles", "styles", "{31D0D7FE-E34A-414B-9059-E8ED346E7FF3}"
 	ProjectSection(SolutionItems) = preProject
 		src\familyhubs-frontend\styles\all.scss = src\familyhubs-frontend\styles\all.scss
-		src\familyhubs-frontend\scripts\familyhubs.ts = src\familyhubs-frontend\scripts\familyhubs.ts
 		src\familyhubs-frontend\styles\_global.scss = src\familyhubs-frontend\styles\_global.scss
 		src\familyhubs-frontend\styles\_overrides.scss = src\familyhubs-frontend\styles\_overrides.scss
 	EndProjectSection
@@ -72,8 +71,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{FA1F7A55-52FC-
 		src\familyhubs-frontend\wwwroot\js\accessible-autocomplete-2.0.4.min.js = src\familyhubs-frontend\wwwroot\js\accessible-autocomplete-2.0.4.min.js
 		src\familyhubs-frontend\wwwroot\js\accessible-autocomplete-2.0.4.min.js.map = src\familyhubs-frontend\wwwroot\js\accessible-autocomplete-2.0.4.min.js.map
 		src\familyhubs-frontend\wwwroot\js\dfefrontend-0.1.8.js = src\familyhubs-frontend\wwwroot\js\dfefrontend-0.1.8.js
-		src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-7.2.0.min.js = src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-7.2.0.min.js
-		src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-7.2.0.min.js.map = src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-7.2.0.min.js.map
+		src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-7.3.2.min.js = src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-7.3.2.min.js
+		src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-7.3.2.min.js.map = src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-7.3.2.min.js.map
 		src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.7.0.min.js = src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.7.0.min.js
 		src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.7.0.min.js.map = src\familyhubs-frontend\wwwroot\js\govuk-frontend-4.7.0.min.js.map
 		src\familyhubs-frontend\wwwroot\js\jquery-3.7.1.js = src\familyhubs-frontend\wwwroot\js\jquery-3.7.1.js
@@ -141,6 +140,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", 
 		src\familyhubs-frontend\styles\components\_filters.scss = src\familyhubs-frontend\styles\components\_filters.scss
 		src\familyhubs-frontend\styles\components\_open-close.scss = src\familyhubs-frontend\styles\components\_open-close.scss
 		src\familyhubs-frontend\styles\components\_pagination.scss = src\familyhubs-frontend\styles\components\_pagination.scss
+		src\familyhubs-frontend\styles\components\_time.scss = src\familyhubs-frontend\styles\components\_time.scss
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "example", "example", "{0B8CACAA-44D6-4161-A974-89FBCD55E18E}"
