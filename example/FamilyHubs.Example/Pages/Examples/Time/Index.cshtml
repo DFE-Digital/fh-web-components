@@ -1,0 +1,19 @@
+﻿@page
+@model FamilyHubs.Example.Pages.Examples.Time.IndexModel
+@{
+}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1>Time example</h1>
+        
+        @* todo: have some of the error code in the component *@
+        
+        @* todo: copilot seems to think we should have a tag helper :) *@
+        @*         <govuk-time id="time" label="What time of day do you want to be contacted?" value="12:00" error="Please enter a valid time"></govuk-time> *@
+        
+        <partial name="_Time" model="Model.StartTime" />
+        <partial name="_Time" model="Model.EndTime" />
+
+    </div>
+</div>
