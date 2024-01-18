@@ -31,7 +31,7 @@
                     <label class="govuk-label govuk-date-input__label govuk-visually-hidden" for="@(Model.Component.Name)Ampm">
                         Am or pm
                     </label>
-                    <select class="govuk-select govuk-date-input__input app-ampm" id="@(Model.Component.Name)Ampm" name="@(Model.Component.Name)Ampm">
+                    <select class="govuk-select govuk-date-input__input fh-ampm" id="@(Model.Component.Name)Ampm" name="@(Model.Component.Name)Ampm">
                         <!option value="am" @IsSelected(Model, AmPm.Am)>am</!option>
                         <!option value="pm" @IsSelected(Model, AmPm.Pm)>pm</!option>
                     </select>

@@ -140,6 +140,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", 
 		src\familyhubs-frontend\styles\components\_filters.scss = src\familyhubs-frontend\styles\components\_filters.scss
 		src\familyhubs-frontend\styles\components\_open-close.scss = src\familyhubs-frontend\styles\components\_open-close.scss
 		src\familyhubs-frontend\styles\components\_pagination.scss = src\familyhubs-frontend\styles\components\_pagination.scss
+		src\familyhubs-frontend\styles\components\_time.scss = src\familyhubs-frontend\styles\components\_time.scss
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "example", "example", "{0B8CACAA-44D6-4161-A974-89FBCD55E18E}"
