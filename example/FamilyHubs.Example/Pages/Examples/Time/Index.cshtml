@@ -21,11 +21,6 @@
         
         @* note: this example doesn't have hints *@
 
-        @* todo: have some of the error code in the component *@
-        
-        @* todo: copilot seems to think we should have a tag helper :) *@
-        @*         <govuk-time id="time" label="What time of day do you want to be contacted?" value="12:00" error="Please enter a valid time"></govuk-time> *@
-
         <form method="post" novalidate>
             <partial name="_Time" model="Model.StartTime" />
             <partial name="_Time" model="Model.EndTime" />
