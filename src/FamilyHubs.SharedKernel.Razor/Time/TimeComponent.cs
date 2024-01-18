@@ -2,28 +2,9 @@
 
 namespace FamilyHubs.SharedKernel.Razor.Time;
 
-//todo: example for time control
-//todo: record instead? at least get only if not
-public class TimeComponent
+//todo: not nice having element id out of view
+public record TimeComponent(string Name, string? Description = null, string? HintId = null, AmPm DefaultAmPm  = AmPm.Am)
 {
-    public string? Description { get; set; }
-    //todo: not nice having element id out of view
-    public string? HintId { get; set; }
-    public string Name { get; set; }
-    public AmPm DefaultAmPm { get; set; }
-
-    public TimeComponent(
-        string name,
-        string? description = null,
-        string? hintId = null,
-        AmPm defaultAmPm = AmPm.Am)
-    {
-        Name = name;
-        Description = description;
-        HintId = hintId;
-        DefaultAmPm = defaultAmPm;
-    }
-
     //todo: don't have here?
     public TimeModel CreateModel(IFormCollection form)
     {

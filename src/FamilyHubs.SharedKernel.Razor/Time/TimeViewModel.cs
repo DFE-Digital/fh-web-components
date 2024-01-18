@@ -1,7 +1,6 @@
 ﻿
 namespace FamilyHubs.SharedKernel.Razor.Time;
 
-//todo: record?
 public class TimeViewModel
 {
     public TimeComponent Component { get; }

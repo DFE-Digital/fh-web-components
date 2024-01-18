@@ -5,6 +5,7 @@
 Add time entry component.
 
 * 7.3.1 : Add missing styles for the time entry component and add an example.
+* 7.3.2 : Convert TimeComponent to immutable record (from mutable class).
 
 ## 7.2
 
