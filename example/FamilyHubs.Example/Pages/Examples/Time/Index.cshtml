@@ -1,7 +1,19 @@
 ﻿@page
+@using System.Runtime.CompilerServices
 @model FamilyHubs.Example.Pages.Examples.Time.IndexModel
 @{
+    Model.Errors.ErrorIdToHtmlElementId = errorId => errorId switch
+    {
+        (int)TimeErrorId.EnterStartTime => Model.StartTime!.HourElementId,
+        (int)TimeErrorId.EnterEndTime => Model.EndTime!.HourElementId,
+        (int)TimeErrorId.EnterValidStartTime => Model.StartTime!.FirstInvalidElementId,
+        (int)TimeErrorId.EnterValidEndTime => Model.EndTime!.FirstInvalidElementId,
+        _ => throw new SwitchExpressionException(errorId)
+    };
 }
+
+@* note: this example just has the error summary, not the error messages and styling in the form *@
+<partial name="_ErrorSummaryNext" model="@Model.Errors" />
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -11,9 +23,14 @@
         
         @* todo: copilot seems to think we should have a tag helper :) *@
         @*         <govuk-time id="time" label="What time of day do you want to be contacted?" value="12:00" error="Please enter a valid time"></govuk-time> *@
-        
-        <partial name="_Time" model="Model.StartTime" />
-        <partial name="_Time" model="Model.EndTime" />
 
+        <form method="post" novalidate>
+            <partial name="_Time" model="Model.StartTime" />
+            <partial name="_Time" model="Model.EndTime" />
+            
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
     </div>
 </div>

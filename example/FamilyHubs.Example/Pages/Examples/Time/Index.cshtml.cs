@@ -1,22 +1,72 @@
+using System.Collections.Immutable;
+using FamilyHubs.SharedKernel.Razor.ErrorNext;
 using FamilyHubs.SharedKernel.Razor.Time;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace FamilyHubs.Example.Pages.Examples.Time
+namespace FamilyHubs.Example.Pages.Examples.Time;
+
+public enum TimeErrorId
 {
-    public class IndexModel : PageModel
+    EnterStartTime,
+    EnterEndTime,
+    EnterValidStartTime,
+    EnterValidEndTime
+}
+
+public class IndexModel : PageModel
+{
+    public TimeViewModel? StartTime { get; set; }
+    public TimeViewModel? EndTime { get; set; }
+
+    private static TimeComponent StartTimeComponent => new("start", "Starts", "start-time-hint");
+    private static TimeComponent EndTimeComponent => new("end", "Ends", "end-time-hint");
+
+    public IErrorState Errors { get; set; } = ErrorState.Empty;
+
+    public static readonly ImmutableDictionary<int, PossibleError> PossibleErrors =
+        ImmutableDictionary.Create<int, PossibleError>()
+            .Add(TimeErrorId.EnterStartTime, "Enter start time")
+            .Add(TimeErrorId.EnterEndTime, "Enter end time")
+            .Add(TimeErrorId.EnterValidStartTime, "Enter valid start time")
+            .Add(TimeErrorId.EnterValidEndTime, "Enter valid end time");
+
+    public void OnGet()
     {
-        public TimeViewModel? StartTime { get; set; }
-        public TimeViewModel? EndTime { get; set; }
+        // if you want to pre-populate the times
+        //DateTime startTime = DateTime.Now, endTime = startTime.AddHours(1);
+        DateTime? startTime = null, endTime = null;
 
-        private static TimeComponent StartTimeComponent => new("start", "Starts", "start-time-hint");
-        private static TimeComponent EndTimeComponent => new("end", "Ends", "end-time-hint");
+        StartTime = new TimeViewModel(StartTimeComponent, startTime);
+        EndTime = new TimeViewModel(EndTimeComponent, endTime);
+    }
 
-        public void OnGet()
+    public void OnPost()
+    {
+        var startTime = StartTimeComponent.CreateModel(Request.Form);
+        var endTime = EndTimeComponent.CreateModel(Request.Form);
+
+        List<TimeErrorId> errors = new(); 
+        
+        if (startTime.IsEmpty)
         {
-            DateTime startTime = DateTime.Today, endTime = startTime.AddDays(1);
-
-            StartTime = new TimeViewModel(StartTimeComponent, startTime);
-            EndTime = new TimeViewModel(EndTimeComponent, endTime);
+            errors.Add(TimeErrorId.EnterStartTime);
         }
+        else if (!startTime.IsValid)
+        {
+            errors.Add(TimeErrorId.EnterValidStartTime);
+        }
+        
+        if (endTime.IsEmpty)
+        {
+            errors.Add(TimeErrorId.EnterEndTime);
+        }
+        else if (!endTime.IsValid)
+        {
+            errors.Add(TimeErrorId.EnterValidEndTime);
+        }
+        Errors = ErrorState.Create(PossibleErrors, errors.ToArray());
+
+        StartTime = new TimeViewModel(StartTimeComponent, startTime);
+        EndTime = new TimeViewModel(EndTimeComponent, endTime);
     }
 }
