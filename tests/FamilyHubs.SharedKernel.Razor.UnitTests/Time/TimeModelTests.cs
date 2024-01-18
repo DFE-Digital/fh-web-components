@@ -119,17 +119,17 @@ public class TimeModelTests
         Assert.Null(timeModel.ToDateTime());
     }
 
-    //todo: need to figure best way to handle user entering times like 0:00am, 12:00pm, 12:00am, 0:00pm etc.
+    // we handle times differently to converting to 24H time. here we keep 12am and 12pm as 12am and 12pm
     [Theory]
     [InlineData("0", "0", "am", 0, 0, AmPm.Am)]
-    [InlineData("12", "0", "am", 0, 0, AmPm.Am)]
+    [InlineData("12", "0", "am", 12, 0, AmPm.Am)]
     [InlineData("0", "30", "am", 0, 30, AmPm.Am)]
-    [InlineData("12", "30", "am", 0, 30, AmPm.Am)]
+    [InlineData("12", "30", "am", 12, 30, AmPm.Am)]
     [InlineData("1", "1", "am", 1, 1, AmPm.Am)]
     [InlineData("11", "59", "am", 11, 59, AmPm.Am)]
     [InlineData("12", "0", "pm", 12, 0, AmPm.Pm)]
     [InlineData("0", "0", "pm", 0, 0, AmPm.Pm)]
-    [InlineData("12", "1", "pm", 0, 1, AmPm.Pm)]
+    [InlineData("12", "1", "pm", 12, 1, AmPm.Pm)]
     [InlineData("0", "1", "pm", 0, 1, AmPm.Pm)]
     [InlineData("5", "30", "pm", 5, 30, AmPm.Pm)]
     [InlineData("11", "59", "pm", 11, 59, AmPm.Pm)]
