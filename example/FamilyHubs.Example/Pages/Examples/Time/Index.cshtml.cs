@@ -45,7 +45,7 @@ public class IndexModel : PageModel
         var startTime = StartTimeComponent.CreateModel(Request.Form);
         var endTime = EndTimeComponent.CreateModel(Request.Form);
 
-        List<TimeErrorId> errors = new(); 
+        List<TimeErrorId> errors = new();
         
         if (startTime.IsEmpty)
         {
@@ -66,7 +66,10 @@ public class IndexModel : PageModel
         }
         Errors = ErrorState.Create(PossibleErrors, errors.ToArray());
 
-        StartTime = new TimeViewModel(StartTimeComponent, startTime);
-        EndTime = new TimeViewModel(EndTimeComponent, endTime);
+        var startTimeError = Errors.GetErrorIfTriggered((int)TimeErrorId.EnterStartTime, (int)TimeErrorId.EnterValidStartTime);
+        var endTimeError = Errors.GetErrorIfTriggered((int)TimeErrorId.EnterEndTime, (int)TimeErrorId.EnterValidEndTime);
+
+        StartTime = new TimeViewModel(StartTimeComponent, startTime, startTimeError);
+        EndTime = new TimeViewModel(EndTimeComponent, endTime, endTimeError);
     }
 }

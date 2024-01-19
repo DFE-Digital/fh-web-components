@@ -1,17 +1,18 @@
 ﻿@using FamilyHubs.SharedKernel.Razor.Time
 @model TimeViewModel
-<div class="govuk-form-group">
-    <fieldset class="govuk-fieldset" role="group" aria-describedby="@Model.Component.HintId">
+<div class="govuk-form-group @Model.Error?.FormGroupClass">
+    <fieldset class="govuk-fieldset" role="group" aria-describedby="@Model.Component.HintId @Model.Error?.InputErrorMessageParaId">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
             @Model.Component.Description
         </legend>
+        <partial name="_ErrorMessageNext" for="Error"/>
         <div class="govuk-date-input">
             <div class="govuk-date-input__item">
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-date-input__label" for="@(Model.Component.Name)Hour">
                         Hour
                     </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2"
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2 @Model.Error?.InputClass"
                            id="@(Model.Component.Name)Hour" name="@(Model.Component.Name)Hour"
                            type="text" inputmode="numeric" value="@Model.Time?.Hour">
                 </div>
@@ -21,7 +22,7 @@
                     <label class="govuk-label govuk-date-input__label" for="@(Model.Component.Name)Minute">
                         Minute
                     </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2"
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2 @Model.Error?.InputClass"
                            id="@(Model.Component.Name)Minute" name="@(Model.Component.Name)Minute"
                            type="text" inputmode="numeric" value="@Model.Time?.Minute">
                 </div>
@@ -31,11 +32,11 @@
                     <label class="govuk-label govuk-date-input__label govuk-visually-hidden" for="@(Model.Component.Name)Ampm">
                         Am or pm
                     </label>
-                    <select class="govuk-select govuk-date-input__input fh-ampm" id="@(Model.Component.Name)Ampm" name="@(Model.Component.Name)Ampm">
+                    <select class="govuk-select govuk-date-input__input @Model.Error?.SelectClass fh-ampm"
+                            id="@(Model.Component.Name)Ampm" name="@(Model.Component.Name)Ampm">
                         <!option value="am" @IsSelected(Model, AmPm.Am)>am</!option>
                         <!option value="pm" @IsSelected(Model, AmPm.Pm)>pm</!option>
                     </select>
-
                 </div>
             </div>
         </div>
