@@ -10,6 +10,7 @@ public class SummaryListRowTagHelper : TagHelper
     public string? Action1Href { get; set; }
     public string? Action2 { get; set; }
     public string? Action2Href { get; set; }
+    public bool ShowEmpty { get; set; } = false;
 
     public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
     {
@@ -22,7 +23,7 @@ public class SummaryListRowTagHelper : TagHelper
         }
 
         string finalValue = (await output.GetChildContentAsync()).GetContent();
-        if (!string.IsNullOrWhiteSpace(finalValue))
+        if (!string.IsNullOrWhiteSpace(finalValue) || ShowEmpty)
         {
             output.TagName = "div";
             output.Attributes.SetAttribute("class", "govuk-summary-list__row");
