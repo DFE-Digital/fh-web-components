@@ -1,5 +1,7 @@
 # Potential improvements
 
+* add a flag to summary list as to whether to show the key or not when the value is empty
+
 * add-another: have hidden template in DOM to copy when add another (if stick with stripping errors, when strip error when cloning first instance, also really need to handle aria-described-by pointing to errors)
 
 * once all consumers are using error next, rename it to error
