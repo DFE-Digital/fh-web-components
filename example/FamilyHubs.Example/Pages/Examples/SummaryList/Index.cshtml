@@ -9,6 +9,7 @@
 
 <summary-list>
     <summary-list-row key="Empty (row shouldn't render)"></summary-list-row>
+    <summary-list-row key="Empty (should render)" show-empty></summary-list-row>
 
     <summary-list-row key="Name">Sarah Philips</summary-list-row>
     @* todo: helper for converting IEnumerable<string> to use <br/>?*@
@@ -23,12 +24,18 @@
 <h2 class="govuk-heading-m">No Border</h2>
 
 <summary-list border="false">
+    <summary-list-row key="Empty (row shouldn't render)"></summary-list-row>
+    <summary-list-row key="Empty (should render)" show-empty></summary-list-row>
+
     <summary-list-row key="Name">Sarah Philips</summary-list-row>
 </summary-list>
 
 <h2 class="govuk-heading-m">With Actions</h2>
 
 <summary-list>
+    <summary-list-row key="Empty (row shouldn't render)" action1="Change" action1-href="#"></summary-list-row>
+    <summary-list-row key="Empty (should render)" action1="Change" action1-href="#" show-empty></summary-list-row>
+
     <summary-list-row key="Name" action1="Change" action1-href="#">Sarah Philips</summary-list-row>
     <summary-list-row key="Contact details" action1="Add" action1-href="#add" action2="Change" action2-href="#change">
         <p>07700 900457</p>
