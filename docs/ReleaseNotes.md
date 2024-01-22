@@ -1,5 +1,9 @@
 # Release Notes
 
+## 7.4
+
+Add 'show-empty' attribute to the `<<summary-list-row>` tag helper. If set to true, both the key can value are shown, even if the value is empty.
+
 ## 7.3
 
 Add time entry component.
