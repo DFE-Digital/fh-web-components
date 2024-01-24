@@ -28,7 +28,7 @@ public class SingleTextboxSeparateHeaderModel : PageModel, ISingleTextboxPageMod
     {
         if (string.IsNullOrWhiteSpace(TextBoxValue))
         {
-            Errors = ErrorState.Create(PossibleErrors, new[] { ErrorId.AnswerMissing });
+            Errors = ErrorState.Create(PossibleErrors, ErrorId.AnswerMissing );
         }
     }
 
