@@ -13,7 +13,7 @@
 
             @{ Error? error = Model.Errors.GetErrorIfTriggered();}
 
-            <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="500">
+            <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="@Model.TextAreaMaxLength">
                 <div class="govuk-form-group error?.FormGroupClass">
 
                     <h2 class="govuk-label-wrapper">
@@ -25,11 +25,11 @@
                     <partial name="_ErrorMessageNext" model="error"/>
 
                     <textarea asp-for="TextAreaValue" class="govuk-textarea govuk-js-character-count error?.TextAreaClass"
-                              rows="10" id="reason" aria-describedby="reason-info error?.InputErrorMessageParaId"></textarea>
+                              rows="@Model.TextAreaNumberOfRows" id="reason" aria-describedby="reason-info error?.InputErrorMessageParaId"></textarea>
                 </div>
 
                 <div id="reason-info" class="govuk-hint govuk-character-count__message">
-                    You can enter up to 500 characters
+                    You can enter up to @Model.TextAreaMaxLength characters
                 </div>
             </div>
 
