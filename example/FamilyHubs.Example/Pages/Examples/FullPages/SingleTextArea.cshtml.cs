@@ -1,4 +1,4 @@
-using FamilyHubs.SharedKernel.Razor.ErrorNext;
+﻿using FamilyHubs.SharedKernel.Razor.ErrorNext;
 using FamilyHubs.SharedKernel.Razor.FullPages;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -18,7 +18,7 @@ public class SingleTextAreaModel : PageModel, ISingleTextAreaPageModel
 
     public void OnGet()
     {
-        TextAreaValue = "Original value";
+        TextAreaValue = "Kākāpōs";
     }
 
     public void OnPost()
