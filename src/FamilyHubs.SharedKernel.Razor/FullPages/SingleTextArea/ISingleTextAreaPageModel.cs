@@ -9,6 +9,7 @@ public interface ISingleTextAreaPageModel
     public IErrorState Errors { get; }
 
     string DescriptionPartial { get; }
+    string? Label { get; }
 
     public int TextAreaMaxLength { get; }
     public int TextAreaNumberOfRows { get; }

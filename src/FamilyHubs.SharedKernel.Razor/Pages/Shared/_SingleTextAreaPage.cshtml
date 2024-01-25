@@ -20,13 +20,16 @@
 
             <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="@Model.TextAreaMaxLength">
                 <div class="govuk-form-group error?.FormGroupClass">
-
-                    <h2 class="govuk-label-wrapper">
-                        <label class="govuk-label govuk-label--m" for="@textAreaId">
-                            Enter details
-                        </label>
-                    </h2>
                     
+                    @if (Model.Label != null)
+                    {
+                        <h2 class="govuk-label-wrapper">
+                            <label class="govuk-label govuk-label--m" for="@textAreaId">
+                                Enter details
+                            </label>
+                        </h2>
+                    }
+
                     <partial name="_ErrorMessageNext" model="error"/>
 
                     <textarea asp-for="TextAreaValue" class="govuk-textarea govuk-js-character-count error?.TextAreaClass"

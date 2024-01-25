@@ -9,6 +9,8 @@ namespace FamilyHubs.Example.Pages.Examples.FullPages;
 public class SingleTextAreaModel : PageModel, ISingleTextAreaPageModel
 {
     public string DescriptionPartial => "/Pages/Examples/FullPages/SingleTextAreaContent.cshtml";
+    public string? Label => null;
+
     public int TextAreaMaxLength => 500;
     public int TextAreaNumberOfRows => 10;
     public IErrorState Errors { get; set; } = ErrorState.Empty;
