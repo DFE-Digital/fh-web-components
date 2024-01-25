@@ -9,7 +9,7 @@ namespace FamilyHubs.Example.Pages.Examples.FullPages;
 public class SingleTextAreaModel : PageModel, ISingleTextAreaPageModel
 {
     public string DescriptionPartial => "/Pages/Examples/FullPages/SingleTextAreaContent.cshtml";
-    public string? Label => null;
+    public string? Label => "Enter animal";
 
     public int TextAreaMaxLength => 500;
     public int TextAreaNumberOfRows => 10;
