@@ -7,6 +7,8 @@ Add support for a new full page control with a single textarea. See example page
 Breaking changes:
 * namespaces for classes and interfaces in the `FamilyHubs.SharedKernel.Razor.FullPages` namespace have changed.
 
+* 8.0.1 : Make an empty text area an optional error condition (actually a breaking change!)
+
 ## 7.4
 
 Add 'show-empty' attribute to the `<<summary-list-row>` tag helper. If set to true, both the key can value are shown, even if the value is empty.
