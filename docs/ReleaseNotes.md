@@ -1,5 +1,12 @@
 # Release Notes
 
+# 8
+
+Add support for a new full page control with a single textarea. See example page for more info.
+
+Breaking changes:
+* namespaces for classes and interfaces in the `FamilyHubs.SharedKernel.Razor.FullPages` namespace have changed.
+
 ## 7.4
 
 Add 'show-empty' attribute to the `<<summary-list-row>` tag helper. If set to true, both the key can value are shown, even if the value is empty.
@@ -83,8 +90,7 @@ Dashboard columns can now be right aligned or [numeric](https://design-system.se
 There is now an example paginated dashboard, and the existing dashboard example has right aligned and numeric columns.
 
 Breaking changes:
-
-`ColumnImmutable()` now accepts a `ColumnType` enum parameter, rather than the old `Align` enum.
+* `ColumnImmutable()` now accepts a `ColumnType` enum parameter, rather than the old `Align` enum.
 
 ## 5.8
 
@@ -216,9 +222,8 @@ For more info, see [NetEscapades.AspNetCore.SecurityHeaders](https://github.com/
 # 4
 
 Breaking changes:
-
-Security header's CSP has had `unsafe-inline` removed from the `style-src`.
-Also, Https has been removed from img-src (but GA specific domains have been added).
+* security header's CSP has had `unsafe-inline` removed from the `style-src`
+* Https has been removed from img-src (but GA specific domains have been added)
 
 * 4.0.1 : Add more domain exceptions to the CSP to fix GA4 (as [recommended by Google](https://developers.google.com/tag-platform/security/guides/csp#google_analytics_4_google_analytics)).
 
@@ -231,12 +236,9 @@ Add support for Areas by adding the `ViewStart.InitialiseFamilyHubs()` method th
 # 3
 
 Breaking changes:
-
-The class `app-back-link` has been renamed to `fh-back-link`.
-
-The behaviour of back links with the class has also been changed, to not show the back link, if the page has been opened in a new tab.
-
-The class `app-custom-main` has been renamed to `fh-custom-main`.
+* the class `app-back-link` has been renamed to `fh-back-link`
+* the behaviour of back links with the class has also been changed, to not show the back link, if the page has been opened in a new tab.
+* the class `app-custom-main` has been renamed to `fh-custom-main`.
 
 Fixes typescript transpilation.
 
