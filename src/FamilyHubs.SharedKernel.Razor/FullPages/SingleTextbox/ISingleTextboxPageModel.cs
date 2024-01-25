@@ -1,6 +1,6 @@
 ﻿using FamilyHubs.SharedKernel.Razor.ErrorNext;
 
-namespace FamilyHubs.SharedKernel.Razor.FullPages;
+namespace FamilyHubs.SharedKernel.Razor.FullPages.SingleTextbox;
 
 //todo: composable concrete?
 

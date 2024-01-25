@@ -1,6 +1,6 @@
 using System.Collections.Immutable;
 using FamilyHubs.SharedKernel.Razor.ErrorNext;
-using FamilyHubs.SharedKernel.Razor.FullPages;
+using FamilyHubs.SharedKernel.Razor.FullPages.SingleTextbox;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -28,7 +28,7 @@ public class SingleTextboxSeparateHeaderModel : PageModel, ISingleTextboxPageMod
     {
         if (string.IsNullOrWhiteSpace(TextBoxValue))
         {
-            Errors = ErrorState.Create(PossibleErrors, new[] { ErrorId.AnswerMissing });
+            Errors = ErrorState.Create(PossibleErrors, ErrorId.AnswerMissing );
         }
     }
 

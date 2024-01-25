@@ -1,6 +1,6 @@
 using System.Collections.Immutable;
 using FamilyHubs.SharedKernel.Razor.ErrorNext;
-using FamilyHubs.SharedKernel.Razor.FullPages;
+using FamilyHubs.SharedKernel.Razor.FullPages.SingleTextbox;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
