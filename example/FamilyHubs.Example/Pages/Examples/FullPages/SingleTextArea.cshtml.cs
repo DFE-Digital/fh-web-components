@@ -25,7 +25,7 @@ public class SingleTextAreaModel : PageModel, ISingleTextAreaPageModel
 
     public void OnPost()
     {
-        var errorId = this.CheckForErrors(ErrorId.NoAnimal, ErrorId.AnimalTooLong);
+        var errorId = this.CheckForErrors(ErrorId.AnimalTooLong, ErrorId.NoAnimal);
         if (errorId != null)
         {
             Errors = ErrorState.Create(PossibleErrors, errorId.Value);
