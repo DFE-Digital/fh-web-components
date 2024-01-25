@@ -23,7 +23,7 @@ public class SingleTextAreaModel : PageModel, ISingleTextAreaPageModel
 
     public void OnPost()
     {
-        var errorId = CheckForErrors(ErrorId.NoAnimal, ErrorId.AnimalTooLong);
+        var errorId = this.CheckForErrors(ErrorId.NoAnimal, ErrorId.AnimalTooLong);
         if (errorId != null)
         {
             Errors = ErrorState.Create(PossibleErrors, errorId.Value);
@@ -41,19 +41,22 @@ public class SingleTextAreaModel : PageModel, ISingleTextAreaPageModel
             .Add(ErrorId.NoAnimal, "Please enter an animal")
             .Add(ErrorId.AnimalTooLong, "Animal is too long")
         ;
+}
 
-    //todo: package for reuse using composition
-    public TErrorId? CheckForErrors<TErrorId>(TErrorId emptyErrorId, TErrorId tooLongErrorId)
+public static class SingleTextAreaModelExtensions
+{
+    public static TErrorId? CheckForErrors<TErrorId>(this ISingleTextAreaPageModel model, TErrorId emptyErrorId,
+        TErrorId tooLongErrorId)
         where TErrorId : struct, Enum
     {
-        if (string.IsNullOrEmpty(TextAreaValue))
+        if (string.IsNullOrEmpty(model.TextAreaValue))
         {
             return emptyErrorId;
         }
 
         // workaround the front end counting line endings as 1 chars (\n) as per HTML spec,
         // and the http transport/.net/windows using 2 chars for line ends (\r\n)
-        if (TextAreaValue.Replace("\r", "").Length > TextAreaMaxLength)
+        if (model.TextAreaValue.Replace("\r", "").Length > model.TextAreaMaxLength)
         {
             return tooLongErrorId;
         }
