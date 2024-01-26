@@ -30,6 +30,10 @@ namespace FamilyHubs.Example.Pages.Examples.FullPages
         public string? DescriptionPartial => null;
         public string? Legend => "Where do you live?";
 
+        public RadioModel()
+        {
+        }
+
         public void OnPost()
         {
         }
