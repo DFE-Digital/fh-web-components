@@ -24,18 +24,18 @@
                     {
                         if (Model.DescriptionPartial == null)
                         {
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                                <h2 class="govuk-fieldset__heading">
-                                    @Model.Legend
-                                </h2>
-                            </legend>
-                        }
-                        else
-                        {
                             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-fieldset__heading">
                                     @Model.Legend
                                 </h1>
+                            </legend>
+                        }
+                        else
+                        {
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                <h2 class="govuk-fieldset__heading">
+                                    @Model.Legend
+                                </h2>
                             </legend>
                         }
                     }
