@@ -1,7 +1,7 @@
 ﻿@page
 @model FamilyHubs.SharedKernel.Razor.FullPages.Radios.IRadiosPageModel
 @{
-    Model.Errors.ErrorIdToHtmlElementId = errorId => "consent-yes";
+    Model.Errors.ErrorIdToHtmlElementId = errorId => $"radio={Model.Radios.First().Value}";
 }
 
 <partial name="_ErrorSummaryNext" for="@Model.Errors" />
@@ -21,13 +21,13 @@
         <form method="post" novalidate>
             <div class="govuk-form-group @error?.FormGroupClass">
                 <fieldset class="govuk-fieldset" aria-describedby="error?.InputErrorMessageParaId">
-                    @if (Model.Label != null)
+                    @if (Model.Legend != null)
                     {
                         if (Model.DescriptionPartial == null)
                         {
                             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                                 <h2 class="govuk-fieldset__heading">
-                                    @Model.Label
+                                    @Model.Legend
                                 </h2>
                             </legend>
                         }
@@ -35,25 +35,22 @@
                         {
                             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-fieldset__heading">
-                                    @Model.Label
+                                    @Model.Legend
                                 </h1>
                             </legend>
                         }
                     }
                     <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
                         <partial name="_ErrorMessageNext" model="error"/>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="consent-yes" name="Consent" type="radio" value="true" @(Model.Consent == true ? "checked" : "")>
-                            <label class="govuk-label govuk-radios__label" for="consent-yes">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="consent-no" name="Consent" type="radio" value="false" @(Model.Consent == false ? "checked" : "")>
-                            <label class="govuk-label govuk-radios__label" for="consent-no">
-                                No
-                            </label>
-                        </div>
+                        @foreach (var radio in Model.Radios)
+                        {
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="radio-@radio.Value" name="radio" type="radio" value="@radio.Value" @(@radio.Value == Model.SelectedValue ? "checked" : "")>
+                                <label class="govuk-label govuk-radios__label" for="radio-@radio.Value">
+                                    @radio.Label
+                                </label>
+                            </div>
+                        }
                     </div>
                 </fieldset>
             </div>
@@ -62,5 +59,4 @@
             </button>
         </form>
     </div>
-
 </div>

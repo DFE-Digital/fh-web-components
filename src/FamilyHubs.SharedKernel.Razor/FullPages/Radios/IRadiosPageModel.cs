@@ -29,5 +29,7 @@ public interface IRadiosPageModel
     public IErrorState Errors { get; }
 
     string? DescriptionPartial { get; }
-    string? Label { get; }
+    string? Legend { get; }
+    //todo:
+    //string? Hint { get; }
 }
