@@ -27,7 +27,7 @@ namespace FamilyHubs.Example.Pages.Examples.FullPages
         public IEnumerable<IRadio> Radios => StaticRadios;
 
         [BindProperty]
-        public string? SelectedValue { get; set; } = null;
+        public string? SelectedValue { get; set; }
 
         public IErrorState Errors { get; set; } = ErrorState.Empty;
 
@@ -35,7 +35,17 @@ namespace FamilyHubs.Example.Pages.Examples.FullPages
         public string? Legend => "Where do you live?";
 
         public Country? SelectedCountry;
-        
+
+        public void OnGet()
+        {
+            // Do not pre-select radio options as this makes it more likely that users will:
+            // * not realise they’ve missed a question
+            // * submit the wrong answer
+
+            // only preselect a radio button after the user has previously selected it
+            //SelectedValue = Country.Wales.ToString();
+        }
+
         public void OnPost()
         {
             if (SelectedValue == null)
