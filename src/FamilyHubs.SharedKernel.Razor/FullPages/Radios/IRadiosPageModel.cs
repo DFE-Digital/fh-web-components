@@ -9,6 +9,8 @@ namespace FamilyHubs.SharedKernel.Razor.FullPages.Radios;
 //    h2
 //}
 
+public record Radio(string Label, string Value) : IRadio;
+
 public interface IRadio
 {
     string Label { get; }
