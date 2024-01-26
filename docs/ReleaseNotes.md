@@ -1,5 +1,11 @@
 # Release Notes
 
+## 8.1
+
+Add support for a new full page control with radio buttons. See example page.
+
+* 8.1.1 Fix heading size in radio page's legend
+
 # 8
 
 Add support for a new full page control with a single textarea. See example page for more info.
