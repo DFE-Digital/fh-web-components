@@ -39,7 +39,7 @@
                             </legend>
                         }
                     }
-                    <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                    <div class="govuk-radios @(Model.AreRadiosInline ? "govuk-radios--inline" : "")" data-module="govuk-radios">
                         <partial name="_ErrorMessageNext" model="error"/>
                         @foreach (var radio in Model.Radios)
                         {

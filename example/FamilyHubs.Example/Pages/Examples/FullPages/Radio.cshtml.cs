@@ -26,6 +26,7 @@ namespace FamilyHubs.Example.Pages.Examples.FullPages
         public IEnumerable<IRadio> Radios => StaticRadios;
         [BindProperty]
         public string? SelectedValue => null;
+
         public IErrorState Errors => ErrorState.Empty;
         public string? DescriptionPartial => null;
         public string? Legend => "Where do you live?";
