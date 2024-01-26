@@ -1,9 +1,6 @@
 ﻿using FamilyHubs.SharedKernel.Razor.ErrorNext;
-using Microsoft.AspNetCore.Mvc;
 
 namespace FamilyHubs.SharedKernel.Razor.FullPages.Radios;
-
-public record Radio(string Label, string Value) : IRadio;
 
 public interface IRadio
 {
