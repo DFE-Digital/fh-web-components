@@ -9,23 +9,39 @@
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-        @* do we want to allow the consumer to pass through a model to the custom content partial? *@
-        <partial name="@Model.DescriptionPartial" />
+        @*todo: do we want to allow the consumer to pass through a model to the custom content partial? *@
+        @if (Model.DescriptionPartial != null)
+        {
+            <partial name="@Model.DescriptionPartial" />
+        }
+        
+        @* we don't care which error we get if there are multiple errors *@
+        @{ var error = Model.Errors.GetErrorIfTriggered(); }
 
-        <form method="post">
-            <div class="govuk-form-group @(Model.Errors.HasErrors ? "govuk-form-group--error" : "")">
-                <fieldset class="govuk-fieldset">
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                        <h2 class="govuk-fieldset__heading">
-                            Do you have permission to share their details?
-                        </h2>
-                    </legend>
-                    <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
-                        @* todo: add aria-described-by to error *@
-                        @{
-                            var error = Model.Errors.GetErrorIfTriggered();
+        <form method="post" novalidate>
+            <div class="govuk-form-group @error?.FormGroupClass">
+                <fieldset class="govuk-fieldset" aria-describedby="error?.InputErrorMessageParaId">
+                    @if (Model.Label != null)
+                    {
+                        if (Model.DescriptionPartial == null)
+                        {
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                <h2 class="govuk-fieldset__heading">
+                                    @Model.Label
+                                </h2>
+                            </legend>
                         }
-                        <partial name="_ErrorMessageNext" model="error" />
+                        else
+                        {
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-fieldset__heading">
+                                    @Model.Label
+                                </h1>
+                            </legend>
+                        }
+                    }
+                    <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                        <partial name="_ErrorMessageNext" model="error"/>
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="consent-yes" name="Consent" type="radio" value="true" @(Model.Consent == true ? "checked" : "")>
                             <label class="govuk-label govuk-radios__label" for="consent-yes">
