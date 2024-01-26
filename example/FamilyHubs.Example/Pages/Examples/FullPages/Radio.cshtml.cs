@@ -2,6 +2,7 @@ using FamilyHubs.SharedKernel.Razor.ErrorNext;
 using FamilyHubs.SharedKernel.Razor.FullPages.Radios;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Collections.Immutable;
 
 namespace FamilyHubs.Example.Pages.Examples.FullPages
 {
@@ -24,19 +25,35 @@ namespace FamilyHubs.Example.Pages.Examples.FullPages
         };
 
         public IEnumerable<IRadio> Radios => StaticRadios;
-        [BindProperty]
-        public string? SelectedValue => null;
 
-        public IErrorState Errors => ErrorState.Empty;
+        [BindProperty]
+        public string? SelectedValue { get; set; } = null;
+
+        public IErrorState Errors { get; set; } = ErrorState.Empty;
+
         public string? DescriptionPartial => null;
         public string? Legend => "Where do you live?";
 
-        public RadioModel()
-        {
-        }
-
+        public Country? SelectedCountry;
+        
         public void OnPost()
         {
+            if (SelectedValue == null)
+            {
+                Errors = ErrorState.Create(PossibleErrors, ErrorId.NoCountrySelected);
+                return;
+            }
+
+            SelectedCountry = (Country)Enum.Parse(typeof(Country), SelectedValue);
         }
+
+        public enum ErrorId
+        {
+            NoCountrySelected
+        }
+
+        public static readonly ImmutableDictionary<int, PossibleError> PossibleErrors =
+            ImmutableDictionary.Create<int, PossibleError>()
+                .Add(ErrorId.NoCountrySelected, "Select the country where you live");
     }
 }

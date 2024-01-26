@@ -1,6 +1,6 @@
 ﻿@model FamilyHubs.SharedKernel.Razor.FullPages.Radios.IRadiosPageModel
 @{
-    Model.Errors.ErrorIdToHtmlElementId = errorId => $"radio={Model.Radios.First().Value}";
+    Model.Errors.ErrorIdToHtmlElementId = errorId => $"radio-{Model.Radios.First().Value}";
 }
 
 <partial name="_ErrorSummaryNext" for="@Model.Errors" />

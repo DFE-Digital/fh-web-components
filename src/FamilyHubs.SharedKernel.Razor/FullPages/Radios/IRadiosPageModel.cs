@@ -1,4 +1,5 @@
 ﻿using FamilyHubs.SharedKernel.Razor.ErrorNext;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FamilyHubs.SharedKernel.Razor.FullPages.Radios;
 
@@ -18,8 +19,8 @@ public interface IRadio
 public interface IRadiosPageModel
 {
     public IEnumerable<IRadio> Radios { get; }
-    
-    public string? SelectedValue { get; }
+
+    public string? SelectedValue { get; set; }
 
     /// <summary>
     /// In some cases, you can choose to display radios ‘inline’ beside one another (horizontally).
