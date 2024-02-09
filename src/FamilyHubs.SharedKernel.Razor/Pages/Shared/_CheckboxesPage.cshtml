@@ -1,6 +1,6 @@
-﻿@model FamilyHubs.SharedKernel.Razor.FullPages.Radios.IRadiosPageModel
+﻿@model FamilyHubs.SharedKernel.Razor.FullPages.Checkboxes.ICheckboxesPageModel
 @{
-    Model.Errors.ErrorIdToHtmlElementId = errorId => $"radio-{Model.Radios.First().Value}";
+    Model.Errors.ErrorIdToHtmlElementId = errorId => $"checkbox-{Model.Checkboxes.First().Value}";
 }
 
 <partial name="_ErrorSummaryNext" for="@Model.Errors" />
@@ -13,13 +13,15 @@
         {
             <partial name="@Model.DescriptionPartial" />
         }
-        
+
         @* we don't care which error we get if there are multiple errors *@
-        @{ var error = Model.Errors.GetErrorIfTriggered(); }
+        @{
+            var error = Model.Errors.GetErrorIfTriggered();
+        }
 
         <form method="post" novalidate>
             <div class="govuk-form-group @error?.FormGroupClass">
-                <fieldset class="govuk-fieldset" aria-describedby="error?.InputErrorMessageParaId">
+                <fieldset class="govuk-fieldset" aria-describedby="error?.InputErrorMessageParaId @(Model.Hint != null ? "hint" : "")">
                     @if (Model.Legend != null)
                     {
                         if (Model.DescriptionPartial == null)
@@ -39,14 +41,20 @@
                             </legend>
                         }
                     }
-                    <div class="govuk-radios @(Model.AreRadiosInline ? "govuk-radios--inline" : "")" data-module="govuk-radios">
+                    @if (Model.Hint != null)
+                    {
+                        <div id="hint" class="govuk-hint">
+                            @Model.Hint
+                        </div>
+                    }
+                    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                         <partial name="_ErrorMessageNext" model="error"/>
-                        @foreach (var radio in Model.Radios)
+                        @foreach (var checkbox in Model.Checkboxes)
                         {
-                            <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="radio-@radio.Value" name="@nameof(Model.SelectedValue)" type="radio" value="@radio.Value" @(radio.Value == Model.SelectedValue ? "checked" : "")>
-                                    <label class="govuk-label govuk-radios__label" for="radio-@radio.Value">
-                                    @radio.Label
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="checkbox-@checkbox.Value" name="SelectedValues" type="checkbox" value="@checkbox.Value" @(Model.SelectedValues.Contains(checkbox.Value) ? "checked" : "")>
+                                <label class="govuk-label govuk-checkboxes__label" for="checkbox-@checkbox.Value">
+                                    @checkbox.Label
                                 </label>
                             </div>
                         }
