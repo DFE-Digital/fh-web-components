@@ -34,11 +34,12 @@ public class CheckboxCustomModel : PageModel, ICheckboxesPageModel
     public string? Legend => "Select all the days when this service is available";
     public string? Hint => "Select all options that apply. If none apply or you do not know these yet, leave blank and click continue.";
 
-    public bool ShowSelection { get; set; } = false;
+    public bool ShowSelection { get; set; }
 
     public void OnGet()
     {
-        //todo: example of pre-selecting checkboxes
+        // example of pre-selecting checkboxes
+        // SelectedValues = new[] { DayCode.MO.ToString(), DayCode.SU.ToString() };
     }
 
     public void OnPost()
