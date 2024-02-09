@@ -44,7 +44,7 @@
                         @foreach (var radio in Model.Radios)
                         {
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="radio-@radio.Value" name="@nameof(Model.SelectedValue)" type="radio" value="@radio.Value" @(@radio.Value == Model.SelectedValue ? "checked" : "")>
+                                <input class="govuk-radios__input" id="radio-@radio.Value" name="@nameof(Model.SelectedValue)" type="radio" value="@radio.Value" @(radio.Value == Model.SelectedValue ? "checked" : "")>
                                     <label class="govuk-label govuk-radios__label" for="radio-@radio.Value">
                                     @radio.Label
                                 </label>

@@ -21,8 +21,7 @@
 
         <form method="post" novalidate>
             <div class="govuk-form-group @error?.FormGroupClass">
-                @* todo: hint to describedby *@
-                <fieldset class="govuk-fieldset" aria-describedby="error?.InputErrorMessageParaId">
+                <fieldset class="govuk-fieldset" aria-describedby="error?.InputErrorMessageParaId @(Model.Hint != null ? "hint" : "")">
                     @if (Model.Legend != null)
                     {
                         if (Model.DescriptionPartial == null)
@@ -42,15 +41,18 @@
                             </legend>
                         }
                     }
-                    <div id="hint" class="govuk-hint">
-                        Todo: hint
-                    </div>            
+                    @if (Model.Hint != null)
+                    {
+                        <div id="hint" class="govuk-hint">
+                            @Model.Hint
+                        </div>
+                    }
                     <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                         <partial name="_ErrorMessageNext" model="error"/>
                         @foreach (var checkbox in Model.Checkboxes)
                         {
                             <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="checkbox-@checkbox.Value" name="@nameof(Model.SelectedValue)" type="checkbox" value="@checkbox.Value" @(@checkbox.Value == Model.SelectedValue ? "checked" : "")>
+                                <input class="govuk-checkboxes__input" id="checkbox-@checkbox.Value" name="SelectedValues" type="checkbox" value="@checkbox.Value" @(Model.SelectedValues.Contains(checkbox.Value) ? "checked" : "")>
                                 <label class="govuk-label govuk-checkboxes__label" for="checkbox-@checkbox.Value">
                                     @checkbox.Label
                                 </label>

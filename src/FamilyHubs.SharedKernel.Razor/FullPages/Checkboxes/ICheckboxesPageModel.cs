@@ -4,12 +4,11 @@ namespace FamilyHubs.SharedKernel.Razor.FullPages.Checkboxes;
 
 public interface ICheckboxesPageModel
 {
-    public IEnumerable<ICheckbox> Checkboxes { get; }
+    IEnumerable<ICheckbox> Checkboxes { get; }
 
-    //todo: will need to be some sort of collection
-    public string? SelectedValue { get; set; }
+    IEnumerable<string> SelectedValues { get; }
 
-    public IErrorState Errors { get; }
+    IErrorState Errors { get; }
 
     string? DescriptionPartial { get; }
     string? Legend { get; }

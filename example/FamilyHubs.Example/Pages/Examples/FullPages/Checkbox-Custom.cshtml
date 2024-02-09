@@ -1,12 +1,12 @@
 ﻿@page
 @model CheckboxCustomModel
 @{
-    ViewData["Title"] = Model.Legend;
+    ViewData["Title"] = "On which days can people use this service?";
 }
 
 <partial name="_CheckboxesPage" model="Model" />
 
-@if (Model.Selected != null)
+@if (Model.ShowSelection)
 {
-    <p>You selected @string.Join(", ", Model.Selected)</p>
+    <p>You selected @string.Join(", ", Model.SelectedValues)</p>
 }
