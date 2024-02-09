@@ -1,0 +1,12 @@
+﻿@page
+@model CheckboxCustomModel
+@{
+    ViewData["Title"] = Model.Legend;
+}
+
+<partial name="_CheckboxesPage" model="Model" />
+
+@if (Model.Selected != null)
+{
+    <p>You selected @string.Join(", ", Model.Selected)</p>
+}
