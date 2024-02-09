@@ -8,13 +8,10 @@ export function initializeBackButtons(): void {
         const backLinks = document.querySelectorAll(".fh-back-link");
         nodeListForEach(backLinks, (link: HTMLAnchorElement) => {
 
-            link.style.display = "block";
+            link.classList.add("fh-back-link-visible");
 
-            // Add an event listener to handle the back button click
-            link.addEventListener("click", () => {
-                // Go back to the previous page in the browser's history
-                window.history.back();
-            });
+            // set the href to the last page in the history
+            link.href = document.referrer;
         });
     }
 }
