@@ -1,5 +1,9 @@
 # Release Notes
 
+## 8.2
+
+Add a full page checkbox component. See example page for more info.
+
 ## 8.1
 
 Add support for a new full page control with radio buttons. See example page.
