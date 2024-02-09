@@ -1,0 +1,67 @@
+﻿@model FamilyHubs.SharedKernel.Razor.FullPages.Checkboxes.ICheckboxesPageModel
+@{
+    Model.Errors.ErrorIdToHtmlElementId = errorId => $"checkbox-{Model.Checkboxes.First().Value}";
+}
+
+<partial name="_ErrorSummaryNext" for="@Model.Errors" />
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        @*todo: do we want to allow the consumer to pass through a model to the custom content partial? *@
+        @if (Model.DescriptionPartial != null)
+        {
+            <partial name="@Model.DescriptionPartial" />
+        }
+
+        @* we don't care which error we get if there are multiple errors *@
+        @{
+            var error = Model.Errors.GetErrorIfTriggered();
+        }
+
+        <form method="post" novalidate>
+            <div class="govuk-form-group @error?.FormGroupClass">
+                @* todo: hint to describedby *@
+                <fieldset class="govuk-fieldset" aria-describedby="error?.InputErrorMessageParaId">
+                    @if (Model.Legend != null)
+                    {
+                        if (Model.DescriptionPartial == null)
+                        {
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-fieldset__heading">
+                                    @Model.Legend
+                                </h1>
+                            </legend>
+                        }
+                        else
+                        {
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                <h2 class="govuk-fieldset__heading">
+                                    @Model.Legend
+                                </h2>
+                            </legend>
+                        }
+                    }
+                    <div id="hint" class="govuk-hint">
+                        Todo: hint
+                    </div>            
+                    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                        <partial name="_ErrorMessageNext" model="error"/>
+                        @foreach (var checkbox in Model.Checkboxes)
+                        {
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="checkbox-@checkbox.Value" name="@nameof(Model.SelectedValue)" type="checkbox" value="@checkbox.Value" @(@checkbox.Value == Model.SelectedValue ? "checked" : "")>
+                                <label class="govuk-label govuk-checkboxes__label" for="checkbox-@checkbox.Value">
+                                    @checkbox.Label
+                                </label>
+                            </div>
+                        }
+                    </div>
+                </fieldset>
+            </div>
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
+    </div>
+</div>
