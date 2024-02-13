@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Globalization;
+using System.Security.Claims;
 
 namespace FamilyHubs.SharedKernel.Razor.SummaryList;
-
-//todo: add support for class attribute and/or add preserve newline attribute
 
 public class SummaryListRowTagHelper : TagHelper
 {
@@ -13,6 +12,7 @@ public class SummaryListRowTagHelper : TagHelper
     public string? Action2 { get; set; }
     public string? Action2Href { get; set; }
     public bool ShowEmpty { get; set; } = false;
+    public string? Class { get; set; }
 
     public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
     {
@@ -32,7 +32,7 @@ public class SummaryListRowTagHelper : TagHelper
 
             output.Content.SetHtmlContent(
                 $@"<dt class='govuk-summary-list__key'>{Key}</dt>
-                <dd class='govuk-summary-list__value'>{finalValue}</dd>");
+                <dd class='govuk-summary-list__value {Class}'>{finalValue}</dd>");
 
             string divClass = "govuk-summary-list__row";
             if (string.IsNullOrWhiteSpace(Action1))
