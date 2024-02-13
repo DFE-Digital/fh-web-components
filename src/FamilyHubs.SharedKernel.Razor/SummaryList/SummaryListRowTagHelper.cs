@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Globalization;
-using System.Security.Claims;
 
 namespace FamilyHubs.SharedKernel.Razor.SummaryList;
 

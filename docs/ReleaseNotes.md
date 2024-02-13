@@ -1,5 +1,13 @@
 # Release Notes
 
+## 8.3
+
+Add `fh-pre-wrap` class for preserving line breaks and spaces in a block of text.
+
+Add class attribute support to `<SummaryListRow>`, which adds any classes supplied to the generated `<dd>`.
+
+See the summary list example page for more info.
+
 ## 8.2
 
 Add a full page checkbox component. See example page for more info.
