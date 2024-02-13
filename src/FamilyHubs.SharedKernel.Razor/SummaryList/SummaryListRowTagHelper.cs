@@ -3,6 +3,8 @@ using System.Globalization;
 
 namespace FamilyHubs.SharedKernel.Razor.SummaryList;
 
+//todo: add support for class attribute and/or add preserve newline attribute
+
 public class SummaryListRowTagHelper : TagHelper
 {
     public string? Key { get; set; }
