@@ -1,5 +1,9 @@
 # Release Notes
 
+## 8.4
+
+Add `CommonRadios.YesNo` for use when the radio component is used for a yes/no question.
+
 ## 8.3
 
 Add `fh-pre-wrap` class for preserving line breaks and spaces in a block of text.
