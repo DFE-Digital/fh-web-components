@@ -1,8 +1,12 @@
 # Release Notes
 
-## 8.5
+# 9
 
 Add Summary Card support. See the example for more info.
+
+Breaking changes:
+
+* `<summary-list-row>` has been renamed to `<summary-row>`, as it's now used for both summary lists and summary cards.
 
 ## 8.4
 
