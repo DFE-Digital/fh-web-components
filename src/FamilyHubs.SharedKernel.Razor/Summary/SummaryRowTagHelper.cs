@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Globalization;
 
-namespace FamilyHubs.SharedKernel.Razor.SummaryList;
+namespace FamilyHubs.SharedKernel.Razor.Summary;
 
-public class SummaryListRowTagHelper : TagHelper
+public class SummaryRowTagHelper : TagHelper
 {
     public string? Key { get; set; }
     public string? Action1 { get; set; }

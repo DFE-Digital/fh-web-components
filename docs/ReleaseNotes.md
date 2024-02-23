@@ -1,5 +1,13 @@
 # Release Notes
 
+# 9
+
+Add Summary Card support. See the example for more info.
+
+Breaking changes:
+
+* `<summary-list-row>` has been renamed to `<summary-row>`, as it's now used for both summary lists and summary cards.
+
 ## 8.4
 
 Add `CommonRadios.YesNo` for use when the radio component is used for a yes/no question.
