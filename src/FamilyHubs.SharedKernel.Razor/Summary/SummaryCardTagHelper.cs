@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Text;
 
-namespace FamilyHubs.SharedKernel.Razor.SummaryList;
+namespace FamilyHubs.SharedKernel.Razor.Summary;
 
 public class SummaryCardTagHelper : TagHelper
 {
