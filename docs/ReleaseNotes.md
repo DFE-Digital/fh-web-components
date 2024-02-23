@@ -1,5 +1,9 @@
 # Release Notes
 
+## 8.5
+
+Add Summary Card support. See the example for more info.
+
 ## 8.4
 
 Add `CommonRadios.YesNo` for use when the radio component is used for a yes/no question.
