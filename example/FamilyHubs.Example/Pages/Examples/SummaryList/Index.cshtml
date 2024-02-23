@@ -1,47 +1,52 @@
 ﻿@page
 @model FamilyHubs.Example.Pages.Examples.SummaryList.IndexModel
 
-<h1 class="govuk-heading-l">Summary list</h1>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-<p>Use a <a href="https://design-system.service.gov.uk/components/summary-list/" new-tab>summary list</a> to summarise information, for example, a user’s responses at the end of a form.</p>
+        <h1 class="govuk-heading-l">Summary list</h1>
 
-<h2 class="govuk-heading-m">With Border</h2>
+        <p>Use a <a href="https://design-system.service.gov.uk/components/summary-list/" new-tab>summary list</a> to summarise information, for example, a user’s responses at the end of a form.</p>
 
-<summary-list>
-    <summary-list-row key="Empty (row shouldn't render)"></summary-list-row>
-    <summary-list-row key="Empty (should render)" show-empty></summary-list-row>
+        <h2 class="govuk-heading-m">With Border</h2>
 
-    <summary-list-row key="Name">Sarah Philips</summary-list-row>
-    @* todo: helper for converting IEnumerable<string> to use <br/>?*@
-    <summary-list-row key="Address">72 Guild Street <br/> London</summary-list-row>
-    <summary-list-row key="Phone"><a phone="07700 900457"></a></summary-list-row>
-    <summary-list-row key="Email"><a email="sarah.phillips@example.com"></a></summary-list-row>
-    <summary-list-row key="Website"><a web-page="https://www.example.com">Example website</a></summary-list-row>
-    <summary-list-row key="Website new tab"><a web-page="https://www.example.com" new-tab>Example website</a></summary-list-row>
-    <summary-list-row key="Preserve whitespace" class="fh-pre-wrap">line 1
-line 2
-  (useful when surfacing text from a textarea)</summary-list-row>
+        <summary-list>
+            <summary-list-row key="Empty (row shouldn't render)"></summary-list-row>
+            <summary-list-row key="Empty (should render)" show-empty></summary-list-row>
 
-</summary-list>
+            <summary-list-row key="Name">Sarah Philips</summary-list-row>
+            @* todo: helper for converting IEnumerable<string> to use <br/>?*@
+            <summary-list-row key="Address">72 Guild Street <br/> London</summary-list-row>
+            <summary-list-row key="Phone"><a phone="07700 900457"></a></summary-list-row>
+            <summary-list-row key="Email"><a email="sarah.phillips@example.com"></a></summary-list-row>
+            <summary-list-row key="Website"><a web-page="https://www.example.com">Example website</a></summary-list-row>
+            <summary-list-row key="Website new tab"><a web-page="https://www.example.com" new-tab>Example website</a></summary-list-row>
+            <summary-list-row key="Preserve whitespace" class="fh-pre-wrap">line 1
+        line 2
+          (useful when surfacing text from a textarea)</summary-list-row>
 
-<h2 class="govuk-heading-m">No Border</h2>
+        </summary-list>
 
-<summary-list border="false">
-    <summary-list-row key="Empty (row shouldn't render)"></summary-list-row>
-    <summary-list-row key="Empty (should render)" show-empty></summary-list-row>
+        <h2 class="govuk-heading-m">No Border</h2>
 
-    <summary-list-row key="Name">Sarah Philips</summary-list-row>
-</summary-list>
+        <summary-list border="false">
+            <summary-list-row key="Empty (row shouldn't render)"></summary-list-row>
+            <summary-list-row key="Empty (should render)" show-empty></summary-list-row>
 
-<h2 class="govuk-heading-m">With Actions</h2>
+            <summary-list-row key="Name">Sarah Philips</summary-list-row>
+        </summary-list>
 
-<summary-list>
-    <summary-list-row key="Empty (row shouldn't render)" action1="Change" action1-href="#"></summary-list-row>
-    <summary-list-row key="Empty (should render)" action1="Change" action1-href="#" show-empty></summary-list-row>
+        <h2 class="govuk-heading-m">With Actions</h2>
 
-    <summary-list-row key="Name" action1="Change" action1-href="#">Sarah Philips</summary-list-row>
-    <summary-list-row key="Contact details" action1="Add" action1-href="#add" action2="Change" action2-href="#change">
-        <p>07700 900457</p>
-        <p>sarah.phillips@example.com</p>
-    </summary-list-row>
-</summary-list>
+        <summary-list>
+            <summary-list-row key="Empty (row shouldn't render)" action1="Change" action1-href="#"></summary-list-row>
+            <summary-list-row key="Empty (should render)" action1="Change" action1-href="#" show-empty></summary-list-row>
+
+            <summary-list-row key="Name" action1="Change" action1-href="#">Sarah Philips</summary-list-row>
+            <summary-list-row key="Contact details" action1="Add" action1-href="#add" action2="Change" action2-href="#change">
+                <p>07700 900457</p>
+                <p>sarah.phillips@example.com</p>
+            </summary-list-row>
+        </summary-list>
+    </div>
+</div>

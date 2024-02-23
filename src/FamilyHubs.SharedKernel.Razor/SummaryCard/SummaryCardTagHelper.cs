@@ -9,13 +9,6 @@ public class SummaryCardTagHelper : TagHelper
 
     public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
     {
-        output.TagName = "div";
-        output.Attributes.SetAttribute("class", "govuk-summary-card");
-        output.Content.SetHtmlContent((await output.GetChildContentAsync()).GetContent());
-    }
-
-    public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
-    {
         ArgumentNullException.ThrowIfNull(Title);
 
         output.TagName = "div";

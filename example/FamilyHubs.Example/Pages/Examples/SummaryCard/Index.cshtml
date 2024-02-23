@@ -1,0 +1,43 @@
+﻿@page
+@model IndexModel
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">Summary cards</h1>
+
+        <p>If you’re showing multiple summary lists on a page, you can show each list within a <a href="https://design-system.service.gov.uk/components/summary-list/#summary-cards">summary card</a>. This lets you visually separate each summary list and give each a title and some actions.</p>
+
+        <p>Use summary cards when you need to show:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+            <li>multiple summary lists that all describe the same type of thing, such as people</li>
+            <li>actions that will apply to all the items in a list</li>
+        </ul>
+
+        <p>Summary cards are often used in case working systems to help users quickly view a set of information and related actions.</p>
+
+        <p>Do not use summary cards if you only need to show a small amount of related information. Use summary lists instead, and structure them with headings if needed.</p>
+
+        <p>If you’re showing summary cards at the end of a longer journey, you might want to familiarise the user with them earlier on – such as when the user reviews individual sections.</p>
+
+        <h2 id="card-titles">Card titles</h2>
+
+        <p>Use the summary card’s header area to give each summary list a title.</p>
+
+        <p>Each title must be unique and help identify what the summary list describes. For example, this could be the name of a specific person, organisation or professional qualification.</p>
+
+        <p>Try to keep titles short and relevant. You can use one or two important values in the summary list – such as the first and last name of a person.</p>
+
+        <summary-card title="Lead tenant">
+            <summary-list-row key="Age" action1="Change" action1-href="#">38</summary-list-row>
+            <summary-list-row key="Nationality" action1="Change" action1-href="#">
+                UK national resident in UK
+            </summary-list-row>
+            <summary-list-row key="Working situation" action1="Change" action1-href="#">
+                Part time – less than 30 hours a week
+            </summary-list-row>
+        </summary-card>
+
+    </div>
+</div>
