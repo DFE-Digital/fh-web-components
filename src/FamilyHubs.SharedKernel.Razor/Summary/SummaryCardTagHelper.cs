@@ -22,22 +22,19 @@ public class SummaryCardTagHelper : TagHelper
 
         var childContent = (await output.GetChildContentAsync()).GetContent();
 
-        string? actions = null;
+        StringBuilder actions = new();
         if (Action1 != null || Action2 != null)
         {
-            actions = $@"<ul class=""govuk-summary-card__actions"">
-                <li class=""govuk-summary-card__action"">
-                    <a href=""{Action1Href}"">{Action1}{(
-                Action1VisuallyHidden != null
-                ? $"<span class=\"govuk-visually-hidden\">{Action1VisuallyHidden}</span>"
-                : "")}</a>
-                </li>
-                </ul>";
+            actions.Append("<ul class=\"govuk-summary-card__actions\"");
+            AddAction(actions, Action1, Action1VisuallyHidden, Action1Href);
+            AddAction(actions, Action2, Action2VisuallyHidden, Action2Href);
+            actions.Append("</ul>");
         }
 
         output.Content.SetHtmlContent($@"
             <div class=""govuk-summary-card__title-wrapper"">
                 <h2 class=""govuk-summary-card__title"">{Title}</h2>
+                {actions}
             </div>
             <div class=""govuk-summary-card__content"">
                 <dl class=""govuk-summary-list"">
@@ -46,4 +43,17 @@ public class SummaryCardTagHelper : TagHelper
             </div>");
     }
 
+    private void AddAction(StringBuilder actions, string? action, string? visuallyHidden, string? href)
+    {
+        if (action == null)
+            return;
+
+        actions.Append("<li class=\"govuk-summary-card__action\">");
+        actions.Append($"<a href=\"{href}\">{action}");
+        if (visuallyHidden != null)
+        {
+            actions.Append($"<span class=\"govuk-visually-hidden\"> {visuallyHidden}</span>");
+        }
+        actions.Append("</a></li>");
+    }
 }
