@@ -27,4 +27,5 @@ public interface IRadiosPageModel
     string? Legend { get; }
 
     virtual string? Hint => null;
+    virtual string? ButtonText => "Continue";
 }

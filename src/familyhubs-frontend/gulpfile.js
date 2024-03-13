@@ -21,6 +21,11 @@ function getWwwRootDir() {
     return baseDir + '/wwwroot';
 }
 
+gulp.task('assets', function () {
+    return gulp.src(['node_modules/govuk-frontend/dist/govuk/assets/**/*'])
+        .pipe(gulp.dest('wwwroot/lib/govuk/assets'));
+});
+
 gulp.task('copy-wwwroot', function () {
     let baseDir = getWwwRootDir();
     return gulp.src('wwwroot/**/*')
@@ -51,7 +56,7 @@ gulp.task('copy-accessible-autocomplete-js', function () {
 });
 
 gulp.task('copy-govuk-frontend-js', function () {
-    return copyPackageJsToWwwroot('govuk-frontend', 'govuk/all.js');
+    return copyPackageJsToWwwroot('govuk-frontend', 'dist/govuk/all.bundle.js');
 });
 
 gulp.task('copy-familyhubs-frontend-js', function () {

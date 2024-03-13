@@ -31,7 +31,6 @@ namespace FamilyHubs.Example.Pages.Examples.FullPages
 
         public IErrorState Errors { get; set; } = ErrorState.Empty;
 
-        public string? DescriptionPartial => null;
         public string? Legend => "Where do you live?";
 
         public Country? SelectedCountry;
@@ -39,7 +38,7 @@ namespace FamilyHubs.Example.Pages.Examples.FullPages
         public void OnGet()
         {
             // Do not pre-select radio options as this makes it more likely that users will:
-            // * not realise they’ve missed a question
+            // * not realise they've missed a question
             // * submit the wrong answer
 
             // only preselect a radio button after the user has previously selected it
