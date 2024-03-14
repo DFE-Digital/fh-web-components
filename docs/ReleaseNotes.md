@@ -1,5 +1,11 @@
 # Release Notes
 
+# 9.1
+
+Add hint text support to radio page component
+
+Upgrade to GDS 5.0
+
 # 9
 
 Add Summary Card support. See the example for more info.
