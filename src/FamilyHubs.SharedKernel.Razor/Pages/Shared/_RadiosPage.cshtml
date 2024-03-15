@@ -38,6 +38,12 @@
                             </legend>
                         }
                     }
+                    @if (Model.Hint != null)
+                    {
+                        <div class="govuk-hint">
+                            @Model.Hint
+                        </div>
+                    }
                     <div class="govuk-radios @(Model.AreRadiosInline ? "govuk-radios--inline" : "")" data-module="govuk-radios">
                         <partial name="_ErrorMessageNext" model="error"/>
                         @foreach (var radio in Model.Radios)
@@ -53,7 +59,7 @@
                 </fieldset>
             </div>
             <button type="submit" class="govuk-button" data-module="govuk-button">
-                Continue
+                @Model.ButtonText
             </button>
         </form>
     </div>

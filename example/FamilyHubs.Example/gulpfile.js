@@ -17,7 +17,7 @@ var gulp = require("gulp"),
 gulp.task('sass-to-min-css', async function () {
     return gulp.src('./styles/application.scss')
         .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sass({ includePaths: ['node_modules/gulp/bin'] }).on('error', sass.logError))
         .pipe(csso())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('./wwwroot/css'));
@@ -71,6 +71,11 @@ gulp.task('transpile-ts', function () {
 //        .pipe(sourcemaps.write())
 //        .pipe(gulp.dest('./tmp/js'));
 //});
+
+gulp.task('assets', function () {
+    return gulp.src(['node_modules/govuk-frontend/dist/govuk/assets/**/*'])
+        .pipe(gulp.dest('wwwroot/lib/govuk/assets'));
+});
 
 gulp.task('bundle-and-minify-js', () => {
     //    return gulp.src('./tmp/js/bundle.js')

@@ -25,13 +25,14 @@ namespace FamilyHubs.Example.Pages.Examples.FullPages
 
         public string? DescriptionPartial => "Radio-Custom-Content";
         public string? Legend => "So, where is it?";
+        public string Hint => "Maybe it's Wales?";
 
         public Country? SelectedCountry;
 
         public void OnGet()
         {
             // Do not pre-select radio options as this makes it more likely that users will:
-            // * not realise they’ve missed a question
+            // * not realise they've missed a question
             // * submit the wrong answer
 
             // only preselect a radio button after the user has previously selected it

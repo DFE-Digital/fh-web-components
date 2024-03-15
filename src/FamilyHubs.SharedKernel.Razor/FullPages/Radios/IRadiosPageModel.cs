@@ -22,8 +22,10 @@ public interface IRadiosPageModel
 
     IErrorState Errors { get; }
 
-    string? DescriptionPartial { get; }
+    virtual string? DescriptionPartial => null;
+
     string? Legend { get; }
-    //todo:
-    //string? Hint { get; }
+
+    virtual string? Hint => null;
+    virtual string? ButtonText => "Continue";
 }

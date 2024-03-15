@@ -1,7 +1,7 @@
 /* used by _LargeSetPaginationForm.cshtml */
 
 .govuk-pagination__link.fh-button-link {
-    @include govuk-typography-responsive(19);
+    @include govuk-font-size(19);
 }
 
 li.govuk-pagination__item--current {
