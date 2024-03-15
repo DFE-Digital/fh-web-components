@@ -4,7 +4,8 @@
 
 Add hint text support to radio page component
 
-Upgrade to GDS 5.0
+Upgrade to GDS 5.2 with new tags, crown icon, improved accessibility etc
+Upgrade to MOJ 2.1.1 and DFE Frontend 1.0.1
 
 # 9
 
