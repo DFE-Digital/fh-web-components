@@ -18,7 +18,7 @@
 
         <form method="post" novalidate>
             <div class="govuk-form-group @error?.FormGroupClass">
-                <fieldset class="govuk-fieldset" aria-describedby="error?.InputErrorMessageParaId">
+                <fieldset class="govuk-fieldset" aria-describedby="@error?.InputErrorMessageParaId">
                     @if (Model.Legend != null)
                     {
                         if (Model.DescriptionPartial == null)
