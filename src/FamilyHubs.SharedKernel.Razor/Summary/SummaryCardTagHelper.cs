@@ -12,13 +12,14 @@ public class SummaryCardTagHelper : TagHelper
     public string? Action2 { get; set; }
     public string? Action2VisuallyHidden { get; set; }
     public string? Action2Href { get; set; }
+    public string? Class { get; set; }
 
     public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
     {
         ArgumentNullException.ThrowIfNull(Title);
 
         output.TagName = "div";
-        output.Attributes.SetAttribute("class", "govuk-summary-card");
+        output.Attributes.SetAttribute("class", $"govuk-summary-card {Class}");
 
         var childContent = (await output.GetChildContentAsync()).GetContent();
 
