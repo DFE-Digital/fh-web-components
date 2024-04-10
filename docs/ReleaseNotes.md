@@ -7,6 +7,9 @@ Add hint text support to radio page component
 Upgrade to GDS 5.2 with new tags, crown icon, improved accessibility etc
 Upgrade to MOJ 2.1.1 and DFE Frontend 1.0.1
 
+* 9.1.1 => 9.15 Fixes
+* 9.1.6 Add support for a class attribute to `<Summary-List>` and `<Summary-Card>`
+
 # 9
 
 Add Summary Card support. See the example for more info.
