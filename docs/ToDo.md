@@ -1,5 +1,7 @@
 # Potential improvements
 
+* only add referrer in fh-back-link if domain matches current domain
+
 * add days of the week checkboxes to common? how to handle iCal enum??
 
 * table tag helper, similar to summary list
