@@ -52,6 +52,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", 
 		src\familyhubs-frontend\scripts\components\open-close-button.ts = src\familyhubs-frontend\scripts\components\open-close-button.ts
 		src\familyhubs-frontend\scripts\components\postcode.ts = src\familyhubs-frontend\scripts\components\postcode.ts
 		src\familyhubs-frontend\scripts\components\visibility-toggle.ts = src\familyhubs-frontend\scripts\components\visibility-toggle.ts
+		src\familyhubs-frontend\scripts\components\clarity.ts = src\familyhubs-frontend\scripts\components\clarity.ts
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "layout", "layout", "{788DA990-BC17-4572-B087-042C91FF99A0}"
@@ -71,8 +72,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{FA1F7A55-52FC-
 		src\familyhubs-frontend\wwwroot\js\accessible-autocomplete-2.0.4.min.js = src\familyhubs-frontend\wwwroot\js\accessible-autocomplete-2.0.4.min.js
 		src\familyhubs-frontend\wwwroot\js\accessible-autocomplete-2.0.4.min.js.map = src\familyhubs-frontend\wwwroot\js\accessible-autocomplete-2.0.4.min.js.map
 		src\familyhubs-frontend\wwwroot\js\dfe-frontend-alpha-1.0.1.min.js = src\familyhubs-frontend\wwwroot\js\dfe-frontend-alpha-1.0.1.min.js
-		src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-9.1.6.min.js = src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-9.1.6.min.js
-		src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-9.1.6.min.js.map = src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-9.1.6.min.js.map
+		src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-9.1.7.min.js = src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-9.1.7.min.js
+		src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-9.1.7.min.js.map = src\familyhubs-frontend\wwwroot\js\familyhubs-frontend-9.1.7.min.js.map
 		src\familyhubs-frontend\wwwroot\js\govuk-frontend-5.2.0.min.js = src\familyhubs-frontend\wwwroot\js\govuk-frontend-5.2.0.min.js
 		src\familyhubs-frontend\wwwroot\js\jquery-3.7.1.js = src\familyhubs-frontend\wwwroot\js\jquery-3.7.1.js
 		src\familyhubs-frontend\wwwroot\js\jquery-3.7.1.min.js = src\familyhubs-frontend\wwwroot\js\jquery-3.7.1.min.js

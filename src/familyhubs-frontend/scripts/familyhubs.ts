@@ -8,6 +8,7 @@ declare global {
         GA_MEASUREMENT_ID: string;
         GA_CONTAINER_ID: string;
         GA_COOKIE_NAME: string;
+        CLARITY_ID: string;
         dataLayer: any[];
         FamilyHubsFrontend: any;
         GOVUKFrontend: {
@@ -22,6 +23,7 @@ declare global {
 import CookieBanner from './components/cookie-banner'
 import CookiesPage from './components/cookies-page'
 import initAnalytics from './components/analytics';
+import initClarity from './components/clarity';
 import { initializeAddAnother } from './components/add-another';
 import { initializeBackButtons } from './components/back-links';
 import { initializeVisibilityToggles } from './components/visibility-toggle';
@@ -37,6 +39,7 @@ window.FamilyHubsFrontend.initAll = () => {
     new CookieBanner($cookieBanner).init();
 
     initAnalytics(window.GA_MEASUREMENT_ID);
+    initClarity(window.CLARITY_ID);
 
     //todo: move this into scripts section on cookie page
     // Initialise cookie page
