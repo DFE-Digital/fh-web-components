@@ -17,6 +17,7 @@ public class FamilyHubsUiOptionsTestBase
             {
                 CookieName = "CookieName",
                 MeasurementId = "MeasurementId",
+                ClarityId = "ClarityId",
                 ContainerId = "ContainerId"
             },
             Header = new HeaderOptions

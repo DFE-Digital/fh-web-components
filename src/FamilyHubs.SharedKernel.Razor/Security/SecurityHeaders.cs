@@ -32,6 +32,8 @@ public static class SecurityHeaders
                             "https://*.google-analytics.com",
                             "https://*.analytics.google.com",
                             "https://*.googletagmanager.com",
+                            "https://*.clarity.ms",
+                            "https://c.bing.com",
                             //todo: is this needed in prod?
                             /* application insights*/ "https://dc.services.visualstudio.com/v2/track", "rt.services.visualstudio.com/v2/track"
                         });
@@ -51,7 +53,9 @@ public static class SecurityHeaders
                         {
                             "https://*.google-analytics.com",
                             "https://*.analytics.google.com",
-                            "https://*.googletagmanager.com"
+                            "https://*.googletagmanager.com",
+                            "https://*.clarity.ms",
+                            "https://c.bing.com"
                         });
 
                     var scriptSrc = builder.AddScriptSrc()
@@ -60,7 +64,8 @@ public static class SecurityHeaders
                         {
                             "https://*.google-analytics.com/",
                             "https://*.analytics.google.com",
-                            "https://*.googletagmanager.com"
+                            "https://*.googletagmanager.com",
+                            "https://*.clarity.ms"
                         })
                         .WithNonce();
 

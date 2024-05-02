@@ -12,6 +12,7 @@ public class AnalyticsOptions
     public int CookieVersion { get; set; } = 1;
 
     public string MeasurementId { get; set; } = "";
+    public string ClarityId { get; set; } = "";
     public string ContainerId { get; set; } = "";
 
     public string CookiePageUrl { get; set; } = "/cookies";
