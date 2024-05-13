@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Immutable;
 
-namespace FamilyHubs.Example.Pages.Examples.FullPages
+namespace FamilyHubs.Example.Pages.Examples.FullPages.Radios
 {
     public class RadioCustomModel : PageModel, IRadiosPageModel
     {

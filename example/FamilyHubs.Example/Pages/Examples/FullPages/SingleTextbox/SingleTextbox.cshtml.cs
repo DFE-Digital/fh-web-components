@@ -4,17 +4,17 @@ using FamilyHubs.SharedKernel.Razor.FullPages.SingleTextbox;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace FamilyHubs.Example.Pages.Examples.FullPages;
+namespace FamilyHubs.Example.Pages.Examples.FullPages.SingleTextbox;
 
 /// <summary>
 /// Simple example, not production ready, no P/R/G, loading existing value, retaining value etc.
 /// </summary>
-public class SingleTextboxSeparateHeaderModel : PageModel, ISingleTextboxPageModel
+public class SingleTextboxModel : PageModel, ISingleTextboxPageModel
 {
-    public string? HeadingText => "What is the answer to life, the universe, and everything?";
-    public string? HintText => "It's the ultimate question";
-    public string TextBoxLabel => "Answer";
-    public int? MaxLength => default;
+    public string? HeadingText => default;
+    public string? HintText => default;
+    public string TextBoxLabel => "What is the service name?";
+    public int? MaxLength => 10;
     public IErrorState Errors { get; private set; } = ErrorState.Empty;
 
     [BindProperty]
@@ -28,7 +28,7 @@ public class SingleTextboxSeparateHeaderModel : PageModel, ISingleTextboxPageMod
     {
         if (string.IsNullOrWhiteSpace(TextBoxValue))
         {
-            Errors = ErrorState.Create(PossibleErrors, ErrorId.AnswerMissing );
+            Errors = ErrorState.Create(PossibleErrors, ErrorId.AnswerMissing);
         }
     }
 

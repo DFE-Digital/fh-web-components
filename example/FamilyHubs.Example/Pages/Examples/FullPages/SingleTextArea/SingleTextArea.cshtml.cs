@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Immutable;
 
-namespace FamilyHubs.Example.Pages.Examples.FullPages;
+namespace FamilyHubs.Example.Pages.Examples.FullPages.SingleTextArea;
 
 public class SingleTextAreaModel : PageModel, ISingleTextAreaPageModel
 {
-    public string DescriptionPartial => "/Pages/Examples/FullPages/SingleTextAreaContent.cshtml";
+    public string DescriptionPartial => "/Pages/Examples/FullPages/SingleTextArea/SingleTextAreaContent.cshtml";
     public string? Label => "Enter animal";
 
     public int TextAreaMaxLength => 500;
