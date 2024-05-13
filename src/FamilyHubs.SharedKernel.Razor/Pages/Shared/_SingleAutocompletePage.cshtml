@@ -2,8 +2,8 @@
 @model FamilyHubs.SharedKernel.Razor.FullPages.SingleAutocomplete.ISingleAutocompletePageModel
 
 @{
-    const string textBoxId = "textbox";
-    Model.Errors.ErrorIdToHtmlElementId = _ => textBoxId;
+    const string selectId = "select";
+    Model.Errors.ErrorIdToHtmlElementId = _ => selectId;
 }
 
 <partial name="_ErrorSummaryNext" for="@Model.Errors" />
@@ -25,7 +25,7 @@
                     <label class="govuk-label" for="localAuthority">
                         <!---Select local authority--->
                     </label>
-                    <select class="govuk-select" id="local-authority" name="la">
+                    <select id="@selectId" class="govuk-select" name="la">
                         @if (Model.DisabledOptionValue != null)
                         {
                             <option value="@Model.DisabledOptionValue" selected disabled></option>
