@@ -1,4 +1,14 @@
-﻿<div class="govuk-grid-row">
+﻿@using FamilyHubs.SharedKernel.Razor.ErrorNext
+@model FamilyHubs.SharedKernel.Razor.FullPages.SingleAutocomplete.ISingleAutocompletePageModel
+
+@{
+    const string textBoxId = "textbox";
+    Model.Errors.ErrorIdToHtmlElementId = _ => textBoxId;
+}
+
+<partial name="_ErrorSummaryNext" for="@Model.Errors" />
+
+<div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -16,10 +26,14 @@
                         <!---Select local authority--->
                     </label>
                     <select class="govuk-select" id="local-authority" name="la">
-                        <option value="-1" selected disabled></option>
-                        @foreach (var organisation in Model.Organisations)
+                        @if (Model.DisabledOptionValue != null)
                         {
-                            <option value="@organisation.Id">@organisation.Name</option>
+                            <option value="@Model.DisabledOptionValue" selected disabled></option>
+                        }
+                        <option value="Model.DisabledOptionValue" selected disabled></option>
+                        @foreach (var option in Model.Options)
+                        {
+                            <option value="@option.Value">@option.Label</option>
                         }
                     </select>
                 </div>
