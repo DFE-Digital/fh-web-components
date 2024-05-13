@@ -10,7 +10,6 @@ public record Dto(long Id, string Name);
 
 public class SingleAutocompleteModel : PageModel, ISingleAutocompletePageModel
 {
-    //todo: can a concrete inherit an attribute from the interface?
     [BindProperty]
     public string? SelectedValue { get; set; }
     public string Label => "Search and select the local authority area this service is in";
