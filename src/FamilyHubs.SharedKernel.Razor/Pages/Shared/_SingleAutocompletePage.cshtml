@@ -14,23 +14,22 @@
         
         @*todo: aria-describedby="@error?.InputErrorMessageParaId" *@
         @*todo: accessibility: label (visually hidden perhaps), aria, etc*@
+        
+        <form method="post" novalidate>
+            <div class="govuk-form-group @error?.FormGroupClass">
+                <h1 class="govuk-label-wrapper">
+                    <label class="govuk-label govuk-label--l" for="@selectId">
+                        @Model.Label
+                    </label>
+                </h1>
 
-        <div class="govuk-form-group @error?.FormGroupClass">
-            <h1 class="govuk-label-wrapper">
-                <label class="govuk-label govuk-label--l" for="@selectId">
-                    @Model.Label
-                </label>
-            </h1>
-
-            @if (Model.Hint != null)
-            {
-                <div class="govuk-hint">
-                    @Model.Hint
-                </div>
-            }
-            <partial name="_ErrorMessageNext" model="error"/>
-
-            <form method="post" novalidate>
+                @if (Model.Hint != null)
+                {
+                    <div class="govuk-hint">
+                        @Model.Hint
+                    </div>
+                }
+                <partial name="_ErrorMessageNext" model="error"/>
 
                 <select id="@selectId" class="govuk-select" name="SelectedValue" data-module="fh-autocomplete">
                     @if (Model.DisabledOptionValue != null)
@@ -42,11 +41,10 @@
                         <option value="@option.Value">@option.Label</option>
                     }
                 </select>
-
-                <button type="submit" class="govuk-button" data-module="govuk-button">
-                    @Model.ButtonText
-                </button>
-            </form>
-        </div>
+            </div>
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                @Model.ButtonText
+            </button>
+        </form>
     </div>
 </div>
