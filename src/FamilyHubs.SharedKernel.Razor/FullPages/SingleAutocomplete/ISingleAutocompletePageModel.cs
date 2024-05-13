@@ -10,13 +10,16 @@ public interface ISingleAutocompleteOption
 
 public interface ISingleAutocompletePageModel
 {
-    /// <summary>
-    /// Optional separate heading. If not supplied, the heading will be the same as the <see cref="TextBoxLabel"/>.
-    /// </summary>
-    string? HeadingText { get; }
-    string? HintText { get; }
+    string? SelectedValue { get; }
+
+    string? DescriptionPartial => null;
+
+    string? Legend { get; }
+
+    string? Hint => null;
     string TextBoxLabel { get; }
-    string? TextBoxValue { get; }
+
+    string? ButtonText => "Continue";
 
     /// <summary>
     /// if not null, a blank disabled option will be shown in the dropdown with this value

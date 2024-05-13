@@ -8,21 +8,55 @@
 
 <partial name="_ErrorSummaryNext" for="@Model.Errors" />
 
+@* todo: is it better to use a fieldset, or just a h1 with a label? *@
+
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                <h1 class="govuk-fieldset__heading">
-                    Search and select the local authority area this service is in
-                </h1>
-            </legend>
+
+        @if (Model.DescriptionPartial != null)
+        {
+            <partial name="@Model.DescriptionPartial" />
+        }
+        
+        @* we don't care which error we get if there are multiple errors *@
+        @{ var error = Model.Errors.GetErrorIfTriggered(); }
+
+        <div class="govuk-form-group @error?.FormGroupClass">
+            <fieldset class="govuk-fieldset" aria-describedby="@error?.InputErrorMessageParaId">
+            @if (Model.Legend != null)
+            {
+                if (Model.DescriptionPartial == null)
+                {
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            @Model.Legend
+                        </h1>
+                    </legend>
+                }
+                else
+                {
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                        <h2 class="govuk-fieldset__heading">
+                            @Model.Legend
+                        </h2>
+                    </legend>
+                }
+            }
+            @if (Model.Hint != null)
+            {
+                <div class="govuk-hint">
+                    @Model.Hint
+                </div>
+            }
+            <partial name="_ErrorMessageNext" model="error"/>
+
             <form method="post" novalidate>
 
                 @*todo: dynamically load data from db*@
                 @*todo: accessibility: label (visually hidden perhaps), aria, etc*@
 
                 <div class="govuk-form-group">
-                    <label class="govuk-label" for="localAuthority">
+                    <label class="govuk-label" for="@selectId">
                         <!---Select local authority--->
                     </label>
                     <select id="@selectId" class="govuk-select" name="la">
@@ -42,6 +76,7 @@
                     Continue
                 </button>
             </form>
-        </fieldset>
+            </fieldset>
+        </div>
     </div>
 </div>
