@@ -8,18 +8,6 @@ namespace FamilyHubs.Example.Pages.Examples.FullPages.SingleAutocomplete;
 
 public record Dto(long Id, string Name);
 
-public class SingleAutocompleteOption : ISingleAutocompleteOption
-{
-    public SingleAutocompleteOption(string value, string label)
-    {
-        Value = value;
-        Label = label;
-    }
-
-    public string Value { get; }
-    public string Label { get; }
-}
-
 public class SingleAutocompleteModel : PageModel, ISingleAutocompletePageModel
 {
     //todo: can a concrete inherit an attribute from the interface?
