@@ -1,6 +1,4 @@
-﻿@using FamilyHubs.SharedKernel.Razor.ErrorNext
-@model FamilyHubs.SharedKernel.Razor.FullPages.SingleAutocomplete.ISingleAutocompletePageModel
-
+﻿@model FamilyHubs.SharedKernel.Razor.FullPages.SingleAutocomplete.ISingleAutocompletePageModel
 @{
     const string selectId = "select";
     Model.Errors.ErrorIdToHtmlElementId = _ => selectId;
@@ -8,40 +6,22 @@
 
 <partial name="_ErrorSummaryNext" for="@Model.Errors" />
 
-@* todo: is it better to use a fieldset, or just a h1 with a label? *@
-
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-        @if (Model.DescriptionPartial != null)
-        {
-            <partial name="@Model.DescriptionPartial" />
-        }
-        
         @* we don't care which error we get if there are multiple errors *@
         @{ var error = Model.Errors.GetErrorIfTriggered(); }
+        
+        @*todo: aria-describedby="@error?.InputErrorMessageParaId" *@
+        @*todo: accessibility: label (visually hidden perhaps), aria, etc*@
 
         <div class="govuk-form-group @error?.FormGroupClass">
-            <fieldset class="govuk-fieldset" aria-describedby="@error?.InputErrorMessageParaId">
-            @if (Model.Legend != null)
-            {
-                if (Model.DescriptionPartial == null)
-                {
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                        <h1 class="govuk-fieldset__heading">
-                            @Model.Legend
-                        </h1>
-                    </legend>
-                }
-                else
-                {
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                        <h2 class="govuk-fieldset__heading">
-                            @Model.Legend
-                        </h2>
-                    </legend>
-                }
-            }
+            <h1 class="govuk-label-wrapper">
+                <label class="govuk-label govuk-label--l" for="@selectId">
+                    @Model.Label
+                </label>
+            </h1>
+
             @if (Model.Hint != null)
             {
                 <div class="govuk-hint">
@@ -52,31 +32,22 @@
 
             <form method="post" novalidate>
 
-                @*todo: dynamically load data from db*@
-                @*todo: accessibility: label (visually hidden perhaps), aria, etc*@
-
-                <div class="govuk-form-group">
-                    <label class="govuk-label" for="@selectId">
-                        <!---Select local authority--->
-                    </label>
-                    <select id="@selectId" class="govuk-select" name="la">
-                        @if (Model.DisabledOptionValue != null)
-                        {
-                            <option value="@Model.DisabledOptionValue" selected disabled></option>
-                        }
-                        <option value="Model.DisabledOptionValue" selected disabled></option>
-                        @foreach (var option in Model.Options)
-                        {
-                            <option value="@option.Value">@option.Label</option>
-                        }
-                    </select>
-                </div>
+                <select id="@selectId" class="govuk-select" name="la">
+                    @if (Model.DisabledOptionValue != null)
+                    {
+                        <option value="@Model.DisabledOptionValue" selected disabled></option>
+                    }
+                    <option value="Model.DisabledOptionValue" selected disabled></option>
+                    @foreach (var option in Model.Options)
+                    {
+                        <option value="@option.Value">@option.Label</option>
+                    }
+                </select>
 
                 <button type="submit" class="govuk-button" data-module="govuk-button">
-                    Continue
+                    @Model.ButtonText
                 </button>
             </form>
-            </fieldset>
         </div>
     </div>
 </div>

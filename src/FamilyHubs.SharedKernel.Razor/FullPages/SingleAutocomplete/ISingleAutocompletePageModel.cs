@@ -12,12 +12,11 @@ public interface ISingleAutocompletePageModel
 {
     string? SelectedValue { get; }
 
-    string? DescriptionPartial => null;
+    // haven't a need for this yet
+    //string? DescriptionPartial => null;
 
-    string? Legend { get; }
-
+    string Label { get; }
     string? Hint => null;
-    string TextBoxLabel { get; }
 
     string? ButtonText => "Continue";
 
@@ -27,7 +26,7 @@ public interface ISingleAutocompletePageModel
     public string? DisabledOptionValue { get; }
     IEnumerable<ISingleAutocompleteOption> Options { get; }
 
-    int? MaxLength { get; }
+    //int? MaxLength { get; }
 
     IErrorState Errors { get; }
 }
