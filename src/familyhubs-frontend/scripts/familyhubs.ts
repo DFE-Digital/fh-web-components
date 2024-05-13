@@ -25,6 +25,7 @@ import CookiesPage from './components/cookies-page'
 import initAnalytics from './components/analytics';
 import initClarity from './components/clarity';
 import { initializeAddAnother } from './components/add-another';
+import { initializeAutocompletes } from './components/autocomplete';
 import { initializeBackButtons } from './components/back-links';
 import { initializeVisibilityToggles } from './components/visibility-toggle';
 import { OpenCloseButton } from './components/open-close-button';
@@ -48,7 +49,9 @@ window.FamilyHubsFrontend.initAll = () => {
 
     initializeBackButtons();
     initializeVisibilityToggles();
+    //todo: ordering between these two?
     initializeAddAnother();
+    initializeAutocompletes();
 
     // initialise open close buttons
     let openCloseButtons: NodeListOf<HTMLButtonElement> = document.querySelectorAll('button[data-open-close-mobile]');
