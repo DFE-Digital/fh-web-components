@@ -20,31 +20,11 @@ public class SingleAutocompleteOption : ISingleAutocompleteOption
     public string Label { get; }
 }
 
-// better to just Select(x => new SingleAutocompleteOption(x.Id.ToString(), x.Name)) in the constructor?
-
-//public class ExampleOptions : IEnumerable<ISingleAutocompleteOption>
-//{
-//    private readonly IEnumerable<Dto> _dtos;
-
-//    public ExampleOptions(IEnumerable<Dto> dtos)
-//    {
-//        _dtos = dtos;
-//    }
-
-//    public IEnumerator<ISingleAutocompleteOption> GetEnumerator()
-//    {
-//        foreach (var dto in _dtos)
-//        {
-//            yield return new SingleAutocompleteOption(dto.Id.ToString(), dto.Name);
-//        }
-//    }
-//}
-
 public class SingleAutocompleteModel : PageModel, ISingleAutocompletePageModel
 {
     //todo: can a concrete inherit an attribute from the interface?
     [BindProperty]
-    public string? SelectedValue { get; }
+    public string? SelectedValue { get; set; }
     public string Label => "Search and select the local authority area this service is in";
     public string? DisabledOptionValue => (-1).ToString();
     public IEnumerable<ISingleAutocompleteOption> Options { get; private set; } = Enumerable.Empty<ISingleAutocompleteOption>();
@@ -69,6 +49,9 @@ public class SingleAutocompleteModel : PageModel, ISingleAutocompletePageModel
             Errors = ErrorState.Create(PossibleErrors, ErrorId.NothingSelected);
             return;
         }
+
+        long selectedId = long.Parse(SelectedValue);
+        SelectedValue = Dtos.Single(d => d.Id == selectedId).Name;
     }
 
     public enum ErrorId
@@ -78,5 +61,5 @@ public class SingleAutocompleteModel : PageModel, ISingleAutocompletePageModel
 
     public static readonly ImmutableDictionary<int, PossibleError> PossibleErrors =
         ImmutableDictionary.Create<int, PossibleError>()
-            .Add(ErrorId.NothingSelected, "Nothing selected");
+            .Add(ErrorId.NothingSelected, "Enter something");
 }

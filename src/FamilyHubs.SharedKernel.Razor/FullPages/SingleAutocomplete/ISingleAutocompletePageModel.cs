@@ -2,12 +2,6 @@
 
 namespace FamilyHubs.SharedKernel.Razor.FullPages.SingleAutocomplete;
 
-public interface ISingleAutocompleteOption
-{
-    string Value { get; }
-    string Label { get; }
-}
-
 //public enum AutocompleteMode
 //{
 //    Alphabetical,
@@ -16,13 +10,15 @@ public interface ISingleAutocompleteOption
 
 public interface ISingleAutocompletePageModel
 {
-    string? SelectedValue { get; }
+    string? SelectedValue { get; set; }
 
     // haven't a need for this yet
     //string? DescriptionPartial => null;
 
     string Label { get; }
-    string? Hint => null;
+
+    // haven't a need for this yet
+    //string? Hint => null;
 
     string? ButtonText => "Continue";
 
@@ -31,8 +27,6 @@ public interface ISingleAutocompletePageModel
     /// </summary>
     public string? DisabledOptionValue { get; }
     IEnumerable<ISingleAutocompleteOption> Options { get; }
-
-    //int? MaxLength { get; }
 
     IErrorState Errors { get; }
 }

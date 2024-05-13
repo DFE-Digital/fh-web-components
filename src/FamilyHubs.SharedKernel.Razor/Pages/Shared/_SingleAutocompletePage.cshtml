@@ -11,10 +11,7 @@
 
         @* we don't care which error we get if there are multiple errors *@
         @{ var error = Model.Errors.GetErrorIfTriggered(); }
-        
-        @*todo: aria-describedby="@error?.InputErrorMessageParaId" *@
-        @*todo: accessibility: label (visually hidden perhaps), aria, etc*@
-        
+
         <form method="post" novalidate>
             <div class="govuk-form-group @error?.FormGroupClass">
                 <h1 class="govuk-label-wrapper">
@@ -23,15 +20,19 @@
                     </label>
                 </h1>
 
-                @if (Model.Hint != null)
+                @*@if (Model.Hint != null)
                 {
                     <div class="govuk-hint">
                         @Model.Hint
                     </div>
-                }
+                } *@
                 <partial name="_ErrorMessageNext" model="error"/>
 
-                <select id="@selectId" class="govuk-select" name="SelectedValue" data-module="fh-autocomplete">
+                @* todo: accessible-autocomplete adds an ariadescribedby to the input box,
+                   that points to a generic (invisible) span for general help with the autocomplete.
+                   it should also contain the error and hint *@
+                <select id="@selectId" class="govuk-select" name="SelectedValue" data-module="fh-autocomplete"
+                        aria-describedby="@error?.InputErrorMessageParaId">
                     @if (Model.DisabledOptionValue != null)
                     {
                         <option value="@Model.DisabledOptionValue" selected disabled></option>
