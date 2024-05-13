@@ -32,12 +32,11 @@
 
             <form method="post" novalidate>
 
-                <select id="@selectId" class="govuk-select" name="la">
+                <select id="@selectId" class="govuk-select" name="SelectedValue">
                     @if (Model.DisabledOptionValue != null)
                     {
                         <option value="@Model.DisabledOptionValue" selected disabled></option>
                     }
-                    <option value="Model.DisabledOptionValue" selected disabled></option>
                     @foreach (var option in Model.Options)
                     {
                         <option value="@option.Value">@option.Label</option>

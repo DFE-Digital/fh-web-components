@@ -8,6 +8,12 @@ public interface ISingleAutocompleteOption
     string Label { get; }
 }
 
+//public enum AutocompleteMode
+//{
+//    Alphabetical,
+//    MatchStart
+//}
+
 public interface ISingleAutocompletePageModel
 {
     string? SelectedValue { get; }
