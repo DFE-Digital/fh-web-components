@@ -27,6 +27,9 @@ public class SingleAutocompleteModel : PageModel, ISingleAutocompletePageModel
     public void OnGet()
     {
         Options = Dtos.Select(x => new SingleAutocompleteOption(x.Id.ToString(), x.Name));
+
+        // to preselect an option...
+        //SelectedValue = Options.Skip(1).First().Value;
     }
 
     public void OnPost()

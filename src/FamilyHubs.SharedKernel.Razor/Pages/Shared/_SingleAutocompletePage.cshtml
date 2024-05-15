@@ -4,6 +4,8 @@
     Model.Errors.ErrorIdToHtmlElementId = _ => selectId;
 }
 
+@* todo: select class, make it able to replace select location(?), pre-selected value (doh!) *@
+
 <partial name="_ErrorSummaryNext" for="@Model.Errors" />
 
 <div class="govuk-grid-row">
@@ -35,11 +37,13 @@
                         aria-describedby="@error?.InputErrorMessageParaId">
                     @if (Model.DisabledOptionValue != null)
                     {
-                        <option value="@Model.DisabledOptionValue" selected disabled></option>
+                        <!option value="@Model.DisabledOptionValue" selected disabled></!option>
                     }
                     @foreach (var option in Model.Options)
                     {
-                        <option value="@option.Value">@option.Label</option>
+                        <!option value="@option.Value"
+                                 @(option.Value == Model.SelectedValue ? "selected" : "")
+                        >@option.Label</!option>
                     }
                 </select>
             </div>
