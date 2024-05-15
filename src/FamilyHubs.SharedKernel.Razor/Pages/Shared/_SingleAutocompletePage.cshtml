@@ -1,4 +1,7 @@
-﻿@model FamilyHubs.SharedKernel.Razor.FullPages.SingleAutocomplete.ISingleAutocompletePageModel
+﻿@using System.Collections.ObjectModel
+@using Microsoft.AspNetCore.Html
+@using Microsoft.Extensions.Primitives
+@model FamilyHubs.SharedKernel.Razor.FullPages.SingleAutocomplete.ISingleAutocompletePageModel
 @{
     const string selectId = "select";
     Model.Errors.ErrorIdToHtmlElementId = _ => selectId;
@@ -10,25 +13,49 @@
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+        <form method="post" novalidate>
 
         @* we don't care which error we get if there are multiple errors *@
         @{ var error = Model.Errors.GetErrorIfTriggered(); }
+        
+        @* todo: always use DescriptionPartial, but default it to the below? and use e.g. Model["Label"] *@
+@*         @if (Model.ContentTop != null)
+        {
+            <partial name="@Model.ContentTop" model="Model.ContentTopSubstitutions" />
+        }
+ *@
+ 
+        @{
+            // string? contentTop;
+            // if (Model.ContentTop == null)
+            // {
+            //     contentTop = "ourdefault";
 
-        <form method="post" novalidate>
-            <div class="govuk-form-group @error?.FormGroupClass">
-                <h1 class="govuk-label-wrapper">
-                    <label class="govuk-label govuk-label--l" for="@selectId">
-                        @Model.Label
-                    </label>
-                </h1>
-
-                @*@if (Model.Hint != null)
+            // }
+            string contentTop = Model.ContentTop ?? "ourdefault";
+            var contentTopSubstitutions = Model.ContentTopSubstitutions ?? new Dictionary<string, HtmlString>
                 {
-                    <div class="govuk-hint">
-                        @Model.Hint
-                    </div>
-                } *@
-                <partial name="_ErrorMessageNext" model="error"/>
+                    { "Label", new HtmlString(Model.Label) }
+                };
+        }
+
+        <partial name="@contentTop" model="contentTopSubstitutions" />
+        
+
+        <div class="govuk-form-group @error?.FormGroupClass">
+            <h1 class="govuk-label-wrapper">
+                <label class="govuk-label govuk-label--l" for="@selectId">
+                    @Model.Label
+                </label>
+            </h1>
+
+            @*@if (Model.Hint != null)
+            {
+                <div class="govuk-hint">
+                    @Model.Hint
+                </div>
+            } *@
+            <partial name="_ErrorMessageNext" model="error"/>
 
                 @* todo: accessible-autocomplete adds an ariadescribedby to the input box,
                    that points to a generic (invisible) span for general help with the autocomplete.
@@ -47,9 +74,11 @@
                     }
                 </select>
             </div>
-            <button type="submit" class="govuk-button" data-module="govuk-button">
-                @Model.ButtonText
-            </button>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+            @Model.ButtonText
+        </button>
+        
         </form>
+
     </div>
 </div>
