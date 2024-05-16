@@ -9,11 +9,9 @@ namespace FamilyHubs.Example.Pages.Examples.FullPages.SingleAutocomplete;
 
 public class SingleAutocomplete_CustomModel : PageModel, ISingleAutocompletePageModel
 {
-    public string? ContentTop => "SingleAutocomplete-Custom-Content";
-    //use something like object for complete control, a new interface or something like IDicationary<string,HtmlString>?
-    // can you have an interface for a dictionary where certain values are required
-    //todo: if our default ContentTop, create one of these with the label and it's value
-    public IReadOnlyDictionary<string, HtmlString>? ContentSubstitutions { get; set; } = null;
+    public string? ContentTop => "SingleAutocomplete-Custom-ContentTop";
+    public string? ContentBottom => "SingleAutocomplete-Custom-ContentBottom";
+    public IReadOnlyDictionary<string, HtmlString>? ContentSubstitutions { get; set; }
 
     [BindProperty]
     public string? SelectedValue { get; set; }

@@ -11,14 +11,8 @@ namespace FamilyHubs.SharedKernel.Razor.FullPages.SingleAutocomplete;
 
 public interface ISingleAutocompletePageModel
 {
-    //todo: default to a built in content that uses label?
-    // label then wouldn't have to exist on ISingleAutocompletePageModel
-    // would be need a new interface for the content, IContent
-    //todo: could we handle elements that wrap the control? e.g. a div up top and /div down bottom
     string? ContentTop => null;
-    //use something like object for complete control, a new interface or something like IDicationary<string,HtmlString>?
-    // can you have an interface for a dictionary where certain values are required
-    //todo: if our default ContentTop, create one of these with the label and it's value
+    string? ContentBottom => null;
     IReadOnlyDictionary<string, HtmlString>? ContentSubstitutions => null;
 
     /// <summary>
