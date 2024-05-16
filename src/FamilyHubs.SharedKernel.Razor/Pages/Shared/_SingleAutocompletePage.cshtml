@@ -1,7 +1,4 @@
-﻿@using System.Collections.ObjectModel
-@using Microsoft.AspNetCore.Html
-@using Microsoft.Extensions.Primitives
-@model FamilyHubs.SharedKernel.Razor.FullPages.SingleAutocomplete.ISingleAutocompletePageModel
+﻿@model FamilyHubs.SharedKernel.Razor.FullPages.SingleAutocomplete.ISingleAutocompletePageModel
 @{
     const string selectId = "select";
     Model.Errors.ErrorIdToHtmlElementId = _ => selectId;
@@ -32,22 +29,39 @@
             //     contentTop = "ourdefault";
 
             // }
-            string contentTop = Model.ContentTop ?? "ourdefault";
-            var contentTopSubstitutions = Model.ContentTopSubstitutions ?? new Dictionary<string, HtmlString>
-                {
-                    { "Label", new HtmlString(Model.Label) }
-                };
+
+            // todo: to use a partial for the default content, will have to pass errors, subs, label and control id (could have more than one)
+            // ^ could have an IContentModel that the page model implements
+            // have separate subs dict for full page control specific subs, such as label and control id
+
+            //string contentTop = Model.ContentTop ?? "ourdefault";
+            //var contentSubstitutions = Model.ContentSubstitutions
+                //                        ?? new Dictionary<string, HtmlString>
+                // {
+                //     { "Label", new HtmlString(Model.Label) }
+                // };
         }
 
-        <partial name="@contentTop" model="contentTopSubstitutions" />
-        
-
-        <div class="govuk-form-group @error?.FormGroupClass">
-            <h1 class="govuk-label-wrapper">
-                <label class="govuk-label govuk-label--l" for="@selectId">
-                    @Model.Label
-                </label>
-            </h1>
+            @if (Model.ContentTop != null)
+            {
+                <div class="govuk-form-group @error?.FormGroupClass">
+                    <partial name="@Model.ContentTop" model="Model.ContentSubstitutions"/>
+                    <partial name="_ErrorMessageNext" model="error"/>
+                    <partial name="_SingleAutocompletePageSelect" model="(selectId, error, Model)" />
+                </div>
+            }
+            else
+            {
+                <div class="govuk-form-group @error?.FormGroupClass">
+                    <h1 class="govuk-label-wrapper">
+                        <label class="govuk-label govuk-label--l" for="@selectId">
+                            @Model.Label
+                        </label>
+                    </h1>
+                    <partial name="_ErrorMessageNext" model="error"/>
+                    <partial name="_SingleAutocompletePageSelect" model="(selectId, error, Model)" />
+                </div>
+            }
 
             @*@if (Model.Hint != null)
             {
@@ -55,12 +69,14 @@
                     @Model.Hint
                 </div>
             } *@
-            <partial name="_ErrorMessageNext" model="error"/>
+@*             <partial name="_ErrorMessageNext" model="error"/>
 
-                @* todo: accessible-autocomplete adds an ariadescribedby to the input box,
+                <partial name="_SingleAutocompletePageSelect" model="(selectId, error, Model)" />
+ *@
+            @* todo: accessible-autocomplete adds an ariadescribedby to the input box,
                    that points to a generic (invisible) span for general help with the autocomplete.
                    it should also contain the error and hint *@
-                <select id="@selectId" class="govuk-select" name="SelectedValue" data-module="fh-autocomplete"
+@*                 <select id="@selectId" class="govuk-select" name="SelectedValue" data-module="fh-autocomplete"
                         aria-describedby="@error?.InputErrorMessageParaId">
                     @if (Model.DisabledOptionValue != null)
                     {
@@ -72,8 +88,8 @@
                                  @(option.Value == Model.SelectedValue ? "selected" : "")
                         >@option.Label</!option>
                     }
-                </select>
-            </div>
+                </select> *@
+@*             </div> *@
         <button type="submit" class="govuk-button" data-module="govuk-button">
             @Model.ButtonText
         </button>

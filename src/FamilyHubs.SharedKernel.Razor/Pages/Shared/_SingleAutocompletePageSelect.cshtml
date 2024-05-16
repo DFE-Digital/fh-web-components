@@ -1,0 +1,19 @@
+﻿@model (string SelectId, FamilyHubs.SharedKernel.Razor.ErrorNext.Error Error, FamilyHubs.SharedKernel.Razor.FullPages.SingleAutocomplete.ISingleAutocompletePageModel SapModel)
+
+@* todo: select width when js disabled*@
+@* todo: accessible-autocomplete adds an ariadescribedby to the input box,
+                   that points to a generic (invisible) span for general help with the autocomplete.
+                   it should also contain the error and hint *@
+<select id="@Model.SelectId" class="govuk-select" name="SelectedValue" data-module="fh-autocomplete"
+        aria-describedby="@Model.Error?.InputErrorMessageParaId">
+    @if (Model.SapModel.DisabledOptionValue != null)
+    {
+        <!option value="@Model.SapModel.DisabledOptionValue" selected disabled></!option>
+    }
+    @foreach (var option in Model.SapModel.Options)
+    {
+        <!option value="@option.Value"
+                 @(option.Value == Model.SapModel.SelectedValue ? "selected" : "")
+        >@option.Label</!option>
+    }
+</select>

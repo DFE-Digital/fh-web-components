@@ -19,7 +19,7 @@ public interface ISingleAutocompletePageModel
     //use something like object for complete control, a new interface or something like IDicationary<string,HtmlString>?
     // can you have an interface for a dictionary where certain values are required
     //todo: if our default ContentTop, create one of these with the label and it's value
-    IReadOnlyDictionary<string, HtmlString>? ContentTopSubstitutions => null;
+    IReadOnlyDictionary<string, HtmlString>? ContentSubstitutions => null;
 
     /// <summary>
     /// During GET, if not null, the option with this value will be selected by default.
@@ -27,11 +27,6 @@ public interface ISingleAutocompletePageModel
     /// it'll be populated with the value of the option selected by the user.
     /// </summary>
     string? SelectedValue { get; set; }
-
-    //todo: for differing content, do we force the user to have separate partials, or should we support token substitution?
-    // if there are a few different subs needed, then this will get combinatory quickly
-    // we could add a content control supporting substitution and reuse that in our full page controls
-    //string? DescriptionPartial => null;
 
     /// <summary>
     /// The label (and screen title) to display above the dropdown

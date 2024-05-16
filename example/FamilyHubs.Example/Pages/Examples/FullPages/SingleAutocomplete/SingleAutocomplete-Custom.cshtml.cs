@@ -13,7 +13,7 @@ public class SingleAutocomplete_CustomModel : PageModel, ISingleAutocompletePage
     //use something like object for complete control, a new interface or something like IDicationary<string,HtmlString>?
     // can you have an interface for a dictionary where certain values are required
     //todo: if our default ContentTop, create one of these with the label and it's value
-    public IReadOnlyDictionary<string, HtmlString>? ContentTopSubstitutions => null;
+    public IReadOnlyDictionary<string, HtmlString>? ContentSubstitutions { get; set; } = null;
 
     [BindProperty]
     public string? SelectedValue { get; set; }
@@ -31,10 +31,25 @@ public class SingleAutocomplete_CustomModel : PageModel, ISingleAutocompletePage
 
     public void OnGet()
     {
-        Options = Dtos.Select(x => new SingleAutocompleteOption(x.Id.ToString(), x.Name));
+        Options = GetOptions();
+        ContentSubstitutions = GetSubstitutions();
 
         // to preselect an option...
         //SelectedValue = Options.Skip(1).First().Value;
+    }
+
+    public IEnumerable<ISingleAutocompleteOption> GetOptions()
+    {
+        return Dtos.Select(x => new SingleAutocompleteOption(x.Id.ToString(), x.Name));
+    }
+
+    public IReadOnlyDictionary<string, HtmlString> GetSubstitutions()
+    {
+        return new Dictionary<string, HtmlString>
+        {
+            { "Label", new HtmlString("Where will Wales finish in the next Rugby World Cup?") },
+            { "Substitution", new HtmlString("<h2>Substitution</h2>") }
+        };
     }
 
     public void OnPost()
@@ -44,6 +59,9 @@ public class SingleAutocomplete_CustomModel : PageModel, ISingleAutocompletePage
             Errors = ErrorState.Create(PossibleErrors, ErrorId.NothingSelected);
             return;
         }
+
+        Options = GetOptions();
+        ContentSubstitutions = GetSubstitutions();
 
         long selectedId = long.Parse(SelectedValue);
         SelectedValue = Dtos.Single(d => d.Id == selectedId).Name;
