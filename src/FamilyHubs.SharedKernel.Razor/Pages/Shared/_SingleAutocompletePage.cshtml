@@ -4,7 +4,7 @@
     Model.Errors.ErrorIdToHtmlElementId = _ => selectId;
 }
 
-@* todo: select class, make it able to replace select location(?), pre-selected value (doh!) *@
+@* todo: select class, make it able to replace select location(?) *@
 
 <partial name="_ErrorSummaryNext" for="@Model.Errors" />
 
@@ -12,35 +12,8 @@
     <div class="govuk-grid-column-two-thirds">
         <form method="post" novalidate>
 
-        @* we don't care which error we get if there are multiple errors *@
-        @{ var error = Model.Errors.GetErrorIfTriggered(); }
-        
-        @* todo: always use DescriptionPartial, but default it to the below? and use e.g. Model["Label"] *@
-@*         @if (Model.ContentTop != null)
-        {
-            <partial name="@Model.ContentTop" model="Model.ContentTopSubstitutions" />
-        }
- *@
- 
-        @{
-            // string? contentTop;
-            // if (Model.ContentTop == null)
-            // {
-            //     contentTop = "ourdefault";
-
-            // }
-
-            // todo: to use a partial for the default content, will have to pass errors, subs, label and control id (could have more than one)
-            // ^ could have an IContentModel that the page model implements
-            // have separate subs dict for full page control specific subs, such as label and control id
-
-            //string contentTop = Model.ContentTop ?? "ourdefault";
-            //var contentSubstitutions = Model.ContentSubstitutions
-                //                        ?? new Dictionary<string, HtmlString>
-                // {
-                //     { "Label", new HtmlString(Model.Label) }
-                // };
-        }
+            @* we don't care which error we get if there are multiple errors *@
+            @{ var error = Model.Errors.GetErrorIfTriggered(); }
 
             @if (Model.ContentTop != null)
             {
@@ -53,46 +26,24 @@
             else
             {
                 <div class="govuk-form-group @error?.FormGroupClass">
+                    @* todo: we could use a partial for the default content, and then reuse that partial across single page components *@
+                    @* we could have a new interface that contains a dictionary of page control data, such as the id and label,
+                        along with an instance of an interface which the full page controls implement,
+                        containing a subset of common properties, such as the errors
+                    *@
                     <h1 class="govuk-label-wrapper">
                         <label class="govuk-label govuk-label--l" for="@selectId">
                             @Model.Label
                         </label>
                     </h1>
                     <partial name="_ErrorMessageNext" model="error"/>
-                    <partial name="_SingleAutocompletePageSelect" model="(selectId, error, Model)" />
+                    <partial name="_SingleAutocompletePageSelect" model="(selectId, error, Model)"/>
                 </div>
             }
 
-            @*@if (Model.Hint != null)
-            {
-                <div class="govuk-hint">
-                    @Model.Hint
-                </div>
-            } *@
-@*             <partial name="_ErrorMessageNext" model="error"/>
-
-                <partial name="_SingleAutocompletePageSelect" model="(selectId, error, Model)" />
- *@
-            @* todo: accessible-autocomplete adds an ariadescribedby to the input box,
-                   that points to a generic (invisible) span for general help with the autocomplete.
-                   it should also contain the error and hint *@
-@*                 <select id="@selectId" class="govuk-select" name="SelectedValue" data-module="fh-autocomplete"
-                        aria-describedby="@error?.InputErrorMessageParaId">
-                    @if (Model.DisabledOptionValue != null)
-                    {
-                        <!option value="@Model.DisabledOptionValue" selected disabled></!option>
-                    }
-                    @foreach (var option in Model.Options)
-                    {
-                        <!option value="@option.Value"
-                                 @(option.Value == Model.SelectedValue ? "selected" : "")
-                        >@option.Label</!option>
-                    }
-                </select> *@
-@*             </div> *@
-        <button type="submit" class="govuk-button" data-module="govuk-button">
-            @Model.ButtonText
-        </button>
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                @Model.ButtonText
+            </button>
         
         </form>
 
