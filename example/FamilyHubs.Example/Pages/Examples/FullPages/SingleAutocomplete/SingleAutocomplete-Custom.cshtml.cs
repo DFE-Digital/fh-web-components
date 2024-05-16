@@ -52,14 +52,14 @@ public class SingleAutocomplete_CustomModel : PageModel, ISingleAutocompletePage
 
     public void OnPost()
     {
+        Options = GetOptions();
+        ContentSubstitutions = GetSubstitutions();
+
         if (SelectedValue == null)
         {
             Errors = ErrorState.Create(PossibleErrors, ErrorId.NothingSelected);
             return;
         }
-
-        Options = GetOptions();
-        ContentSubstitutions = GetSubstitutions();
 
         long selectedId = long.Parse(SelectedValue);
         SelectedValue = Dtos.Single(d => d.Id == selectedId).Name;
