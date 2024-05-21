@@ -7,7 +7,7 @@ Add support for a page component with a single autocomplete textbox (or select d
 Also included:
 * fix error summary layout on single textbox page component
 
-* 9.2.1 miscellaneous single autocomplete improvements
+* 9.2.1 => 9.2.2 miscellaneous single autocomplete improvements
 
 # 9.1
 
