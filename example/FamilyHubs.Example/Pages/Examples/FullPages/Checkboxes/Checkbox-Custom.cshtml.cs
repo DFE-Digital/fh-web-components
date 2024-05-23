@@ -3,7 +3,7 @@ using FamilyHubs.SharedKernel.Razor.FullPages.Checkboxes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace FamilyHubs.Example.Pages.Examples.FullPages;
+namespace FamilyHubs.Example.Pages.Examples.FullPages.Checkboxes;
 
 public enum DayCode
 {

@@ -1,5 +1,14 @@
 # Release Notes
 
+# 9.2
+
+Add support for a page component with a single autocomplete textbox (or select drop-down when no Javascript).
+
+Also included:
+* fix error summary layout on single textbox page component
+
+* 9.2.1 => 9.2.2 miscellaneous single autocomplete improvements
+
 # 9.1
 
 Add hint text support to radio page component
@@ -9,6 +18,7 @@ Upgrade to MOJ 2.1.1 and DFE Frontend 1.0.1
 
 * 9.1.1 => 9.15 Fixes
 * 9.1.6 Add support for a class attribute to `<Summary-List>` and `<Summary-Card>`
+* 9.1.7 Add MS Clarity support. Add the Clarity ID to the `Analytics` config section with the key `ClarityId`
 
 # 9
 

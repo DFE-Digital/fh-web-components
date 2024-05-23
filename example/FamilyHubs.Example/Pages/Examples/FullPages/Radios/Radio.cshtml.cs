@@ -4,11 +4,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Immutable;
 
-namespace FamilyHubs.Example.Pages.Examples.FullPages;
+namespace FamilyHubs.Example.Pages.Examples.FullPages.Radios;
 
-public class RadioInlineModel : PageModel, IRadiosPageModel
+public enum Country
 {
-    public static Radio[] StaticRadios => new []
+    England,
+    Scotland,
+    Wales,
+    NorthernIreland
+}
+
+public class RadioModel : PageModel, IRadiosPageModel
+{
+    public static Radio[] StaticRadios => new[]
     {
         new Radio("England", Country.England.ToString()),
         new Radio("Scotland", Country.Scotland.ToString()),
@@ -24,8 +32,6 @@ public class RadioInlineModel : PageModel, IRadiosPageModel
     public IErrorState Errors { get; set; } = ErrorState.Empty;
 
     public string? Legend => "Where do you live?";
-
-    public bool AreRadiosInline => true;
 
     public Country? SelectedCountry;
 
