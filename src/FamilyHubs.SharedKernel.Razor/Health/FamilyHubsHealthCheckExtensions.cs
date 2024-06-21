@@ -57,7 +57,7 @@ public static class FamilyHubsHealthCheckExtensions
 
     public static WebApplication MapFamilyHubsHealthChecks(this WebApplication app, Assembly? assembly = null)
     {
-        app.MapHealthChecks("/health", new HealthCheckOptions
+        app.MapHealthChecks("/api/health", new HealthCheckOptions
         {
             Predicate = _ => true,
             ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
@@ -69,7 +69,7 @@ public static class FamilyHubsHealthCheckExtensions
                 .UseMiddleware<VersionInfoMiddleware>(assembly)
                 .Build();
 
-            app.Map("/info", infoPipeline).WithDisplayName("Info endpoint");
+            app.Map("/api/info", infoPipeline).WithDisplayName("Info endpoint");
         }
 
         return app;
